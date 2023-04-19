@@ -36,8 +36,8 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script>
         $(function() {
-            $("#header").load("header.php");
-            $("#footer").load("footer.php");
+            $("#header").load("../pages/header.php");
+            $("#footer").load("../pages/footer.php");
         })
     </script>
 
@@ -49,7 +49,9 @@
     <div class="wrapper">
 
         <!--== Start Header Wrapper ==-->
-        <header id="header"></header>
+        <header id="header">
+            <?= $this->include('pages/header') ?>
+        </header>
         <!--== End Header Wrapper ==-->
 
         <main class="main-content">
@@ -778,7 +780,9 @@
         </main>
 
         <!--== Start Footer Area Wrapper ==-->
-        <footer id="footer"></footer>
+        <footer id="footer">
+            <?= $this->include('pages/footer') ?>
+        </footer>
         <!--== End Footer Area Wrapper ==-->
 
         <!--== Scroll Top Button ==-->
