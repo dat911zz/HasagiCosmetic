@@ -7,6 +7,12 @@ class Home extends BaseController
     //Action
     public function index()
     {
-        return view('/pages/index');//Link to Views
+        $data['title'] = 'Trang Chủ';
+        return view('home/index', $data);//Link to Views
+    }
+    public function about_us()
+    {
+        $data['title'] = 'Thông Tin';
+        return view('home/about_us', $data);
     }
 }

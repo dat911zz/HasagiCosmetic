@@ -41,7 +41,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="about-us.php">Giới thiệu</a></li>
+                        <li><a href="about_us.php">Giới thiệu</a></li>
                         <li class="has-submenu"><a href="blog.php">Tạp chí làm đẹp</a></li>
                         <li class="has-submenu"><a href="account-login.php">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
