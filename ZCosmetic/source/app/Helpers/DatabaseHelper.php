@@ -1,10 +1,11 @@
 <?php
     class DatabaseHelper {
         //mysql:host=localhost;dbname=ql_nha_hang
-        var $driver = "";
-        function __construct($driver){
-            $this->driver = $driver;
-        }
+        var $driver = "mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore";
+        // function __construct($driver){
+        //     $this->driver = $driver;
+        // }
+        function __construct(){}
         function getConnect() {
             try {
                 $pdo = new PDO($this->driver, "root", "");
