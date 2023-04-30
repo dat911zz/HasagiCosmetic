@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-5 col-sm-6 col-lg-3">
                 <div class="header-logo">
-                    <a href="index.php">
+                    <a href="/">
                         <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
                     </a>
                 </div>
@@ -11,7 +11,7 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
-                        <li><a href="index.php">trang chủ</a>
+                        <li><a href="/">trang chủ</a>
 
                         </li>
 
@@ -41,7 +41,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="about_us.php">Giới thiệu</a></li>
+                        <li><a href="/home/about">Giới thiệu</a></li>
                         <li class="has-submenu"><a href="blog.php">Tạp chí làm đẹp</a></li>
                         <li class="has-submenu"><a href="account-login.php">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
