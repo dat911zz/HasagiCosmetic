@@ -8,7 +8,8 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
+    <meta name="keywords"
+        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
     <meta name="author" content="codecarnival" />
 
     <!-- Favicon -->
@@ -30,13 +31,14 @@
     <link rel="stylesheet" href="../assets/css/plugins/fancybox.min.css">
     <link rel="stylesheet" href="../assets/css/plugins/range-slider.css">
     <link rel="stylesheet" href="../assets/css/plugins/nice-select.css">
-
+    <link rel="stylesheet" href="../assets/css/pager.css">
     <!-- Style CSS -->
     <link rel="stylesheet" href="../assets/css/style.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#header").load("header.php");
             $("#footer").load("footer.php");
         })
@@ -57,7 +59,8 @@
                     <div class="col-5 col-sm-6 col-lg-3">
                         <div class="header-logo">
                             <a href="index.php">
-                                <img class="logo-main" src="../assets/images/logo.webp" width="95" height="68" alt="Logo" />
+                                <img class="logo-main" src="../assets/images/logo.webp" width="95" height="68"
+                                    alt="Logo" />
                             </a>
                         </div>
                     </div>
@@ -108,49 +111,61 @@
                     </div>
                     <div class="col-7 col-sm-6 col-lg-3">
                         <div class="header-action justify-content-end">
-                            <button class="header-action-btn ms-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch">
+                            <button class="header-action-btn ms-0" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#AsideOffcanvasSearch" aria-controls="AsideOffcanvasSearch">
                                 <span class="icon">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect class="icon-rect" width="30" height="30" fill="url(#pattern1)"/>
-                    <defs>
-                      <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_504:11" transform="scale(0.0333333)"/>
-                      </pattern>
-                      <image id="image0_504:11" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABiUlEQVRIie2Wu04CQRSGP0G2EUtIbHwA8B3EQisLIcorEInx8hbEZ9DKy6toDI1oAgalNFpDoYWuxZzJjoTbmSXERP7kZDbZ859vdmb27MJcf0gBUAaugRbQk2gBV3IvmDa0BLwA4Zh4BorTACaAU6fwPXAI5IAliTxwBDScvJp4vWWhH0BlTLEEsC+5Fu6lkgNdV/gKDnxHCw2I9rSiNQNV8baBlMZYJtpTn71KAg9SY3dUYn9xezLPgG8P8BdwLteq5X7CzDbnAbXKS42WxtQVUzoGeFlqdEclxXrnhmhhkqR+8KuMqzHA1vumAddl3IwB3pLxVmOyr1NjwKQmURJ4lBp7GmOAafghpg1qdSDeDrCoNReJWmZB4dsAPsW7rYVa1Rx4FbOEw5TEPKmFvgMZX3DCgYeYNniMaQ5piTXghGhPLdTmZ33hYNpem98f/UHRwSxvhqhXx4anMA3/EmhiOlJPJnSBOb3uQcpOE65VhujPpAms/Bu4u+x3swRbeB24mTV4LgB+AFuLedkPkcmmAAAAAElFTkSuQmCC"/>
-                    </defs>
-                  </svg>
-                </span>
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <rect class="icon-rect" width="30" height="30" fill="url(#pattern1)" />
+                                        <defs>
+                                            <pattern id="pattern1" patternContentUnits="objectBoundingBox" width="1"
+                                                height="1">
+                                                <use xlink:href="#image0_504:11" transform="scale(0.0333333)" />
+                                            </pattern>
+                                            <image id="image0_504:11" width="30" height="30"
+                                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABiUlEQVRIie2Wu04CQRSGP0G2EUtIbHwA8B3EQisLIcorEInx8hbEZ9DKy6toDI1oAgalNFpDoYWuxZzJjoTbmSXERP7kZDbZ859vdmb27MJcf0gBUAaugRbQk2gBV3IvmDa0BLwA4Zh4BorTACaAU6fwPXAI5IAliTxwBDScvJp4vWWhH0BlTLEEsC+5Fu6lkgNdV/gKDnxHCw2I9rSiNQNV8baBlMZYJtpTn71KAg9SY3dUYn9xezLPgG8P8BdwLteq5X7CzDbnAbXKS42WxtQVUzoGeFlqdEclxXrnhmhhkqR+8KuMqzHA1vumAddl3IwB3pLxVmOyr1NjwKQmURJ4lBp7GmOAafghpg1qdSDeDrCoNReJWmZB4dsAPsW7rYVa1Rx4FbOEw5TEPKmFvgMZX3DCgYeYNniMaQ5piTXghGhPLdTmZ33hYNpem98f/UHRwSxvhqhXx4anMA3/EmhiOlJPJnSBOb3uQcpOE65VhujPpAms/Bu4u+x3swRbeB24mTV4LgB+AFuLedkPkcmmAAAAAElFTkSuQmCC" />
+                                        </defs>
+                                    </svg>
+                                </span>
                             </button>
 
-                            <button class="header-action-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
+                            <button class="header-action-btn" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
                                 <span class="icon">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect class="icon-rect" width="30" height="30" fill="url(#pattern2)"/>
-                    <defs>
-                      <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_504:9" transform="scale(0.0333333)"/>
-                      </pattern>
-                      <image id="image0_504:9" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABFUlEQVRIie2VMU7DMBSGvwAqawaYuAmKxCW4A1I5Qg4AA93KBbp1ZUVUlQJSVVbCDVhgzcTQdLEVx7WDQ2xLRfzSvzzb+d6zn2MYrkugBBYevuWsHKiFn2JBMwH8Bq6Aw1jgBwHOYwGlPgT4LDZ4I8BJDNiEppl034UEJ8DMAJ0DByHBACPgUYEugePQUKkUWAmnsaB/Ry/YO9aXCwlT72AdrqaWEohwBWxSwc8ReIVtYIr5bM5pXqO+Men7rozGlkVSv4lJj1WQfsbvXVkNVNk1eEK4ik9/yuwzAPhLh5iuU4jtftMDR4ZJJXChxTJ2H3zXGDgWc43/X2Wro8G81a8u2fXU2nXiLVAxvNIKuPGW/r/2SltF+a3Rkw4pmwAAAABJRU5ErkJggg=="/>
-                    </defs>
-                  </svg>
-                </span>
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <rect class="icon-rect" width="30" height="30" fill="url(#pattern2)" />
+                                        <defs>
+                                            <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1"
+                                                height="1">
+                                                <use xlink:href="#image0_504:9" transform="scale(0.0333333)" />
+                                            </pattern>
+                                            <image id="image0_504:9" width="30" height="30"
+                                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABFUlEQVRIie2VMU7DMBSGvwAqawaYuAmKxCW4A1I5Qg4AA93KBbp1ZUVUlQJSVVbCDVhgzcTQdLEVx7WDQ2xLRfzSvzzb+d6zn2MYrkugBBYevuWsHKiFn2JBMwH8Bq6Aw1jgBwHOYwGlPgT4LDZ4I8BJDNiEppl034UEJ8DMAJ0DByHBACPgUYEugePQUKkUWAmnsaB/Ry/YO9aXCwlT72AdrqaWEohwBWxSwc8ReIVtYIr5bM5pXqO+Men7rozGlkVSv4lJj1WQfsbvXVkNVNk1eEK4ik9/yuwzAPhLh5iuU4jtftMDR4ZJJXChxTJ2H3zXGDgWc43/X2Wro8G81a8u2fXU2nXiLVAxvNIKuPGW/r/2SltF+a3Rkw4pmwAAAABJRU5ErkJggg==" />
+                                        </defs>
+                                    </svg>
+                                </span>
                             </button>
 
                             <a class="header-action-btn" href="account-login.php">
                                 <span class="icon">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
-                    <defs>
-                      <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_504:10" transform="scale(0.0333333)"/>
-                      </pattern>
-                      <image id="image0_504:10" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC"/>
-                    </defs>
-                  </svg>
-                </span>
+                                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                        <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)" />
+                                        <defs>
+                                            <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1"
+                                                height="1">
+                                                <use xlink:href="#image0_504:10" transform="scale(0.0333333)" />
+                                            </pattern>
+                                            <image id="image0_504:10" width="30" height="30"
+                                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC" />
+                                        </defs>
+                                    </svg>
+                                </span>
                             </a>
 
-                            <button class="header-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
+                            <button class="header-menu-btn" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#AsideOffcanvasMenu" aria-controls="AsideOffcanvasMenu">
                                 <span></span>
                                 <span></span>
                                 <span></span>
@@ -178,7 +193,8 @@
                             </div>
                         </div>
                         <div class="col-md-7">
-                            <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Showing 09 Results</h5>
+                            <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Showing 09
+                                Results</h5>
                         </div>
                     </div>
                 </div>
@@ -240,7 +256,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item">
-                                <img class="icon" src="../assets/images/shop/category/1.webp" width="70" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/1.webp" width="70" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Hare care</h3>
                                 <span class="flag-new">new</span>
                             </a>
@@ -249,7 +266,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item" data-bg-color="#FFEDB4">
-                                <img class="icon" src="../assets/images/shop/category/2.webp" width="80" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/2.webp" width="80" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Skin care</h3>
                             </a>
                             <!--== End Product Category Item ==-->
@@ -257,7 +275,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-lg-0 mt-sm-6 mt-4">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item" data-bg-color="#DFE4FF">
-                                <img class="icon" src="../assets/images/shop/category/3.webp" width="80" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/3.webp" width="80" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Lip stick</h3>
                             </a>
                             <!--== End Product Category Item ==-->
@@ -265,7 +284,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item" data-bg-color="#FFEACC">
-                                <img class="icon" src="../assets/images/shop/category/4.webp" width="80" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/4.webp" width="80" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Face skin</h3>
                                 <span data-bg-color="#835BF4" class="flag-new">sale</span>
                             </a>
@@ -274,7 +294,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item" data-bg-color="#FFDAE0">
-                                <img class="icon" src="../assets/images/shop/category/5.webp" width="80" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/5.webp" width="80" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Blusher</h3>
                             </a>
                             <!--== End Product Category Item ==-->
@@ -282,7 +303,8 @@
                         <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                             <!--== Start Product Category Item ==-->
                             <a href="product.php" class="product-category-item" data-bg-color="#FFF3DA">
-                                <img class="icon" src="../assets/images/shop/category/6.webp" width="80" height="80" alt="Image-HasTech">
+                                <img class="icon" src="../assets/images/shop/category/6.webp" width="80" height="80"
+                                    alt="Image-HasTech">
                                 <h3 class="title">Natural</h3>
                             </a>
                             <!--== End Product Category Item ==-->
@@ -301,17 +323,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/1.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/1.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -334,13 +360,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -352,17 +381,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/2.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/2.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -385,13 +418,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -403,17 +439,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/3.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/3.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -436,13 +476,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -454,17 +497,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/4.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/4.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -487,13 +534,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -505,17 +555,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/5.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/5.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -538,13 +592,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -556,17 +613,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/6.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/6.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -589,13 +650,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -607,17 +671,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/8.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/8.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -640,13 +708,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -658,17 +729,21 @@
                             <div class="product-item product-st3-item">
                                 <div class="product-thumb">
                                     <a class="d-block" href="product-details.php">
-                                        <img src="../assets/images/shop/7.webp" width="370" height="450" alt="Image-HasTech">
+                                        <img src="../assets/images/shop/7.webp" width="370" height="450"
+                                            alt="Image-HasTech">
                                     </a>
                                     <span class="flag-new">new</span>
                                     <div class="product-action">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <button type="button" class="product-action-btn action-btn-quick-view"
+                                            data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                             <i class="fa fa-expand"></i>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <button type="button" class="product-action-btn action-btn-cart"
+                                            data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                             <span>Add to cart</span>
                                         </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                        <button type="button" class="product-action-btn action-btn-wishlist"
+                                            data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                             <i class="fa fa-heart-o"></i>
                                         </button>
                                     </div>
@@ -691,13 +766,16 @@
                                     </div>
                                 </div>
                                 <div class="product-action-bottom">
-                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                         <i class="fa fa-expand"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                         <i class="fa fa-heart-o"></i>
                                     </button>
-                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                    <button type="button" class="product-action-btn action-btn-cart"
+                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                         <span>Add to cart</span>
                                     </button>
                                 </div>
@@ -707,17 +785,23 @@
                         <div class="col-12">
                             <ul class="pagination justify-content-center me-auto ms-auto mt-5 mb-0 mb-sm-10">
                                 <li class="page-item">
+                                    <a class="page-link" href="product.php" aria-label="Previous">
+                                        <span class="fa fa-angle-double-left" aria-hidden="true"></span>
+                                    </a>
                                     <a class="page-link previous" href="product.php" aria-label="Previous">
                                         <span class="fa fa-chevron-left" aria-hidden="true"></span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="product.php">01</a></li>
+                                <li class="page-item"><a class="page-link active" href="product.php">01</a></li>
                                 <li class="page-item"><a class="page-link" href="product.php">02</a></li>
                                 <li class="page-item"><a class="page-link" href="product.php">03</a></li>
                                 <li class="page-item"><a class="page-link" href="product.php">....</a></li>
                                 <li class="page-item">
                                     <a class="page-link next" href="product.php" aria-label="Next">
                                         <span class="fa fa-chevron-right" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="page-link" href="product.php" aria-label="Previous">
+                                        <span class="fa fa-angle-double-right" aria-hidden="true"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -746,7 +830,8 @@
                         <div class="col-12">
                             <div class="section-title">
                                 <h2 class="title">Related Products</h2>
-                                <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis</p>
+                                <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus
+                                    sit amet luctus venenatis</p>
                             </div>
                         </div>
                     </div>
@@ -759,17 +844,22 @@
                                         <div class="product-item">
                                             <div class="product-thumb">
                                                 <a class="d-block" href="product-details.php">
-                                                    <img src="../assets/images/shop/4.webp" width="370" height="450" alt="Image-HasTech">
+                                                    <img src="../assets/images/shop/4.webp" width="370" height="450"
+                                                        alt="Image-HasTech">
                                                 </a>
                                                 <span class="flag-new">new</span>
                                                 <div class="product-action">
-                                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                                    <button type="button"
+                                                        class="product-action-btn action-btn-quick-view"
+                                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                         <i class="fa fa-expand"></i>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                                    <button type="button" class="product-action-btn action-btn-cart"
+                                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                         <span>Add to cart</span>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                                         <i class="fa fa-heart-o"></i>
                                                     </button>
                                                 </div>
@@ -785,7 +875,8 @@
                                                     </div>
                                                     <div class="reviews">150 reviews</div>
                                                 </div>
-                                                <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
+                                                <h4 class="title"><a href="product-details.php">Readable content
+                                                        DX22</a></h4>
                                                 <div class="prices">
                                                     <span class="price">$210.00</span>
                                                     <span class="price-old">300.00</span>
@@ -799,17 +890,22 @@
                                         <div class="product-item">
                                             <div class="product-thumb">
                                                 <a class="d-block" href="product-details.php">
-                                                    <img src="../assets/images/shop/5.webp" width="370" height="450" alt="Image-HasTech">
+                                                    <img src="../assets/images/shop/5.webp" width="370" height="450"
+                                                        alt="Image-HasTech">
                                                 </a>
                                                 <span class="flag-new">new</span>
                                                 <div class="product-action">
-                                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                                    <button type="button"
+                                                        class="product-action-btn action-btn-quick-view"
+                                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                         <i class="fa fa-expand"></i>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                                    <button type="button" class="product-action-btn action-btn-cart"
+                                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                         <span>Add to cart</span>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                                         <i class="fa fa-heart-o"></i>
                                                     </button>
                                                 </div>
@@ -825,7 +921,8 @@
                                                     </div>
                                                     <div class="reviews">150 reviews</div>
                                                 </div>
-                                                <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
+                                                <h4 class="title"><a href="product-details.php">Readable content
+                                                        DX22</a></h4>
                                                 <div class="prices">
                                                     <span class="price">$210.00</span>
                                                     <span class="price-old">300.00</span>
@@ -839,17 +936,22 @@
                                         <div class="product-item">
                                             <div class="product-thumb">
                                                 <a class="d-block" href="product-details.php">
-                                                    <img src="../assets/images/shop/6.webp" width="370" height="450" alt="Image-HasTech">
+                                                    <img src="../assets/images/shop/6.webp" width="370" height="450"
+                                                        alt="Image-HasTech">
                                                 </a>
                                                 <span class="flag-new">new</span>
                                                 <div class="product-action">
-                                                    <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                                    <button type="button"
+                                                        class="product-action-btn action-btn-quick-view"
+                                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                         <i class="fa fa-expand"></i>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                                    <button type="button" class="product-action-btn action-btn-cart"
+                                                        data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                         <span>Add to cart</span>
                                                     </button>
-                                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                                    <button type="button" class="product-action-btn action-btn-wishlist"
+                                                        data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
                                                         <i class="fa fa-heart-o"></i>
                                                     </button>
                                                 </div>
@@ -865,7 +967,8 @@
                                                     </div>
                                                     <div class="reviews">150 reviews</div>
                                                 </div>
-                                                <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
+                                                <h4 class="title"><a href="product-details.php">Readable content
+                                                        DX22</a></h4>
                                                 <div class="prices">
                                                     <span class="price">$210.00</span>
                                                     <span class="price-old">300.00</span>
@@ -905,7 +1008,8 @@
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -930,7 +1034,8 @@
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -942,10 +1047,12 @@
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
-        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch" aria-labelledby="offcanvasTopLabel">
+        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
+            aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header">
                 <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa fa-close"></i></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                        class="fa fa-close"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container pt--0 pb--0">
@@ -956,7 +1063,8 @@
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control"
+                                    placeholder="Search entire store…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -980,7 +1088,8 @@
                                     <div class="col-lg-6">
                                         <!--== Start Product Thumbnail Area ==-->
                                         <div class="product-single-thumb">
-                                            <img src="../assets/images/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech">
+                                            <img src="../assets/images/shop/quick-view1.webp" width="544" height="560"
+                                                alt="Image-HasTech">
                                         </div>
                                         <!--== End Product Thumbnail Area ==-->
                                     </div>
@@ -999,7 +1108,10 @@
                                                 </div>
                                                 <button type="button" class="product-review-show">150 reviews</button>
                                             </div>
-                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident
+                                                alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut
+                                                veniam
                                                 sequi amet consectetur.</p>
                                             <div class="product-details-pro-qty">
                                                 <div class="pro-qty">
@@ -1009,7 +1121,8 @@
                                             <div class="product-details-action">
                                                 <h4 class="price">$254.22</h4>
                                                 <div class="product-details-cart-wishlist">
-                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Add to cart</button>
+                                                    <button type="button" class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#action-CartAddModal">Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -1025,10 +1138,12 @@
         <!--== End Product Quick View Modal ==-->
 
         <!--== Start Aside Cart ==-->
-        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
+            aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i class="fa fa-chevron-right"></i></button>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
+                        class="fa fa-chevron-right"></i></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="aside-cart-product-list">
@@ -1057,10 +1172,12 @@
         <!--== End Aside Cart ==-->
 
         <!--== Start Aside Menu ==-->
-        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
+        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
+            aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i class="fa fa-chevron-left"></i></button>
+                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
+                        class="fa fa-chevron-left"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div id="offcanvasNav" class="offcanvas-menu-nav">
@@ -1071,7 +1188,8 @@
                                 <li><a href="index-two.php">Home Two</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a>
+                        </li>
                         <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="#">shop</a>
                             <ul>
                                 <li><a href="#" class="offcanvas-nav-item">Shop Layout</a>
@@ -1119,7 +1237,8 @@
                                 <li><a href="page-not-found.php">Page Not Found</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>
