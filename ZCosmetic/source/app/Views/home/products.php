@@ -13,7 +13,9 @@
     $curPage = $_GET["page"];
     $btnPage = $pager->getButtonPage($curPage, $maximumPage);
 
-    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.* FROM tbl_sanpham, tbl_giasanpham, tbl_gia WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma limit $posStart, $lim");
+    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
+                                    FROM tbl_sanpham, tbl_giasanpham, tbl_gia
+                                    WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null limit $posStart, $lim");
 ?>
 
 <?= $this->extend('layouts/main') ?>
@@ -30,14 +32,14 @@
                 <div class="col-md-5">
                     <div class="page-header-st3-content text-center text-md-start">
                         <ol class="breadcrumb justify-content-center justify-content-md-start">
-                            <li class="breadcrumb-item"><a class="text-dark" href="index.php">Home <?= $count ?></a></li>
-                            <li class="breadcrumb-item active text-dark" aria-current="page">Products</li>
+                            <li class="breadcrumb-item"><a class="text-dark" href="index.php">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active text-dark" aria-current="page">Sản Phẩm</li>
                         </ol>
-                        <h2 class="page-header-title">All Products</h2>
+                        <h2 class="page-header-title">Tất Cả Sản Phẩm</h2>
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Showing 09 Results</h5>
+                    <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Hiển thị 09 sản phẩm</h5>
                 </div>
             </div>
         </div>

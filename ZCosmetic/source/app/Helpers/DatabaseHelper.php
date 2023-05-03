@@ -1,8 +1,8 @@
 <?php
 class DatabaseHelper
 {
-    //mysql:host=localhost;dbname=ql_nha_hang
     var $driver = "mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore";
+    //var $driver = "mysql://obc.h.filess.io:3306/CosmeticsStore_uspractice";
     // function __construct($driver){
     //     $this->driver = $driver;
     // }

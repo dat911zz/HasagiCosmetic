@@ -10,10 +10,15 @@ class Home extends BaseController
         $data['title'] = 'Trang Chủ';
         return view('home/index', $data);//Link to Views
     }
-    public function about_us()
+    public function about()
     {
-        $data['title'] = 'Thông Tin';
-        return view('product-right-sidebar', $data);
+        $data['title'] = 'Giới Thiệu';
+        return view('home/about-us', $data);
+    }
+    public function blog()
+    {
+        $data['title'] = 'Tạp chí làm đẹp';
+        return view('home/blog', $data);
     }
     public function product_details()
     {
