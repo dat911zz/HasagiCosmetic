@@ -3,7 +3,8 @@
         <div class="row align-items-center">
             <div class="col-5 col-sm-6 col-lg-3">
                 <div class="header-logo">
-                    <a href="/">
+                    <a href="../index.php">
+
                         <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
                     </a>
                 </div>
@@ -11,9 +12,8 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
-                        <li><a href="/">trang chủ</a>
 
-                        </li>
+                        <li><a href="../index.php">Trang chủ</a></li>
 
                         <li class="has-submenu position-static"><a href="/Home/Products">sản phẩm</a>
                             <ul class="submenu-nav-mega">
@@ -41,12 +41,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="/home/about">Giới thiệu</a></li>
-                        <li class="has-submenu"><a href="blog.php">Tạp chí làm đẹp</a></li>
-                        <li class="has-submenu"><a href="account-login.php">Chăm sóc khách hàng</a>
+                        <li><a href="/Home/About">Giới thiệu</a></li>
+                        <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
+                        <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
-                                <li><a href="faq.php">Câu hỏi thường gặp</a></li>
-                                <li><a href="page-not-found.php">Liên hệ</a></li>
+                                <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
+                                <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
+                                <li><a href="/Pages/Contact">Liên hệ</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -82,7 +83,7 @@
                 </span>
                             </button>
 
-                    <a class="header-action-btn" href="account-login.php">
+                    <a class="header-action-btn" href="/Pages/AccountLogin">
                         <span class="icon">
                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
