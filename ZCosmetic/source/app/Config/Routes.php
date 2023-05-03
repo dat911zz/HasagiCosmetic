@@ -31,24 +31,19 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // HOME 
 $routes->get('/', 'Home::index');
-<<<<<<< HEAD
 $routes->get('/home/about', 'Home::about');
 $routes->get('/home/blog', 'Home::blog');
 
 // pages 
-$routes->get('/pages/account_login', 'Pages::account_login');
+$routes->get('/pages/account-login', 'Pages::account_login');
 $routes->get('/pages/faq', 'Pages::faq');
 $routes->get('/pages/cart', 'Pages::cart');
 $routes->get('/pages/category', 'Pages::category');
 $routes->get('/pages/contact', 'Pages::contact');
-$routes->get('/pages/my_account', 'Pages::my_account');
-$routes->get('/pages/product_checkout', 'Pages::product_checkout');
-$routes->get('/pages/product_details', 'Pages::product_details');
+$routes->get('/pages/my-account', 'Pages::my_account');
+$routes->get('/pages/product-checkout', 'Pages::product_checkout');
+$routes->get('/pages/product-details', 'Pages::product_details');
 
-=======
-//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
-$routes->get('/home/about', 'Home::about');
->>>>>>> e549af32a98c553f1f7c7a284a05de567068fb6f
 /*
  * --------------------------------------------------------------------
  * Additional Routing

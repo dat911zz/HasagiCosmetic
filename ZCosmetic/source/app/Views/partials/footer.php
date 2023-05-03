@@ -16,14 +16,14 @@
                 <div class="widget-item">
                     <h4 class="widget-title">Information</h4>
                     <ul class="widget-nav">
-                        <li><a href="blog.php">Blog</a></li>
+                        <li><a href="/home/blog">Blog</a></li>
                         <li><a href="/about">About us</a></li>
-                        <li><a href="contact.php">Contact</a></li>
-                        <li><a href="faq.php">Privacy</a></li>
-                        <li><a href="account-login.php">Login</a></li>
+                        <li><a href="/pages/contact">Contact</a></li>
+                        <li><a href="/pages/faq">Privacy</a></li>
+                        <li><a href="/pages/account-login">Login</a></li>
                         <li><a href="product.php">Shop</a></li>
-                        <li><a href="my-account.php">My Account</a></li>
-                        <li><a href="faq.php">FAQs</a></li>
+                        <li><a href="/pages/my-account">My Account</a></li>
+                        <li><a href="/pages/faq">FAQs</a></li>
                     </ul>
                 </div>
             </div>

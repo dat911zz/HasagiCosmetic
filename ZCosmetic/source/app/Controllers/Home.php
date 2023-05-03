@@ -12,7 +12,6 @@ class Home extends BaseController
     }
     public function about()
     {
-<<<<<<< HEAD
         $data['title'] = 'Giới Thiệu';
         return view('home/about-us', $data);
     }
@@ -21,9 +20,5 @@ class Home extends BaseController
     {
         $data['title'] = 'Tạp chí làm đẹp';
         return view('home/blog', $data);
-=======
-        $data['title'] = 'Thông Tin';
-        return view('home/about-us', $data);
->>>>>>> e549af32a98c553f1f7c7a284a05de567068fb6f
     }
 }
