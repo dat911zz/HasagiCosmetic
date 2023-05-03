@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/Home/About', 'Home::about_us');
+//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
+$routes->get('/home/about', 'Home::about');
 $routes->get('/Home/Product', 'Home::product_details');
 $routes->get('Home/Products', 'Home::products');
 
