@@ -3,7 +3,7 @@
         <div class="row align-items-center">
             <div class="col-5 col-sm-6 col-lg-3">
                 <div class="header-logo">
-                    <a href="index.php">
+                    <a href="../index.php">
                         <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
                     </a>
                 </div>
@@ -11,11 +11,11 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
-                        <li><a href="index.php">trang chủ</a>
+                        <li><a href="../index.php">trang chủ</a>
 
                         </li>
 
-                        <li class="has-submenu position-static"><a href="#">sản phẩm</a>
+                        <li class="has-submenu position-static"><a href="/pages/category">sản phẩm</a>
                             <ul class="submenu-nav-mega">
                                 <li><a href="#/" class="mega-title">Chăm sóc da</a>
                                     <ul>
@@ -41,12 +41,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="about_us.php">Giới thiệu</a></li>
-                        <li class="has-submenu"><a href="blog.php">Tạp chí làm đẹp</a></li>
-                        <li class="has-submenu"><a href="account-login.php">Chăm sóc khách hàng</a>
+                        <li><a href="/home/about">Giới thiệu</a></li>
+                        <li class="has-submenu"><a href="/home/blog">Tạp chí làm đẹp</a></li>
+                        <li class="has-submenu"><a href="/pages/account_login">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
-                                <li><a href="faq.php">Câu hỏi thường gặp</a></li>
-                                <li><a href="page-not-found.php">Liên hệ</a></li>
+                                <li><a href="/pages/faq">Câu hỏi thường gặp</a></li>
+                                <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
+                                <li><a href="/pages/contact">Liên hệ</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -82,7 +83,7 @@
                 </span>
                             </button>
 
-                    <a class="header-action-btn" href="account-login.php">
+                    <a class="header-action-btn" href="/pages/account_login">
                         <span class="icon">
                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
