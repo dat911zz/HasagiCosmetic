@@ -12,16 +12,10 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
-<<<<<<< HEAD
-                        <li><a href="../index.php">Trang chủ</a></li>
-                        <li class="has-submenu position-static"><a href="/Pages/Category">sản phẩm</a>
-=======
-                        <li><a href="/">trang chủ</a>
 
-                        </li>
+                        <li><a href="../index.php">Trang chủ</a></li>
 
                         <li class="has-submenu position-static"><a href="/Home/Products">sản phẩm</a>
->>>>>>> 34c76bd7175e66ae349dd856d21908f6abe6a196
                             <ul class="submenu-nav-mega">
                                 <li><a href="#/" class="mega-title">Chăm sóc da</a>
                                     <ul>
@@ -47,7 +41,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="/home/about">Giới thiệu</a></li>
+                        <li><a href="/Home/About">Giới thiệu</a></li>
                         <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
                         <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">

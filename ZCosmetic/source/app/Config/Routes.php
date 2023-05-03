@@ -33,9 +33,13 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // HOME 
 $routes->get('/', 'Home::index');
-<<<<<<< HEAD
-$routes->get('/Home/about', 'Home::about');
-$routes->get('/Home/blog', 'Home::blog');
+
+$routes->get('/Home/About', 'Home::about');
+$routes->get('/Home/Blog', 'Home::blog');
+
+$routes->get('/Home/ProductRightSidebar', 'Home::product_right_sidebar');
+$routes->get('/Home/Product', 'Home::product_details');
+$routes->get('Home/Products', 'Home::products');
 
 // Pages
 $routes->get('/Pages/AccountLogin', 'Pages::account_login');
@@ -46,13 +50,10 @@ $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
-=======
-//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
-$routes->get('/home/about', 'Home::about');
-$routes->get('/Home/Product', 'Home::product_details');
-$routes->get('Home/Products', 'Home::products');
 
->>>>>>> 34c76bd7175e66ae349dd856d21908f6abe6a196
+//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
+
+
 
 /*
  * --------------------------------------------------------------------

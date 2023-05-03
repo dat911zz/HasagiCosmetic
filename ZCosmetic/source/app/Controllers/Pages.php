@@ -8,13 +8,13 @@ class Pages extends BaseController
     public function account_login()
     {
         $data['title'] = 'Đăng Nhập';
-        return view('pages/account-login', $data);//Link to Views
+        return view('pages/account-login', $data);
     }
 
     public function cart()
     {
         $data['title'] = 'Giỏ Hàng';
-        return view('pages/about-us', $data);
+        return view('pages/cart', $data);
     }
     
     public function category()
@@ -42,11 +42,5 @@ class Pages extends BaseController
     {
         $data['title'] = 'Thanh toán sản phẩm';
         return view('pages/product-checkout', $data);
-    }
-
-    public function product_details()
-    {
-        $data['title'] = 'Thông tin chi tiết sản phẩm';
-        return view('pages/product-details', $data);
     }
 }

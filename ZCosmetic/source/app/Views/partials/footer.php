@@ -21,7 +21,7 @@
                         <li><a href="/Pages/Contact">Contact</a></li>
                         <li><a href="/Pages/Faq">Privacy</a></li>
                         <li><a href="/Pages/AccountLogin">Login</a></li>
-                        <li><a href="product.php">Shop</a></li>
+                        <li><a href="/Home/Products">Shop</a></li>
                         <li><a href="/Pages/MyAccount">My Account</a></li>
                         <li><a href="/Pages/Faq">FAQs</a></li>
                     </ul>

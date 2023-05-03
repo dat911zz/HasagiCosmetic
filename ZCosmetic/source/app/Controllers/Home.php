@@ -12,10 +12,10 @@ class Home extends BaseController
     }
     public function about()
     {
-<<<<<<< HEAD
-        $data['title'] = 'Giới Thiệu';
-        return view('home/about-us', $data);
-=======
+    $data['title'] = 'Giới Thiệu';
+    return view('home/about-us', $data);
+}
+    public function product_right_sidebar(){
         $data['title'] = 'Thông Tin';
         return view('product-right-sidebar', $data);
     }
@@ -30,7 +30,6 @@ class Home extends BaseController
     {
         $data['title'] = 'Tất cả sản phẩm';
         return view('home/products', $data);
->>>>>>> 34c76bd7175e66ae349dd856d21908f6abe6a196
     }
 
     public function blog()
