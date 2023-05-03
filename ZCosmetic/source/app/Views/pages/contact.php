@@ -60,8 +60,8 @@
                     <div class="row">
                         <div class="offset-lg-6 col-lg-6">
                             <div class="section-title position-relative">
-                                <h2 class="title">Get in touch</h2>
-                                <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing aliquam, purus sit amet luctus venenatis</p>
+                                <h2 class="title">Liên hệ </h2>
+                                <p class="m-0">Gửi cho chúng tôi câu hỏi của bạn, chúng tôi sẽ trả lời sớm nhất có thể!</p>
                                 <div class="line-left-style mt-4 mb-1"></div>
                             </div>
                             <!--== Start Contact Form ==-->
@@ -70,27 +70,27 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" name="con_name" placeholder="First Name">
+                                                <input class="form-control" type="text" name="con_name" placeholder="Họ">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <input class="form-control" type="text" placeholder="Last Name">
+                                                <input class="form-control" type="text" placeholder="Tên">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <input class="form-control" type="email" name="con_email" placeholder="Email address">
+                                                <input class="form-control" type="email" name="con_email" placeholder="Địa chỉ email">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" name="con_message" placeholder="Message"></textarea>
+                                                <textarea class="form-control" name="con_message" placeholder="Tin nhắn"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group mb-0">
-                                                <button class="btn btn-sm" type="submit">SUBMIT</button>
+                                                <button class="btn btn-sm" type="submit">GỬI</button>
                                             </div>
                                         </div>
                                     </div>

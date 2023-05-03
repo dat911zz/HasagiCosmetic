@@ -42,7 +42,8 @@ $routes->get('/Home/Product', 'Home::product_details');
 $routes->get('Home/Products', 'Home::products');
 
 // Pages
-$routes->get('/Pages/AccountLogin', 'Pages::account_login');
+$routes->get('/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
+
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Cart', 'Pages::cart');
 $routes->get('/Pages/Category', 'Pages::category');
