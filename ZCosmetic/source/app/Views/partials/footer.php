@@ -17,7 +17,7 @@
                     <h4 class="widget-title">Information</h4>
                     <ul class="widget-nav">
                         <li><a href="/home/blog">Blog</a></li>
-                        <li><a href="/about">About us</a></li>
+                        <li><a href="/home/about">About us</a></li>
                         <li><a href="/pages/contact">Contact</a></li>
                         <li><a href="/pages/faq">Privacy</a></li>
                         <li><a href="/pages/account-login">Login</a></li>
