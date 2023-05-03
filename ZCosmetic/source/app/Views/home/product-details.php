@@ -20,14 +20,14 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                     <div class="col-md-5">
                         <div class="page-header-st3-content text-center text-md-start">
                             <ol class="breadcrumb justify-content-center justify-content-md-start">
-                                <li class="breadcrumb-item"><a class="text-dark" href="index.php">Home</a></li>
-                                <li class="breadcrumb-item active text-dark" aria-current="page">Product Detail</li>
+                                <li class="breadcrumb-item"><a class="text-dark" href="/Home/Index">Trang Chủ</a></li>
+                                <li class="breadcrumb-item active text-dark" aria-current="page">Chi Tiết Sản Phẩm</li>
                             </ol>
-                            <h2 class="page-header-title">Product Detail</h2>
+                            <h2 class="page-header-title">Chi Tiết Sản Phẩm</h2>
                         </div>
                     </div>
                     <div class="col-md-7">
-                        <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Showing Single Product</h5>
+                        <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Hiển thị 1 sản phẩm</h5>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                     <div class="col-lg-6">
                         <div class="product-details-thumb">
                             <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="570" height="693" alt="Image">
-                            <span class="flag-new">new</span>
+                            <!-- <span class="flag-new">new</span> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
