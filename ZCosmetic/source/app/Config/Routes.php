@@ -34,7 +34,7 @@ $routes->get('/', 'Home::index');
 $routes->get('/Home/about', 'Home::about');
 $routes->get('/Home/blog', 'Home::blog');
 
-// pages 
+// Pages
 $routes->get('/Pages/AccountLogin', 'Pages::account_login');
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Cart', 'Pages::cart');
