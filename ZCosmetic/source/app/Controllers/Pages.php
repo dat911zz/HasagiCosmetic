@@ -10,12 +10,13 @@ class Pages extends BaseController
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);//Link to Views
     }
+
     public function cart()
     {
         $data['title'] = 'Giỏ Hàng';
         return view('pages/about-us', $data);
     }
-
+    
     public function category()
     {
         $data['title'] = 'Loại';

@@ -19,7 +19,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -31,6 +31,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 // HOME 
 $routes->get('/', 'Home::index');
+<<<<<<< HEAD
 $routes->get('/home/about', 'Home::about');
 $routes->get('/home/blog', 'Home::blog');
 
@@ -44,6 +45,10 @@ $routes->get('/pages/my_account', 'Pages::my_account');
 $routes->get('/pages/product_checkout', 'Pages::product_checkout');
 $routes->get('/pages/product_details', 'Pages::product_details');
 
+=======
+//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
+$routes->get('/home/about', 'Home::about');
+>>>>>>> e549af32a98c553f1f7c7a284a05de567068fb6f
 /*
  * --------------------------------------------------------------------
  * Additional Routing
