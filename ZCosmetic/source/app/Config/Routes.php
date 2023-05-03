@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Home;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -32,6 +34,10 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 $routes->get('/home/about', 'Home::about');
+$routes->get('/Home/Product', 'Home::product_details');
+$routes->get('Home/Products', 'Home::products');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

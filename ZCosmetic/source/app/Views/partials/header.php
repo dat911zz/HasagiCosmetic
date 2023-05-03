@@ -15,7 +15,7 @@
 
                         </li>
 
-                        <li class="has-submenu position-static"><a href="#">sản phẩm</a>
+                        <li class="has-submenu position-static"><a href="/Home/Products">sản phẩm</a>
                             <ul class="submenu-nav-mega">
                                 <li><a href="#/" class="mega-title">Chăm sóc da</a>
                                     <ul>
