@@ -31,18 +31,18 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // HOME 
 $routes->get('/', 'Home::index');
-$routes->get('/home/about', 'Home::about');
-$routes->get('/home/blog', 'Home::blog');
+$routes->get('/Home/about', 'Home::about');
+$routes->get('/Home/blog', 'Home::blog');
 
 // pages 
-$routes->get('/pages/account-login', 'Pages::account_login');
-$routes->get('/pages/faq', 'Pages::faq');
-$routes->get('/pages/cart', 'Pages::cart');
-$routes->get('/pages/category', 'Pages::category');
-$routes->get('/pages/contact', 'Pages::contact');
-$routes->get('/pages/my-account', 'Pages::my_account');
-$routes->get('/pages/product-checkout', 'Pages::product_checkout');
-$routes->get('/pages/product-details', 'Pages::product_details');
+$routes->get('/Pages/AccountLogin', 'Pages::account_login');
+$routes->get('/Pages/Faq', 'Pages::faq');
+$routes->get('/Pages/Cart', 'Pages::cart');
+$routes->get('/Pages/Category', 'Pages::category');
+$routes->get('/Pages/Contact', 'Pages::contact');
+$routes->get('/Pages/MyAccount', 'Pages::my_account');
+$routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
+$routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
 /*
  * --------------------------------------------------------------------

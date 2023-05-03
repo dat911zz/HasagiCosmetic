@@ -57,7 +57,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-style1">
                 <div class="container">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Faq</li>
                     </ol>
                 </div>

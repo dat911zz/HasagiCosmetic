@@ -13,7 +13,7 @@
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
                         <li><a href="../index.php">Trang chủ</a></li>
-                        <li class="has-submenu position-static"><a href="/pages/category">sản phẩm</a>
+                        <li class="has-submenu position-static"><a href="/Pages/Category">sản phẩm</a>
                             <ul class="submenu-nav-mega">
                                 <li><a href="#/" class="mega-title">Chăm sóc da</a>
                                     <ul>
@@ -40,12 +40,12 @@
                             </ul>
                         </li>
                         <li><a href="/home/about">Giới thiệu</a></li>
-                        <li class="has-submenu"><a href="/home/blog">Tạp chí làm đẹp</a></li>
-                        <li class="has-submenu"><a href="/pages/account-login">Chăm sóc khách hàng</a>
+                        <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
+                        <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
-                                <li><a href="/pages/faq">Câu hỏi thường gặp</a></li>
+                                <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
-                                <li><a href="/pages/contact">Liên hệ</a></li>
+                                <li><a href="/Pages/Contact">Liên hệ</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -81,7 +81,7 @@
                 </span>
                             </button>
 
-                    <a class="header-action-btn" href="/pages/account-login">
+                    <a class="header-action-btn" href="/Pages/AccountLogin">
                         <span class="icon">
                   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
