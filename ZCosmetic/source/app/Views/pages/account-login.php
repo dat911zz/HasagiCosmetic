@@ -8,7 +8,8 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
+    <meta name="keywords"
+        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
     <meta name="author" content="codecarnival" />
 
     <!-- Favicon -->
@@ -33,9 +34,10 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#header").load("header.php");
             $("#footer").load("footer.php");
         })
@@ -44,6 +46,59 @@
 </head>
 
 <body>
+    <?php
+    include("../../Helpers/DatabaseHelper.php");
+    $db = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"));
+    $tai_khoan = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"))->executeReader('SELECT * FROM `tbl_taikhoan`');
+    $error="";
+    $tb="";
+
+    if (isset($_POST["btnSubmitLogin"])) {
+        function validate($data){
+           $data = trim($data);
+           $data = stripslashes($data);
+           $data = htmlspecialchars($data);
+           return $data;
+        }
+    
+        $uname = validate($_POST['txtUserNameLogin']);
+        $pass = validate($_POST['txtPassWordLogin']);
+
+    // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
+    $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
+    $params = array($uname, $pass);
+    $result = $db->executeReader($query, $params);
+
+    if ($result) { // Đăng nhập thành công
+        $_SESSION['username'] = $result[0]->TenDangNhap;
+        $_SESSION['password'] = $result[0]->MatKhau;
+        header('Location: my-account.php');
+        $error = "Đúng tên đăng nhập hoặc mật khẩu";
+    } else { // Đăng nhập thất bại
+        $error = "Sai tên đăng nhập hoặc mật khẩu";
+    }
+}
+    
+    if (isset($_POST["btnSubmit"])) {
+        $ma_tk = NULL;
+        $ten_dang_nhap = $_POST["txtUser"];
+        $mat_khau = $_POST["txtPassword"];
+        $ma_nhom_quyen = 1;
+        //KT Trùng tên
+    
+        $sql = $db->executeReader("select * from tbl_taikhoan where TenDangNhap = '$ten_dang_nhap'");
+
+        $param = array($ma_tk, $ten_dang_nhap, $mat_khau, $ma_nhom_quyen);
+        $kq = $db->executeNonQuery('INSERT INTO tbl_taikhoan (`Ma`, `TenDangNhap`, `MatKhau`, `MaNhomQuyen`) VALUES(?,?,?,?)', $param);
+        if ($kq) {
+            $tb = "Tạo tài khoản thành công";
+        } else {
+            $tb = "Tạo tài khoản không thành công";
+        }
+    }
+
+    
+    ?>
 
     <!--== Wrapper Start ==-->
     <div class="wrapper">
@@ -71,7 +126,6 @@
                 </div>
             </section>
             <!--== End Page Header Area Wrapper ==-->
-
             <!--== Start Account Area Wrapper ==-->
             <section class="section-space">
                 <div class="container">
@@ -79,21 +133,29 @@
                         <div class="col-lg-6 mb-8">
                             <!--== Start Login Area Wrapper ==-->
                             <div class="my-account-item-wrap">
-                                <h3 class="title">Login</h3>
+                                <h3 class="title">Đăng Nhập</h3>
                                 <div class="my-account-form">
                                     <form action="#" method="post">
                                         <div class="form-group mb-6">
                                             <label for="login_username">Username or Email Address <sup>*</sup></label>
-                                            <input type="email" id="login_username">
+                                            <input type="text" name="txtUserNameLogin" id="login_username">
                                         </div>
 
                                         <div class="form-group mb-6">
                                             <label for="login_pwsd">Password <sup>*</sup></label>
-                                            <input type="password" id="login_pwsd">
+                                            <input type="password" name="txtPassWordLogin" id="login_pwsd">
                                         </div>
-
+                                        <div form-group class="text-danger">
+                                            <?php
+                                            if ($error != NULL) {
+                                                echo $error;
+                                            } else {
+                                                echo "";
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="form-group d-flex align-items-center mb-14">
-                                            <a class="btn" href="my-account.php">Login</a>
+                                            <button type="submit" class="btn" name="btnSubmitLogin">Login</button>
 
                                             <div class="form-check ms-3">
                                                 <input type="checkbox" class="form-check-input" id="remember_pwsd">
@@ -109,22 +171,34 @@
                         <div class="col-lg-6 mb-8">
                             <!--== Start Register Area Wrapper ==-->
                             <div class="my-account-item-wrap">
-                                <h3 class="title">Register</h3>
+                                <h3 class="title">Đăng Ký</h3>
                                 <div class="my-account-form">
                                     <form action="#" method="post">
                                         <div class="form-group mb-6">
-                                            <label for="register_username">Username or Email Address <sup>*</sup></label>
-                                            <input type="email" id="register_username">
+                                            <label for="register_username">Username or Email Address
+                                                <sup>*</sup></label>
+                                            <input type="text" name="txtUser" id="register_username">
                                         </div>
 
                                         <div class="form-group mb-6">
                                             <label for="register_pwsd">Password <sup>*</sup></label>
-                                            <input type="password" id="register_pwsd">
+                                            <input type="password" name="txtPassword" id="register_pwsd">
                                         </div>
-
+                                        <div form-group class="text-danger">
+                                            <?php
+                                            if ($tb != NULL) {
+                                                echo $tb;
+                                            } else {
+                                                echo "";
+                                            }
+                                            ?>
+                                        </div>
                                         <div class="form-group">
-                                            <p class="desc mb-4">Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy.</p>
-                                            <a class="btn" href="my-account.php">Register</a>
+                                            <p class="desc mb-4">Dữ liệu cá nhân của bạn sẽ được sử dụng để hỗ trợ trải
+                                                nghiệm của bạn trên trang web này, để quản lý quyền truy cập vào tài
+                                                khoản của bạn và cho các mục đích khác được mô tả trong chính sách bảo
+                                                mật của chúng tôi.</p>
+                                            <button type="submit" class="btn" name="btnSubmit">Register</button>
                                         </div>
                                     </form>
                                 </div>
@@ -150,7 +224,8 @@
                                     <a class="widget-logo" href="index.php">
                                         <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
                                     </a>
-                                    <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
+                                    <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting
+                                        industry. Lorem Ipsum has been.</p>
                                 </div>
                             </div>
                         </div>
@@ -173,9 +248,12 @@
                             <div class="widget-item">
                                 <h4 class="widget-title">Social Info</h4>
                                 <div class="widget-social">
-                                    <a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
-                                    <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-                                    <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i class="fa fa-pinterest-p"></i></a>
+                                    <a href="https://twitter.com/" target="_blank" rel="noopener"><i
+                                            class="fa fa-twitter"></i></a>
+                                    <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i
+                                            class="fa fa-facebook"></i></a>
+                                    <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i
+                                            class="fa fa-pinterest-p"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -188,7 +266,8 @@
             <div class="footer-bottom">
                 <div class="container pt-0 pb-0">
                     <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
+                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank"
+                                href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
                     </div>
                 </div>
             </div>
@@ -213,7 +292,8 @@
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -238,7 +318,8 @@
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -250,10 +331,12 @@
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
-        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch" aria-labelledby="offcanvasTopLabel">
+        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
+            aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header">
                 <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa fa-close"></i></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                        class="fa fa-close"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container pt--0 pb--0">
@@ -264,7 +347,8 @@
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control"
+                                    placeholder="Search entire store…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -288,7 +372,8 @@
                                     <div class="col-lg-6">
                                         <!--== Start Product Thumbnail Area ==-->
                                         <div class="product-single-thumb">
-                                            <img src="../../assets/images/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech">
+                                            <img src="../../assets/images/shop/quick-view1.webp" width="544"
+                                                height="560" alt="Image-HasTech">
                                         </div>
                                         <!--== End Product Thumbnail Area ==-->
                                     </div>
@@ -307,7 +392,10 @@
                                                 </div>
                                                 <button type="button" class="product-review-show">150 reviews</button>
                                             </div>
-                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident
+                                                alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut
+                                                veniam
                                                 sequi amet consectetur.</p>
                                             <div class="product-details-pro-qty">
                                                 <div class="pro-qty">
@@ -317,7 +405,8 @@
                                             <div class="product-details-action">
                                                 <h4 class="price">$254.22</h4>
                                                 <div class="product-details-cart-wishlist">
-                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Add to cart</button>
+                                                    <button type="button" class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#action-CartAddModal">Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -333,10 +422,12 @@
         <!--== End Product Quick View Modal ==-->
 
         <!--== Start Aside Cart ==-->
-        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
+            aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i class="fa fa-chevron-right"></i></button>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
+                        class="fa fa-chevron-right"></i></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="aside-cart-product-list">
@@ -365,10 +456,12 @@
         <!--== End Aside Cart ==-->
 
         <!--== Start Aside Menu ==-->
-        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
+        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
+            aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i class="fa fa-chevron-left"></i></button>
+                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
+                        class="fa fa-chevron-left"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div id="offcanvasNav" class="offcanvas-menu-nav">
@@ -379,7 +472,8 @@
                                 <li><a href="index-two.php">Home Two</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a>
+                        </li>
                         <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="#">shop</a>
                             <ul>
                                 <li><a href="#" class="offcanvas-nav-item">Shop Layout</a>
@@ -427,7 +521,8 @@
                                 <li><a href="page-not-found.php">Page Not Found</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>

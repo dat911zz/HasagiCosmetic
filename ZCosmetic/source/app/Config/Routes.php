@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Home;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -31,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 // HOME 
 $routes->get('/', 'Home::index');
+<<<<<<< HEAD
 $routes->get('/Home/about', 'Home::about');
 $routes->get('/Home/blog', 'Home::blog');
 
@@ -43,6 +46,13 @@ $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
+=======
+//Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
+$routes->get('/home/about', 'Home::about');
+$routes->get('/Home/Product', 'Home::product_details');
+$routes->get('Home/Products', 'Home::products');
+
+>>>>>>> 34c76bd7175e66ae349dd856d21908f6abe6a196
 
 /*
  * --------------------------------------------------------------------

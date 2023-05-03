@@ -12,8 +12,16 @@
             <div class="col-lg-6 d-none d-lg-block">
                 <div class="header-navigation">
                     <ul class="main-nav justify-content-start">
+<<<<<<< HEAD
                         <li><a href="../index.php">Trang chủ</a></li>
                         <li class="has-submenu position-static"><a href="/Pages/Category">sản phẩm</a>
+=======
+                        <li><a href="/">trang chủ</a>
+
+                        </li>
+
+                        <li class="has-submenu position-static"><a href="/Home/Products">sản phẩm</a>
+>>>>>>> 34c76bd7175e66ae349dd856d21908f6abe6a196
                             <ul class="submenu-nav-mega">
                                 <li><a href="#/" class="mega-title">Chăm sóc da</a>
                                     <ul>
