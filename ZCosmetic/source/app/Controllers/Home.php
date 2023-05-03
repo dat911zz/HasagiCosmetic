@@ -13,6 +13,18 @@ class Home extends BaseController
     public function about_us()
     {
         $data['title'] = 'Thông Tin';
-        return view('home/about_us', $data);
+        return view('product-right-sidebar', $data);
+    }
+    public function product_details()
+    {
+        $id = $this->request->getVar('id');
+        $data['IDProduct'] = $id;
+        $data['title'] = $id;
+        return view('home/product-details', $data);
+    }
+    public function products()
+    {
+        $data['title'] = 'Tất cả sản phẩm';
+        return view('home/products', $data);
     }
 }

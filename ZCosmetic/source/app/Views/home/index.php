@@ -4,6 +4,9 @@
 <?= $this->section('content') ?>
 
 <?php
+
+use App\Controllers\Home;
+
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     $db = new DatabaseHelper();
     $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
@@ -163,7 +166,7 @@
                 <div class="col-6 col-lg-4 mb-4 mb-sm-9">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <a class="d-block" href="product-details.php">
+                            <a class="d-block" href="Home/Product?id=<?= $sp->Ma ?>">
                                 <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                             </a>
                             <span class="flag-new">Mới</span>
@@ -190,13 +193,13 @@
                                 </div>
                                 <div class="reviews">150 xem</div>
                             </div>
-                            <h4 class="title"><a href="product-details.php"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
+                            <h4 class="title"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
                             <div class="prices">
                                 <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                 <?php
                                 if($sp->GiamGia != 0) {
                                     ?>
-                                    <span class="price-old"><?php echo number_format($sp->GiamGia, 0, ',', '.').' VNĐ' ?></span>
+                                    <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                     <?php
                                 }
                                 ?>
@@ -244,7 +247,7 @@
                 <div class="col-6 col-lg-4 mb-4 mb-sm-9">
                     <div class="product-item">
                         <div class="product-thumb">
-                            <a class="d-block" href="product-details.php">
+                            <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
                                 <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                             </a>
                             <span class="flag-new">Giảm Giá</span>
