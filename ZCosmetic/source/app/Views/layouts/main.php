@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../../assets/css/plugins/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/css/plugins/fancybox.min.css">
     <link rel="stylesheet" href="../../assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="../../assets/css/pager.css">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
@@ -84,7 +85,7 @@
         <!--== End Product Quick Wishlist Modal ==-->
 
         <!--== Start Product Quick Add Cart Modal ==-->
-        <aside class="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
+        <!-- <aside class="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -105,7 +106,7 @@
                     </div>
                 </div>
             </div>
-        </aside>
+        </aside> -->
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
@@ -217,8 +218,8 @@
                     </li>
                 </ul>
                 <p class="cart-total"><span>Subtotal:</span><span class="amount">£89.99</span></p>
-                <a class="btn-total" href="product-cart.php">View cart</a>
-                <a class="btn-total" href="product-checkout.php">Checkout</a>
+                <a class="btn-total" href="/Pages/Cart">View cart</a>
+                <a class="btn-total" href="/Pages/Checkout">Checkout</a>
             </div>
         </aside>
         <!--== End Aside Cart ==-->

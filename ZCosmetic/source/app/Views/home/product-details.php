@@ -61,11 +61,11 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                             <p class="mb-7"><?= substr($sp->MoTa, 0, 150) ?> ...</p>
                             <div class="product-details-action">
                                 <div class="prices">
-                                    <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                    <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                     <?php
                                     if($sp->GiamGia != 0) {
                                         ?>
-                                        <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                        <span class="price-old"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                         <?php
                                     }
                                     ?>

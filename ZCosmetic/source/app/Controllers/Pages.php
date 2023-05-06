@@ -14,4 +14,9 @@ class Pages extends BaseController
         $data['title'] = 'Thanh Toán';
         return view('pages/product-checkout', $data);
     }
+    public function login()
+    {
+        $data['title'] = 'Đăng Nhập';
+        return view('pages/account-login', $data);
+    }
 }

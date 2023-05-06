@@ -248,7 +248,7 @@ use App\Controllers\Home;
                     <div class="product-item">
                         <div class="product-thumb">
                             <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
-                                <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
+                                <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                             </a>
                             <span class="flag-new">Giảm Giá</span>
                             <div class="product-action">
@@ -276,11 +276,11 @@ use App\Controllers\Home;
                             </div>
                             <h4 class="title"><a href="product-details.php"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
                             <div class="prices">
-                                <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                 <?php
                                 if($sp->GiamGia != 0) {
                                     ?>
-                                    <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                    <span class="price-old"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                     <?php
                                 }
                                 ?>
