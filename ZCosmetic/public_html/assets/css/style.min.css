@@ -606,11 +606,11 @@ only screen and (min-width:1200px) and (max-width:1549px) {
 
 .header-action .header-action-btn {
     border: none;
+    padding-right: 40px !important;
     margin: 0;
-    padding: 0;
     background: none;
     width: 30px;
-    height: 30px;
+    height: fit-content;
     margin-left: 59px
 }
 

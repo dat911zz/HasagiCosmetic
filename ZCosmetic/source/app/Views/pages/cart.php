@@ -3,7 +3,7 @@
     if(isset($idKH) && $idKH > 0) {
         include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
         $db = new DatabaseHelper();
-        $gio_hang = $db->executeReader('SELECT * FROM `tbl_giohang` WHERE MaNguoiDung = ?', array($idKH));
+        $gio_hang = $db->executeReader('CALL sp_getCart(?)', array($idKH));
     }
     else {
         header('location:/');

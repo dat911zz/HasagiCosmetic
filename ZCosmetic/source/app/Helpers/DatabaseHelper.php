@@ -32,17 +32,21 @@ class DatabaseHelper
         if ($sta->rowCount() > 0) {
             return $sta->fetchAll(PDO::FETCH_OBJ);
         }
+        $pdo = null;
         return [];
     }
     function executeNonQuery($sql, $param = null)
     {
         $pdo = $this->getConnect();
+        $pdo->beginTransaction();
         $sta = $pdo->prepare($sql);
         if ($param != null) {
             $kq = $sta->execute($param);
         } else {
             $kq = $sta->execute();
         }
+        $pdo->commit();
+        $pdo = null;
         return $kq;
     }
 }

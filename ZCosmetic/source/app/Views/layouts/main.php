@@ -36,8 +36,32 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
+    <style>
+        .shorten-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-all;
+        }
+        .shorten-text.two-row {
+            -webkit-line-clamp: 2;
+            word-break: break-word;
+        }
+        .shorten-text.three-row {
+            -webkit-line-clamp: 2;
+            word-break: break-word;
+        }
+    </style>
 </head>
-
+<?php
+    //include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    $db = new DatabaseHelper();
+    $id_user = 1;
+    $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
+?>
 <body>
     <!--== Wrapper Start ==-->
     <div class="wrapper">
@@ -192,34 +216,47 @@
         </aside>
         <!--== End Product Quick View Modal ==-->
 
-        <!--== Start Aside Cart ==-->
-        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <!--== Start Aside Cart ==--> 
+        <aside style="width:35%;" class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i class="fa fa-chevron-right"></i></button>
+                <h1 class="d-none" id="offcanvasRightLabel">Giỏ Hàng</h1>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Giỏ Hàng <i class="fa fa-chevron-right"></i></button>
             </div>
-            <div class="offcanvas-body">
-                <ul class="aside-cart-product-list">
-                    <li class="aside-product-list-item">
-                        <a href="#/" class="remove">×</a>
-                        <a href="product-details.php">
-                            <img src="../../assets/images/shop/cart1.webp" width="68" height="84" alt="Image">
-                            <span class="product-title">Leather Mens Slipper</span>
-                        </a>
-                        <span class="product-price">1 × £69.99</span>
-                    </li>
-                    <li class="aside-product-list-item">
-                        <a href="#/" class="remove">×</a>
-                        <a href="product-details.php">
-                            <img src="../../assets/images/shop/cart2.webp" width="68" height="84" alt="Image">
-                            <span class="product-title">Quickiin Mens shoes</span>
-                        </a>
-                        <span class="product-price">1 × £20.00</span>
-                    </li>
-                </ul>
-                <p class="cart-total"><span>Subtotal:</span><span class="amount">£89.99</span></p>
-                <a class="btn-total" href="/Pages/Cart">View cart</a>
-                <a class="btn-total" href="/Pages/Checkout">Checkout</a>
+            <div class="offcanvas-body" id="cart-list">
+                <?php 
+                    if(count($cart) <= 0) {
+                        ?>
+                        <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>
+                        <?php
+                    }
+                    else {
+                        ?>
+                        <ul class="aside-cart-product-list">
+                            <?php
+                            $total = 0;
+                            foreach($cart as $sp) {
+                                $price = $sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia;
+                                $total += $price * $sp->SoLuong;
+                                ?>
+                                <li class="aside-product-list-item">
+                                    <a href="#/" class="remove">×</a>
+                                    <a href="/Home/Product?id=<?= $sp->Ma ?>">
+                                        <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="68" height="84" alt="Image">
+                                        <span class="product-title shorten-text two-row"><?= $sp->TenSanPham ?></span>
+                                    </a>
+                                    <span class="product-price"><?= $sp->SoLuong.' x '.number_format($price, 0, ',', '.').' VNĐ' ?><span style="margin-left: 10px; color: red; text-decoration: line-through;"><?php if($sp->GiamGia > 0) { echo number_format($sp->Gia, 0, ',', '.').' VNĐ'; } ?></span></span>
+                                </li>
+                                <?php
+                            }
+                            ?>
+                        </ul>
+                        <p class="cart-total"><span>Subtotal:</span><span class="amount"><?= number_format($total, 0, ',', '.').' VNĐ' ?></span></p>
+                        <?php
+                    }
+                ?>
+                
+                <a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
+                <a class="btn-total" href="/Pages/Checkout">Thanh Toán</a>
             </div>
         </aside>
         <!--== End Aside Cart ==-->
@@ -309,9 +346,53 @@
     <script src="../../assets/js/plugins/swiper-bundle.min.js"></script>
     <script src="../../assets/js/plugins/fancybox.min.js"></script>
     <script src="../../assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
+    <script>
+        function addCart($id_product, $quantity, $id_user) {
+            $.ajax({
+                type: 'POST',
+                url: "Ajax/AddCart",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity,
+                    id_user: $id_user
+                },
+                success: function(data) {
+                    console.log(data);
+                    if(data.msg == "success") {
+                        Swal.fire({
+                            // position: '',
+                            icon: 'success',
+                            title: 'Thêm vào giỏ hàng thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        updateCartCount(data);
+                    }
+                    else {
+                        Swal.fire({
+                            // position: '',
+                            icon: 'error',
+                            title: 'Thêm vào giỏ hàng thất bại',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                }
+            });
+        }
+        function updateCartCount($arr) {
+            $('#cart-count').html($arr.quantity);
+            $('#cart-list').html($arr.html);
+        }
+        $(document).ready(function() {
+            $('#cart-count').html(<?= count($cart) ?>);
+        });
+    </script>
 
 </body>
 

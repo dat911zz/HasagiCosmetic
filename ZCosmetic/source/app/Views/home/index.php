@@ -7,6 +7,7 @@
 
 use App\Controllers\Home;
 
+    $id_user = 1;
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     $db = new DatabaseHelper();
     $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
@@ -167,14 +168,14 @@ use App\Controllers\Home;
                     <div class="product-item">
                         <div class="product-thumb">
                             <a class="d-block" href="Home/Product?id=<?= $sp->Ma ?>">
-                                <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
+                                <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                             </a>
                             <span class="flag-new">Mới</span>
                             <div class="product-action">
                                 <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
-                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                     <span>Thêm vào giỏ</span>
                                 </button>
                                 <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
@@ -195,26 +196,15 @@ use App\Controllers\Home;
                             </div>
                             <h4 class="title"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
                             <div class="prices">
-                                <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                 <?php
                                 if($sp->GiamGia != 0) {
                                     ?>
-                                    <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                    <span class="price-old"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                     <?php
                                 }
                                 ?>
                             </div>
-                        </div>
-                        <div class="product-action-bottom">
-                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                <i class="fa fa-expand"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                <span>Thêm vào giỏ</span>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -255,7 +245,7 @@ use App\Controllers\Home;
                                 <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
-                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                <button type="button" class="product-action-btn action-btn-cart" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" data-id-sp="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                     <span>Thêm vào giỏ</span>
                                 </button>
                                 <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
@@ -285,17 +275,6 @@ use App\Controllers\Home;
                                 }
                                 ?>
                             </div>
-                        </div>
-                        <div class="product-action-bottom">
-                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                <i class="fa fa-expand"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                <span>Thêm vào giỏ</span>
-                            </button>
                         </div>
                     </div>
                 </div>

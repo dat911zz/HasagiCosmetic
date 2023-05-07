@@ -40,6 +40,8 @@ $routes->get('Home/Products', 'Home::products');
 $routes->get('/Pages/Cart', 'Pages::cart');
 $routes->get('/Pages/Checkout', 'Pages::checkout');
 $routes->get('/Pages/Login', 'Pages::login');
+
+$routes->post('/Ajax/AddCart', 'Ajax::addCart');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
