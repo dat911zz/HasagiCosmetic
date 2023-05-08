@@ -45,4 +45,43 @@ class Ajax extends BaseController
             echo json_encode(['msg' => "error"]);
         }
     }
+    public function removeCart()
+    {
+        $db = new DatabaseHelper();
+        $id_product = $this->request->getPost('id_product');
+        $id_user = $this->request->getPost('id_user');
+        $kq = $db->executeNonQuery("CALL sp_removeCart( ?, ?);", array($id_product, $id_user));
+        $cart = $db->executeReader("CALL sp_getCart(?)", array($id_user));
+        if(isset($kq) && $kq > 0) {
+            echo json_encode(['msg' => "success", 'quantity' => count($cart)]);
+        }
+        else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
+    public function updateCart() {
+        $db = new DatabaseHelper();
+        $id_product = $this->request->getPost('id_product');
+        $quantity = $this->request->getPost('quantity');
+        $id_user = $this->request->getPost('id_user');
+        $price = $this->request->getPost('price');
+        $kq = $db->executeNonQuery("CALL sp_updateCart( ?, ?, ?);", array($id_product, $quantity, $id_user));
+        if(isset($kq) && $kq > 0) {
+            echo json_encode(['msg' => "success", 'total_price' => $price * $quantity]);
+        }
+        else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
+    public function getTotalCart() {
+        $db = new DatabaseHelper();
+        $id_user = $this->request->getPost('id_user');
+        $total = $db->executeReader('CALL sp_getTotalCart(?)', array($id_user))[0]->Total;
+        if($total > 0) {
+            echo json_encode(['msg' => "success", 'total_cart' => $total]);
+        }
+        else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
 }

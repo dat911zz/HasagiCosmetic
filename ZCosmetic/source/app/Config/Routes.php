@@ -42,6 +42,9 @@ $routes->get('/Pages/Checkout', 'Pages::checkout');
 $routes->get('/Pages/Login', 'Pages::login');
 
 $routes->post('/Ajax/AddCart', 'Ajax::addCart');
+$routes->post('/Ajax/RemoveCart', 'Ajax::removeCart');
+$routes->post('/Ajax/UpdateCart', 'Ajax::updateCart');
+$routes->post('/Ajax/GetTotalCart', 'Ajax::getTotalCart');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

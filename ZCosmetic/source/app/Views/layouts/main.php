@@ -37,6 +37,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
     <style>
+        .swal2-popup {
+            padding: 60px 10px !important;
+        }
         .shorten-text {
             display: -webkit-box;
             -webkit-line-clamp: 1;
@@ -354,7 +357,7 @@
         function addCart($id_product, $quantity, $id_user) {
             $.ajax({
                 type: 'POST',
-                url: "Ajax/AddCart",
+                url: "<?= base_url('Ajax/AddCart') ?>",
                 dataType: 'json',
                 data: {
                     id_product: $id_product,
@@ -385,6 +388,81 @@
                 }
             });
         }
+        function removeCart($id_product, $id_user) {
+            Swal.fire({
+            title: 'Bạn có chắc chắn?',
+            text: "Bạn đang thực hiện xóa sản phẩm khỏi giỏ hàng!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Xóa',
+            cancelButtonText: 'Quay lại'
+            }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'POST',
+                            url: "<?= base_url('/Ajax/RemoveCart') ?>",
+                            dataType: 'json',
+                            data: {
+                                id_product: $id_product,
+                                id_user: $id_user
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                if(data.msg == "success") {
+                                    Swal.fire({
+                                        // position: '',
+                                        icon: 'success',
+                                        title: 'Xóa khỏi giỏ hàng thành công',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    $('#cart-count').html(data.quantity);
+                                    $('#rm_' + $id_product).parent().parent().remove();
+                                    if($('.tbody-item').length == 0) {
+                                        $('.section-space').remove();
+                                        $('#container-cart').append('<div style="text-align: center; color:orange; font-weight: bold; min-height: 400px; margin-top: 40px; user-select: none;">\
+                                                                        Giỏ hàng đang rỗng\
+                                                                    </div>');
+                                    }
+                                    updateTotalAllCart($id_user);
+                                }
+                                else {
+                                    Swal.fire({
+                                        // position: '',
+                                        icon: 'error',
+                                        title: 'Xóa khỏi giỏ hàng thất bại',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    }
+                )
+        }
+        function updateCart($id_product, $quantity, $id_user, $price) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/UpdateCart') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity,
+                    id_user: $id_user,
+                    price: $price
+                },
+                success: function(data) {
+                    console.log(data);
+                    if(data.msg == "success") {
+                        $('#pr_' + $id_product).html((new Intl.NumberFormat('en-DE').format(data.total_price)) + ' VNĐ');
+                        updateTotalAllCart($id_user);
+                    }
+                }
+            });
+        }
         function updateCartCount($arr) {
             $('#cart-count').html($arr.quantity);
             $('#cart-list').html($arr.html);
@@ -392,6 +470,22 @@
         $(document).ready(function() {
             $('#cart-count').html(<?= count($cart) ?>);
         });
+        function updateTotalAllCart($id_user) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/GetTotalCart') ?>",
+                dataType: 'json',
+                data: {
+                    id_user: $id_user
+                },
+                success: function(data) {
+                    console.log(data);
+                    if(data.msg == "success") {
+                        $('.amount').html((new Intl.NumberFormat('en-DE').format(data.total_cart)) + ' VNĐ');
+                    }
+                }
+            });
+        }
     </script>
 
 </body>

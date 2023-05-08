@@ -1,9 +1,9 @@
 <?php
-    $idKH = 1;
-    if(isset($idKH) && $idKH > 0) {
+    $id_user = 1;
+    if(isset($id_user) && $id_user > 0) {
         include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
         $db = new DatabaseHelper();
-        $gio_hang = $db->executeReader('CALL sp_getCart(?)', array($idKH));
+        $gio_hang = $db->executeReader('CALL sp_getCart(?)', array($id_user));
     }
     else {
         header('location:/');
@@ -16,7 +16,7 @@
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
 <?= $this->section('content') ?>
 
-<main class="main-content">
+<main class="main-content" id="container-cart">
 
     <!--== Start Page Header Area Wrapper ==-->
     <nav aria-label="breadcrumb" class="breadcrumb-style1">
@@ -50,16 +50,18 @@
                                 </thead>
                                 <tbody>
                                     <?php
+                                    $total = 0;
                                     foreach($gio_hang as $sp) {
                                         $gia = $sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia;
+                                        $total += $gia * $sp->SoLuong;
                                         ?>
                                         <tr class="tbody-item">
                                             <td class="product-remove">
-                                                <a class="remove" href="javascript:void(0)">×</a>
+                                                <a id="<?= 'rm_'.$sp->Ma ?>" class="remove" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)">×</a>
                                             </td>
                                             <td class="product-thumbnail">
                                                 <div class="thumb">
-                                                    <a href="single-product.php">
+                                                    <a href="/Home/Product?id=<?= $sp->Ma ?>">
                                                         <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="68" height="84" alt="Image-HasTech">
                                                     </a>
                                                 </div>
@@ -72,22 +74,20 @@
                                             </td>
                                             <td class="product-quantity">
                                                 <div class="pro-qty">
+                                                    <div class= "dec qty-btn" data-id-product="<?= $sp->Ma ?>" data-id-user="<?= $id_user ?>" data-price="<?= $gia ?>">-</div>
                                                     <input type="text" class="quantity" title="Quantity" value="<?= $sp->SoLuong ?>">
+                                                    <div class="inc qty-btn" data-id-product="<?= $sp->Ma ?>" data-id-user="<?= $id_user ?>" data-price="<?= $gia ?>">+</div>
                                                 </div>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="price"><?= number_format($gia * $sp->SoLuong, 0, ',', '.').' VNĐ' ?></span>
+                                                <span class="price" id="<?= 'pr_'.$sp->Ma ?>"><?= number_format($gia * $sp->SoLuong, 0, ',', '.').' VNĐ' ?></span>
                                             </td>
                                         </tr>
                                         <?php
                                     }
                                     ?>
                                     
-                                    <tr class="tbody-item-actions">
-                                        <td colspan="6">
-                                            <button type="submit" class="btn-update-cart disabled" disabled>Cập nhật giỏ hàng</button>
-                                        </td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </form>
@@ -107,42 +107,34 @@
                                 <table>
                                     <tbody>
                                         <tr class="cart-subtotal">
-                                            <th>Subtotal</th>
+                                            <th>Tạm tính</th>
                                             <td>
-                                                <span class="amount">$499.00</span>
+                                                <span class="amount"><?= number_format($total, 0, ',', '.').' VNĐ' ?></span>
                                             </td>
                                         </tr>
                                         <tr class="shipping-totals">
-                                            <th>Shipping</th>
+                                            <th>Phí vận chuyển</th>
                                             <td>
                                                 <ul class="shipping-list">
                                                     <li class="radio">
-                                                        <input type="radio" name="shipping" id="radio1" checked>
-                                                        <label for="radio1">Flat rate: <span>$3.00</span></label>
-                                                    </li>
-                                                    <li class="radio">
-                                                        <input type="radio" name="shipping" id="radio2">
+                                                        <input type="radio" name="shipping" id="radio2" checked>
                                                         <label for="radio2">Miễn phí vận chuyển</label>
                                                     </li>
-                                                    <li class="radio">
-                                                        <input type="radio" name="shipping" id="radio3">
-                                                        <label for="radio3">Địa chỉ giao hàng</label>
-                                                    </li>
                                                 </ul>
-                                                <p class="destination">Vận chuyển đến <strong>USA</strong>.</p>
-                                                <a href="javascript:void(0)" class="btn-shipping-address">Thay đổi địa chỉ</a>
+                                                <!-- <p class="destination">Vận chuyển đến <strong>USA</strong>.</p>
+                                                <a href="javascript:void(0)" class="btn-shipping-address">Thay đổi địa chỉ</a> -->
                                             </td>
                                         </tr>
                                         <tr class="order-total">
                                             <th>Tổng cộng</th>
                                             <td>
-                                                <span class="amount">$504.00</span>
+                                                <span class="amount"><?= number_format($total, 0, ',', '.').' VNĐ' ?></span>
                                             </td>
                                         </tr>
                                     </tbody>
                                 </table>
                                 <div class="text-end">
-                                    <a href="product-checkout.php" class="checkout-button">Thanh toán</a>
+                                    <a href="/Pages/Checkout" class="checkout-button">Thanh toán</a>
                                 </div>
                             </div>
                         </div>

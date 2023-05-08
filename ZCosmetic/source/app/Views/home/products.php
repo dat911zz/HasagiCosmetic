@@ -2,6 +2,8 @@
 <?php
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     include(FCPATH . '../source/app/Helpers/Pager.php');
+
+    $id_user = 1;
     $db = new DatabaseHelper();
     $count = $db->executeReader('SELECT COUNT(*) AS "count" FROM tbl_sanpham')[0]->count;
 
@@ -61,12 +63,12 @@
                                         <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
                                             <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                                         </a>
-                                        <span class="flag-new">mới</span>
+                                        <!-- <span class="flag-new">mới</span> -->
                                         <div class="product-action">
                                             <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                 <i class="fa fa-expand"></i>
                                             </button>
-                                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                            <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                 <span>Thêm vào giỏ</span>
                                             </button>
                                             <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
@@ -96,17 +98,6 @@
                                             }
                                             ?>
                                         </div>
-                                    </div>
-                                    <div class="product-action-bottom">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                            <i class="fa fa-expand"></i>
-                                        </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                            <i class="fa fa-heart-o"></i>
-                                        </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                            <span>Thêm vào giỏ</span>
-                                        </button>
                                     </div>
                                 </div>
                                 <!--== End prPduct Item ==-->

@@ -5137,7 +5137,7 @@ only screen and (min-width:992px) and (max-width:1199px) {
     line-height: 17px;
     overflow: hidden;
     position: absolute;
-    right: 0;
+    right: -5%;
     text-align: right;
     width: 20px
 }

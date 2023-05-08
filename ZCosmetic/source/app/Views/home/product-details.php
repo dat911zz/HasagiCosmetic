@@ -101,7 +101,7 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                                     </li>
                                 </ul>
 
-                                <p><?= $sp->MoTa ?></p>
+                                <p style="text-align: justify;"><?= $sp->MoTa ?></p>
                             </div>
 
                             <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
