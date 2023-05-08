@@ -42,7 +42,31 @@
     </script>
 
 </head>
-
+<?php
+ob_start();
+session_start();
+if(isset($_SESSION['username'])&&isset($_SESSION['password'])){
+    $mail = $_SESSION['username'];
+    $pass = $_SESSION['password'];
+    $role = $_SESSION['role'];
+    switch ($role) {
+        case 1:
+            header('my-account.php');
+            break;
+        case 2:
+            header('my-account.php');
+            break;
+        case 3:
+            header('index.php');
+            break;
+        default:
+            break;
+    }
+}
+else{
+    header('my-account.php');
+}
+?>
 <body>
 
     <!--== Wrapper Start ==-->
@@ -84,7 +108,7 @@
                                 <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab" data-bs-target="#payment-method" type="button" role="tab" aria-controls="payment-method" aria-selected="false">Payment Method</button>
                                 <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab" data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit" aria-selected="false">address</button>
                                 <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info" aria-selected="false">Account Details</button>
-                                <button class="nav-link" onclick="window.location.href='account-login.php'" type="button">Logout</button>
+                                <button class="nav-link" onclick="window.location.href='logout.php'" type="button">Logout</button>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-8">
@@ -93,7 +117,7 @@
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
                                         <div class="welcome">
-                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="account-login.php" class="logout"> Logout</a>)</p>
+                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="logout.php" class="logout"> Logout</a>)</p>
                                         </div>
                                         <p>From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                                     </div>

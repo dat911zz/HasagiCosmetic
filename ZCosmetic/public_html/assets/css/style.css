@@ -4146,7 +4146,7 @@ only screen and (max-width: 767px) {
 
 .product-details-content .product-details-title {
     font-weight: 400;
-    font-size: 50px;
+    font-size: 30px;
     line-height: 66px;
     margin-bottom: 22px;
 }
@@ -4480,6 +4480,11 @@ only screen and (max-width: 767px) {
     font-weight: 400;
     margin-bottom: 0;
     line-height: 1;
+}
+
+.price-old {
+    padding-left: 10px;
+    text-decoration-line: line-through;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px),
@@ -8714,4 +8719,21 @@ only screen and (max-width: 767px) {
     border-top: 0;
     font-size: 14px;
     padding: 18px 24px 18px;
+}
+.shorten-text, .shorten-text--two-row, .shorten-text--three-row {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+}
+.shorten-text--two-row {
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+}
+.shorten-text--three-row {
+    -webkit-line-clamp: 3;
+    word-break: break-word;
 }

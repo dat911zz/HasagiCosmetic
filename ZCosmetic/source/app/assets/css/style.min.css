@@ -3931,7 +3931,7 @@ only screen and (min-width:992px) and (max-width:1199px) {
 
 .product-details-content .product-details-title {
     font-weight: 400;
-    font-size: 50px;
+    font-size: 30px;
     line-height: 66px;
     margin-bottom: 22px
 }
@@ -4261,10 +4261,15 @@ only screen and (min-width:992px) and (max-width:1199px) {
 }
 
 .product-details-action .price {
-    font-size: 50px;
+    font-size: 20px;
     font-weight: 400;
     margin-bottom: 0;
     line-height: 1
+}
+
+.price-old {
+    padding-left: 10px;
+    text-decoration-line: line-through;
 }
 
 @media only screen and (max-width:767px),

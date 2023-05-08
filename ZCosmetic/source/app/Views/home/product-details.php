@@ -47,7 +47,7 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                     <div class="col-lg-6">
                         <div class="product-details-content">
                             <h5 class="product-details-collection"><?= $sp->ThuongHieu ?></h5>
-                            <h3 class="product-details-title"><?= $sp->TenSanPham ?></h3>
+                            <h6 class="product-details-title"><?= $sp->TenSanPham ?></h6>
                             <div class="product-details-review mb-7">
                                 <div class="product-review-icon">
                                     <i class="fa fa-star-o"></i>
@@ -61,11 +61,11 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                             <p class="mb-7"><?= substr($sp->MoTa, 0, 150) ?> ...</p>
                             <div class="product-details-action">
                                 <div class="prices">
-                                    <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                     <?php
                                     if($sp->GiamGia != 0) {
                                         ?>
-                                        <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                        <span class="price-old"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                         <?php
                                     }
                                     ?>
@@ -394,4 +394,3 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
     </script>
 
 <?= $this->endSection() ?>
-
