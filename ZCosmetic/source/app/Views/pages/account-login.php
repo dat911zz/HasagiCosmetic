@@ -1,41 +1,126 @@
-<?php
-     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
-    $db = new DatabaseHelper();
-    $tai_khoan = $db->executeReader('SELECT * FROM `tbl_taikhoan`');
-    $error="";
-    $tb="";
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
 
-    if (isset($_POST["btnSubmitLogin"])) {
-        function validate($data){
-           $data = trim($data);
-           $data = stripslashes($data);
-           $data = htmlspecialchars($data);
-           return $data;
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title><?= $title ?></title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords"
+        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
+    <meta name="author" content="codecarnival" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.webp">
+
+    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
+
+    <!-- Font CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <link rel="stylesheet" href="../../assets/css/vendor/bootstrap.min.css">
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <link rel="stylesheet" href="../../assets/css/plugins/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../../assets/css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/plugins/fancybox.min.css">
+    <link rel="stylesheet" href="../../assets/css/plugins/nice-select.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../../assets/css/style.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $("#header").load("header.php");
+            $("#footer").load("footer.php");
+        })
+        function validateLoginForm() {
+            let x = document.forms["LoginForm"]["txtUserNameLogin"].value;
+            let y = document.forms["LoginForm"]["txtPassWordLogin"].value;
+            if (x == "" && y == "") {
+                alert("Chưa điền thông tin");
+                return false;
+            }
         }
-    
+        function validateRegisterForm() {
+            let x = document.forms["RegisterForm"]["txtUser"].value;
+            let y = document.forms["RegisterForm"]["txtPassword"].value;
+            if (x == "" && y == "") {
+                alert("Chưa điền thông tin");
+                return false;
+            }
+            if (y.length < 6) {
+                alert("Mật khẩu không nhỏ hơn 6 ký tự.");
+                return false;
+            }
+        }  
+    </script>
+
+</head>
+
+<body>
+    <?php
+    session_start();
+    include("../../Helpers/DatabaseHelper.php");
+    $db = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"));
+    $tai_khoan = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"))->executeReader('SELECT * FROM `tbl_taikhoan`');
+    $error = "";
+    $tb = "";
+    function validate($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+    if (isset($_POST["btnSubmitLogin"])) {
+
         $uname = validate($_POST['txtUserNameLogin']);
         $pass = validate($_POST['txtPassWordLogin']);
+        // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
+        $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
+        $params = array($uname, $pass);
+        $result = $db->executeReader($query, $params);
 
-    // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
-    $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
-    $params = array($uname, $pass);
-    $result = $db->executeReader($query, $params);
 
-    if ($result) { // Đăng nhập thành công
-        $_SESSION['username'] = $result[0]->TenDangNhap;
-        $_SESSION['password'] = $result[0]->MatKhau;
-        header('Location: my-account.php');
-        $error = "Đúng tên đăng nhập hoặc mật khẩu";
-    } else { // Đăng nhập thất bại
-        $error = "Sai tên đăng nhập hoặc mật khẩu";
+        if ($result) { // Đăng nhập thành công
+            $_SESSION['username'] = $result[0]->TenDangNhap;
+            $_SESSION['password'] = $result[0]->MatKhau;
+            $_SESSION['role'] = $result[0]->MaNhomQuyen;
+            $role = $result[0]->MaNhomQuyen;
+            switch ($role) {
+                case 1:
+                    header('Location: my-account.php');
+                    break;
+                case 2:
+                    header('Location: my-account.php');
+                    break;
+                case 3:
+                    header('Location: index.php');
+                    break;
+                default:
+                    break;
+            }
+            echo ($role);
+        } else { // Đăng nhập thất bại
+            $role = $result[0]->MaNhomQuyen;
+            $error = "Sai tên đăng nhập hoặc mật khẩu";
+            print($role);
+        }
     }
-}
-    
+
     if (isset($_POST["btnSubmit"])) {
         $ma_tk = NULL;
         $ten_dang_nhap = $_POST["txtUser"];
         $mat_khau = $_POST["txtPassword"];
-        $ma_nhom_quyen = 1;
+        $ma_nhom_quyen = 3;
         //KT Trùng tên
     
         $sql = $db->executeReader("select * from tbl_taikhoan where TenDangNhap = '$ten_dang_nhap'");
@@ -48,8 +133,6 @@
             $tb = "Tạo tài khoản không thành công";
         }
     }
-
-    
     ?>
 
 
@@ -120,7 +203,7 @@
                         <div class="col-md-5">
                             <div class="page-header-st3-content text-center text-md-start">
                                 <ol class="breadcrumb justify-content-center justify-content-md-start">
-                                    <li class="breadcrumb-item"><a class="text-dark" href="index.php">Home</a></li>
+                                    <li class="breadcrumb-item"><a class="text-dark" href="../index.php">Home</a></li>
                                     <li class="breadcrumb-item active text-dark" aria-current="page">Account</li>
                                 </ol>
                                 <h2 class="page-header-title">Account</h2>
@@ -139,7 +222,8 @@
                             <div class="my-account-item-wrap">
                                 <h3 class="title">Đăng Nhập</h3>
                                 <div class="my-account-form">
-                                    <form action="#" method="post">
+                                    <form name="LoginForm" onsubmit="return validateLoginForm()" action="#"
+                                        method="post">
                                         <div class="form-group mb-6">
                                             <label for="login_username">Username or Email Address <sup>*</sup></label>
                                             <input type="text" name="txtUserNameLogin" id="login_username">
@@ -177,7 +261,8 @@
                             <div class="my-account-item-wrap">
                                 <h3 class="title">Đăng Ký</h3>
                                 <div class="my-account-form">
-                                    <form action="#" method="post">
+                                    <form name="RegisterForm" onsubmit="return validateRegisterForm()" action="#"
+                                        method="post">
                                         <div class="form-group mb-6">
                                             <label for="register_username">Username or Email Address
                                                 <sup>*</sup></label>
