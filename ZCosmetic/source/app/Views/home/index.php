@@ -193,7 +193,7 @@ use App\Controllers\Home;
                                 </div>
                                 <div class="reviews">150 xem</div>
                             </div>
-                            <h4 class="title"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
+                            <h4 class="title shorten-text"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
                             <div class="prices">
                                 <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                 <?php

@@ -842,7 +842,7 @@
 
   .product-details-title {
     font-weight: $font-weight-normal;
-    font-size: 50px;
+    font-size: 30px;
     line-height: 66px;
     margin-bottom: 22px;
     @media #{$desktop-device, $tablet-device, $large-mobile} {
@@ -1280,7 +1280,7 @@
   .product-details-content {
     padding-left: 0;
     .product-details-title {
-      font-size: 40px;
+      font-size: 30px;
       margin-bottom: 22px;
       line-height: 1.2;
       @media #{$tablet-device, $large-mobile} {
