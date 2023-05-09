@@ -41,12 +41,13 @@
                 </li>
               </ul>
             </li>
-            <li><a href="/home/about">Giới thiệu</a></li>
-            <li class="has-submenu"><a href="blog.php">Tạp chí làm đẹp</a></li>
-            <li class="has-submenu"><a href="account-login.php">Chăm sóc khách hàng</a>
+            <li><a href="/Home/About">Giới thiệu</a></li>
+            <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
+            <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
               <ul class="submenu-nav">
-                <li><a href="faq.php">Câu hỏi thường gặp</a></li>
-                <li><a href="page-not-found.php">Liên hệ</a></li>
+                <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
+                <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
+                                <li><a href="/Pages/Contact">Liên hệ</a></li>
               </ul>
             </li>
           </ul>
@@ -89,21 +90,19 @@
             </span>
           </button>
 
-          <a class="header-action-btn" href="account-login.php">
-            <span class="icon">
-              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink">
-                <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)" />
-                <defs>
-                  <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
-                    <use xlink:href="#image0_504:10" transform="scale(0.0333333)" />
-                  </pattern>
-                  <image id="image0_504:10" width="30" height="30"
-                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC" />
-                </defs>
-              </svg>
-            </span>
-          </a>
+                    <a class="header-action-btn" href="account-login.php">
+                        <span class="icon">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
+                    <defs>
+                      <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_504:10" transform="scale(0.0333333)"/>
+                      </pattern>
+                      <image id="image0_504:10" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC"/>
+                    </defs>
+                  </svg>
+                </span>
+                    </a>
 
           <button class="header-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
             aria-controls="AsideOffcanvasMenu">
