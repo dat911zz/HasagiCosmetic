@@ -41,49 +41,86 @@
             $("#header").load("header.php");
             $("#footer").load("footer.php");
         })
+        function validateLoginForm() {
+            let x = document.forms["LoginForm"]["txtUserNameLogin"].value;
+            let y = document.forms["LoginForm"]["txtPassWordLogin"].value;
+            if (x == "" && y == "") {
+                alert("Chưa điền thông tin");
+                return false;
+            }
+        }
+        function validateRegisterForm() {
+            let x = document.forms["RegisterForm"]["txtUser"].value;
+            let y = document.forms["RegisterForm"]["txtPassword"].value;
+            if (x == "" && y == "") {
+                alert("Chưa điền thông tin");
+                return false;
+            }
+            if (y.length < 6) {
+                alert("Mật khẩu không nhỏ hơn 6 ký tự.");
+                return false;
+            }
+        }  
     </script>
 
 </head>
 
 <body>
     <?php
+    session_start();
     include("../../Helpers/DatabaseHelper.php");
     $db = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"));
     $tai_khoan = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"))->executeReader('SELECT * FROM `tbl_taikhoan`');
-    $error="";
-    $tb="";
-
+    $error = "";
+    $tb = "";
+    function validate($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
     if (isset($_POST["btnSubmitLogin"])) {
-        function validate($data){
-           $data = trim($data);
-           $data = stripslashes($data);
-           $data = htmlspecialchars($data);
-           return $data;
-        }
-    
+
         $uname = validate($_POST['txtUserNameLogin']);
         $pass = validate($_POST['txtPassWordLogin']);
+        // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
+        $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
+        $params = array($uname, $pass);
+        $result = $db->executeReader($query, $params);
 
-    // Thực hiện truy vấn để kiểm tra thông tin đăng nhập
-    $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
-    $params = array($uname, $pass);
-    $result = $db->executeReader($query, $params);
 
-    if ($result) { // Đăng nhập thành công
-        $_SESSION['username'] = $result[0]->TenDangNhap;
-        $_SESSION['password'] = $result[0]->MatKhau;
-        header('Location: my-account.php');
-        $error = "Đúng tên đăng nhập hoặc mật khẩu";
-    } else { // Đăng nhập thất bại
-        $error = "Sai tên đăng nhập hoặc mật khẩu";
+        if ($result) { // Đăng nhập thành công
+            $_SESSION['username'] = $result[0]->TenDangNhap;
+            $_SESSION['password'] = $result[0]->MatKhau;
+            $_SESSION['role'] = $result[0]->MaNhomQuyen;
+            $role = $result[0]->MaNhomQuyen;
+            switch ($role) {
+                case 1:
+                    header('Location: my-account.php');
+                    break;
+                case 2:
+                    header('Location: my-account.php');
+                    break;
+                case 3:
+                    header('Location: index.php');
+                    break;
+                default:
+                    break;
+            }
+            echo ($role);
+        } else { // Đăng nhập thất bại
+            $role = $result[0]->MaNhomQuyen;
+            $error = "Sai tên đăng nhập hoặc mật khẩu";
+            print($role);
+        }
     }
-}
-    
+
     if (isset($_POST["btnSubmit"])) {
         $ma_tk = NULL;
         $ten_dang_nhap = $_POST["txtUser"];
         $mat_khau = $_POST["txtPassword"];
-        $ma_nhom_quyen = 1;
+        $ma_nhom_quyen = 3;
         //KT Trùng tên
     
         $sql = $db->executeReader("select * from tbl_taikhoan where TenDangNhap = '$ten_dang_nhap'");
@@ -96,8 +133,6 @@
             $tb = "Tạo tài khoản không thành công";
         }
     }
-
-    
     ?>
 
     <!--== Wrapper Start ==-->
@@ -135,7 +170,8 @@
                             <div class="my-account-item-wrap">
                                 <h3 class="title">Đăng Nhập</h3>
                                 <div class="my-account-form">
-                                    <form action="#" method="post">
+                                    <form name="LoginForm" onsubmit="return validateLoginForm()" action="#"
+                                        method="post">
                                         <div class="form-group mb-6">
                                             <label for="login_username">Username or Email Address <sup>*</sup></label>
                                             <input type="text" name="txtUserNameLogin" id="login_username">
@@ -173,7 +209,8 @@
                             <div class="my-account-item-wrap">
                                 <h3 class="title">Đăng Ký</h3>
                                 <div class="my-account-form">
-                                    <form action="#" method="post">
+                                    <form name="RegisterForm" onsubmit="return validateRegisterForm()" action="#"
+                                        method="post">
                                         <div class="form-group mb-6">
                                             <label for="register_username">Username or Email Address
                                                 <sup>*</sup></label>
