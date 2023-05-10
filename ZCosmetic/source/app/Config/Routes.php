@@ -52,6 +52,9 @@ $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
+//  mail
+$routes->get('/Pages/Mail', 'Pages::mail');
+
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 
 

@@ -43,4 +43,9 @@ class Pages extends BaseController
         $data['title'] = 'Thanh toán sản phẩm';
         return view('pages/product-checkout', $data);
     }
+    public function mail()
+    {
+        $data['title'] = 'Email';
+        return view('../assets/php/mail', $data);//Link to Views
+    }
 }
