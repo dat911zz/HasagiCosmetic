@@ -12,19 +12,6 @@
         <div class="header-navigation">
           <ul class="main-nav justify-content-start">
             <li><a href="/">trang chủ</a>
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-5 col-sm-6 col-lg-3">
-        <div class="header-logo">
-          <a href="/">
-            <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block">
-        <div class="header-navigation">
-          <ul class="main-nav justify-content-start">
-            <li><a href="/">trang chủ</a>
 
             </li>
             </li>

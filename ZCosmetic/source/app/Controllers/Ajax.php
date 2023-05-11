@@ -12,11 +12,15 @@ class Ajax extends BaseController
     {
         $result = '<ul class="aside-cart-product-list">';
         $total = 0;
+        if(count($array) <= 0) {
+            $result = '<div style="padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>';
+            return array($result, $total);
+        }
         foreach($array as $item) {
             $price = $item->Gia - ($item->GiamGia / 100.0) * $item->Gia;
             $total += $price * $item->SoLuong;
             $result = $result.'<li class="aside-product-list-item">
-                                    <a href="#/" class="remove">×</a>
+                                    <a href="#/" onclick="removeCart('.$item->MaSanPham.', '.$item->MaNguoiDung.')" class="remove">×</a>
                                     <a href="/Home/Product?id='.$item->Ma.'">
                                         <img src="../../assets/Product_Images/'.$item->MaHinh.'.jpg'.'" width="68" height="84" alt="Image">
                                         <span class="product-title shorten-text two-row">'.$item->TenSanPham.'</span>
@@ -52,8 +56,9 @@ class Ajax extends BaseController
         $id_user = $this->request->getPost('id_user');
         $kq = $db->executeNonQuery("CALL sp_removeCart( ?, ?);", array($id_product, $id_user));
         $cart = $db->executeReader("CALL sp_getCart(?)", array($id_user));
+        $rt = $this->showListCart($cart);
         if(isset($kq) && $kq > 0) {
-            echo json_encode(['msg' => "success", 'quantity' => count($cart)]);
+            echo json_encode(['msg' => "success", 'quantity' => count($cart), 'html' => $rt[0]]);
         }
         else {
             echo json_encode(['msg' => "error"]);
@@ -66,8 +71,10 @@ class Ajax extends BaseController
         $id_user = $this->request->getPost('id_user');
         $price = $this->request->getPost('price');
         $kq = $db->executeNonQuery("CALL sp_updateCart( ?, ?, ?);", array($id_product, $quantity, $id_user));
+        $cart = $db->executeReader("CALL sp_getCart(?)", array($id_user));
+        $rt = $this->showListCart($cart);
         if(isset($kq) && $kq > 0) {
-            echo json_encode(['msg' => "success", 'total_price' => $price * $quantity]);
+            echo json_encode(['msg' => "success", 'total_price' => $price * $quantity, 'html' => $rt[0]]);
         }
         else {
             echo json_encode(['msg' => "error"]);

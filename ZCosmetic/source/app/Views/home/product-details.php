@@ -3,6 +3,7 @@
 include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 $db = new DatabaseHelper();
 $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
+$id_user = 1;
 
 ?>
 
@@ -71,8 +72,10 @@ $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
                                     ?>
                                 </div>
                                 <div class="product-details-cart-wishlist">
-                                    <button type="button" class="btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal"><i class="fa fa-heart-o"></i></button>
-                                    <button type="button" class="btn ps-5" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
+                                    <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="btn" style="background-color: blue; border-color: blue; width:160px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                        <span>Thêm vào giỏ</span>
+                                    </button>
+                                    <button type="button" class="btn" style=" width:160px; margin-left: 6px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
                                 </div>
                             </div>
                         </div>

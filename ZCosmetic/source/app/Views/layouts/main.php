@@ -242,7 +242,7 @@
                                 $total += $price * $sp->SoLuong;
                                 ?>
                                 <li class="aside-product-list-item">
-                                    <a href="#/" class="remove">×</a>
+                                    <a href="#/" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)" class="remove">×</a>
                                     <a href="/Home/Product?id=<?= $sp->Ma ?>">
                                         <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="68" height="84" alt="Image">
                                         <span class="product-title shorten-text two-row"><?= $sp->TenSanPham ?></span>
@@ -418,15 +418,16 @@
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    $('#cart-count').html(data.quantity);
+                                    //$('#cart-count').html(data.quantity);
                                     $('#rm_' + $id_product).parent().parent().remove();
                                     if($('.tbody-item').length == 0) {
-                                        $('.section-space').remove();
+                                        $('#carts').remove();
                                         $('#container-cart').append('<div style="text-align: center; color:orange; font-weight: bold; min-height: 400px; margin-top: 40px; user-select: none;">\
                                                                         Giỏ hàng đang rỗng\
                                                                     </div>');
                                     }
                                     updateTotalAllCart($id_user);
+                                    updateCartCount(data);
                                 }
                                 else {
                                     Swal.fire({
@@ -457,8 +458,9 @@
                 success: function(data) {
                     console.log(data);
                     if(data.msg == "success") {
-                        $('#pr_' + $id_product).html((new Intl.NumberFormat('en-DE').format(data.total_price)) + ' VNĐ');
+                        $('#pr_' + $id_product).html((new Intl.NumberFormat('en-DE').format(data.total_price)));
                         updateTotalAllCart($id_user);
+                        updateCartCount(data);
                     }
                 }
             });

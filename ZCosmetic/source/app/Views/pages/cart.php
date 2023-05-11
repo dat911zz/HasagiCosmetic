@@ -16,6 +16,12 @@
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
 <?= $this->section('content') ?>
 
+<style>
+    th {
+        white-space: nowrap;
+    }
+</style>
+
 <main class="main-content" id="container-cart">
 
     <!--== Start Page Header Area Wrapper ==-->
@@ -33,7 +39,7 @@
     <?php
         if(count($gio_hang) > 0) {
             ?>
-            <section class="section-space">
+            <section class="section-space" id="carts">
                 <div class="container">
                     <div class="shopping-cart-form table-responsive">
                         <form action="#" method="post">
@@ -46,6 +52,7 @@
                                         <th class="product-price">Giá</th>
                                         <th class="product-quantity">Số lượng</th>
                                         <th class="product-subtotal">Tổng</th>
+                                        <th class="product-subtotal">Đơn vị tiền tệ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -66,11 +73,11 @@
                                                     </a>
                                                 </div>
                                             </td>
-                                            <td class="product-name">
+                                            <td class="product-name" style="text-align: justify;">
                                                 <a class="title" href="/Home/Product?id=<?= $sp->Ma ?>"><?= $sp->TenSanPham ?></a>
                                             </td>
                                             <td class="product-price">
-                                                <span class="price"><?= number_format($gia, 0, ',', '.').' VNĐ' ?></span>
+                                                <span class="price"><?= number_format($gia, 0, ',', '.') ?></span>
                                             </td>
                                             <td class="product-quantity">
                                                 <div class="pro-qty">
@@ -80,7 +87,10 @@
                                                 </div>
                                             </td>
                                             <td class="product-subtotal">
-                                                <span class="price" id="<?= 'pr_'.$sp->Ma ?>"><?= number_format($gia * $sp->SoLuong, 0, ',', '.').' VNĐ' ?></span>
+                                                <span class="price" id="<?= 'pr_'.$sp->Ma ?>"><?= number_format($gia * $sp->SoLuong, 0, ',', '.') ?></span>
+                                            </td>
+                                            <td>
+                                                VNĐ
                                             </td>
                                         </tr>
                                         <?php
