@@ -606,11 +606,11 @@ only screen and (min-width:1200px) and (max-width:1549px) {
 
 .header-action .header-action-btn {
     border: none;
-    padding-right: 40px !important;
     margin: 0;
+    padding: 0;
     background: none;
     width: 30px;
-    height: fit-content;
+    height: 30px;
     margin-left: 59px
 }
 
@@ -1833,7 +1833,7 @@ only screen and (min-width:768px) and (max-width:991px) {
 
 .pagination .previous {
     border-right: 1px solid #cdcdcd;
-    margin-right: 18px;
+    margin-right: 16px;
     margin-left: 10px;
 }
 
@@ -8389,21 +8389,4 @@ only screen and (min-width:768px) and (max-width:991px) {
     border-top: 0;
     font-size: 14px;
     padding: 18px 24px
-}
-.shorten-text, .shorten-text--two-row, .shorten-text--three-row {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-all;
-}
-.shorten-text--two-row {
-    -webkit-line-clamp: 2;
-    word-break: break-word;
-}
-.shorten-text--three-row {
-    -webkit-line-clamp: 3;
-    word-break: break-word;
 }
