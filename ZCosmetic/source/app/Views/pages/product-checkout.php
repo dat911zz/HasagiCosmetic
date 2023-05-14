@@ -7,23 +7,48 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
 <?= $this->section('content') ?>
 
+<?php
+$id_user = 1;
+$db = new DatabaseHelper();
+$user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
+$arrAdress = explode(', ', $user->DiaChi);
+$len = count($arrAdress);
+$city = $arrAdress[$len - 1];
+$district = $arrAdress[$len - 2];
+$ward = $arrAdress[$len - 3];
+$detailsAddress = '';
+if (isset($arrAdress[$len - 4])) {
+    $detailsAddress = $arrAdress[$len - 4];
+}
+?>
+
 <script>
     $(document).ready(function() {
         var data = JSON.parse(sessionStorage.getItem('checkout'));
-        sessionStorage.clear();
-        console.log(data);
-        if(data == null) {
-            
+        if (data == null) {
+            window.location.replace('/');
         }
+        $delete = data.delete;
+        if ($delete) {
+            $id_product = '';
+            $quantity = '';
+        } else {
+            $id_product = data.value[0].Ma;
+            $quantity = data.quantity;
+            console.log($id_product + ', ' + $quantity);
+        }
+
+
         $result = '';
         $values = data.value;
         $total = 0;
         $($values).each(function(index) {
+            $sl = $quantity != '' ? $quantity : $values[index].SoLuong;
             $gia = $values[index].Gia - ($values[index].GiamGia / 100.0) * $values[index].Gia;
-            $total += $gia * $values[index].SoLuong;
+            $total += $gia * $sl;
             $result += '<tr class="cart-item">\
-                            <td class="product-name" style="display: flex; align-items: center; justify-content: space-between;"><Span class="shorten-text two-row" style="width:80%; text-align: justify;">' + $values[index].TenSanPham + '</Span><span class="product-quantity" style="width: 20%; font-size: 14px; color:red; margin-left: 10px;">× ' + $values[index].SoLuong + '</span></td>\
-                            <td class="product-total">' + convertLongToMoney($gia * $values[index].SoLuong, 'VNĐ') + '</td>\
+                            <td class="product-name" style="display: flex; align-items: center; justify-content: space-between;"><Span class="shorten-text two-row" style="width:80%; text-align: justify;">' + $values[index].TenSanPham + '</Span><span class="product-quantity" style="width: 20%; font-size: 14px; color:red; margin-left: 10px;">× ' + $sl + '</span></td>\
+                            <td class="product-total">' + convertLongToMoney($gia * $sl, 'VNĐ') + '</td>\
                         </tr>';
         });
         $('.table-body').html($result);
@@ -96,16 +121,10 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                         <div class="billing-form-wrap">
                             <form action="#" method="post">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="f_name">Họ tên lót <abbr class="required" title="required">*</abbr></label>
-                                            <input id="f_name" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="l_name">Tên <abbr class="required" title="required">*</abbr></label>
-                                            <input id="l_name" type="text" class="form-control">
+                                            <label for="f_name">Họ tên <abbr class="required" title="required">*</abbr></label>
+                                            <input id="f_name" type="text" class="form-control" value="<?= $user->HoVaTen ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -141,13 +160,7 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="phone">SĐT <abbr class="required" title="required">*</abbr></label>
-                                            <input id="phone" type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="email">Email <abbr class="required" title="required">*</abbr></label>
-                                            <input id="email" type="text" class="form-control">
+                                            <input id="phone" type="text" class="form-control" value="<?= $user->SDT ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -229,7 +242,7 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                                         <label for="privacy" class="custom-control-label">Tôi đã đọc và đồng ý với các điều khoản và điều kiện của trang web <span class="required">*</span></label>
                                     </div>
                                 </div> -->
-                                <a href="account-login.php" class="btn-place-order">Đặt Hàng</a>
+                                <a class="btn-place-order">Đặt Hàng</a>
                             </div>
                         </div>
                     </div>
@@ -256,27 +269,45 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                     });
                     $('#city').html($resultCity);
 
-                    $('#district').html($default);
-                    $('#ward').html($default);
+                    $('#city option').each(function() {
+                        if ($(this).text().toLowerCase() == '<?= $city ?>'.toLowerCase()) {
+                            updateCity($(this).val());
+                        }
+                    });
+
+
+                    $('#street-address').val('<?= $detailsAddress ?>');
                 }
             });
 
             $('#city').on('change', function() {
-                $('#city > option[Selected]').attr('Selected', false);
-                $('#city > option[value=' + $('#city').val() + ']').attr('Selected', true);
-                changeDistrict($(this).val());
+                updateCity($('#city').val());
             });
             $('#district').on('change', function() {
-                $('#district > option[Selected]').attr('Selected', false);
-                $('#district > option[value=' + $('#district').val() + ']').attr('Selected', true);
-                changeWard($(this).val());
+                updateDistrict($(this).val());
             });
             $('#ward').on('change', function() {
-                $('#ward > option[Selected]').attr('Selected', false);
-                $('#ward > option[value=' + $('#ward').val() + ']').attr('Selected', true);
+                updateWard($(this).val());
                 console.log($('#ward > option[Selected]').text() + ', ' + $('#district > option[Selected]').text() + ', ' + $('#city > option[Selected]').text());
-            })
+            });
         });
+
+        function updateCity($value) {
+            $('#city > option[Selected]').attr('Selected', false);
+            $('#city > option[value=' + $value + ']').attr('Selected', true);
+            changeDistrict($value);
+        }
+
+        function updateDistrict($value) {
+            $('#district > option[Selected]').attr('Selected', false);
+            $('#district > option[value=' + $value + ']').attr('Selected', true);
+            changeWard($value);
+        }
+
+        function updateWard($value) {
+            $('#ward > option[Selected]').attr('Selected', false);
+            $('#ward > option[value=' + $value + ']').attr('Selected', true);
+        }
 
         function changeDistrict($idCity) {
             $.ajax({
@@ -292,7 +323,11 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                         }
                     });
                     $('#district').html($resultDistrict);
-                    $('#ward').html($default);
+                    $('#district option').each(function() {
+                        if ($(this).text().toLowerCase() == '<?= $district ?>'.toLowerCase()) {
+                            updateDistrict($(this).val());
+                        }
+                    });
                 }
             });
         }
@@ -311,12 +346,62 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
                         }
                     });
                     $('#ward').html($resultWard);
+                    $('#ward option').each(function() {
+                        if ($(this).text().toLowerCase() == '<?= $ward ?>'.toLowerCase()) {
+                            updateWard($(this).val());
+                        }
+                    });
                 }
             });
         }
         $('#phone').on('keydown', function(e) {
             if ((/[a-zA-Z]/gm.test(String.fromCharCode(e.keyCode)))) {
                 e.preventDefault();
+            }
+        });
+
+        function AlertError($text) {
+            Swal.fire({
+                icon: 'error',
+                title: $text,
+                showConfirmButton: false,
+                timer: 2500
+            });
+            //$('swal-select').remove();
+        }
+    </script>
+
+    <script>
+        $('.btn-place-order').on('click', function() {
+            $name = $('#f_name').val();
+            $city_new = $('#city option[Selected]').text();
+            $district_new = $('#district  option[Selected]').text();
+            $ward_new = $('#ward  option[Selected]').text();
+            $phone = $('#phone').val();
+            $detailsAddress_new = $('#street-address').val();
+            if ($name.length <= 0) {
+                AlertError('Tên người nhận đang trống');
+            } else if ($('#city').val() == null) {
+                AlertError('Vui lòng chọn tỉnh / Thành phố');
+            } else if ($('#district').val() == null) {
+                AlertError('Vui lòng chọn Quận / Huyện');
+            } else if ($('#ward').val() == null) {
+                AlertError('Vui lòng chọn Phường / Xã');
+            } else if ($phone.length < 10) {
+                AlertError('Vui lòng nhập SĐT chính xác');
+            } else {
+                if ($detailsAddress_new.length > 0) {
+                    $address = $detailsAddress_new + ', ';
+                } else {
+                    $address = '';
+                }
+                $address += $ward_new + ', ' + $district_new + ', ' + $city_new;
+                $note = $('#order-notes').val();
+                console.log($city_new);
+                console.log($district_new);
+                console.log($ward_new);
+                console.log($detailsAddress_new);
+                pay($delete, <?= $id_user ?>, $name, $address, $phone, $note, $id_product, $quantity);
             }
         });
     </script>

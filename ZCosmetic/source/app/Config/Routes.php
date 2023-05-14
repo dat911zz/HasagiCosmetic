@@ -58,6 +58,7 @@ $routes->post('/Ajax/RemoveCart', 'Ajax::removeCart');
 $routes->post('/Ajax/UpdateCart', 'Ajax::updateCart');
 $routes->post('/Ajax/GetTotalCart', 'Ajax::getTotalCart');
 $routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
+$routes->post('/Ajax/BuyNow', 'Ajax::buyNow');
 $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
 /*

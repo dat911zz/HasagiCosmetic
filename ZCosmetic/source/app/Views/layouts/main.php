@@ -63,7 +63,6 @@
     </style>
 </head>
 <?php
-//include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 $db = new DatabaseHelper();
 $id_user = 1;
 $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
@@ -269,7 +268,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                 ?>
 
                 <a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
-                <a class="btn-total" id="checkout" href="#">Thanh Toán</a>
+                <a class="btn-total" id="checkout">Thanh Toán</a>
             </div>
         </aside>
         <!--== End Aside Cart ==-->
@@ -566,7 +565,23 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 
         })
 
-        function pay($delete, $id_user, $id_product = null, $quantity = null) {
+        function payNow($id_product, $quantity) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/BuyNow') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity
+                },
+                success: function(data) {
+                    sessionStorage.setItem('checkout', JSON.stringify(data));
+                    window.location.replace("<?= base_url('Pages/Checkout') ?>");
+                }
+            });
+        }
+
+        function pay($delete, $id_user, $name, $address, $sdt, $note, $id_product = null, $quantity = null) {
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('/Ajax/Pay') ?>",
@@ -575,7 +590,11 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                     id_user: $id_user,
                     delete: $delete,
                     id_product: $id_product,
-                    quantity: $quantity
+                    quantity: $quantity,
+                    name: $name,
+                    adress: $address,
+                    phone: $phone,
+                    note: $note
                 },
                 success: function(data) {
                     if (data.msg == 'success') {
@@ -585,8 +604,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                             showConfirmButton: false,
                             timer: 1500
                         });
-                    }
-                    else {
+                    } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Đặt hàng thất bại',
@@ -594,7 +612,9 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                             timer: 1500
                         });
                     }
-                    window.location.replace("<?= base_url('/') ?>");
+                    setTimeout(function() {
+                        window.location.replace("<?= base_url('/') ?>");
+                    }, 2500);
                 }
             });
         }

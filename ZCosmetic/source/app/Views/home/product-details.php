@@ -74,7 +74,7 @@ $id_user = 1;
                             <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="btn" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                 <span>Thêm vào giỏ</span>
                             </button>
-                            <button type="button" onclick="pay()" class="btn" style="min-width:160px; width: 50%; margin-left: 6px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
+                            <button type="button" onclick="payNow(<?= $sp->Ma ?>, 1)" class="btn" style="min-width:160px; width: 50%; margin-left: 6px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
                         </div>
                     </div>
                 </div>
@@ -235,15 +235,14 @@ $id_user = 1;
     </section>
     <!--== End Product Details Area Wrapper ==-->
 
-    <!--== Start Product Banner Area Wrapper ==-->
-    <div class="container">
-        <!--== Start Product Category Item ==-->
-        <a href="product.php" class="product-banner-item">
-            <img src="../assets/images/shop/banner/7.webp" width="1170" height="240" alt="Image-HasTech">
-        </a>
-        <!--== End Product Category Item ==-->
-    </div>
-    <!--== End Product Banner Area Wrapper ==-->
+    <!--== Start News Letter Area Wrapper ==-->
+    <section class="section-space pt-0">
+        <div class="container">
+            <div class="newsletter-content-wrap" data-bg-img="../assets/images/72.webp">
+            </div>
+        </div>
+    </section>
+    <!--== End News Letter Area Wrapper ==-->
 
     <!--== Start Product Area Wrapper ==-->
     <section class="section-space">

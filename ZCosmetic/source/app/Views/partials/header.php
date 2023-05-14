@@ -44,7 +44,7 @@
             </li>
             <li><a href="/Home/About">Giới thiệu</a></li>
             <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
-            <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
+            <li class="has-submenu"><a>Chăm sóc khách hàng</a>
               <ul class="submenu-nav">
                 <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->

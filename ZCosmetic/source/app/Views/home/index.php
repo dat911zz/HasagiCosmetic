@@ -4,8 +4,8 @@
 <?= $this->section('content') ?>
 
 <?php
-    $id_user = 1;
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    $id_user = 1;
     $db = new DatabaseHelper();
     $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
     $san_pham_temp = $db->executeReader('CALL sp_SanPhamGiamGia()');

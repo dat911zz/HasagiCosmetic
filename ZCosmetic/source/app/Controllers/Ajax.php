@@ -39,7 +39,7 @@ class Ajax extends BaseController
                                 </li>';             
         }
         $result .= '<a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
-                    <a class="btn-total" id="checkout" href="#">Thanh Toán</a>
+                    <a class="btn-total" id="checkout">Thanh Toán</a>
                     </ul>';
         return array($result, $total);
     }
@@ -119,7 +119,8 @@ class Ajax extends BaseController
     }
     public function buyNow() {
         $id_product = $this->request->getPost('id_product');
-        return json_encode(['value'=>$this->getDataProduct($id_product), 'delete'=>0]);
+        $quantity = $this->request->getPost('quantity');
+        return json_encode(['value'=>$this->getDataProduct($id_product), 'quantity'=>$quantity, 'delete'=>0]);
     }
     public function pay() {
         $db = new DatabaseHelper();
@@ -127,8 +128,13 @@ class Ajax extends BaseController
         $id_product = $this->request->getPost('id_product');
         $quantity = $this->request->getPost('quantity');
         $delete = $this->request->getPost('delete');
-        $mahd = $db->executeReader("SET @mahd = 0; CALL sp_createHoaDon(?, @mahd); SELECT @mahd 'MaHD'", array($id_user))[0]->MaHD;
-        if($delete) {
+        $name = $this->request->getPost('name');
+        $adress = $this->request->getPost('adress');
+        $phone = $this->request->getPost('phone');
+        $note = $this->request->getPost('note');
+        $mahd = $db->executeReader("CALL sp_createHoaDon(?, ?, ?, ?, ?)", array($id_user, $name, $adress, $phone, $note))[0]->MaHD;
+        $kq = true;
+        if($delete == 1) {
             $kq = $db->executeNonQuery('CALL sp_checkoutCarts(?, ?)', array($id_user, $mahd));
         }
         else {
