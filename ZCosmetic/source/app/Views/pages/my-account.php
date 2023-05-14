@@ -102,12 +102,12 @@ else{
                     <div class="row">
                         <div class="col-lg-3 col-md-4">
                             <div class="my-account-tab-menu nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab" data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad" aria-selected="true">Dashboard</button>
+                                <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab" data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad" aria-selected="false">Dashboard</button>
                                 <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="false"> Orders</button>
                                 <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download" type="button" role="tab" aria-controls="download" aria-selected="false">Download</button>
                                 <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab" data-bs-target="#payment-method" type="button" role="tab" aria-controls="payment-method" aria-selected="false">Payment Method</button>
                                 <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab" data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit" aria-selected="false">address</button>
-                                <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info" aria-selected="false">Account Details</button>
+                                <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info" aria-selected="true">Account Details</button>
                                 <button class="nav-link" onclick="window.location.href='logout.php'" type="button">Logout</button>
                             </div>
                         </div>
@@ -117,7 +117,7 @@ else{
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
                                         <div class="welcome">
-                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="logout.php" class="logout"> Logout</a>)</p>
+                                            <p>Hello, <strong><?php echo $mail ?></strong> (If Not <strong>Tuntuni !</strong><a href="logout.php" class="logout"> Logout</a>)</p>
                                         </div>
                                         <p>From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                                     </div>
@@ -346,12 +346,12 @@ else{
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>

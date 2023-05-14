@@ -90,7 +90,7 @@
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group mb-0">
-                                                <button class="btn btn-sm" type="submit">GỬI</button>
+                                                <button class="btn btn-sm" type="submit">GỬI LIÊN HỆ</button>
                                             </div>
                                         </div>
                                     </div>
@@ -103,7 +103,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-left-img" data-bg-img="assets/images/photos/contact.webp"></div>
+                <img class="contact-left-img" src="../../assets/images/contact.webp"></img>
             </section>
             <!--== End Contact Area Wrapper ==-->
 
@@ -112,18 +112,17 @@
                 <div class="container">
                     <div class="contact-info">
                         <div class="contact-info-item">
-                            <img class="icon" src="assets/images/icons/1.webp" width="30" height="30" alt="Icon">
-                            <a href="tel://+11020303023">+11 0203 03023</a>
-                            <a href="tel://+11020303023">+11 0203 03023</a>
+                            <img class="icon" src="../../assets/images/14.webp" width="30" height="30" alt="Icon">
+                            <a href="tel://+11020303023">+84 795693948</a>
                         </div>
                         <div class="contact-info-item">
-                            <img class="icon" src="assets/images/icons/2.webp" width="30" height="30" alt="Icon">
+                            <img class="icon" src="../../assets/images/24.webp" width="30" height="30" alt="Icon">
                             <a href="mailto://example@demo.com">example@demo.com</a>
                             <a href="mailto://demo@example.com">demo@example.com</a>
                         </div>
                         <div class="contact-info-item mb-0">
-                            <img class="icon" src="assets/images/icons/3.webp" width="30" height="30" alt="Icon">
-                            <p>Sunset Beach, North Carolina(NC), 28468</p>
+                            <img class="icon" src="../../assets/images/34.webp" width="30" height="30" alt="Icon">
+                            <p>140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, Thành Phố Hồ Chí Minh</p>
                         </div>
                     </div>
                 </div>
@@ -146,7 +145,7 @@
                             <div class="widget-item">
                                 <div class="widget-about">
                                     <a class="widget-logo" href="index.php">
-                                        <img src="assets/images/logo.webp" width="95" height="68" alt="Logo">
+                                        <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
                                     </a>
                                     <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
                                 </div>
@@ -183,13 +182,7 @@
             <!--== End Footer Main ==-->
 
             <!--== Start Footer Bottom ==-->
-            <div class="footer-bottom">
-                <div class="container pt-0 pb-0">
-                    <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
-                    </div>
-                </div>
-            </div>
+             
             <!--== End Footer Bottom ==-->
         </footer>
         <!--== End Footer Area Wrapper ==-->
@@ -257,12 +250,12 @@
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>

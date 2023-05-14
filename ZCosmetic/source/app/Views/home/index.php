@@ -41,8 +41,8 @@ use App\Controllers\Home;
                             <div class="hero-slide-content">
                                 <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp" width="427" height="232" alt="Image"></div>
                                 <h2 class="hero-slide-title">CLEAN FRESH</h2>
-                                <p class="hero-slide-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.</p>
-                                <a class="btn btn-border-dark" href="product.php">BUY NOW</a>
+                                <p class="hero-slide-desc">Chất Lượng Thật - Giá Trị Thật.</p>
+                                <a class="btn btn-border-dark" href="product.php">MUA NGAY</a>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
@@ -61,14 +61,14 @@ use App\Controllers\Home;
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-content">
                                 <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp" width="427" height="232" alt="Image"></div>
-                                <h2 class="hero-slide-title">Facial Cream</h2>
-                                <p class="hero-slide-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.</p>
-                                <a class="btn btn-border-dark" href="product.php">BUY NOW</a>
+                                <h2 class="hero-slide-title">Hasagi Cosmetic & Beauty</h2>
+                                <p class="hero-slide-desc">Nhà cung cấp mỹ phẩm tốt nhất.</p>
+                                <a class="btn btn-border-dark" href="product.php">MUA NGAY</a>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-thumb">
-                                <img src="../../assets/images/slider/slider2.webp" width="841" height="832" alt="Image">
+                                <img src="https://template.web30s.com.vn/webshop_135/static/picture/about1.webp" width="841" height="832" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -96,8 +96,8 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item">
                     <img class="icon" src="../../assets/images/shop/category/1.webp" width="70" height="80" alt="Image-HasTech">
-                    <h3 class="title">Hare care</h3>
-                    <span class="flag-new">new</span>
+                    <h3 class="title">Mỹ Phẩm</h3>
+                    <span class="flag-new">MỚI</span>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -105,7 +105,7 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFEDB4">
                     <img class="icon" src="../../assets/images/shop/category/2.webp" width="80" height="80" alt="Image-HasTech">
-                    <h3 class="title">Skin care</h3>
+                    <h3 class="title">Chăm Sóc Da</h3>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -113,7 +113,7 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#DFE4FF">
                     <img class="icon" src="../../assets/images/shop/category/3.webp" width="80" height="80" alt="Image-HasTech">
-                    <h3 class="title">Lip stick</h3>
+                    <h3 class="title">Son Môi</h3>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -121,8 +121,8 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFEACC">
                     <img class="icon" src="../../assets/images/shop/category/4.webp" width="80" height="80" alt="Image-HasTech">
-                    <h3 class="title">Face skin</h3>
-                    <span data-bg-color="#835BF4" class="flag-new">sale</span>
+                    <h3 class="title">Sữa Rửa Mặt</h3>
+                    <span data-bg-color="#835BF4" class="flag-new">GIẢM GIÁ</span>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -130,7 +130,7 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFDAE0">
                     <img class="icon" src="../../assets/images/shop/category/5.webp" width="80" height="80" alt="Image-HasTech">
-                    <h3 class="title">Blusher</h3>
+                    <h3 class="title">Phấn Trang Điểm</h3>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -138,7 +138,7 @@ use App\Controllers\Home;
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFF3DA">
                     <img class="icon" src="../../assets/images/shop/category/6.webp" width="80" height="80" alt="Image-HasTech">
-                    <h3 class="title">Natural</h3>
+                    <h3 class="title">Sản Phẩm Thiên Nhiên</h3>
                 </a>
                 <!--== End Product Category Item ==-->
             </div>
@@ -153,7 +153,7 @@ use App\Controllers\Home;
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2 class="title">Sản nổi bật</h2>
+                    <h2 class="title">Sản phẩm nổi bật</h2>
                     <p>Sản phẩm bên cửa hàng luôn được cập nhật trong thời gian nhanh nhất trên thị trường</p>
                 </div>
             </div>
@@ -234,7 +234,7 @@ use App\Controllers\Home;
         <div class="row">
             <div class="col-12">
                 <div class="section-title text-center">
-                    <h2 class="title">Sản Giảm Giá</h2>
+                    <h2 class="title">Sản Phẩm Giảm Giá</h2>
                     <p>Sản phẩm giảm giá giành ưu đãi, hỗ trợ tốt nhất cho khách hàng</p>
                 </div>
             </div>
@@ -314,13 +314,13 @@ use App\Controllers\Home;
         <div class="newsletter-content-wrap" data-bg-img="../assets/images/photos/bg1.webp">
             <div class="newsletter-content">
                 <div class="section-title mb-0">
-                    <h2 class="title">Join with us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam.</p>
+                    <h2>Tham Gia Với Chúng Tôi</h2>
+                    <p>Cập nhật thông tin khuyến mãi và nhận quyền lợi giảm giá riêng biệt.</p>
                 </div>
             </div>
             <div class="newsletter-form">
                 <form>
-                    <input type="email" class="form-control" placeholder="enter your email">
+                    <input type="email" class="form-control" placeholder="Email của bạn">
                     <button class="btn-submit" type="submit"><i class="fa fa-paper-plane"></i></button>
                 </form>
             </div>

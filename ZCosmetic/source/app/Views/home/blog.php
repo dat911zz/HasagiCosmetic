@@ -69,14 +69,14 @@
                 </div>
             </nav>
 
-            <section class="page-header-area page-header-style2-area" data-bg-img="../assets/images/photos/page-header1.webp">
+            <section class="page-header-area page-header-style2-area title-img" data-bg-img="../../assets/images/page-header1.webp">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-md-7">
                             <div class="page-header-content page-header-st2-content">
-                                <div class="title-img"><img src="../../assets/images/photos/page-header-text1.webp" alt="Image"></div>
-                                <h2 class="page-header-title">Whats the beauty secrets?</h2>
-                                <p class="page-header-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis.</p>
+                                <div class="title-img"></div>
+                                <h2 class="page-header-title">Làm Đẹp Tại Hasagi</h2>
+                                <p class="page-header-desc">Cùng nhau đi tìm hiểu về bí mật của việc làm đẹp.</p>
                             </div>
                         </div>
                     </div>
@@ -90,8 +90,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="section-title text-center">
-                                <h2 class="title">New Posts</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis</p>
+                                <h2 class="title">Tin Tức Mới</h2>
                             </div>
                         </div>
                     </div>
@@ -100,7 +99,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/1.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/1.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category" href="blog.php">beauty</a>
@@ -117,7 +116,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/4.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/2.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category post-category-two" data-bg-color="#A49CFF" href="blog.php">beauty</a>
@@ -169,7 +168,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/col6-1.webp" width="570" height="340" alt="Image-HasTech">
+                                    <img src="../../assets/images/3.webp" width="570" height="340" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <h4 class="title"><a href="blog-details.php">Facial Scrub is natural treatment for face.</a></h4>
@@ -186,7 +185,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/col6-2.webp" width="570" height="340" alt="Image-HasTech">
+                                    <img src="../../assets/images/5.webp" width="570" height="340" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <h4 class="title"><a href="blog-details.php">Benefit of Hot Ston Spa for your health</a></h4>
@@ -220,7 +219,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/1.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/6.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category" href="blog.php">beauty</a>
@@ -237,7 +236,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/2.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/7.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category post-category-two" data-bg-color="#A49CFF" href="blog.php">beauty</a>
@@ -254,7 +253,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/3.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/1.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category post-category-three" data-bg-color="#9CDBFF" href="blog.php">beauty</a>
@@ -271,7 +270,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/5.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/5.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category" href="blog.php">beauty</a>
@@ -288,7 +287,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/6.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/6.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category post-category-two" data-bg-color="#A49CFF" href="blog.php">beauty</a>
@@ -305,83 +304,7 @@
                             <!--== Start Blog Item ==-->
                             <div class="post-item">
                                 <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/7.webp" width="370" height="320" alt="Image-HasTech">
-                                </a>
-                                <div class="content">
-                                    <a class="post-category post-category-three" data-bg-color="#9CDBFF" href="blog.php">beauty</a>
-                                    <h4 class="title"><a href="blog-details.php">Lorem ipsum dolor sit amet consectetur adipiscing.</a></h4>
-                                    <ul class="meta">
-                                        <li class="author-info"><span>By:</span> <a href="blog.php">Tomas De Momen</a></li>
-                                        <li class="post-date">February 13, 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--== End Blog Item ==-->
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--== End Blog Area Wrapper ==-->
-
-            <!--== Start Product Banner Area Wrapper ==-->
-            <section class="section-space pt-0">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-sm-10 col-lg-8">
-                            <!--== Start Product Category Item ==-->
-                            <a href="product.php" class="product-banner-item">
-                                <img src="../../assets/images/shop/banner/8.webp" width="770" height="250" alt="Image-HasTech">
-                            </a>
-                            <!--== End Product Category Item ==-->
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--== End Product Banner Area Wrapper ==-->
-
-            <!--== Start Blog Area Wrapper ==-->
-            <section class="section-space pt-0">
-                <div class="container">
-                    <div class="row mb-n9">
-                        <div class="col-sm-6 col-lg-4 mb-8">
-                            <!--== Start Blog Item ==-->
-                            <div class="post-item">
-                                <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/1.webp" width="370" height="320" alt="Image-HasTech">
-                                </a>
-                                <div class="content">
-                                    <a class="post-category" href="blog.php">beauty</a>
-                                    <h4 class="title"><a href="blog-details.php">Lorem ipsum dolor sit amet consectetur adipiscing.</a></h4>
-                                    <ul class="meta">
-                                        <li class="author-info"><span>By:</span> <a href="blog.php">Tomas De Momen</a></li>
-                                        <li class="post-date">February 13, 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--== End Blog Item ==-->
-                        </div>
-                        <div class="col-sm-6 col-lg-4 mb-8">
-                            <!--== Start Blog Item ==-->
-                            <div class="post-item">
-                                <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/2.webp" width="370" height="320" alt="Image-HasTech">
-                                </a>
-                                <div class="content">
-                                    <a class="post-category post-category-two" data-bg-color="#A49CFF" href="blog.php">beauty</a>
-                                    <h4 class="title"><a href="blog-details.php">Lorem ipsum dolor sit amet consectetur adipiscing.</a></h4>
-                                    <ul class="meta">
-                                        <li class="author-info"><span>By:</span> <a href="blog.php">Tomas De Momen</a></li>
-                                        <li class="post-date">February 13, 2022</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!--== End Blog Item ==-->
-                        </div>
-                        <div class="col-sm-6 col-lg-4 mb-8">
-                            <!--== Start Blog Item ==-->
-                            <div class="post-item">
-                                <a href="blog-details.php" class="thumb">
-                                    <img src="../../assets/images/blog/3.webp" width="370" height="320" alt="Image-HasTech">
+                                    <img src="../../assets/images/7.webp" width="370" height="320" alt="Image-HasTech">
                                 </a>
                                 <div class="content">
                                     <a class="post-category post-category-three" data-bg-color="#9CDBFF" href="blog.php">beauty</a>
@@ -402,19 +325,7 @@
             <!--== Start News Letter Area Wrapper ==-->
             <section class="section-space pt-0">
                 <div class="container">
-                    <div class="newsletter-content-wrap" data-bg-img="../assets/images/photos/bg1.webp">
-                        <div class="newsletter-content">
-                            <div class="section-title mb-0">
-                                <h2 class="title">Join with us</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam.</p>
-                            </div>
-                        </div>
-                        <div class="newsletter-form">
-                            <form>
-                                <input type="email" class="form-control" placeholder="enter your email">
-                                <button class="btn-submit" type="submit"><i class="fa fa-paper-plane"></i></button>
-                            </form>
-                        </div>
+                    <div class="newsletter-content-wrap" data-bg-img="../assets/images/72.webp">
                     </div>
                 </div>
             </section>
@@ -467,16 +378,6 @@
                 </div>
             </div>
             <!--== End Footer Main ==-->
-
-            <!--== Start Footer Bottom ==-->
-            <div class="footer-bottom">
-                <div class="container pt-0 pb-0">
-                    <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
-                    </div>
-                </div>
-            </div>
-            <!--== End Footer Bottom ==-->
         </footer>
         <!--== End Footer Area Wrapper ==-->
 
@@ -543,12 +444,12 @@
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>

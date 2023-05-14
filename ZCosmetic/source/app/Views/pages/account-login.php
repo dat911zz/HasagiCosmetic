@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $title ?></title>
+    <title>Brancy - Cosmetic & Beauty Salon Website Template</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -72,6 +72,8 @@
     $db = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"));
     $tai_khoan = (new DatabaseHelper("mysql:host=localhost;dbname=bbqtgxkn_CosmeticsStore"))->executeReader('SELECT * FROM `tbl_taikhoan`');
     $error = "";
+    $uname = "";
+    $pass = "";
     $tb = "";
     function validate($data)
     {
@@ -88,7 +90,15 @@
         $query = "SELECT * FROM tbl_taikhoan WHERE TenDangNhap = ? AND MatKhau = ?";
         $params = array($uname, $pass);
         $result = $db->executeReader($query, $params);
-
+        
+        if (isset($_POST["remember"])) {
+            setcookie("username", $result[0]->TenDangNhap);
+            setcookie("password", $result[0]->MatKhau);
+        }
+        if (isset($_COOKIE["username"]) && isset($_COOKIE["password"])) {
+            $uname = $_COOKIE["username"];
+            $pass = $_COOKIE["password"];
+        }
 
         if ($result) { // Đăng nhập thành công
             $_SESSION['username'] = $result[0]->TenDangNhap;
@@ -174,12 +184,12 @@
                                         method="post">
                                         <div class="form-group mb-6">
                                             <label for="login_username">Username or Email Address <sup>*</sup></label>
-                                            <input type="text" name="txtUserNameLogin" id="login_username">
+                                            <input type="text" name="txtUserNameLogin" id="login_username" value="<?php echo $uname ?>">
                                         </div>
 
                                         <div class="form-group mb-6">
                                             <label for="login_pwsd">Password <sup>*</sup></label>
-                                            <input type="password" name="txtPassWordLogin" id="login_pwsd">
+                                            <input type="password" name="txtPassWordLogin" id="login_pwsd" value="<?php echo $pass ?>">
                                         </div>
                                         <div form-group class="text-danger">
                                             <?php
@@ -194,11 +204,11 @@
                                             <button type="submit" class="btn" name="btnSubmitLogin">Login</button>
 
                                             <div class="form-check ms-3">
-                                                <input type="checkbox" class="form-check-input" id="remember_pwsd">
+                                                <input type="checkbox" name="remember" class="form-check-input" id="remember_pwsd">
                                                 <label class="form-check-label" for="remember_pwsd">Remember Me</label>
                                             </div>
                                         </div>
-                                        <a class="lost-password" href="my-account.php">Lost your Password?</a>
+                                        <a class="lost-password">Lost your Password?</a>
                                     </form>
                                 </div>
                             </div>
@@ -300,14 +310,6 @@
             <!--== End Footer Main ==-->
 
             <!--== Start Footer Bottom ==-->
-            <div class="footer-bottom">
-                <div class="container pt-0 pb-0">
-                    <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank"
-                                href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
-                    </div>
-                </div>
-            </div>
             <!--== End Footer Bottom ==-->
         </footer>
         <!--== End Footer Area Wrapper ==-->
@@ -379,13 +381,13 @@
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
                                 <input id="SearchInput" type="search" class="form-control"
-                                    placeholder="Search entire store…">
+                                    placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
