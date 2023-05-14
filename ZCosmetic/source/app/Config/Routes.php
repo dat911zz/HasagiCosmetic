@@ -57,6 +57,9 @@ $routes->post('/Ajax/AddCart', 'Ajax::addCart');
 $routes->post('/Ajax/RemoveCart', 'Ajax::removeCart');
 $routes->post('/Ajax/UpdateCart', 'Ajax::updateCart');
 $routes->post('/Ajax/GetTotalCart', 'Ajax::getTotalCart');
+$routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
+$routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
+$routes->post('/Ajax/Pay', 'Ajax::pay');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

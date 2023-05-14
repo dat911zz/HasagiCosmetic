@@ -65,7 +65,7 @@
                                         </a>
                                         <!-- <span class="flag-new">mới</span> -->
                                         <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                            <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                 <i class="fa fa-expand"></i>
                                             </button>
                                             <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">

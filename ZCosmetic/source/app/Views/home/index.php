@@ -4,9 +4,6 @@
 <?= $this->section('content') ?>
 
 <?php
-
-use App\Controllers\Home;
-
     $id_user = 1;
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     $db = new DatabaseHelper();
@@ -172,7 +169,7 @@ use App\Controllers\Home;
                             </a>
                             <span class="flag-new">Mới</span>
                             <div class="product-action">
-                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
                                 <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
@@ -242,7 +239,7 @@ use App\Controllers\Home;
                             </a>
                             <span class="flag-new">Giảm Giá</span>
                             <div class="product-action">
-                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
                                 <button type="button" class="product-action-btn action-btn-cart" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" data-id-sp="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
