@@ -584,13 +584,7 @@
             <!--== End Footer Main ==-->
 
             <!--== Start Footer Bottom ==-->
-            <div class="footer-bottom">
-                <div class="container pt-0 pb-0">
-                    <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
-                    </div>
-                </div>
-            </div>
+             
             <!--== End Footer Bottom ==-->
         </footer>
         <!--== End Footer Area Wrapper ==-->
@@ -658,12 +652,12 @@
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
