@@ -7,27 +7,27 @@
 
 use App\Controllers\Home;
 
-    include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
-    $db = new DatabaseHelper();
-    $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
-    $san_pham_temp = $db->executeReader('CALL sp_SanPhamGiamGia()');
-    $san_pham_giam_gia = [];
-    $so_luong_sp_giam_gia = count($san_pham_temp);
+include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+$db = new DatabaseHelper();
+$san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
+$san_pham_temp = $db->executeReader('CALL sp_SanPhamGiamGia()');
+$san_pham_giam_gia = [];
+$so_luong_sp_giam_gia = count($san_pham_temp);
     if($so_luong_sp_giam_gia <= 6) {
-        $san_pham_giam_gia = $san_pham_temp;
+    $san_pham_giam_gia = $san_pham_temp;
     }
     else {
-        $sl = 0;
-        $exists = '';
+    $sl = 0;
+    $exists = '';
         while($sl < 6) {
-            $pos = rand(0, $so_luong_sp_giam_gia - 1);
+        $pos = rand(0, $so_luong_sp_giam_gia - 1);
             if(!str_contains($exists, $pos)) {
-                $san_pham_giam_gia[] = $san_pham_temp[$pos];
+            $san_pham_giam_gia[] = $san_pham_temp[$pos];
                 $exists.=','.$pos;
-                $sl++;
-            }
+            $sl++;
         }
     }
+}
 ?>
 
 <!--== Start Hero Area Wrapper ==-->
@@ -39,7 +39,8 @@ use App\Controllers\Home;
                     <div class="row align-items-center position-relative">
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-content">
-                                <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp" width="427" height="232" alt="Image"></div>
+                                <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp"
+                                        width="427" height="232" alt="Image"></div>
                                 <h2 class="hero-slide-title">CLEAN FRESH</h2>
                                 <p class="hero-slide-desc">Chất Lượng Thật - Giá Trị Thật.</p>
                                 <a class="btn btn-border-dark" href="product.php">MUA NGAY</a>
@@ -47,12 +48,14 @@ use App\Controllers\Home;
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-thumb">
-                                <img src="https://htmldemo.net/brancy/brancy/assets/images/slider/slider1.webp" width="841" height="832" alt="Image">
+                                <img src="https://htmldemo.net/brancy/brancy/assets/images/slider/slider1.webp"
+                                    width="841" height="832" alt="Image">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero-slide-text-shape"><img src="../../assets/images/slider/text1.webp" width="70" height="955" alt="Image"></div>
+                <div class="hero-slide-text-shape"><img src="../../assets/images/slider/text1.webp" width="70"
+                        height="955" alt="Image"></div>
                 <div class="hero-slide-social-shape"></div>
             </div>
             <div class="swiper-slide hero-slide-item">
@@ -60,7 +63,8 @@ use App\Controllers\Home;
                     <div class="row align-items-center position-relative">
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-content">
-                                <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp" width="427" height="232" alt="Image"></div>
+                                <div class="hero-slide-text-img"><img src="../../assets/images/slider/text-theme.webp"
+                                        width="427" height="232" alt="Image"></div>
                                 <h2 class="hero-slide-title">Hasagi Cosmetic & Beauty</h2>
                                 <p class="hero-slide-desc">Nhà cung cấp mỹ phẩm tốt nhất.</p>
                                 <a class="btn btn-border-dark" href="product.php">MUA NGAY</a>
@@ -68,12 +72,14 @@ use App\Controllers\Home;
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="hero-slide-thumb">
-                                <img src="https://template.web30s.com.vn/webshop_135/static/picture/about1.webp" width="841" height="832" alt="Image">
+                                <img src="https://template.web30s.com.vn/webshop_135/static/picture/about1.webp"
+                                    width="841" height="832" alt="Image">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="hero-slide-text-shape"><img src="../../assets/images/slider/text1.webp" width="70" height="955" alt="Image"></div>
+                <div class="hero-slide-text-shape"><img src="../../assets/images/slider/text1.webp" width="70"
+                        height="955" alt="Image"></div>
                 <div class="hero-slide-social-shape"></div>
             </div>
         </div>
@@ -95,7 +101,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item">
-                    <img class="icon" src="../../assets/images/shop/category/1.webp" width="70" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/1.webp" width="70" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Mỹ Phẩm</h3>
                     <span class="flag-new">MỚI</span>
                 </a>
@@ -104,7 +111,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFEDB4">
-                    <img class="icon" src="../../assets/images/shop/category/2.webp" width="80" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/2.webp" width="80" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Chăm Sóc Da</h3>
                 </a>
                 <!--== End Product Category Item ==-->
@@ -112,7 +120,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-lg-0 mt-sm-6 mt-4">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#DFE4FF">
-                    <img class="icon" src="../../assets/images/shop/category/3.webp" width="80" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/3.webp" width="80" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Son Môi</h3>
                 </a>
                 <!--== End Product Category Item ==-->
@@ -120,7 +129,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFEACC">
-                    <img class="icon" src="../../assets/images/shop/category/4.webp" width="80" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/4.webp" width="80" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Sữa Rửa Mặt</h3>
                     <span data-bg-color="#835BF4" class="flag-new">GIẢM GIÁ</span>
                 </a>
@@ -129,7 +139,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFDAE0">
-                    <img class="icon" src="../../assets/images/shop/category/5.webp" width="80" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/5.webp" width="80" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Phấn Trang Điểm</h3>
                 </a>
                 <!--== End Product Category Item ==-->
@@ -137,7 +148,8 @@ use App\Controllers\Home;
             <div class="col-6 col-lg-4 col-lg-2 col-xl-2 mt-xl-0 mt-sm-6 mt-4">
                 <!--== Start Product Category Item ==-->
                 <a href="product.php" class="product-category-item" data-bg-color="#FFF3DA">
-                    <img class="icon" src="../../assets/images/shop/category/6.webp" width="80" height="80" alt="Image-HasTech">
+                    <img class="icon" src="../../assets/images/shop/category/6.webp" width="80" height="80"
+                        alt="Image-HasTech">
                     <h3 class="title">Sản Phẩm Thiên Nhiên</h3>
                 </a>
                 <!--== End Product Category Item ==-->
@@ -162,67 +174,78 @@ use App\Controllers\Home;
             <?php
             if (count($san_pham) > 0) {
                 foreach ($san_pham as $sp) {
-            ?>
-                <div class="col-6 col-lg-4 mb-4 mb-sm-9">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <a class="d-block" href="Home/Product?id=<?= $sp->Ma ?>">
-                                <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
-                            </a>
-                            <span class="flag-new">Mới</span>
-                            <div class="product-action">
-                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                    ?>
+                    <div class="col-6 col-lg-4 mb-4 mb-sm-9">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a class="d-block" href="Home/Product?id=<?= $sp->Ma ?>">
+                                    <img src="../../assets/Product_Images/<?php echo $sp->MaHinh . '.jpg' ?>" width="370"
+                                        height="450" alt="Image-HasTech">
+                                </a>
+                                <span class="flag-new">Mới</span>
+                                <div class="product-action">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <i class="fa fa-expand"></i>
+                                    </button>
+                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal"
+                                        data-bs-target="#action-CartAddModal">
+                                        <span>Thêm vào giỏ</span>
+                                    </button>
+                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal"
+                                        data-bs-target="#action-WishlistModal">
+                                        <i class="fa fa-heart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <div class="reviews">150 xem</div>
+                                </div>
+                                <h4 class="title shorten-text"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50) . '...' : $sp->TenSanPham ?></a></h4>
+                                <div class="prices">
+                                    <span class="price">
+                                        <?php echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ' ?>
+                                    </span>
+                                    <?php
+                                    if ($sp->GiamGia != 0) {
+                                        ?>
+                                        <span class="price-old">
+                                            <?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.') . ' VNĐ' ?>
+                                        </span>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="product-action-bottom">
+                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal"
+                                    data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
-                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                    <span>Thêm vào giỏ</span>
-                                </button>
-                                <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal"
+                                    data-bs-target="#action-WishlistModal">
                                     <i class="fa fa-heart-o"></i>
                                 </button>
+                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal"
+                                    data-bs-target="#action-CartAddModal">
+                                    <span>Thêm vào giỏ</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                                <div class="reviews">150 xem</div>
-                            </div>
-                            <h4 class="title shorten-text"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
-                            <div class="prices">
-                                <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
-                                <?php
-                                if($sp->GiamGia != 0) {
-                                    ?>
-                                    <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="product-action-bottom">
-                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                <i class="fa fa-expand"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                <span>Thêm vào giỏ</span>
-                            </button>
                         </div>
                     </div>
-                </div>
-            <?php
+                    <?php
                 }
             }
             ?>
-            
+
         </div>
     </div>
 </section>
@@ -243,67 +266,80 @@ use App\Controllers\Home;
             <?php
             if (count($san_pham_giam_gia) > 0) {
                 foreach ($san_pham_giam_gia as $sp) {
-            ?>
-                <div class="col-6 col-lg-4 mb-4 mb-sm-9">
-                    <div class="product-item">
-                        <div class="product-thumb">
-                            <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
-                                <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
-                            </a>
-                            <span class="flag-new">Giảm Giá</span>
-                            <div class="product-action">
-                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                    ?>
+                    <div class="col-6 col-lg-4 mb-4 mb-sm-9">
+                        <div class="product-item">
+                            <div class="product-thumb">
+                                <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
+                                    <img src="../../assets/Product_Images/<?php echo $sp->MaHinh . '.jpg' ?>" width="370"
+                                        height="450" alt="Image-HasTech">
+                                </a>
+                                <span class="flag-new">Giảm Giá</span>
+                                <div class="product-action">
+                                    <button type="button" class="product-action-btn action-btn-quick-view"
+                                        data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                        <i class="fa fa-expand"></i>
+                                    </button>
+                                    <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal"
+                                        data-bs-target="#action-CartAddModal">
+                                        <span>Thêm vào giỏ</span>
+                                    </button>
+                                    <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal"
+                                        data-bs-target="#action-WishlistModal">
+                                        <i class="fa fa-heart-o"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-rating">
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-half-o"></i>
+                                    </div>
+                                    <div class="reviews">150 xem</div>
+                                </div>
+                                <h4 class="title"><a href="product-details.php">
+                                        <?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50) . '...' : $sp->TenSanPham ?>
+                                    </a></h4>
+                                <div class="prices">
+                                    <span class="price">
+                                        <?php echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ' ?>
+                                    </span>
+                                    <?php
+                                    if ($sp->GiamGia != 0) {
+                                        ?>
+                                        <span class="price-old">
+                                            <?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.') . ' VNĐ' ?>
+                                        </span>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="product-action-bottom">
+                                <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal"
+                                    data-bs-target="#action-QuickViewModal">
                                     <i class="fa fa-expand"></i>
                                 </button>
-                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                    <span>Thêm vào giỏ</span>
-                                </button>
-                                <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
+                                <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal"
+                                    data-bs-target="#action-WishlistModal">
                                     <i class="fa fa-heart-o"></i>
                                 </button>
+                                <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal"
+                                    data-bs-target="#action-CartAddModal">
+                                    <span>Thêm vào giỏ</span>
+                                </button>
                             </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-rating">
-                                <div class="rating">
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-o"></i>
-                                    <i class="fa fa-star-half-o"></i>
-                                </div>
-                                <div class="reviews">150 xem</div>
-                            </div>
-                            <h4 class="title"><a href="product-details.php"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
-                            <div class="prices">
-                                <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
-                                <?php
-                                if($sp->GiamGia != 0) {
-                                    ?>
-                                    <span class="price-old"><?php echo number_format(($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
-                                    <?php
-                                }
-                                ?>
-                            </div>
-                        </div>
-                        <div class="product-action-bottom">
-                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                <i class="fa fa-expand"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                <i class="fa fa-heart-o"></i>
-                            </button>
-                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                <span>Thêm vào giỏ</span>
-                            </button>
                         </div>
                     </div>
-                </div>
-            <?php
+                    <?php
                 }
             }
             ?>
-            
+
         </div>
     </div>
 </section>

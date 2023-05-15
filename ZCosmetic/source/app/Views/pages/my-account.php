@@ -4,11 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $title ?></title>
+    <title>
+        <?= $title ?>
+    </title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords" content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
+    <meta name="keywords"
+        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
     <meta name="author" content="codecarnival" />
 
     <!-- Favicon -->
@@ -33,9 +36,10 @@
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script>
-        $(function() {
+        $(function () {
             $("#header").load("header.php");
             $("#footer").load("footer.php");
         })
@@ -45,28 +49,29 @@
 <?php
 ob_start();
 session_start();
-if(isset($_SESSION['username'])&&isset($_SESSION['password'])){
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $mail = $_SESSION['username'];
     $pass = $_SESSION['password'];
     $role = $_SESSION['role'];
     switch ($role) {
         case 1:
-            header('my-account.php');
             break;
         case 2:
-            header('my-account.php');
             break;
         case 3:
-            header('index.php');
+            $myJS = <<<EOT
+                <script type='text/javascript'>
+                    window.location.replace("/");
+                </script>
+                EOT;
+            echo ($myJS);
             break;
         default:
             break;
     }
 }
-else{
-    header('my-account.php');
-}
 ?>
+
 <body>
 
     <!--== Wrapper Start ==-->
@@ -102,24 +107,43 @@ else{
                     <div class="row">
                         <div class="col-lg-3 col-md-4">
                             <div class="my-account-tab-menu nav nav-tabs" id="nav-tab" role="tablist">
-                                <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab" data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad" aria-selected="false">Dashboard</button>
-                                <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders" type="button" role="tab" aria-controls="orders" aria-selected="false"> Orders</button>
-                                <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download" type="button" role="tab" aria-controls="download" aria-selected="false">Download</button>
-                                <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab" data-bs-target="#payment-method" type="button" role="tab" aria-controls="payment-method" aria-selected="false">Payment Method</button>
-                                <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab" data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit" aria-selected="false">address</button>
-                                <button class="nav-link" id="account-info-tab" data-bs-toggle="tab" data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info" aria-selected="true">Account Details</button>
-                                <button class="nav-link" onclick="window.location.href='logout.php'" type="button">Logout</button>
+                                <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab"
+                                    data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad"
+                                    aria-selected="false">Dashboard</button>
+                                <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders"
+                                    type="button" role="tab" aria-controls="orders" aria-selected="false">
+                                    Orders</button>
+                                <button class="nav-link" id="download-tab" data-bs-toggle="tab"
+                                    data-bs-target="#download" type="button" role="tab" aria-controls="download"
+                                    aria-selected="false">Download</button>
+                                <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab"
+                                    data-bs-target="#payment-method" type="button" role="tab"
+                                    aria-controls="payment-method" aria-selected="false">Payment Method</button>
+                                <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab"
+                                    data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit"
+                                    aria-selected="false">address</button>
+                                <button class="nav-link" id="account-info-tab" data-bs-toggle="tab"
+                                    data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info"
+                                    aria-selected="true">Account Details</button>
+                                <button class="nav-link" onclick="window.location.href='logout.php'"
+                                    type="button">Logout</button>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-8">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel" aria-labelledby="dashboad-tab">
+                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel"
+                                    aria-labelledby="dashboad-tab">
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
                                         <div class="welcome">
-                                            <p>Hello, <strong><?php echo $mail ?></strong> (If Not <strong>Tuntuni !</strong><a href="logout.php" class="logout"> Logout</a>)</p>
+                                            <p>Hello, <strong>
+                                                    <?php echo $mail ?>
+                                                </strong> (If Not <strong></strong><a href="/Pages/Logout"
+                                                    class="logout"> Logout</a>)</p>
                                         </div>
-                                        <p>From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
+                                        <p>From your account dashboard. you can easily check & view your recent orders,
+                                            manage your shipping and billing addresses and edit your password and
+                                            account details.</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
@@ -142,21 +166,24 @@ else{
                                                         <td>Aug 22, 2018</td>
                                                         <td>Pending</td>
                                                         <td>$3000</td>
-                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a></td>
+                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td>July 22, 2018</td>
                                                         <td>Approved</td>
                                                         <td>$200</td>
-                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a></td>
+                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>3</td>
                                                         <td>June 12, 2017</td>
                                                         <td>On Hold</td>
                                                         <td>$990</td>
-                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a></td>
+                                                        <td><a href="shop-cart.php" class="check-btn sqr-btn ">View</a>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -181,38 +208,46 @@ else{
                                                         <td>Haven - Free Real Estate PSD Template</td>
                                                         <td>Aug 22, 2018</td>
                                                         <td>Yes</td>
-                                                        <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download File</a></td>
+                                                        <td><a href="#/" class="check-btn sqr-btn"><i
+                                                                    class="fa fa-cloud-download"></i> Download File</a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>HasTech - Profolio Business Template</td>
                                                         <td>Sep 12, 2018</td>
                                                         <td>Never</td>
-                                                        <td><a href="#/" class="check-btn sqr-btn"><i class="fa fa-cloud-download"></i> Download File</a></td>
+                                                        <td><a href="#/" class="check-btn sqr-btn"><i
+                                                                    class="fa fa-cloud-download"></i> Download File</a>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="payment-method" role="tabpanel" aria-labelledby="payment-method-tab">
+                                <div class="tab-pane fade" id="payment-method" role="tabpanel"
+                                    aria-labelledby="payment-method-tab">
                                     <div class="myaccount-content">
                                         <h3>Payment Method</h3>
                                         <p class="saved-message">You Can't Saved Your Payment Method yet.</p>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="address-edit" role="tabpanel" aria-labelledby="address-edit-tab">
+                                <div class="tab-pane fade" id="address-edit" role="tabpanel"
+                                    aria-labelledby="address-edit-tab">
                                     <div class="myaccount-content">
                                         <h3>Billing Address</h3>
                                         <address>
                                             <p><strong>Alex Tuntuni</strong></p>
                                             <p>1355 Market St, Suite 900 <br>
-                          San Francisco, CA 94103</p>
+                                                San Francisco, CA 94103</p>
                                             <p>Mobile: (123) 456-7890</p>
                                         </address>
-                                        <a href="#/" class="check-btn sqr-btn"><i class="fa fa-edit"></i> Edit Address</a>
+                                        <a href="#/" class="check-btn sqr-btn"><i class="fa fa-edit"></i> Edit
+                                            Address</a>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="account-info" role="tabpanel" aria-labelledby="account-info-tab">
+                                <div class="tab-pane fade" id="account-info" role="tabpanel"
+                                    aria-labelledby="account-info-tab">
                                     <div class="myaccount-content">
                                         <h3>Account Details</h3>
                                         <div class="account-details-form">
@@ -242,19 +277,22 @@ else{
                                                 <fieldset>
                                                     <legend>Password change</legend>
                                                     <div class="single-input-item">
-                                                        <label for="current-pwd" class="required">Current Password</label>
+                                                        <label for="current-pwd" class="required">Current
+                                                            Password</label>
                                                         <input type="password" id="current-pwd" />
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="new-pwd" class="required">New Password</label>
+                                                                <label for="new-pwd" class="required">New
+                                                                    Password</label>
                                                                 <input type="password" id="new-pwd" />
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="single-input-item">
-                                                                <label for="confirm-pwd" class="required">Confirm Password</label>
+                                                                <label for="confirm-pwd" class="required">Confirm
+                                                                    Password</label>
                                                                 <input type="password" id="confirm-pwd" />
                                                             </div>
                                                         </div>
@@ -300,7 +338,8 @@ else{
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -325,7 +364,8 @@ else{
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
+                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
+                                        height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -337,10 +377,12 @@ else{
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
-        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch" aria-labelledby="offcanvasTopLabel">
+        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
+            aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header">
                 <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa fa-close"></i></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                        class="fa fa-close"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container pt--0 pb--0">
@@ -351,7 +393,8 @@ else{
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
+                                <input id="SearchInput" type="search" class="form-control"
+                                    placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -375,7 +418,8 @@ else{
                                     <div class="col-lg-6">
                                         <!--== Start Product Thumbnail Area ==-->
                                         <div class="product-single-thumb">
-                                            <img src="../../assets/images/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech">
+                                            <img src="../../assets/images/shop/quick-view1.webp" width="544"
+                                                height="560" alt="Image-HasTech">
                                         </div>
                                         <!--== End Product Thumbnail Area ==-->
                                     </div>
@@ -394,7 +438,10 @@ else{
                                                 </div>
                                                 <button type="button" class="product-review-show">150 reviews</button>
                                             </div>
-                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                                Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident
+                                                alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut
+                                                veniam
                                                 sequi amet consectetur.</p>
                                             <div class="product-details-pro-qty">
                                                 <div class="pro-qty">
@@ -404,7 +451,8 @@ else{
                                             <div class="product-details-action">
                                                 <h4 class="price">$254.22</h4>
                                                 <div class="product-details-cart-wishlist">
-                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Add to cart</button>
+                                                    <button type="button" class="btn" data-bs-toggle="modal"
+                                                        data-bs-target="#action-CartAddModal">Add to cart</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -420,10 +468,12 @@ else{
         <!--== End Product Quick View Modal ==-->
 
         <!--== Start Aside Cart ==-->
-        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart"
+            aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i class="fa fa-chevron-right"></i></button>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i
+                        class="fa fa-chevron-right"></i></button>
             </div>
             <div class="offcanvas-body">
                 <ul class="aside-cart-product-list">
@@ -452,10 +502,12 @@ else{
         <!--== End Aside Cart ==-->
 
         <!--== Start Aside Menu ==-->
-        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
+        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
+            aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i class="fa fa-chevron-left"></i></button>
+                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
+                        class="fa fa-chevron-left"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div id="offcanvasNav" class="offcanvas-menu-nav">
@@ -466,7 +518,8 @@ else{
                                 <li><a href="index-two.php">Home Two</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a>
+                        </li>
                         <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="#">shop</a>
                             <ul>
                                 <li><a href="#" class="offcanvas-nav-item">Shop Layout</a>
@@ -514,7 +567,8 @@ else{
                                 <li><a href="page-not-found.php">Page Not Found</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a></li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a>
+                        </li>
                     </ul>
                 </div>
             </div>

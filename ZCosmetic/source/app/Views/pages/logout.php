@@ -1,5 +1,10 @@
 <?php
 session_start();
 session_destroy();
-header('Location: account-login.php');
+$myJS = <<<EOT
+                <script type='text/javascript'>
+                    window.location.replace("/Pages/AccountLogin");
+                </script>
+                EOT;
+echo ($myJS);
 ?>
