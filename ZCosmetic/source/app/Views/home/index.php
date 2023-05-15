@@ -4,9 +4,6 @@
 <?= $this->section('content') ?>
 
 <?php
-
-use App\Controllers\Home;
-
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     $db = new DatabaseHelper();
     $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
