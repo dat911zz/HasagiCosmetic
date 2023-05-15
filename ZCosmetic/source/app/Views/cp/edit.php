@@ -1,0 +1,114 @@
+<?= $this->extend('layouts/admin_layout') ?>
+
+<!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
+<?= $this->section('content') ?>
+
+<?php
+helper('form');
+?>
+<div class="form-horizontal">
+    <div class="test">
+        <hr class="header ml-0">
+            <h2 class="position-relative" style="color: #440ccb ">CHỈNH SỬA</h2>
+            <hr class="bg-dark">
+            </hr>
+        </div>
+    </div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.MaTaiKhoan)
+
+    <div class="row">
+        <div class="col-25">
+            Mã nhân viên
+        </div>
+        <div class="col-75">
+            <?= form_input('MaNhanVien', $model, 'class="form-control" readonly') ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            Tên đăng nhập
+        </div>
+        <div class="col-75">
+            <?= form_input('MaNhanVien', $model, 'class="form-control"') ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+            Mật khẩu
+        </div>
+        <div class="col-75">
+            @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+            @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-25">
+            Chức vụ
+        </div>
+        <div class="col-75">
+            @Html.DropDownList("CHUCVU", Session["CVList"] as SelectList, "-Vui lòng chọn Chức vụ-", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ChucVu, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <input type="submit" class="btn btn-primary" value="Lưu" />
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Trở về", "Index")
+</div>
+<style>
+    .test {
+        max-width: max-content;
+        display: block;
+    }
+
+    label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+    }
+
+    input[type=submit] {
+        background-color: #440CCB;
+        color: white;
+        margin: auto;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+        max-width: 250px;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 20%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
+
+<?= $this->endSection() ?>

@@ -32,114 +32,65 @@
 </style>
 <h2 style="text-align: center">Danh sách người dùng</h2>
 <div class="container" style="min-height: 500px">
-    <h5 style="color: orangered; text-align: center">Không có thông tin</h5>
-    <div class="table">
-        <table class="table table-striped" id="table_id" width="100%" cellspacing="0">
-            <colgroup>
-                <col style="width: 3%;">
-                <col style="width: 15%;">
-                <col style="width: 15%;">
-                <col style="width: 15%;">
-            </colgroup>
-            <thead>
-                <tr style="text-align: center">
-                    <th>
-                        Mã tài khoản
-                    </th>
-                    <th>
-                        Tên đăng nhập
-                    </th>
-                    <th>
-                        Tên người dùng
-                    </th>
-                    <th>
-                        Nhóm quyền
-                    </th>
-                    <th>
-                        Các quyền
-                    </th>
-                    <th>
-                        Hành động
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- @foreach (var item in Model)
-                    {
+    <?php if (count($dstk) == 0) { ?>
+        <h5 style="color: orangered; text-align: center">Không có thông tin</h5>
+    <?php } else { ?>
+        <div class="table">
+            <table class="table table-striped" id="table_id" width="100%" cellspacing="0">
+                <colgroup>
+                    <col style="width: 3%;">
+                    <col style="width: 15%;">
+                    <col style="width: 25%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr style="text-align: center">
+                        <th>
+                            Mã tài khoản
+                        </th>
+                        <th>
+                            Tên đăng nhập
+                        </th>
+                        <th>
+                            Tên người dùng
+                        </th>
+                        <th>
+                            Nhóm
+                        </th>
+                        <th>
+                            Hành động
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($dstk as $tk) { ?>
                         <tr style="text-align: center;">
                             <td>
-                                @item.MaTaiKhoan
+                                <?= $tk->MaTK ?>
                             </td>
                             <td>
-                                @item.TenDN
+                                <?= $tk->TenDangNhap ?>
                             </td>
-                            @*<td>
-                        @(NVList.SingleOrDefault(x => x.MaNhanVien == item.MaNhanVien).HoTen)
-                    </td>*@
+                            <td>
+                                <?= $tk->HoVaTen ?>
+                            </td>
                             <td style="text-align: left">
                                 <div style="text-align: center">
-                                    @item.ChucVu
+                                    <?= $tk->NhomQuyen ?>
                                 </div>
                             </td>
                             <td>
-                                <a href="/Admin/CP_V2/Details?id=@item.MaTaiKhoan" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                <a href="/Admin/CP_V2/Edit?id=@item.MaTaiKhoan" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
-                                <a onclick="DVNConfirm('Xóa','Tài khoản', '/Admin/CP_V2/Delete', @item.MaTaiKhoan)" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
+                                <a href="CP/AccountsDetail/<?= $tk->MaTK ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
+                                <a href="CP/AccountsEdit/<?= $tk->MaTK ?>" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
+                                <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    <?php } ?>
 
-                    } -->
-                <tr style="text-align: center;">
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td style="text-align: left">
-                        <div style="text-align: center">
-                            1
-                        </div>
-                    </td>
-                    <td>
-                        <a href="/Admin/CP_V2/Details?id=@item.MaTaiKhoan" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                        <a href="/Admin/CP_V2/Edit?id=@item.MaTaiKhoan" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
-                        <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
-                    </td>
-                </tr>
-                <tr style="text-align: center;">
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        1
-                    </td>
-                    <td style="text-align: left">
-                        <div style="text-align: center">
-                            1
-                        </div>
-                    </td>
-                    <td>
-                        <a href="/Admin/CP_V2/Details?id=@item.MaTaiKhoan" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                        <a href="/Admin/CP_V2/Edit?id=@item.MaTaiKhoan" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
-                        <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
 
 <script>
