@@ -54,6 +54,12 @@ $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
+
+//Admin
+$routes->get('CP/', 'CP::index');
+$routes->get('CP/AccountsDetail/(:num)', 'CP::accDetails/$1');
+$routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
+
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 
 

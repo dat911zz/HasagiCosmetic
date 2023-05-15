@@ -4,15 +4,12 @@
 <?= $this->section('content') ?>
 
 <?php
-
-use App\Controllers\Home;
-
-include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
-$db = new DatabaseHelper();
-$san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
-$san_pham_temp = $db->executeReader('CALL sp_SanPhamGiamGia()');
-$san_pham_giam_gia = [];
-$so_luong_sp_giam_gia = count($san_pham_temp);
+    include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    $db = new DatabaseHelper();
+    $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');
+    $san_pham_temp = $db->executeReader('CALL sp_SanPhamGiamGia()');
+    $san_pham_giam_gia = [];
+    $so_luong_sp_giam_gia = count($san_pham_temp);
     if($so_luong_sp_giam_gia <= 6) {
     $san_pham_giam_gia = $san_pham_temp;
     }
