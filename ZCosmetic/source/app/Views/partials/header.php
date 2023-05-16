@@ -56,13 +56,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
               <ul class="submenu-nav">
                 <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
-<<<<<<< HEAD
                                 <li><a href="/Pages/Contact">Liên hệ</a></li>
-                      
-
-=======
-                <li><a href="/Pages/Contact">Liên hệ</a></li>
->>>>>>> 93b114bd349cd6c9eae5e8e2b9a54a06a8f893b3
               </ul>
             </li>
           </ul>
@@ -150,7 +144,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
   </div>
 </header>
 <style>
-<<<<<<< HEAD
 .cart {
 	 position: relative;
 	 display: block;
@@ -198,55 +191,3 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     })(document, window, 'Chatra');
 </script>
 <!-- /Chatra {/literal} -->
-=======
-  .cart {
-    position: relative;
-    display: block;
-    width: 28px;
-    height: 28px;
-    height: auto;
-    overflow: hidden;
-  }
-
-  .cart .material-icons {
-    position: relative;
-    z-index: 1;
-    font-size: 24px;
-    color: white;
-  }
-
-  .cart .count {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    font-size: 10px;
-    border-radius: 50%;
-    background: #d60b28;
-    width: 20px;
-    height: 20px;
-    line-height: 16px;
-    display: block;
-    text-align: center;
-    color: white;
-    font-weight: bold;
-    padding-top: 2px;
-  }
-
-  .selectUserName {
-    border: none !important;
-  }
-
-  .truncate {
-    width: 100px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .img-mainlogo {
-    height: 170px;
-    max-width: 100%;
-    width: 150px;
-  }
-</style>
->>>>>>> 93b114bd349cd6c9eae5e8e2b9a54a06a8f893b3
