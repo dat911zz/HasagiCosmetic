@@ -35,7 +35,7 @@
                         </div>
                         <!--== Start Contact Form ==-->
                         <div class="contact-form">
-                            <form id="contact-form" action="/Pages/Mail" method="POST">
+                            <form id="contact-form" action="mail.dat911zz.x10.mx" method="POST">
 
                                 <div class="row">
                                     <div class="col-12">
@@ -66,10 +66,7 @@
                                     </div>
                                 </div>
                                 </br>
-                                <div class="col-12">
-                                    <div class="form-group mb-0">
-                                    <div class="form-message"></div>                                    </div>
-                                </div>
+                              
                             </form>
                             <div class="contact-left-img" data-bg-img="../assets/images/photos/contact.webp"></div>
 
@@ -79,6 +76,9 @@
                     <!--== End Contact Form ==-->
 
                     <!--== Message Notification ==-->
+                    <div class="form-message"> 
+                        <p>d</p>
+                     </div>
                 </div>
 
             </div>

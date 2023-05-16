@@ -48,4 +48,9 @@ class Pages extends BaseController
         $data['title'] = 'Email';
         return view('../assets/php/mail', $data);//Link to Views
     }
+    public function send_mail()
+    {
+        $data['title'] = 'Send Mail';
+        return view('../assets/php/sendMail', $data);//Link to Views
+    }
 }

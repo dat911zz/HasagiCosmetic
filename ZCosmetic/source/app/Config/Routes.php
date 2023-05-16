@@ -55,6 +55,9 @@ $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 //  mail
 $routes->get('/Pages/Mail', 'Pages::mail');
 
+$routes->get('/Pages/SendMail', 'Pages::send_mail');
+
+
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 
 

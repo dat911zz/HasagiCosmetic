@@ -48,6 +48,8 @@
                 <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
                                 <li><a href="/Pages/Contact">Liên hệ</a></li>
+                      
+
               </ul>
             </li>
           </ul>
@@ -149,3 +151,17 @@
 }
  
 </style>
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'nFBhFRWbtcy68WodN';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
