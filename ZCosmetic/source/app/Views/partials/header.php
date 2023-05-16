@@ -13,7 +13,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
       <div class="col-5 col-sm-6 col-lg-3">
         <div class="header-logo">
           <a href="/">
-            <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
+            <img class="logo-main img-mainlogo" src="../../assets/images/mainlogone.png" width="95" height="68" alt="Logo" />
           </a>
         </div>
       </div>
@@ -147,7 +147,10 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
   .cart {
     position: relative;
     display: block;
-    margin-bottom: 10px !important;
+    width: 28px;
+    height: 28px;
+    height: auto;
+    overflow: hidden;
   }
 
   .cart .material-icons {
@@ -183,5 +186,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     width: 100px;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+
+  .img-mainlogo {
+    height: 170px;
+    max-width: 100%;
+    width: 150px;
   }
 </style>

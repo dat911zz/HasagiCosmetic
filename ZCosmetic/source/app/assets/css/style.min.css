@@ -162,10 +162,6 @@ hr {
     padding-top: 115px
 }
 
-.wrapper {
-    overflow-x: hidden
-}
-
 @media only screen and (min-width:992px) and (max-width:1199px) {
     .section-space {
         padding-top: 90px;
