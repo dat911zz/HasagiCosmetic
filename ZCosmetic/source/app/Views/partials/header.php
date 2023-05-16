@@ -1,10 +1,19 @@
+<?php
+ob_start();
+session_start();
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
+  $user = $_SESSION['username'];
+} else {
+  $user = "";
+}
+?>
 <header class="header-area sticky-header">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-5 col-sm-6 col-lg-3">
         <div class="header-logo">
           <a href="/">
-            <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68" alt="Logo" />
+            <img class="logo-main img-mainlogo" src="../../assets/images/mainlogone.png" width="95" height="68" alt="Logo" />
           </a>
         </div>
       </div>
@@ -47,9 +56,13 @@
               <ul class="submenu-nav">
                 <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
+<<<<<<< HEAD
                                 <li><a href="/Pages/Contact">Liên hệ</a></li>
                       
 
+=======
+                <li><a href="/Pages/Contact">Liên hệ</a></li>
+>>>>>>> 93b114bd349cd6c9eae5e8e2b9a54a06a8f893b3
               </ul>
             </li>
           </ul>
@@ -92,20 +105,39 @@
             </span>
           </button>
 
-                    <a class="header-action-btn" href="account-login.php">
-                        <span class="icon">
-                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)"/>
-                    <defs>
-                      <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
-                        <use xlink:href="#image0_504:10" transform="scale(0.0333333)"/>
-                      </pattern>
-                      <image id="image0_504:10" width="30" height="30" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC"/>
-                    </defs>
-                  </svg>
-                </span>
-                    </a>
-
+          <a class="header-action-btn" href="/Pages/AccountLogin">
+            <span class="icon">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect class="icon-rect" width="30" height="30" fill="url(#pattern3)" />
+                <defs>
+                  <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_504:10" transform="scale(0.0333333)" />
+                  </pattern>
+                  <image id="image0_504:10" width="30" height="30"
+                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABEUlEQVRIie3UMUoDYRDF8Z8psqUpLBRrBS+gx7ATD6E5iSjeQQ/gJUzEwmChnZZaKZiQ0ljsLkhQM5/5Agr74DX7DfOfgZ1Hoz+qAl30Marcx2H1thCtY4DJN76parKqmAH9DM+6eTcArX2QE3yVAO7lBA8TwMNIw6UgeJI46My+rWCjUQL0LVIUBd8lgEO1UfBZAvg8oXamCuWNRu64nRNMmUo/wReSXLXayoDoKc9miMvqW/ZNG2VRNLla2MYudrCFTvX2intlnl/gGu/zDraGYzyLZ/UTjrD6G2AHpxgnAKc9xgmWo9BNPM4BnPYDNiLg24zQ2oNpyFdZvRKZLlGhnvvKPzXXti/Yy7hEo3+iD9EHtgdqxQnwAAAAAElFTkSuQmCC" />
+                </defs>
+              </svg>
+            </span>
+          </a>
+          <ul class="main-nav justify-content-start">
+            <li class="has-submenu truncate"><a href="/Pages/AccountLogin">
+                <?php echo $user ?>
+              </a>
+              <?php
+              if ($user) {
+                ?>
+                <ul class="submenu-nav">
+                  <li><a href="/Pages/MyAccount">Tài Khoản</a></li>
+                  <li><a href="/Pages/Logout">Đăng Xuất</a></li>
+                </ul>
+                <?php
+              }
+              ?>
+            </li>
+          </ul>
+          <bold class="header-action-btn userName">
+          </bold>
           <button class="header-menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"
             aria-controls="AsideOffcanvasMenu">
             <span></span>
@@ -118,6 +150,7 @@
   </div>
 </header>
 <style>
+<<<<<<< HEAD
 .cart {
 	 position: relative;
 	 display: block;
@@ -165,3 +198,55 @@
     })(document, window, 'Chatra');
 </script>
 <!-- /Chatra {/literal} -->
+=======
+  .cart {
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .cart .material-icons {
+    position: relative;
+    z-index: 1;
+    font-size: 24px;
+    color: white;
+  }
+
+  .cart .count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    font-size: 10px;
+    border-radius: 50%;
+    background: #d60b28;
+    width: 20px;
+    height: 20px;
+    line-height: 16px;
+    display: block;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    padding-top: 2px;
+  }
+
+  .selectUserName {
+    border: none !important;
+  }
+
+  .truncate {
+    width: 100px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .img-mainlogo {
+    height: 170px;
+    max-width: 100%;
+    width: 150px;
+  }
+</style>
+>>>>>>> 93b114bd349cd6c9eae5e8e2b9a54a06a8f893b3

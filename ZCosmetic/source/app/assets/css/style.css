@@ -52,7 +52,6 @@ body {
     line-height: 1.75;
     position: relative;
     visibility: visible;
-    overflow-x: hidden;
     color: #364958;
     background-color: #FFFFFF;
 }

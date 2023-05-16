@@ -42,21 +42,31 @@ $routes->get('/Home/Product', 'Home::product_details');
 $routes->get('Home/Products', 'Home::products');
 
 // Pages
-$routes->get('/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
+$routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
+$routes->match(['get', 'post'], '/Pages/AccountRegister', 'Pages::account_register');
 
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Cart', 'Pages::cart');
 $routes->get('/Pages/Category', 'Pages::category');
 $routes->get('/Pages/Contact', 'Pages::contact');
+$routes->get('/Pages/Logout', 'Pages::logout');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
+<<<<<<< HEAD
 //  mail
 $routes->get('/Pages/Mail', 'Pages::mail');
 
 $routes->get('/Pages/SendMail', 'Pages::send_mail');
 
+=======
+
+//Admin
+$routes->get('CP/', 'CP::index');
+$routes->get('CP/AccountsDetail/(:num)', 'CP::accDetails/$1');
+$routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
+>>>>>>> 93b114bd349cd6c9eae5e8e2b9a54a06a8f893b3
 
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 

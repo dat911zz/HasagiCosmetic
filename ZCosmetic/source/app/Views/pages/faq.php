@@ -69,15 +69,15 @@
                     <div class="row flex-xl-row-reverse">
                         <div class="col-lg-6 col-xl-7">
                             <div class="faq-thumb">
-                                <img src="../../assets/images/photos/faq-home.webp" width="601" height="368" alt="Image">
+                                <img src="../../assets/images/banner1.jpg" width="601" height="368" alt="Image">
                             </div>
                         </div>
                         <div class="col-lg-6 col-xl-5">
                             <div class="faq-content">
                                 <div class="faq-text-img"><img src="../../assets/images/photos/faq.webp" width="199" height="169" alt="Image"></div>
-                                <h2 class="faq-title">Frequently Questions</h2>
+                                <h2 class="faq-title">CÂU HỎI THƯỜNG GẶP</h2>
                                 <div class="faq-line"></div>
-                                <p class="faq-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem has been the industry's standard</p>
+                                <p class="faq-desc">Nơi trả lời các câu hỏi thường gặp khi sử dụng mỹ phẩm cũng như cuộc sống hằng ngày tại Hasagi.</p>
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading1">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                            Mauris congue euismod purus at semper. Morbi et vulputate massa?
+                                        Nên bôi kem chống nắng khi trời nắng, còn thời tiết mùa đông không cần bôi phải không ạ?
                                         </button>
                                     </h2>
                                     <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="heading1" data-bs-parent="#FaqAccordion">
@@ -100,7 +100,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading2">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                            Donec mattis finibus elit ut tristique?
+                                        Vì sao càng dưỡng da càng xấu hơn dù sản phẩm tôi đã dùng qua đều là những thương hiệu lớn, đắt tiền. Có phải nên thường xuyên đi spa thì da mới đẹp không?
                                         </button>
                                     </h2>
                                     <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="heading2" data-bs-parent="#FaqAccordion">
@@ -113,7 +113,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading3">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                            Aenean elit orci, efficitur quis nisl at, accumsan?
+                                        Em nghe chị em nói, tuổi dậy thì không nên dùng mỹ phẩm sớm vì sẽ có hại, liệu có đúng không ạ?
                                         </button>
                                     </h2>
                                     <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading3" data-bs-parent="#FaqAccordion">
@@ -126,7 +126,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading4">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                            Pellentesque habitant morbi tristique senectus et netus?
+                                        Việc rửa mặt bằng sữa rửa mặt có cần thiết hay không, hay chỉ cần rửa mặt bằng nước sạch là được
                                         </button>
                                     </h2>
                                     <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading4" data-bs-parent="#FaqAccordion">
@@ -139,7 +139,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading5">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                            Nam pellentesque aliquam metus?
+                                        Không nên tẩy da chết buổi sáng, vì sẽ làm da bị mỏng, yếu và dễ bắt nắng hơn có đúng không ạ?
                                         </button>
                                     </h2>
                                     <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="heading5" data-bs-parent="#FaqAccordion">
@@ -152,7 +152,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading6">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                            Aenean elit orci, efficitur quis nisl at?
+                                        SPF càng cao có càng tốt hay không?
                                         </button>
                                     </h2>
                                     <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="heading6" data-bs-parent="#FaqAccordion">
@@ -165,7 +165,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading7">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
-                                            Morbi gravida, nisi id fringilla ultricies, elit lorem?
+                                        Da dầu thực chất là một làn da thiếu độ ẩm có đúng không ạ?
                                         </button>
                                     </h2>
                                     <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="heading7" data-bs-parent="#FaqAccordion">
@@ -178,7 +178,7 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="heading8">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
-                                            Aenean elit orci, efficitur quis nisl at, accumsan?
+                                        Thương hiệu mỹ phẩm này có minh bạch về thành phần làm ra sản phẩm không?
                                         </button>
                                     </h2>
                                     <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="heading8" data-bs-parent="#FaqAccordion">
@@ -207,7 +207,7 @@
                             <div class="widget-item">
                                 <div class="widget-about">
                                     <a class="widget-logo" href="index.php">
-                                        <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
+                                        <img src="../../assets/images/mainlogone.png" width="95" height="68" alt="Logo">
                                     </a>
                                     <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
                                 </div>
@@ -244,13 +244,7 @@
             <!--== End Footer Main ==-->
 
             <!--== Start Footer Bottom ==-->
-            <div class="footer-bottom">
-                <div class="container pt-0 pb-0">
-                    <div class="footer-bottom-content">
-                        <p class="copyright">© 2022 Brancy. Made with <i class="fa fa-heart"></i> by <a target="_blank" href="https://themeforest.net/user/codecarnival">Codecarnival.</a></p>
-                    </div>
-                </div>
-            </div>
+             
             <!--== End Footer Bottom ==-->
         </footer>
         <!--== End Footer Area Wrapper ==-->
@@ -318,12 +312,12 @@
                 <div class="container pt--0 pb--0">
                     <div class="search-box-form-wrap">
                         <div class="search-note">
-                            <p>Start typing and press Enter to search</p>
+                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
                         <form action="#" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Search entire store…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>

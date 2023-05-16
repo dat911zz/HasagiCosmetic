@@ -122,12 +122,12 @@
                     <div class="product-sidebar-widget">
                         <div class="product-widget-search">
                             <form action="#">
-                                <input type="search" placeholder="Search Here">
+                                <input type="search" placeholder="Tìm kiếm...">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <div class="product-widget">
-                            <h4 class="product-widget-title">Price Filter</h4>
+                            <h4 class="product-widget-title">Giá Sản Phẩm</h4>
                             <div class="product-widget-range-slider">
                                 <div class="slider-range" id="slider-range"></div>
                                 <div class="slider-labels">
@@ -138,19 +138,19 @@
                             </div>
                         </div>
                         <div class="product-widget">
-                            <h4 class="product-widget-title">Categoris</h4>
+                            <h4 class="product-widget-title">Danh mục sản phẩm</h4>
                             <ul class="product-widget-category">
-                                <li><a href="product.php">Accesasories <span>(5)</span></a></li>
-                                <li><a href="product.php">Computer <span>(4)</span></a></li>
-                                <li><a href="product.php">Covid-19 <span>(2)</span></a></li>
-                                <li><a href="product.php">Electronics <span>(6)</span></a></li>
-                                <li><a href="product.php">Frame Sunglasses <span>(12)</span></a></li>
-                                <li><a href="product.php">Furniture <span>(7)</span></a></li>
-                                <li><a href="product.php">Genuine Leather <span>(9)</span></a></li>
+                                <li><a href="product.php">SKINCARE <span>(5)</span></a></li>
+                                <li><a href="product.php">MAKEUP <span>(4)</span></a></li>
+                                <li><a href="product.php">FRAGRANCE <span>(2)</span></a></li>
+                                <li><a href="product.php">MẶT NẠ <span>(6)</span></a></li>
+                                <li><a href="product.php">DƯỠNG DA <span>(12)</span></a></li>
+                                <li><a href="product.php">CHĂM SÓC TÓC <span>(7)</span></a></li>
+                                <li><a href="product.php">CHĂM SÓC CƠ THỂ <span>(9)</span></a></li>
                             </ul>
                         </div>
                         <div class="product-widget mb-0">
-                            <h4 class="product-widget-title">Popular Tags</h4>
+                            <h4 class="product-widget-title">Tags</h4>
                             <ul class="product-widget-tags">
                                 <li><a href="blog.php">Beauty</a></li>
                                 <li><a href="blog.php">MakeupArtist</a></li>
@@ -173,155 +173,12 @@
         <div class="container">
             <!--== Start Product Category Item ==-->
             <a href="product.php" class="product-banner-item">
-                <img src="../assets/images/shop/banner/7.webp" width="1170" height="240" alt="Image-HasTech">
+                <img src="../../assets/images/72.webp" width="1170" height="240" alt="Image-HasTech">
             </a>
             <!--== End Product Category Item ==-->
         </div>
     </section>
     <!--== End Product Banner Area Wrapper ==-->
-
-    <!--== Start Product Area Wrapper ==-->
-    <section class="section-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <h2 class="title">Related Products</h2>
-                        <p class="m-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mb-n10">
-                <div class="col-12">
-                    <div class="swiper related-product-slide-container">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide mb-8">
-                                <!--== Start Product Item ==-->
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <a class="d-block" href="product-details.php">
-                                            <img src="../assets/images/shop/4.webp" width="370" height="450" alt="Image-HasTech">
-                                        </a>
-                                        <span class="flag-new">new</span>
-                                        <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                                <i class="fa fa-expand"></i>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                                <span>Add to cart</span>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                                <i class="fa fa-heart-o"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="product-rating">
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
-                                            <div class="reviews">150 reviews</div>
-                                        </div>
-                                        <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
-                                        <div class="prices">
-                                            <span class="price">$210.00</span>
-                                            <span class="price-old">300.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--== End prPduct Item ==-->
-                            </div>
-                            <div class="swiper-slide mb-8">
-                                <!--== Start Product Item ==-->
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <a class="d-block" href="product-details.php">
-                                            <img src="../assets/images/shop/5.webp" width="370" height="450" alt="Image-HasTech">
-                                        </a>
-                                        <span class="flag-new">new</span>
-                                        <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                                <i class="fa fa-expand"></i>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                                <span>Add to cart</span>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                                <i class="fa fa-heart-o"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="product-rating">
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
-                                            <div class="reviews">150 reviews</div>
-                                        </div>
-                                        <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
-                                        <div class="prices">
-                                            <span class="price">$210.00</span>
-                                            <span class="price-old">300.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--== End prPduct Item ==-->
-                            </div>
-                            <div class="swiper-slide mb-8">
-                                <!--== Start Product Item ==-->
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <a class="d-block" href="product-details.php">
-                                            <img src="../assets/images/shop/6.webp" width="370" height="450" alt="Image-HasTech">
-                                        </a>
-                                        <span class="flag-new">new</span>
-                                        <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                                <i class="fa fa-expand"></i>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                                <span>Add to cart</span>
-                                            </button>
-                                            <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                                <i class="fa fa-heart-o"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="product-info">
-                                        <div class="product-rating">
-                                            <div class="rating">
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                            </div>
-                                            <div class="reviews">150 reviews</div>
-                                        </div>
-                                        <h4 class="title"><a href="product-details.php">Readable content DX22</a></h4>
-                                        <div class="prices">
-                                            <span class="price">$210.00</span>
-                                            <span class="price-old">300.00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--== End prPduct Item ==-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--== End Product Area Wrapper ==-->
 
 </main>
 
