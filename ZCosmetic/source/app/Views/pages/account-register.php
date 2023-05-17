@@ -50,11 +50,13 @@ if (isset($_POST["btnSubmit"])) {
     $mat_khau = $_POST["txtPassword"];
     $ma_nhom_quyen = 3;
     $param = array($ma_tk, $ten_dang_nhap, $mat_khau, $ma_nhom_quyen);
-    $paramLogin = array($ten_dang_nhap, $mat_khau);
     $kq = $db->executeNonQuery('INSERT INTO tbl_TaiKhoan (`Ma`, `TenDangNhap`, `MatKhau`, `MaNhomQuyen`) VALUES(?,?,?,?)', $param);
-    $query = "SELECT * FROM tbl_TaiKhoan WHERE TenDangNhap = ? AND MatKhau = ?";
-    $result = $db->executeReader($query, $paramLogin);
     if ($kq) {
+        $query = "SELECT * FROM tbl_TaiKhoan WHERE TenDangNhap = ?";
+        $params = array($ten_dang_nhap);
+        $result = $db->executeReader($query, $params);
+        $ma = $result[0]->Ma;
+        $sql = $db->executeReader('CALL AddNguoiDung(?)', array($ma));
         $myJS = <<<EOT
                 <script type='text/javascript'>
                     window.location.replace("/Pages/AccountLogin");
