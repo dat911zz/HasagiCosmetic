@@ -59,7 +59,7 @@
                     <div class="col-5 col-sm-6 col-lg-3">
                         <div class="header-logo">
                             <a href="index.php">
-                                <img class="logo-main" src="../assets/images/mainlogone.png" width="95" height="68"
+                                <img class="logo-main" src="../assets/images/logo.webp" width="95" height="68"
                                     alt="Logo" />
                             </a>
                         </div>
