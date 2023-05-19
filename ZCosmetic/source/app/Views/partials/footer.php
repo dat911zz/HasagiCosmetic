@@ -6,7 +6,7 @@
                 <div class="widget-item">
                     <div class="widget-about">
                         <a class="widget-logo" href="../index.php">
-                            <img src="../../assets/images/mainlogone.png" width="95" height="68" alt="Logo">
+                            <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
                         </a>
                         <p class="desc">Chất lượng thật - Giá trị thật.</p>
                     </div>
