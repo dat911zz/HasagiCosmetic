@@ -82,23 +82,23 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         </span>
                     </button>
 
-                    <button class="header-action-btn cart" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
-                        <span class="count">123</span>
-                        <span class="icon material-icons">
-                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <rect class="icon-rect" width="30" height="30" fill="url(#pattern2)" />
-                                <defs>
-                                    <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
-                                        <use xlink:href="#image0_504:9" transform="scale(0.0333333)" />
-                                    </pattern>
-                                    <image id="image0_504:9" width="30" height="30"
-                                           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABFUlEQVRIie2VMU7DMBSGvwAqawaYuAmKxCW4A1I5Qg4AA93KBbp1ZUVUlQJSVVbCDVhgzcTQdLEVx7WDQ2xLRfzSvzzb+d6zn2MYrkugBBYevuWsHKiFn2JBMwH8Bq6Aw1jgBwHOYwGlPgT4LDZ4I8BJDNiEppl034UEJ8DMAJ0DByHBACPgUYEugePQUKkUWAmnsaB/Ry/YO9aXCwlT72AdrqaWEohwBWxSwc8ReIVtYIr5bM5pXqO+Men7rozGlkVSv4lJj1WQfsbvXVkNVNk1eEK4ik9/yuwzAPhLh5iuU4jtftMDR4ZJJXChxTJ2H3zXGDgWc43/X2Wro8G81a8u2fXU2nXiLVAxvNIKuPGW/r/2SltF+a3Rkw4pmwAAAABJRU5ErkJggg==" />
-                                </defs>
-                            </svg>
-                        </span>
-                    </button>
+          <button class="header-action-btn cart" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
+            <span id="cart-count" class="count"><?= !isset($cart) ? 0 : count($cart) ?></span>
+            <span class="icon material-icons">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect class="icon-rect" width="30" height="30" fill="url(#pattern2)" />
+                <defs>
+                  <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
+                    <use xlink:href="#image0_504:9" transform="scale(0.0333333)" />
+                  </pattern>
+                  <image id="image0_504:9" width="30" height="30"
+                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABFUlEQVRIie2VMU7DMBSGvwAqawaYuAmKxCW4A1I5Qg4AA93KBbp1ZUVUlQJSVVbCDVhgzcTQdLEVx7WDQ2xLRfzSvzzb+d6zn2MYrkugBBYevuWsHKiFn2JBMwH8Bq6Aw1jgBwHOYwGlPgT4LDZ4I8BJDNiEppl034UEJ8DMAJ0DByHBACPgUYEugePQUKkUWAmnsaB/Ry/YO9aXCwlT72AdrqaWEohwBWxSwc8ReIVtYIr5bM5pXqO+Men7rozGlkVSv4lJj1WQfsbvXVkNVNk1eEK4ik9/yuwzAPhLh5iuU4jtftMDR4ZJJXChxTJ2H3zXGDgWc43/X2Wro8G81a8u2fXU2nXiLVAxvNIKuPGW/r/2SltF+a3Rkw4pmwAAAABJRU5ErkJggg==" />
+                </defs>
+              </svg>
+            </span>
+          </button>
 
                     <?php if (!$user) { ?>
                         <a class="header-action-btn" href="/Pages/AccountLogin">
@@ -162,6 +162,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </div>
 </header>
 <style>
+<<<<<<< HEAD
 .cart {
 	 position: relative;
 	 display: block;
@@ -209,3 +210,46 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     })(document, window, 'Chatra');
 </script>
 <!-- /Chatra {/literal} -->
+=======
+    .cart {
+        position: relative;
+        display: block;
+        /* margin-bottom: 10px !important; */
+    }
+
+    .cart .material-icons {
+        position: relative;
+        z-index: 1;
+        font-size: 24px;
+        color: white;
+    }
+
+    .cart .count {
+        position: absolute;
+        top: -5%;
+        right: -30%;
+        z-index: 2;
+        font-size: 10px;
+        border-radius: 50%;
+        background: #d60b28;
+        width: 20px;
+        height: 20px;
+        line-height: 16px;
+        display: block;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding-top: 2px;
+    }
+
+    .selectUserName {
+        border: none !important;
+    }
+
+    .truncate {
+        width: 100px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+>>>>>>> 0da0eec9fad1b85295470e6d01d59da135513ac1

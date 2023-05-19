@@ -46,12 +46,10 @@ $routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); /
 $routes->match(['get', 'post'], '/Pages/AccountRegister', 'Pages::account_register');
 
 $routes->get('/Pages/Faq', 'Pages::faq');
-$routes->get('/Pages/Cart', 'Pages::cart');
 $routes->get('/Pages/Category', 'Pages::category');
 $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/Logout', 'Pages::logout');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
-$routes->get('/Pages/ProductCheckout', 'Pages::product_checkout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
 
@@ -65,9 +63,18 @@ $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
 $routes->post('/Chat/PhpSearch', 'Chat::chat_php_search');
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
+$routes->get('/Pages/Cart', 'Pages::cart');
+$routes->get('/Pages/Checkout', 'Pages::checkout');
+$routes->get('/Pages/Login', 'Pages::login');
 
-
-
+$routes->post('/Ajax/AddCart', 'Ajax::addCart');
+$routes->post('/Ajax/RemoveCart', 'Ajax::removeCart');
+$routes->post('/Ajax/UpdateCart', 'Ajax::updateCart');
+$routes->post('/Ajax/GetTotalCart', 'Ajax::getTotalCart');
+$routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
+$routes->post('/Ajax/BuyNow', 'Ajax::buyNow');
+$routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
+$routes->post('/Ajax/Pay', 'Ajax::pay');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

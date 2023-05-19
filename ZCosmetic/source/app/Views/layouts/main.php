@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../../assets/css/plugins/font-awesome.min.css">
     <link rel="stylesheet" href="../../assets/css/plugins/fancybox.min.css">
     <link rel="stylesheet" href="../../assets/css/plugins/nice-select.css">
+    <link rel="stylesheet" href="../../assets/css/pager.css">
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
@@ -39,7 +40,37 @@
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
+    <style>
+        .swal2-popup {
+            padding: 60px 10px !important;
+        }
+
+        .shorten-text {
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal;
+            word-break: break-all;
+        }
+
+        .shorten-text.two-row {
+            -webkit-line-clamp: 2;
+            word-break: break-word;
+        }
+
+        .shorten-text.three-row {
+            -webkit-line-clamp: 2;
+            word-break: break-word;
+        }
+    </style>
 </head>
+<?php
+$db = new DatabaseHelper();
+$id_user = 1;
+$cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
+?>
 
 <body>
     <!--== Wrapper Start ==-->
@@ -88,7 +119,7 @@
         <!--== End Product Quick Wishlist Modal ==-->
 
         <!--== Start Product Quick Add Cart Modal ==-->
-        <aside class="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
+        <!-- <aside class="product-action-modal modal fade" id="action-CartAddModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -109,7 +140,7 @@
                     </div>
                 </div>
             </div>
-        </aside>
+        </aside> -->
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
@@ -158,8 +189,7 @@
                                     <div class="col-lg-6">
                                         <!--== Start Product Info Area ==-->
                                         <div class="product-details-content">
-                                            <h5 class="product-details-collection">Premioum collection</h5>
-                                            <h3 class="product-details-title">Offbline Instant Age Rewind Eraser.</h3>
+                                            <h3 class="product-details-title shorten-text--two-row">Offbline Instant Age Rewind Eraser.</h3>
                                             <div class="product-details-review mb-5">
                                                 <div class="product-review-icon">
                                                     <i class="fa fa-star-o"></i>
@@ -170,18 +200,24 @@
                                                 </div>
                                                 <button type="button" class="product-review-show">150 reviews</button>
                                             </div>
-                                            <p class="mb-6">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                            <p class="mb-6 shorten-text--three-row" style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
                                                 sequi amet consectetur.</p>
                                             <div class="product-details-pro-qty">
                                                 <div class="pro-qty">
-                                                    <input type="text" title="Quantity" value="01">
+                                                    <input type="text" title="Quantity" value="1">
                                                 </div>
                                             </div>
                                             <div class="product-details-action">
-                                                <h4 class="price">$254.22</h4>
-                                                <div class="product-details-cart-wishlist">
-                                                    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Add to cart</button>
+                                                <div class="prices">
+                                                    <span class="price" style="font-size: 20px;">100.000 VNĐ</span>
+                                                    <span class="price-old" style="color:red;">200.000 VNĐ</span>
                                                 </div>
+                                            </div>
+                                            <div class="product-details-cart-wishlist" style="    margin-top: 10px; margin-left: 0;">
+                                                <button type="button" class="btn add-cart" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                                    <span>Thêm vào giỏ</span>
+                                                </button>
+                                                <button type="button" class="btn buy-now" style="min-width:160px; width: 50%; margin-left: 6px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
                                             </div>
                                         </div>
                                         <!--== End Product Info Area ==-->
@@ -196,33 +232,47 @@
         <!--== End Product Quick View Modal ==-->
 
         <!--== Start Aside Cart ==-->
-        <aside class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <aside style="width:35%;" class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
-                <h1 class="d-none" id="offcanvasRightLabel">Shopping Cart</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Shopping Cart <i class="fa fa-chevron-right"></i></button>
+                <h1 class="d-none" id="offcanvasRightLabel">Giỏ Hàng</h1>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Giỏ Hàng <i class="fa fa-chevron-right"></i></button>
             </div>
-            <div class="offcanvas-body">
-                <ul class="aside-cart-product-list">
-                    <li class="aside-product-list-item">
-                        <a href="#/" class="remove">×</a>
-                        <a href="product-details.php">
-                            <img src="../../assets/images/shop/cart1.webp" width="68" height="84" alt="Image">
-                            <span class="product-title">Leather Mens Slipper</span>
-                        </a>
-                        <span class="product-price">1 × £69.99</span>
-                    </li>
-                    <li class="aside-product-list-item">
-                        <a href="#/" class="remove">×</a>
-                        <a href="product-details.php">
-                            <img src="../../assets/images/shop/cart2.webp" width="68" height="84" alt="Image">
-                            <span class="product-title">Quickiin Mens shoes</span>
-                        </a>
-                        <span class="product-price">1 × £20.00</span>
-                    </li>
-                </ul>
-                <p class="cart-total"><span>Subtotal:</span><span class="amount">£89.99</span></p>
-                <a class="btn-total" href="product-cart.php">View cart</a>
-                <a class="btn-total" href="product-checkout.php">Checkout</a>
+            <div class="offcanvas-body" id="cart-list">
+                <?php
+                if (count($cart) <= 0) {
+                ?>
+                    <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>
+                <?php
+                } else {
+                ?>
+                    <ul class="aside-cart-product-list">
+                        <?php
+                        $total = 0;
+                        foreach ($cart as $sp) {
+                            $price = $sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia;
+                            $total += $price * $sp->SoLuong;
+                        ?>
+                            <li class="aside-product-list-item">
+                                <a href="#/" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)" class="remove">×</a>
+                                <a href="/Home/Product?id=<?= $sp->Ma ?>">
+                                    <img src="../../assets/Product_Images/<?= $sp->MaHinh . '.jpg' ?>" width="68" height="84" alt="Image">
+                                    <span class="product-title shorten-text two-row"><?= $sp->TenSanPham ?></span>
+                                </a>
+                                <span class="product-price"><?= $sp->SoLuong . ' x ' . number_format($price, 0, ',', '.') . ' VNĐ' ?><span style="margin-left: 10px; color: red; text-decoration: line-through;"><?php if ($sp->GiamGia > 0) {
+                                                                                                                                                                                                                        echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
+                                                                                                                                                                                                                    } ?></span></span>
+                            </li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                    <p class="cart-total"><span>Subtotal:</span><span class="amount"><?= number_format($total, 0, ',', '.') . ' VNĐ' ?></span></p>
+                <?php
+                }
+                ?>
+
+                <a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
+                <a class="btn-total" id="checkout">Thanh Toán</a>
             </div>
         </aside>
         <!--== End Aside Cart ==-->
@@ -312,9 +362,282 @@
     <script src="../../assets/js/plugins/swiper-bundle.min.js"></script>
     <script src="../../assets/js/plugins/fancybox.min.js"></script>
     <script src="../../assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
+    <script>
+        function addCart($id_product, $quantity, $id_user) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/AddCart') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity,
+                    id_user: $id_user
+                },
+                success: function(data) {
+                    console.log($id_product + "|" + $quantity + "|" + $id_user);
+                    console.log(data);
+                    if (data.msg == "success") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thêm vào giỏ hàng thành công',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        updateCartCount(data);
+                    } else {
+                        Swal.fire({
+                            // position: '',
+                            icon: 'error',
+                            title: 'Thêm vào giỏ hàng thất bại',
+                            showConfirmButton: false,
+                            //timer: 1500
+                        });
+                        $('swal-select').remove();
+                    }
+                }
+            });
+        }
+
+        function removeCart($id_product, $id_user) {
+            Swal.fire({
+                title: 'Bạn có chắc chắn?',
+                text: "Bạn đang thực hiện xóa sản phẩm khỏi giỏ hàng!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Xóa',
+                cancelButtonText: 'Quay lại'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'POST',
+                        url: "<?= base_url('/Ajax/RemoveCart') ?>",
+                        dataType: 'json',
+                        data: {
+                            id_product: $id_product,
+                            id_user: $id_user
+                        },
+                        success: function(data) {
+                            console.log(data);
+                            if (data.msg == "success") {
+                                Swal.fire({
+                                    // position: '',
+                                    icon: 'success',
+                                    title: 'Xóa khỏi giỏ hàng thành công',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                //$('#cart-count').html(data.quantity);
+                                $('#rm_' + $id_product).parent().parent().remove();
+                                if ($('.tbody-item').length == 0) {
+                                    $('#carts').remove();
+                                    $('#container-cart').append('<div style="text-align: center; color:orange; font-weight: bold; min-height: 400px; margin-top: 40px; user-select: none;">\
+                                                                        Giỏ hàng đang rỗng\
+                                                                    </div>');
+                                }
+                                updateTotalAllCart($id_user);
+                                updateCartCount(data);
+                            } else {
+                                Swal.fire({
+                                    // position: '',
+                                    icon: 'error',
+                                    title: 'Xóa khỏi giỏ hàng thất bại',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                            }
+                        }
+                    });
+                }
+            })
+        }
+
+        function updateCart($id_product, $quantity, $id_user, $price) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/UpdateCart') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity,
+                    id_user: $id_user,
+                    price: $price
+                },
+                success: function(data) {
+                    console.log(data);
+                    if (data.msg == "success") {
+                        $('#pr_' + $id_product).html((convertLongToMoney(data.total_price)));
+                        updateTotalAllCart($id_user);
+                        updateCartCount(data);
+                    }
+                }
+            });
+        }
+
+        function updateCartCount($arr) {
+            $('#cart-count').html($arr.quantity);
+            $('#cart-list').html($arr.html);
+        }
+        $(document).ready(function() {
+            $('#cart-count').html(<?= count($cart) ?>);
+        });
+
+        function updateTotalAllCart($id_user) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/GetTotalCart') ?>",
+                dataType: 'json',
+                data: {
+                    id_user: $id_user
+                },
+                success: function(data) {
+                    console.log(data);
+                    if (data.msg == "success") {
+                        $('.amount').html((new Intl.NumberFormat('en-DE').format(data.total_cart)) + ' VNĐ');
+                    }
+                }
+            });
+        }
+
+        function convertLongToMoney($value, $dv = null) {
+            if ($dv != null) {
+                return new Intl.NumberFormat('en-DE').format($value) + ' ' + $dv;
+            }
+            return new Intl.NumberFormat('en-DE').format($value);
+        }
+
+        $('.action-btn-quick-view').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/GetProduct') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $(this).data('id-product')
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('.product-details-cart-wishlist .add-cart').data('id-product', data.value[0].Ma);
+                    $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
+                    $('.product-details-title').html(data.value[0].TenSanPham);
+                    $('.product-details-title ~ p').html(data.value[0].MoTa);
+                    var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
+                    $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
+                    if (giamGia > 0) {
+                        $('.product-details-action .price-old').html(convertLongToMoney(giamGia, 'VNĐ'));
+                    } else {
+                        $('.product-details-action .price-old').html('');
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            <?php
+                if(!isset($cart)) {
+                    ?>
+                    $('.count').html('0');
+                    <?php
+                }
+                else {
+                    ?>
+                    $('.count').html('<?= count($cart) ?>');
+                    <?php
+                }
+            ?>
+            
+        })
+        $('#checkout').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/CheckoutCarts') ?>",
+                dataType: 'json',
+                data: {
+                    id_user: 1
+                },
+                success: function(data) {
+                    sessionStorage.setItem('checkout', JSON.stringify(data));
+                    window.location.replace("<?= base_url('Pages/Checkout') ?>");
+                }
+            });
+        });
+        $('.product-details-cart-wishlist .add-cart').on('click', function() {
+            addCart($(this).data('id-product'), $('.pro-qty > input').val(), <?= $id_user ?>);
+        });
+        $('.pro-qty > input').on('keydown', function(e) {
+            if ((/[a-zA-Z]/gm.test(String.fromCharCode(e.keyCode)))) {
+                e.preventDefault();
+            }
+        });
+        $('.pro-qty > input').on('focusout', function() {
+            if ($(this).val().length == 0 || $(this).val() == 0) {
+                $(this).val(1);
+            }
+        })
+        $('.buy-now').on('click', function() {
+
+        })
+
+        function payNow($id_product, $quantity) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/BuyNow') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $id_product,
+                    quantity: $quantity
+                },
+                success: function(data) {
+                    sessionStorage.setItem('checkout', JSON.stringify(data));
+                    window.location.replace("<?= base_url('Pages/Checkout') ?>");
+                }
+            });
+        }
+
+        function pay($delete, $id_user, $name, $address, $sdt, $note, $id_product = null, $quantity = null) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/Pay') ?>",
+                dataType: 'json',
+                data: {
+                    id_user: $id_user,
+                    delete: $delete,
+                    id_product: $id_product,
+                    quantity: $quantity,
+                    name: $name,
+                    adress: $address,
+                    phone: $phone,
+                    note: $note
+                },
+                success: function(data) {
+                    if (data.msg == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Đặt hàng thành công\nChờ kiểm duyệt!!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Đặt hàng thất bại',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                    setTimeout(function() {
+                        window.location.replace("<?= base_url('/') ?>");
+                    }, 2500);
+                }
+            });
+        }
+    </script>
 
 
 
