@@ -55,7 +55,7 @@ class Pages extends BaseController
         $data['title'] = 'Thanh Toán';
         return view('pages/product-checkout', $data);
     }
-<<<<<<< HEAD
+
     public function mail()
     {
         $data['title'] = 'Email';
@@ -66,12 +66,12 @@ class Pages extends BaseController
         $data['title'] = 'Send Mail';
         return view('../assets/php/sendMail', $data);//Link to Views
     }
-}
-=======
+
+
     public function login()
     {
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);
     }
 }
->>>>>>> 0da0eec9fad1b85295470e6d01d59da135513ac1
+

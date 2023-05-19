@@ -162,55 +162,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     </div>
 </header>
 <style>
-<<<<<<< HEAD
-.cart {
-	 position: relative;
-	 display: block;
-	 width: 28px;
-	 height: 28px;
-	 height: auto;
-	 overflow: hidden;
-}
- .cart .material-icons {
-	 position: relative;
-	 z-index: 1;
-	 font-size: 24px;
-	 color: white;
-}
- .cart .count {
-	 position: absolute;
-	 top: 0;
-	 right: 0;
-	 z-index: 2;
-	 font-size: 10px;
-	 border-radius: 50%;
-	 background: #d60b28;
-	 width: 20px;
-	 height: 20px;
-	 line-height: 16px;
-	 display: block;
-	 text-align: center;
-	 color: white;
-	 font-weight: bold;
-   padding-top: 2px;
-}
- 
-</style>
-<!-- Chatra {literal} -->
-<script>
-    (function(d, w, c) {
-        w.ChatraID = 'nFBhFRWbtcy68WodN';
-        var s = d.createElement('script');
-        w[c] = w[c] || function() {
-            (w[c].q = w[c].q || []).push(arguments);
-        };
-        s.async = true;
-        s.src = 'https://call.chatra.io/chatra.js';
-        if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-</script>
-<!-- /Chatra {/literal} -->
-=======
     .cart {
         position: relative;
         display: block;
@@ -252,4 +203,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         text-overflow: ellipsis;
     }
 </style>
->>>>>>> 0da0eec9fad1b85295470e6d01d59da135513ac1
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'nFBhFRWbtcy68WodN';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->

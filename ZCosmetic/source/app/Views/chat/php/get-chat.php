@@ -1,11 +1,12 @@
 <?php 
     session_start();
+    include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    $db = new DatabaseHelper();
     if(isset($_SESSION['MaTaiKhoan'])){
-        include_once "config.php";
         $outgoing_id = $_SESSION['MaTaiKhoan'];
-        $loaiTK = $_SESSION['LoaiTK'] ;
+        $loaiTK = $_SESSION['role'] ;
 
-        $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
+        $incoming_id = $_POST['incoming_id'];
         $output = "";
 
         if ($loaiTK == 3){
@@ -24,26 +25,26 @@
 
  
 
-        $query = mysqli_query($conn, $sql);
-        if(mysqli_num_rows($query) > 0){
-            while($row = mysqli_fetch_assoc($query)){
-
-                if($row['out_msgs_id'] === $outgoing_id){
+        $data = $db->executeReader($sql);
+        if($db->executeCount($sql) > 0){
+            foreach($data as $pr){
+                if($pr->out_msgs_id === $outgoing_id){
                     $output .= '<div class="chat outgoing">
                                     <div class="details">
-                                        <p>'. $row['NoiDung'] .'</p>
-                                        <span>'. $row['ThoiGian'] .'</span>
+                                        <p>'. $pr->NoiDung .'</p>
+                                        <span>'. $pr->ThoiGian .'</span>
                                     </div>
                                 </div>';
                 }else{
                     $output .= '<div class="chat incoming">
-                                <img src="php/images/1683946297cat_TradingCard.jpg" alt="">
+                                <img src="https://haycafe.vn/wp-content/uploads/2021/11/Anh-avatar-dep-chat-lam-hinh-dai-dien.jpg" alt="">
                                     <div class="details">
-                                        <p>'. $row['NoiDung'] .'</p>
-                                        <span>'. $row['ThoiGian'] .'</span>
+                                    <p>'. $pr->NoiDung .'</p>
+                                    <span>'. $pr->ThoiGian .'</span>
                                     </div>
                                 </div>';
                 }
+            
                 //<img src="php/images/'.$row['img'].'" alt="">
             }
         }else{
@@ -51,5 +52,10 @@
         }
         echo $output;
     }else{
-        header("location: ../login.php");
+        $myJS = <<<EOT
+        <script type='text/javascript'>
+            window.location.replace("/Chat/Users");
+        </script>
+        EOT;
+      echo($myJS);
     }

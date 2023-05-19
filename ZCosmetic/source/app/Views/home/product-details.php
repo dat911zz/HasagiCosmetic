@@ -48,7 +48,7 @@ $id_user = 1;
                 <div class="col-lg-6">
                     <div class="product-details-content">
                         <h5 class="product-details-collection"><?= $sp->ThuongHieu ?></h5>
-                        <h6 class="product-details-title"><?= $sp->TenSanPham ?></h6>
+                        <h6 class="product-details-title"><?= $sp->TenSanPham; ?></h6>
                         <div class="product-details-review mb-7">
                             <div class="product-review-icon">
                                 <i class="fa fa-star-o"></i>

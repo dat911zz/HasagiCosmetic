@@ -52,7 +52,7 @@ if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
       <div class="search">
         <span class="text">Bắt đầu trò chuyện</span>
         <input type="text" placeholder="Nhập tên để tìm kiếm...">
-        <button><i class="fas fa-search"></i></button>
+        <button ><i class="fas fa-search"></i></button>
       </div>
       <div class="users-list">
       </div>

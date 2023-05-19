@@ -24,4 +24,26 @@ class Chat extends BaseController
     
         return view('chat/php/search', $data);//Link to Views
     }
+    public function chat_id()
+    {
+       
+        $id = $this->request->getVar('id');
+        $data['ID_User'] = $id;
+        $data['title'] = 'Chat'. $id;
+        return view('chat/chat', $data);//Link to Views
+    }
+
+    
+    public function chat_php_get_chat()
+    {
+        $data['title'] = 'Get Chat';
+    
+        return view('chat/php/get-chat', $data);//Link to Views
+    }
+    public function chat_php_insert_chat()
+    {
+        $data['title'] = 'Get Chat';
+    
+        return view('chat/php/insert-chat', $data);//Link to Views
+    }
 }

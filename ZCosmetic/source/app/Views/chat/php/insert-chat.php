@@ -1,18 +1,22 @@
 <?php 
+ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+ $db = new DatabaseHelper();
     session_start();
     if(isset($_SESSION['MaTaiKhoan'])){
-        include_once "config.php";
         $outgoing_id = $_SESSION['MaTaiKhoan'];
-        $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
-        $message = mysqli_real_escape_string($conn, $_POST['message']);
+        $incoming_id = $_POST['incoming_id'];
+        $message =  $_POST['message'];
         if(!empty($message)){
-            $sql = mysqli_query($conn, "INSERT INTO tbl_messenger (in_msgs_id, out_msgs_id, NoiDung)
-                                        VALUES ({$incoming_id}, {$outgoing_id}, '{$message}')") or die();
+            $sql = "INSERT INTO tbl_messenger (in_msgs_id, out_msgs_id, NoiDung)
+                                        VALUES ({$incoming_id}, {$outgoing_id}, '{$message}')";
+            $KQ = $db->executeNonQuery($sql);
         }
     }else{
-        header("location: ../login.php");
+        $myJS = <<<EOT
+        <script type='text/javascript'>
+            window.location.replace("/Chat/Users");
+        </script>
+        EOT;
+      echo($myJS);
     }
-
-
-    
 ?>

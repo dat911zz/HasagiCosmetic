@@ -62,6 +62,10 @@ $routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
 $routes->post('/Chat/PhpSearch', 'Chat::chat_php_search');
+$routes->get('/Chat/ChatUser', 'Chat::chat_id');
+
+$routes->post('/Chat/PhpGetChat', 'Chat::chat_php_get_chat');
+$routes->post('/Chat/PhpInsertChat', 'Chat::chat_php_insert_chat');
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 $routes->get('/Pages/Cart', 'Pages::cart');
 $routes->get('/Pages/Checkout', 'Pages::checkout');

@@ -39,7 +39,7 @@
   
             $offline = "Online";
             $hoten = $qr->HoVaTen != null ? $qr->HoVaTen : "Nhân Viên  Đang Cập Nhât";
-            $output .= '<a href="chat.php?user_id='. $qr->Ma .'">
+            $output .= '<a href="/Chat/ChatUser?id='.$qr->Ma .'">
                                     <div class="content">
                                     <img         
                                     <img src="../assets/images/admin-logo/Logo.png" alt="">
