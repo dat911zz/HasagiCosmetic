@@ -157,13 +157,13 @@ hr {
     background-size: cover
 }
 
-.wrapper {
-    overflow-x: hidden
-}
-
 .section-space {
     padding-bottom: 115px;
     padding-top: 115px
+}
+
+.wrapper {
+    overflow-x: hidden
 }
 
 @media only screen and (min-width:992px) and (max-width:1199px) {
@@ -5142,7 +5142,7 @@ only screen and (min-width:992px) and (max-width:1199px) {
     line-height: 17px;
     overflow: hidden;
     position: absolute;
-    right: -5%;
+    right: 0;
     text-align: right;
     width: 20px
 }

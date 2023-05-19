@@ -42,11 +42,21 @@ $routes->get('/Home/Product', 'Home::product_details');
 $routes->get('Home/Products', 'Home::products');
 
 // Pages
+$routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
+$routes->match(['get', 'post'], '/Pages/AccountRegister', 'Pages::account_register');
+
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Category', 'Pages::category');
 $routes->get('/Pages/Contact', 'Pages::contact');
+$routes->get('/Pages/Logout', 'Pages::logout');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
+
+
+//Admin
+$routes->get('CP/', 'CP::index');
+$routes->get('CP/AccountsDetail/(:num)', 'CP::accDetails/$1');
+$routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
 
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 $routes->get('/Pages/Cart', 'Pages::cart');

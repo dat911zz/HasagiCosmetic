@@ -5,7 +5,24 @@ namespace App\Controllers;
 class Pages extends BaseController
 {
     // pages
+    public function account_login()
+    {
+        $data['title'] = 'Đăng Nhập';
+        return view('pages/account-login', $data);
+    }
 
+    public function account_register()
+    {
+        $data['title'] = 'Đăng Nhập';
+        return view('pages/account-register', $data);
+    }
+
+    public function cart()
+    {
+        $data['title'] = 'Giỏ Hàng';
+        return view('pages/cart', $data);
+    }
+    
     public function category()
     {
         $data['title'] = 'Loại';
@@ -20,6 +37,11 @@ class Pages extends BaseController
     {
         $data['title'] = 'Câu hỏi thường gặp';
         return view('pages/faq', $data);
+    }
+    public function logout()
+    {
+        $data['title'] = 'Đăng Xuất';
+        return view('pages/logout', $data);
     }
     
     public function my_account()
