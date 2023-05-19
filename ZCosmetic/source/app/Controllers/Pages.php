@@ -50,9 +50,14 @@ class Pages extends BaseController
         return view('pages/my-account', $data);
     }
     
-    public function product_checkout()
+    public function checkout()
     {
-        $data['title'] = 'Thanh toán sản phẩm';
+        $data['title'] = 'Thanh Toán';
         return view('pages/product-checkout', $data);
+    }
+    public function login()
+    {
+        $data['title'] = 'Đăng Nhập';
+        return view('pages/account-login', $data);
     }
 }

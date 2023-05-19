@@ -168,8 +168,8 @@
 
   // Product Quantity JS
     var proQty = $(".pro-qty");
-    proQty.append('<div class= "dec qty-btn">-</div>');
-    proQty.append('<div class="inc qty-btn">+</div>');
+    // proQty.append('<div class= "dec qty-btn">-</div>');
+    // proQty.append('<div class="inc qty-btn">+</div>');
     $('.qty-btn').on('click', function (e) {
       e.preventDefault();
       var $button = $(this);
@@ -184,7 +184,9 @@
           newVal = 1;
         }
       }
-      $button.parent().find('input').val(newVal);
+      var $in = $button.parent().find('input');
+      $in.val(newVal);
+      updateCart($($button).data('id-product'), newVal, $($button).data('id-user'), $($button).data('price'));
     });
 
   // Select Js
