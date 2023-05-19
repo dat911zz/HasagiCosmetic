@@ -60,6 +60,10 @@ $routes->get('CP/', 'CP::index');
 $routes->get('CP/AccountsDetail/(:num)', 'CP::accDetails/$1');
 $routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
 
+// Chat
+$routes->get('/Chat/Users', 'Chat::chat_users');
+$routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
+$routes->post('/Chat/PhpSearch', 'Chat::chat_php_search');
 //Áp dụng đường dẫn dưới dạng: /<Controller>/<Action>/<Params...>
 
 
