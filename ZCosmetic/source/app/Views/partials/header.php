@@ -84,7 +84,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
           <button class="header-action-btn cart" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">
-            <span id="cart-count"><?= !isset($cart) ? 0 : count($cart) ?></span>
+            <span id="cart-count" class="count"><?= !isset($cart) ? 0 : count($cart) ?></span>
             <span class="icon material-icons">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -165,7 +165,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     .cart {
         position: relative;
         display: block;
-        margin-bottom: 10px !important;
+        /* margin-bottom: 10px !important; */
     }
 
     .cart .material-icons {
@@ -177,8 +177,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
     .cart .count {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: -5%;
+        right: -30%;
         z-index: 2;
         font-size: 10px;
         border-radius: 50%;

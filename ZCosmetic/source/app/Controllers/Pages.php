@@ -49,11 +49,7 @@ class Pages extends BaseController
         $data['title'] = 'Tài Khoản';
         return view('pages/my-account', $data);
     }
-    public function cart()
-    {
-        $data['title'] = 'Giỏ Hàng';
-        return view('pages/cart', $data);
-    }
+    
     public function checkout()
     {
         $data['title'] = 'Thanh Toán';

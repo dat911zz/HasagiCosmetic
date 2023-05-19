@@ -534,6 +534,21 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
     </script>
 
     <script>
+        $(document).ready(function() {
+            <?php
+                if(!isset($cart)) {
+                    ?>
+                    $('.count').html('0');
+                    <?php
+                }
+                else {
+                    ?>
+                    $('.count').html('<?= count($cart) ?>');
+                    <?php
+                }
+            ?>
+            
+        })
         $('#checkout').on('click', function() {
             $.ajax({
                 type: 'POST',
