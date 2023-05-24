@@ -22,9 +22,7 @@
 
         // <!-- <img src="php/images/'.$row['img'] .'" alt=""> -->
         foreach ($query as $qr){
-            $sql2 = "SELECT * FROM tbl_messenger WHERE (in_msgs_id = {$qr->Ma}
-                                OR 	out_msgs_id = {$qr->Ma}) AND (out_msgs_id = {$outgoing_id} 
-                                OR in_msgs_id = {$outgoing_id}) ORDER BY ma_msg DESC LIMIT 1";
+            $sql2 = "CALL GetLatestMessage( {$qr->Ma},  {$outgoing_id});";
             $query2 = $db->executeReader($sql2);
             ($db->executeCount($sql2) > 0) ? $result = $query2[0]->NoiDung : $result ="Không có tin nhắn";
             (strlen($result) > 28) ? $msg =  substr($result, 0, 28) . '...' : $msg = $result;
