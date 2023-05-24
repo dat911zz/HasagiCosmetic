@@ -65,6 +65,7 @@ if (isset($_POST["btnSubmitLogin"])) {
         $pass = $_COOKIE["password"];
     }
     if ($result) { // Đăng nhập thành công
+        $_SESSION['MaTaiKhoan'] = $result[0]->Ma;
         $_SESSION['username'] = $result[0]->TenDangNhap;
         $_SESSION['password'] = $result[0]->MatKhau;
         $_SESSION['role'] = $result[0]->MaNhomQuyen;

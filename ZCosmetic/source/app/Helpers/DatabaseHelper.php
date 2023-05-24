@@ -35,6 +35,18 @@ class DatabaseHelper
         $pdo = null;
         return [];
     }
+    function executeCount($sql, $param = null)
+    {
+        $pdo = $this->getConnect();
+        $sta = $pdo->prepare($sql);
+        if ($param != null) {
+            $sta->execute($param);
+        } else {
+            $sta->execute();
+        }
+        return $sta->rowCount();
+       
+    }
     function executeNonQuery($sql, $param = null)
     {
         $pdo = $this->getConnect();

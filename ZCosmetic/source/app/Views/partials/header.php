@@ -53,7 +53,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         </li>
                         <li><a href="/Home/About">Giới thiệu</a></li>
                         <li class="has-submenu"><a href="/Home/Blog">Tạp chí làm đẹp</a></li>
-                        <li class="has-submenu"><a href="/Pages/AccountLogin">Chăm sóc khách hàng</a>
+                        <li class="has-submenu"><a href="/Chat/Users">Chăm sóc khách hàng</a>
                             <ul class="submenu-nav">
                                 <li><a href="/Pages/Faq">Câu hỏi thường gặp</a></li>
                                 <!-- <li><a href="page-not-found.php">Liên hệ</a></li> -->
@@ -203,3 +203,17 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         text-overflow: ellipsis;
     }
 </style>
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = 'nFBhFRWbtcy68WodN';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->

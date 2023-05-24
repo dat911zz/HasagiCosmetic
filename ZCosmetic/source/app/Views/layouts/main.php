@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $title ?></title>
+    <title><?= $title?></title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,6 +33,10 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
+    
+    <link rel="stylesheet" href="../../assets/css/stylechat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
@@ -85,7 +89,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
             <?= $this->include('partials/footer') ?>
         </footer>
         <!--== End Footer Area Wrapper ==-->
-
+ 
         <!--== Scroll Top Button ==-->
         <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 
@@ -634,6 +638,8 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
             });
         }
     </script>
+
+
 
 </body>
 
