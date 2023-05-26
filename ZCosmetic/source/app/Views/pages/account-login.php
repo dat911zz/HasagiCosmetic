@@ -69,12 +69,11 @@ if (isset($_POST["btnSubmitLogin"])) {
         $_SESSION['password'] = $result[0]->MatKhau;
         $_SESSION['role'] = $result[0]->MaNhomQuyen;
         $role = $result[0]->MaNhomQuyen;
-        echo '<script>console.log("dddd mk")</script>';
         switch ($role) {
             case 1:
                 $myJS = <<<EOT
                 <script type='text/javascript'>
-                    window.location.replace("/");
+                    window.location.replace("/CP");
                 </script>
                 EOT;
                 echo ($myJS);
@@ -82,7 +81,7 @@ if (isset($_POST["btnSubmitLogin"])) {
             case 2:
                 $myJS = <<<EOT
                 <script type='text/javascript'>
-                    window.location.replace("/Pages/MyAccount");
+                    window.location.replace("/CP");
                 </script>
                 EOT;
                 echo ($myJS);
@@ -98,28 +97,8 @@ if (isset($_POST["btnSubmitLogin"])) {
             default:
                 break;
         }
-        echo ($role);
     } else { // Đăng nhập thất bại
-        echo '<script>console.log("sai mk")</>';
         $error = "Sai tên đăng nhập hoặc mật khẩu";
-    }
-}
-
-if (isset($_POST["btnSubmit"])) {
-    $ma_tk = NULL;
-    $ten_dang_nhap = $_POST["txtUser"];
-    $mat_khau = $_POST["txtPassword"];
-    $ma_nhom_quyen = 3;
-    //KT Trùng tên
-
-    $sql = $db->executeReader("select * from tbl_taikhoan where TenDangNhap = '$ten_dang_nhap'");
-
-    $param = array($ma_tk, $ten_dang_nhap, $mat_khau, $ma_nhom_quyen);
-    $kq = $db->executeNonQuery('INSERT INTO tbl_taikhoan (`Ma`, `TenDangNhap`, `MatKhau`, `MaNhomQuyen`) VALUES(?,?,?,?)', $param);
-    if ($kq) {
-        $tb = "Tạo tài khoản thành công";
-    } else {
-        $tb = "Tạo tài khoản không thành công";
     }
 }
 ?>
