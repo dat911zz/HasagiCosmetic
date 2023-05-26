@@ -201,8 +201,10 @@
     })
 
   // Ajax Contact Form JS
+  // Gửi tin nhắn, thông báo tin nhắn 
     var form = $('#contact-form');
     var formMessages = $('.form-message');
+    
     $(form).submit(function(e) {
       e.preventDefault();
       var formData = form.serialize();
@@ -231,7 +233,7 @@
           formMessages.html("<button type='button' class='btn-close' data-bs-dismiss='alert'>&times;</button>");
           formMessages.append(data.responseText);
         } else {
-          $(formMessages).text('Oops! An error occurred and your message could not be sent.');
+          $(formMessages).text('Ối! Đã xảy ra lỗi và không thể gửi tin nhắn của bạn.');
         }
       });
     });

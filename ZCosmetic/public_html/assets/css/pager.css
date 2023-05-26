@@ -25,3 +25,20 @@
 .previous {
     margin-left: 10px;
 }
+.page-link.next.important {
+    margin-right: -10px;
+}
+.page-link.previous.important {
+    margin-left: -10px;
+}
+.page-item:hover .page-link {
+    background-color: #f88181;
+    color:white !important;
+}
+#my-pagination.pagination .page-link {
+    width: 46px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -50,9 +50,28 @@ class Pages extends BaseController
         return view('pages/my-account', $data);
     }
     
-    public function product_checkout()
+    public function checkout()
     {
-        $data['title'] = 'Thanh toán sản phẩm';
+        $data['title'] = 'Thanh Toán';
         return view('pages/product-checkout', $data);
     }
+
+    public function mail()
+    {
+        $data['title'] = 'Email';
+        return view('../assets/php/mail', $data);//Link to Views
+    }
+    public function send_mail()
+    {
+        $data['title'] = 'Send Mail';
+        return view('../assets/php/sendMail', $data);//Link to Views
+    }
+
+
+    public function login()
+    {
+        $data['title'] = 'Đăng Nhập';
+        return view('pages/account-login', $data);
+    }
 }
+

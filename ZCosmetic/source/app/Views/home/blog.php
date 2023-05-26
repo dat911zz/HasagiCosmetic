@@ -63,7 +63,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-style1 mb-10">
                 <div class="container">
                     <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Blog</li>
                     </ol>
                 </div>
@@ -342,8 +342,8 @@
                         <div class="col-md-6 col-lg-4">
                             <div class="widget-item">
                                 <div class="widget-about">
-                                    <a class="widget-logo" href="index.php">
-                                        <img src="../../assets/images/mainlogone.png" width="95" height="68" alt="Logo">
+                                    <a class="widget-logo" href="/">
+                                        <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
                                     </a>
                                     <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
                                 </div>

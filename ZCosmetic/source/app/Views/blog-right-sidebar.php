@@ -47,7 +47,7 @@
                     <div class="col-5 col-sm-6 col-lg-3">
                         <div class="header-logo">
                             <a href="index.php">
-                                <img class="logo-main" src="../assets/images/mainlogone.png" width="95" height="68" alt="Logo" />
+                                <img class="logo-main" src="../assets/images/logo.webp" width="95" height="68" alt="Logo" />
                             </a>
                         </div>
                     </div>
@@ -404,7 +404,7 @@
                             <div class="widget-item">
                                 <div class="widget-about">
                                     <a class="widget-logo" href="index.php">
-                                        <img src="../assets/images/mainlogone.png" width="95" height="68" alt="Logo">
+                                        <img src="../assets/images/logo.webp" width="95" height="68" alt="Logo">
                                     </a>
                                     <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
                                 </div>

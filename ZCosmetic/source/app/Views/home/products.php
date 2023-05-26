@@ -2,6 +2,8 @@
 <?php
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     include(FCPATH . '../source/app/Helpers/Pager.php');
+
+    $id_user = 1;
     $db = new DatabaseHelper();
     $count = $db->executeReader('SELECT COUNT(*) AS "count" FROM tbl_sanpham')[0]->count;
 
@@ -13,7 +15,9 @@
     $curPage = $_GET["page"];
     $btnPage = $pager->getButtonPage($curPage, $maximumPage);
 
-    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.* FROM tbl_sanpham, tbl_giasanpham, tbl_gia WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma limit $posStart, $lim");
+    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
+                                    FROM tbl_sanpham, tbl_giasanpham, tbl_gia
+                                    WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null limit $posStart, $lim");
 ?>
 
 <?= $this->extend('layouts/main') ?>
@@ -30,14 +34,14 @@
                 <div class="col-md-5">
                     <div class="page-header-st3-content text-center text-md-start">
                         <ol class="breadcrumb justify-content-center justify-content-md-start">
-                            <li class="breadcrumb-item"><a class="text-dark" href="index.php">Home <?= $count ?></a></li>
-                            <li class="breadcrumb-item active text-dark" aria-current="page">Products</li>
+                            <li class="breadcrumb-item"><a class="text-dark" href="index.php">Trang Chủ</a></li>
+                            <li class="breadcrumb-item active text-dark" aria-current="page">Sản Phẩm</li>
                         </ol>
-                        <h2 class="page-header-title">All Products</h2>
+                        <h2 class="page-header-title">Tất Cả Sản Phẩm</h2>
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Showing 09 Results</h5>
+                    <h5 class="showing-pagination-results mt-5 mt-md-9 text-center text-md-end">Hiển thị 09 sản phẩm</h5>
                 </div>
             </div>
         </div>
@@ -57,14 +61,14 @@
                                 <div class="product-item product-st3-item">
                                     <div class="product-thumb">
                                         <a class="d-block" href="/Home/Product?id=<?= $sp->Ma ?>">
-                                            <img src="../../assets/Product_Images/<?php echo $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
+                                            <img src="../../assets/Product_Images/<?= $sp->MaHinh.'.jpg' ?>" width="370" height="450" alt="Image-HasTech">
                                         </a>
-                                        <span class="flag-new">mới</span>
+                                        <!-- <span class="flag-new">mới</span> -->
                                         <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                            <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                 <i class="fa fa-expand"></i>
                                             </button>
-                                            <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                            <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                 <span>Thêm vào giỏ</span>
                                             </button>
                                             <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
@@ -83,28 +87,17 @@
                                             </div>
                                             <div class="reviews">150 reviews</div>
                                         </div>
-                                        <h4 class="title"><a href="Home/Product?id=<?= $sp->Ma ?>"><?php echo (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
+                                        <h4 class="title"><a href="Home/Product?id=<?= $sp->Ma ?>"><?= (strlen($sp->TenSanPham) > 50) ? substr($sp->TenSanPham, 0, 50).'...' : $sp->TenSanPham ?></a></h4>
                                         <div class="prices">
-                                            <span class="price"><?php echo number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
+                                            <span class="price"><?= number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                             <?php
                                             if($sp->GiamGia != 0) {
                                                 ?>
-                                                <span class="price-old"><?php echo number_format($sp->GiamGia, 0, ',', '.').' VNĐ' ?></span>
+                                                <span class="price-old"><?= number_format($sp->Gia, 0, ',', '.').' VNĐ' ?></span>
                                                 <?php
                                             }
                                             ?>
                                         </div>
-                                    </div>
-                                    <div class="product-action-bottom">
-                                        <button type="button" class="product-action-btn action-btn-quick-view" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
-                                            <i class="fa fa-expand"></i>
-                                        </button>
-                                        <button type="button" class="product-action-btn action-btn-wishlist" data-bs-toggle="modal" data-bs-target="#action-WishlistModal">
-                                            <i class="fa fa-heart-o"></i>
-                                        </button>
-                                        <button type="button" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
-                                            <span>Thêm vào giỏ</span>
-                                        </button>
                                     </div>
                                 </div>
                                 <!--== End prPduct Item ==-->
