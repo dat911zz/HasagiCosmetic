@@ -66,7 +66,7 @@
                     <?php foreach ($dstk as $tk) { ?>
                         <tr style="text-align: center;">
                             <td>
-                                <?= $tk->MaTK ?>
+                                <?= $tk->Ma ?>
                             </td>
                             <td>
                                 <?= $tk->TenDangNhap ?>
@@ -76,12 +76,12 @@
                             </td>
                             <td style="text-align: left">
                                 <div style="text-align: center">
-                                    <?= $tk->NhomQuyen ?>
+                                    <?= $tk->MaNhomQuyen ?>
                                 </div>
                             </td>
                             <td>
-                                <a href="CP/AccountsDetail/<?= $tk->MaTK ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                <a href="CP/AccountsEdit/<?= $tk->MaTK ?>" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
+                                <a href="CP/AccountsDetail/<?= $tk->Ma ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
+                                <a href="CP/AccountsEdit/<?= $tk->Ma ?>" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
                                 <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
