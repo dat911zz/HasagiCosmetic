@@ -8,7 +8,7 @@ class CP extends BaseController
     {
         $data['title'] = 'Trang quản trị';
         $db = new \DatabaseHelper();
-        $data['dstk'] = $db->executeReader('SELECT * FROM view_tk_pq');
+        $data['dstk'] = $db->executeReader('call sp_gettk_nv');
         // foreach ($data['dstk'] as $tk) {
         //     echo "MaTK: " . $tk->MaTK . "<br>";
         //     echo "TenDangNhap: " . $tk->TenDangNhap . "<br>";
