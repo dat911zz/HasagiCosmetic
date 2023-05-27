@@ -68,10 +68,11 @@
     </style>
 </head>
 <?php
+
     $db = new DatabaseHelper();
     $id_user = 1;
     $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
-?>
+    ?>
 
 <body>
     <!--== Wrapper Start ==-->
@@ -240,19 +241,19 @@
             </div>
             <div class="offcanvas-body" id="cart-list">
                 <?php
-                if (count($cart) <= 0) {
-                ?>
+                    if (count($cart) <= 0) {
+                        ?>
                     <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>
                 <?php
-                } else {
-                ?>
+                    } else {
+                        ?>
                     <ul class="aside-cart-product-list">
                         <?php
-                        $total = 0;
+                                $total = 0;
                         foreach ($cart as $sp) {
                             $price = $sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia;
                             $total += $price * $sp->SoLuong;
-                        ?>
+                            ?>
                             <li class="aside-product-list-item">
                                 <a href="#/" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)" class="remove">×</a>
                                 <a href="/Home/Product?id=<?= $sp->Ma ?>">
@@ -260,8 +261,8 @@
                                     <span class="product-title shorten-text two-row"><?= $sp->TenSanPham ?></span>
                                 </a>
                                 <span class="product-price"><?= $sp->SoLuong . ' x ' . number_format($price, 0, ',', '.') . ' VNĐ' ?><span style="margin-left: 10px; color: red; text-decoration: line-through;"><?php if ($sp->GiamGia > 0) {
-                                                                                                                                                                                                                        echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
-                                                                                                                                                                                                                    } ?></span></span>
+                                    echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
+                                } ?></span></span>
                             </li>
                         <?php
                         }
@@ -269,8 +270,8 @@
                     </ul>
                     <p class="cart-total"><span>Subtotal:</span><span class="amount"><?= number_format($total, 0, ',', '.') . ' VNĐ' ?></span></p>
                 <?php
-                }
-                ?>
+                    }
+    ?>
 
                 <a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
                 <a class="btn-total" id="checkout">Thanh Toán</a>
@@ -541,17 +542,16 @@
     <script>
         $(document).ready(function() {
             <?php
-                if(!isset($cart)) {
-                    ?>
+    if(!isset($cart)) {
+        ?>
                     $('.count').html('0');
                     <?php
-                }
-                else {
-                    ?>
+    } else {
+        ?>
                     $('.count').html('<?= count($cart) ?>');
                     <?php
-                }
-            ?>
+    }
+    ?>
             
         })
         $('#checkout').on('click', function() {

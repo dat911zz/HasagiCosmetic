@@ -1,16 +1,3 @@
-<?php 
-    class Email{
-        public $email;
-        public $hoTen;
-        public $message;
-        public $subject;
-        public function __construct(){
-
-        }
-        
-    }
-?>
-
 
 <?= $this->extend('layouts/main') ?>
 
