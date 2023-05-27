@@ -11,8 +11,8 @@
 
 // Errors language settings
 return [
-    'pageNotFound'    => '404 - Page Not Found',
-    'sorryCannotFind' => 'Sorry! Cannot seem to find the page you were looking for.',
+    'pageNotFound'    => '404 - Not Found',
+    'sorryCannotFind' => 'Khổng thể tìm thấy tài nguyên cần tìm.',
     'whoops'          => 'Whoops!',
-    'weHitASnag'      => 'We seem to have hit a snag. Please try again later...',
+    'weHitASnag'      => 'Đã có lỗi xảy ra. Vui lòng thử lại...',
 ];
