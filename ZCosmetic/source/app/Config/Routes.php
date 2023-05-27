@@ -55,8 +55,7 @@ $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
 //Admin
 $routes->get('CP/', 'CP::index');
-$routes->get('CP/AccountsDetail/(:num)', 'CP::accDetails/$1');
-$routes->get('CP/AccountsEdit/(:num)', 'CP::accEdit/$1');
+$routes->match(['get', 'post'], 'CP/Account/(:num)', 'CP::account/$1');
 
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
@@ -79,6 +78,7 @@ $routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
 $routes->post('/Ajax/BuyNow', 'Ajax::buyNow');
 $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -32,7 +32,13 @@
 </style>
 <h2 style="text-align: center">Danh sách người dùng</h2>
 <div class="container" style="min-height: 500px">
-    <?php if (count($dstk) == 0) { ?>
+    <?php
+
+use App\Models\LoaiTaiKhoanModel;
+use App\Models\NguoiDungModel;
+use App\Models\NhanVienModel;
+
+ if (count($tks) == 0) { ?>
         <h5 style="color: orangered; text-align: center">Không có thông tin</h5>
     <?php } else { ?>
         <div class="table">
@@ -63,25 +69,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($dstk as $tk) { ?>
+                    <?php foreach ($tks as $tk) { ?>
                         <tr style="text-align: center;">
                             <td>
-                                <?= $tk->Ma ?>
+                                <?= $tk['Ma'] ?>
                             </td>
                             <td>
-                                <?= $tk->TenDangNhap ?>
+                                <?= $tk['TenDangNhap'] ?>
                             </td>
                             <td>
-                                <?= $tk->HoVaTen ?>
+                                <?php
+                                switch ($tk['LoaiTaiKhoan']) {
+                                    case 1:
+                                        echo (new NhanVienModel())->getNVByID($tk['Ma'])['HoVaTen'];
+                                        break;
+                                    case 2:
+                                        echo (new NguoiDungModel())->getNDByID($tk['Ma'])['HoVaTen'];
+                                        break;
+                                }
+                                ?>
                             </td>
                             <td style="text-align: left">
                                 <div style="text-align: center">
-                                    <?= $tk->MaNhomQuyen ?>
+                                    <?= (new LoaiTaiKhoanModel())->getLoaiByID($tk['LoaiTaiKhoan'])['Ten'] ?>
                                 </div>
                             </td>
                             <td>
-                                <a href="CP/AccountsDetail/<?= $tk->Ma ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                <a href="CP/AccountsEdit/<?= $tk->Ma ?>" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
+                                <a href="/CP/Account/<?= $tk['Ma'] ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
                                 <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>

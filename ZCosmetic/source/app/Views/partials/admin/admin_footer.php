@@ -20,7 +20,7 @@
     <div class="container-custom" style="background-color: #082b51 !important; color: rgba(255, 255, 255, 0.75); ">
         <div class="row">
             <div class="col-md-8 col-sm-8 padding-top-10">
-                <!--?xml version="1.0" encoding="utf-16"?--><p xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:local="urn:local"><b style="text-transform:uppercase">Hệ thống quản lý - Thư viện Đại học Lùa Gà<span style="display:none">hidden</span></b></p><p xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:local="urn:local">
+                <!--?xml version="1.0" encoding="utf-16"?--><p xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:local="urn:local"><b style="text-transform:uppercase">Hệ thống quản lý - Mỹ Phẩm Hasagi<span style="display:none">hidden</span></b></p><p xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:local="urn:local">
                     <span><strong>Địa chỉ liên hệ: </strong>​140 Lê Trọng Tấn, Tân Phú, TP. Hồ Chí Minh, Việt Nam<span style="display:none">hidden</span></span><br><span><strong>Điện thoại: </strong>028 3816 1673 - 137<span style="display:none">hidden</span></span><br><span><strong>Email: </strong>noreply.qltv@gmail.com<span style="display:none">hidden</span></span><br>
                     Hotline: 097 117 3837
                     <span style="display:none">hidden</span>
@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-md-7 col-sm-6 padding-top-10">
                     <!--?xml version="1.0" encoding="utf-16"?-->
-                    2022 © Thư viện Đại học Lùa Gà.
+                    2023 © HasagiCosmetic.
                     <span style="display:none" xmlns="http://www.w3.org/1999/xhtml" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:local="urn:local">hidden</span>
                 </div>
             </div>
