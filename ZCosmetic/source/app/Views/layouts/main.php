@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../../assets/css/style.min.css">
     
     <link rel="stylesheet" href="../../assets/css/stylechat.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
 
@@ -67,9 +68,9 @@
     </style>
 </head>
 <?php
-$db = new DatabaseHelper();
-$id_user = 1;
-$cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
+    $db = new DatabaseHelper();
+    $id_user = 1;
+    $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 ?>
 
 <body>
@@ -89,7 +90,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
             <?= $this->include('partials/footer') ?>
         </footer>
         <!--== End Footer Area Wrapper ==-->
- 
+
         <!--== Scroll Top Button ==-->
         <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 

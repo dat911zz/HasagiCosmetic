@@ -22,8 +22,8 @@ if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
         $name = "Khách Hàng ";
     }
     $row = $db->executeReader($sql);
-    if($db->executeCount($sql)){
-      $taikhoan = $row[0];
+    if($db->executeCount($sql)) {
+        $taikhoan = $row[0];
     }
 }
 
