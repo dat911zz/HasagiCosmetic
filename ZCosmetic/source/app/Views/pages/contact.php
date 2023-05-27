@@ -1,14 +1,14 @@
-<?php 
-    class Email{
-        public $email;
-        public $hoTen;
-        public $message;
-        public $subject;
-        public function __construct(){
-
-        }
-        
+<?php
+class Email
+{
+    public $email;
+    public $hoTen;
+    public $message;
+    public $subject;
+    public function __construct()
+    {
     }
+}
 ?>
 
 
@@ -19,7 +19,7 @@
 
 
 <body>
-
+    <?= include(FCPATH . '../source/app/Helpers/DatabaseHelper.php') ?>
     <!--== Wrapper Start ==-->
     <div class="wrapper">
         <header id="header">
@@ -109,7 +109,7 @@
             </div>
 
         </main>
-</div>
+    </div>
 
 
-<?= $this->endSection() ?>
+    <?= $this->endSection() ?>

@@ -67,7 +67,6 @@
         }
     </style>
 </head>
-<?= include(FCPATH . '../source/app/Helpers/DatabaseHelper.php') ?>
 <?php
     $db = new DatabaseHelper();
     $id_user = 1;
