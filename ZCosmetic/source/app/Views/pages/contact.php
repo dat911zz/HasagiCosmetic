@@ -1,9 +1,3 @@
-<?= $this->extend('layouts/main') ?>
-
-<!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
-<?= $this->section('content') ?>
-
-
 <?php 
     class Email{
         public $email;
@@ -18,20 +12,11 @@
 ?>
 
 
-<!--== Wrapper Start ==-->
-<div class="wrapper">
+<?= $this->extend('layouts/main') ?>
 
-    <main class="main-content">
+<!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
+<?= $this->section('content') ?>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script>
-        $(function() {
-            $("#header").load("header.php");
-            $("#footer").load("footer.php");
-        })
-    </script>
-
-</head>
 
 <body>
 
@@ -126,53 +111,5 @@
         </main>
 </div>
 
-<<<<<<< HEAD
-=======
-        <!--== Start Footer Area Wrapper ==-->
-        <footer class="footer-area">
-            <!--== Start Footer Main ==-->
-            <div class="footer-main">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-4">
-                            <div class="widget-item">
-                                <div class="widget-about">
-                                    <a class="widget-logo" href="/">
-                                        <img src="../../assets/images/logo.webp" width="95" height="68" alt="Logo">
-                                    </a>
-                                    <p class="desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-5 mt-md-0 mt-9">
-                            <div class="widget-item">
-                                <h4 class="widget-title">Information</h4>
-                                <ul class="widget-nav">
-                                    <li><a href="blog.php">Blog</a></li>
-                                    <li><a href="about-us.php">About us</a></li>
-                                    <li><a href="contact.php">Contact</a></li>
-                                    <li><a href="faq.php">Privacy</a></li>
-                                    <li><a href="account-login.php">Login</a></li>
-                                    <li><a href="product.php">Shop</a></li>
-                                    <li><a href="my-account.php">My Account</a></li>
-                                    <li><a href="faq.php">FAQs</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-lg-3 mt-lg-0 mt-6">
-                            <div class="widget-item">
-                                <h4 class="widget-title">Social Info</h4>
-                                <div class="widget-social">
-                                    <a href="https://twitter.com/" target="_blank" rel="noopener"><i class="fa fa-twitter"></i></a>
-                                    <a href="https://www.facebook.com/" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
-                                    <a href="https://www.pinterest.com/" target="_blank" rel="noopener"><i class="fa fa-pinterest-p"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--== End Footer Main ==-->
->>>>>>> fc4d9e606a84b37e8f4285bc8914d00c5053d024
 
 <?= $this->endSection() ?>

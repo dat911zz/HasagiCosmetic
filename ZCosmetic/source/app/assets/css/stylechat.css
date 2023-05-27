@@ -130,7 +130,6 @@ body{
 }
 .wrapper img{
   object-fit: cover;
-  border-radius: 50%;
 }
 .users header img{
   height: 50px;
