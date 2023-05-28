@@ -39,7 +39,7 @@ if (!isset($tk)) {
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Tên tài khoản <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="TenDangNhap" maxlength="50" required name="TenDangNhap" type="text" value="<?= $tk['TenDangNhap'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="TenDangNhap" maxlength="50" readonly name="TenDangNhap" type="text" value="<?= $tk['TenDangNhap'] ?>" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
