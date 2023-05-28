@@ -30,11 +30,11 @@ CI_ENVIRONMENT = deployment
 # DATABASE
 #--------------------------------------------------------------------
 
-database.default.hostname = localhost
-database.default.database = bbqtgxkn_cosmeticsstore
-database.default.username = root
-database.default.password = root
-database.default.DBDriver = MySQLi
+# database.default.hostname = localhost
+# database.default.database = bbqtgxkn_cosmeticsstore
+# database.default.username = root
+# database.default.password = root
+# database.default.DBDriver = MySQLi
 # database.default.DBPrefix =
 # database.default.port = 3306
 
