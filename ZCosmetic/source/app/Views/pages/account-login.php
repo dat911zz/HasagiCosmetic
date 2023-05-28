@@ -66,7 +66,7 @@ if (isset($_POST["btnSubmitLogin"])) {
     }
     if ($result) { // Đăng nhập thành công
         $_SESSION['MaTaiKhoan'] = $result[0]->Ma;
-        $_SESSION['username'] = $result[0]->TenDangNhap;
+        $_SESSION['username'] = $result[0]->TenDangNhap; 
         $_SESSION['password'] = $result[0]->MatKhau;
         $_SESSION['role'] = $result[0]->MaNhomQuyen;
         $role = $result[0]->MaNhomQuyen;

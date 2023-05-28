@@ -18,6 +18,7 @@
     $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
                                     FROM tbl_sanpham, tbl_giasanpham, tbl_gia
                                     WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null limit $posStart, $lim");
+                                    
 ?>
 
 <?= $this->extend('layouts/main') ?>

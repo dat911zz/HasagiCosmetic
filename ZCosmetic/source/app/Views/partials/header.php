@@ -80,7 +80,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                 </defs>
                             </svg>
                         </span>
-                    </button>
+                    </button>  
 
           <button class="header-action-btn cart" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#AsideOffcanvasCart" aria-controls="AsideOffcanvasCart">

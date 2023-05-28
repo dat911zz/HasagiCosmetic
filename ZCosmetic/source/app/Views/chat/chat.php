@@ -31,7 +31,18 @@ if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
     }
 }
 ?>
-<?= $this->extend('layouts/main') ?>
+<?php if($_SESSION['role'] == 3) {
+    ?> 
+  
+  <?= $this->extend('layouts/main') ?>
+  
+  <?php
+} else { ?> 
+  
+  <?= $this->extend('layouts/admin_layout') ?>
+
+  <?php } ?>
+
 
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
 <?= $this->section('content') ?>
