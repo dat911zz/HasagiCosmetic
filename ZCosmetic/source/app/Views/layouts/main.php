@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title><?= $title?></title>
+    <title>
+        <?= $title ?>
+    </title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -69,11 +71,10 @@
     </style>
 </head>
 <?php
-    session_start();
     $db = new DatabaseHelper();
-    $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
+    $id_user = 1;
     $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
-    ?>
+?>
 
 <body>
     <!--== Wrapper Start ==-->
@@ -375,7 +376,7 @@
                 window.location = "<?= base_url('/Pages/Logout') ?>";
                 die;
             }
-        }        
+        }
 
         function addCart($id_product, $quantity, $id_user) {
             checkLogin();
@@ -536,7 +537,6 @@
                     $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
                     $('.product-details-title').html(data.value[0].TenSanPham);
                     $('.product-details-title ~ p').html(data.value[0].MoTa);
-                    $('.pro-qty > input').val(1);
                     var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
                     $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
                     if (giamGia > 0) {
@@ -651,83 +651,111 @@
         }
 
 
-        function updateAccount($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
-        console.log(11111111);
-        $.ajax({
-            type: 'POST',
-            url: "<?= base_url('/Ajax/updateAccount') ?>",
-            dataType: 'json',
-            data: {
-                ten_dang_nhap: $ten_dang_nhap,
-                mat_khau: $mat_khau,
-                name: $name,
-                dob: $dob,
-                sex: $sex,
-                address: $address,
-                phone: $phone,
-                cmnd: $cmnd
-            },
-            success: function (data) {
-                if (data.msg == 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Cập nhật thành công !!!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Cập nhật thất bại',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+        function updateAccount($mataikhoan, $name, $dob, $sex, $address, $phone, $cmnd) {
+            console.log(11111111);
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/updateAccount') ?>",
+                dataType: 'json',
+                data: {
+                    mataikhoan: $mataikhoan,
+                    name: $name,
+                    dob: $dob,
+                    sex: $sex,
+                    address: $address,
+                    phone: $phone,
+                    cmnd: $cmnd
+                },
+                success: function (data) {
+                    if (data.msg == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cập nhật thành công !!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Cập nhật thất bại',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                    setTimeout(function () {
+                        window.location.replace("<?= base_url('/Pages/MyAccount') ?>");
+                    }, 2500);
                 }
-                setTimeout(function () {
-                    window.location.replace("<?= base_url('/Pages/MyAccount') ?>");
-                }, 2500);
-            }
-        });   
-    }
+            });
+        }
 
-        function account_register($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
-        console.log(11111111);
-        $.ajax({
-            type: 'POST',
-            url: "<?= base_url('/Ajax/addAccountRegister') ?>",
-            dataType: 'json',
-            data: {
-                ten_dang_nhap: $ten_dang_nhap,
-                mat_khau: $mat_khau,
-                name: $name,
-                dob: $dob,
-                sex: $sex,
-                address: $address,
-                phone: $phone,
-                cmnd: $cmnd
-            },
-            success: function (data) {
-                if (data.msg == 'success') {
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Tạo tài khoản thành công !!!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Tạo tài khoản thất bại',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+        function addAccountRegister($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
+            console.log(11111111);
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/addAccountRegister') ?>",
+                dataType: 'json',
+                data: {
+                    ten_dang_nhap: $ten_dang_nhap,
+                    mat_khau: $mat_khau,
+                    name: $name,
+                    dob: $dob,
+                    sex: $sex,
+                    address: $address,
+                    phone: $phone,
+                    cmnd: $cmnd
+                },
+                success: function (data) {
+                    if (data.msg == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Tạo tài khoản thành công !!!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Tạo tài khoản thất bại',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                    setTimeout(function () {
+                        window.location.replace("<?= base_url('/Pages/AccountLogin') ?>");
+                    }, 2500);
                 }
-                setTimeout(function () {
-                    window.location.replace("<?= base_url('/Pages/AccountLogin') ?>");
-                }, 2500);
-            }
-        });   
-    }
+            });
+        }
+
+        function updatePassword($mataikhoan, $password) {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('/Ajax/updatePassword') ?>",
+                dataType: 'json',
+                data: {
+                    mataikhoan: $mataikhoan,
+                    password: $password,
+                },
+                success: function (data) {
+                    if (data.msg == 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cập nhật mật khẩu thành công !!!',
+                            showConfirmButton: false,
+                            timer: 5000
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Cập nhật mật khẩu thất bại',
+                            showConfirmButton: false,
+                            timer: 5000
+                        });
+                    }
+                }
+            });
+        }
     </script>
 
 

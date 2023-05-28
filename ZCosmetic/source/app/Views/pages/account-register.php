@@ -88,15 +88,26 @@ function validate($data)
                                 <div class="my-account-form">
                                     <form method="post">
                                         <div class="row">
-                                            <div class="form-group mb-6">
-                                                <label for="register_username">Username or Email Address
-                                                    <sup>*</sup></label>
-                                                <input type="text" name="txtUser" id="register_username">
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-6">
+                                                    <label for="register_username">Tài khoản
+                                                        <sup>*</sup></label>
+                                                    <input type="text" name="txtUser" id="register_username">
+                                                </div>
                                             </div>
-                                            <div class="form-group mb-6">
-                                                <label for="register_pwsd">Password <sup>*</sup></label>
-                                                <input type="password" name="txtPassword" id="register_pwsd">
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-6">
+                                                    <label for="register_pwsd">Mật khẩu <sup>*</sup></label>
+                                                    <input type="password" name="txtPassword" id="register_pwsd">
+                                                </div>
                                             </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group mb-6">
+                                                    <label for="register_confpwsd">Nhập lại mật khẩu <sup>*</sup></label>
+                                                    <input type="password" name="txtConfPassword" id="register_confpwsd">
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="f_name">Họ tên <abbr class="required"
@@ -111,15 +122,24 @@ function validate($data)
                                                     <input id="dob" name="dob" type="date" class="form-control">
                                                 </div>
                                             </div>
+
                                             <div class="col-md-12">
                                                 <div>
-                                                    <label for="sex">Giới tính <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="sexMale" name="sex" type="checkbox" value="Male">Male
-                                                    <input id="sexFemale" name="sex" type="checkbox"
-                                                        value="Female">Female
+
+                                                    <fieldset data-role="controlgroup">
+                                                        <label>Giới tính<abbr class="required"
+                                                                title="required">*</abbr></label>
+                                                        <label for="male">Male</label>
+                                                        <input type="radio" class="sex" name="sex" id="sexMale" value="male"
+                                                            checked>
+                                                        <label for="female">Female</label>
+                                                        <input type="radio" class="sex" name="sex" id="sexFemale" value="female">
+                                                    </fieldset>
                                                 </div>
                                             </div>
+
+
+
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label for="city">Tỉnh / Thành Phố <abbr class="required"
@@ -185,7 +205,7 @@ function validate($data)
                                                     khoản của bạn và cho các mục đích khác được mô tả trong chính sách
                                                     bảo
                                                     mật của chúng tôi.</p>
-                                                <a type="submit" class="btnSubmit" name="btnSubmit"
+                                                <a type="submit" class="btn btnSubmit" name="btnSubmit"
                                                     id="btnSubmit">Register</a>
                                                 <a href="/Pages/AccountLogin" class="lost-password">Bạn đã có tài
                                                     khoản?</a>
@@ -323,6 +343,7 @@ function validate($data)
         }
         $ten_dang_nhap = $('#register_username').val();
         $mat_khau = $('#register_pwsd').val();
+        $confirm = $('#register_confpwsd').val();
         $name = $('#f_name').val();
         $dob = $('#dob').val();
         $phone = $('#phone').val();
@@ -332,13 +353,15 @@ function validate($data)
         $ward_new = $('#ward  option[Selected]').text();
         $detailsAddress_new = $('#street-address').val();
         if ($name.length <= 0) {
-            AlertError('Tên người nhận đang trống');
+            AlertError('Tên tài khoản đang trống');
         } else if ($('#city').val() == null) {
             AlertError('Vui lòng chọn tỉnh / Thành phố');
         } else if ($('#district').val() == null) {
             AlertError('Vui lòng chọn Quận / Huyện');
         } else if ($('#ward').val() == null) {
             AlertError('Vui lòng chọn Phường / Xã');
+        } else if ($('#register_pwsd').val() !== $('#register_confpwsd').val()) {
+            AlertError('Nhập lại mật khẩu không đúng !!');
         } else {
             if ($detailsAddress_new.length > 0) {
                 $address = $detailsAddress_new + ', ';
@@ -346,8 +369,8 @@ function validate($data)
                 $address = '';
             }
             $address += $ward_new + ', ' + $district_new + ', ' + $city_new;
-            console.log('12321321321321321', $sex , $dob);
-            account_register($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd);
+            console.log('12321321321321321', $sex, $dob);
+            addAccountRegister($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd);
         }
     });
 </script>
