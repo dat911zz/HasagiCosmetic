@@ -93,6 +93,7 @@
                         <th>Đơn vị tính</th>
                         <th>Giảm giá</th>
                         <th>Mô Tả</th>
+                        <th></th>
                         <!-- <th class="text-center">Công Cụ</th> -->
                     </tr>
                 </thead>
@@ -111,19 +112,21 @@
                     } else {
                         foreach ($prods as $sp) { ?>
                             <tr>
-                                <td class="text-center MaHinh"><img src="../../assets/Product_Images/<?= $sp->MaHinh ?>.jpg" style="height: 10rem; width: 100%" /></td>
+                                <td class="text-center MaHinh"><img src="../../assets/Product_Images/<?= $sp->MaHinh ?>.jpg" style="width: 50px; object-fit:contain" /></td>
                                 <td class="text-center"><?= $sp->Ma ?></td>
-                                <td class="text-center">
-                                    <input type="text" readonly name="TenSanPham" value="<?= $sp->TenSanPham ?>">
+                                <td style="text-align: justify;">
+                                    <span class="short-tent">
+                                    <?= $sp->TenSanPham ?>
+                                    </span>
                                 </td>
                                 <td class="text-center">
-                                    <input type="text" name="SoLuongTon" value="<?= $sp->SoLuongTon ?>">
+                                <?= $sp->SoLuongTon ?>
                                 </td>
                                 <td class="text-center">
-                                    <input type="text" name="XuatXu" value="<?= $sp->XuatXu ?>">
+                                <?= $sp->XuatXu ?>
                                 </td>
                                 <td class="text-center">
-                                    <input type="text" name="ThuongHieu" value="<?= $sp->ThuongHieu ?>">
+                                <?= $sp->ThuongHieu ?>
                                 </td>
                                 <td class="text-center">
                                     <?php
@@ -137,17 +140,18 @@
                                     ?>
                                 </td>
                                 <td class="text-center">
-                                    <input type="number" name="GiamGia" value="<?= $sp->GiamGia ?>">
+                                <?= $sp->GiamGia ?>
                                 </td>
                                 <td>
-                                    <div class="text-center short-tent">
-                                        <textarea name="MoTa" cols="30" rows="5"><?= $sp->MoTa ?></textarea>
+                                    <div style="text-align: justify;" class="short-tent">
+                                    <?= $sp->MoTa ?>
                                     </div>
                                 </td>
-                                <!-- <td>
-                                    <a href="/CP/Account/<?= 1 ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                    <a onclick="delAcc(<?= 1 ?>)" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
-                                </td> -->
+                                <td>
+                                    <button class="btn btn-primary action-btn-add-product" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal"><i class="bi bi-cart-plus"></i></button>
+                                    <!-- <a href="/CP/Account/<?= 1 ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
+                                    <a onclick="delAcc(<?= 1 ?>)" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a> -->
+                                </td>
                             </tr>
                         <?php }
                         ?>
@@ -157,6 +161,78 @@
                 </tbody>
             </table>
 
+            <aside class="product-cart-view-modal modal fade" id="action-QuickViewModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body" style="background-color: #fff;">
+                        <div class="product-quick-view-content">
+                            <button style="color:#000;" type="button" class="btn-close" data-bs-dismiss="modal">
+                                <span class="fa fa-close"></span>
+                            </button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <!--== Start Product Thumbnail Area ==-->
+                                        <div class="product-single-thumb">
+                                            <img src="../../assets/images/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech">
+                                        </div>
+                                        <!--== End Product Thumbnail Area ==-->
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <!--== Start Product Info Area ==-->
+                                        <div class="product-details-content">
+                                            <h3 class="product-details-title shorten-text--two-row">Offbline Instant Age Rewind Eraser.</h3>
+                                            <div class="product-details-review mb-5">
+                                                <div class="product-review-icon">
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-half-o"></i>
+                                                </div>
+                                                <button type="button" class="product-review-show">150 reviews</button>
+                                            </div>
+                                            <p class="mb-6 shorten-text--three-row" style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                                sequi amet consectetur.</p>
+                                            <div class="product-details-pro-qty" style="display: flex; align-items: center; justify-content: space-between;">
+                                                <div class="row" style="width:100%;">
+                                                <div class="pro-qty col-5">
+                                                    <input type="text" title="Quantity" value="1">
+                                                </div>
+                                                <div class="col-7">
+                                                    <select style="    width: 100%; height: 100%; border-radius: 10px; padding: 10px;">
+                                                        <?php
+                                                        $ctys = $db->executeReader('SELECT * FROM tbl_nhacungcap');
+                                                        foreach($ctys as $cty) {
+                                                            ?>
+                                                            <option value="<?= $cty->Ma ?>"><?= $cty->Ten ?></option>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="product-details-action">
+                                                <div class="prices">
+                                                    <span class="price" style="font-size: 20px;">100.000 VNĐ</span>
+                                                </div>
+                                            </div>
+                                            <div class="product-details-cart-wishlist" style="    margin-top: 10px; margin-left: 0;">
+                                                <button type="button" class="btn btn-primary add-cart" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                                    <span>Nhập hàng</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!--== End Product Info Area ==-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
         </div>
 
     </div>
@@ -205,6 +281,27 @@
             }
         });
     });
+    $('.action-btn-add-product').on('click', function() {
+            $.ajax({
+                type: 'POST',
+                url: "<?= base_url('Ajax/GetProduct') ?>",
+                dataType: 'json',
+                data: {
+                    id_product: $(this).data('id-product')
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('.product-details-cart-wishlist .add-cart').data('id-product', data.value[0].Ma);
+                    $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
+                    $('.product-details-title').html(data.value[0].TenSanPham);
+                    $('.product-details-title ~ p').html(data.value[0].MoTa);
+                    $('.pro-qty > input').val(1);
+                    var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
+                    $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
+                 
+                }
+            });
+        });
 </script>
 
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
