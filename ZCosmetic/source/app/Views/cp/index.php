@@ -32,7 +32,13 @@
 </style>
 <h2 style="text-align: center">Danh sách người dùng</h2>
 <div class="container" style="min-height: 500px">
-    <?php if (count($dstk) == 0) { ?>
+    <?php
+
+    use App\Models\LoaiTaiKhoanModel;
+    use App\Models\NguoiDungModel;
+    use App\Models\NhanVienModel;
+
+    if (count($tks) == 0) { ?>
         <h5 style="color: orangered; text-align: center">Không có thông tin</h5>
     <?php } else { ?>
         <div class="table">
@@ -63,26 +69,40 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($dstk as $tk) { ?>
+                    <?php foreach ($tks as $tk) { ?>
                         <tr style="text-align: center;">
                             <td>
-                                <?= $tk->MaTK ?>
+                                <?= $tk['Ma'] ?>
                             </td>
                             <td>
-                                <?= $tk->TenDangNhap ?>
+                                <?= $tk['TenDangNhap'] ?>
                             </td>
                             <td>
-                                <?= $tk->HoVaTen ?>
+                                <?php
+                                switch ($tk['LoaiTaiKhoan']) {
+                                    case 1:
+                                        $nv = (new NhanVienModel())->findAll();
+                                        if (isset((new NhanVienModel())->getNVByID($tk['Ma'])['HoVaTen'])) {
+                                            echo (new NhanVienModel())->getNVByID($tk['Ma'])['HoVaTen'];
+                                        }
+                                        break;
+                                    case 2:
+                                        $nd = (new NguoiDungModel())->findAll();
+                                        if (isset((new NguoiDungModel())->getNDByID($tk['Ma'])['HoVaTen'])) {
+                                            echo (new NguoiDungModel())->getNDByID($tk['Ma'])['HoVaTen'];
+                                        }
+                                        break;
+                                }
+                                ?>
                             </td>
                             <td style="text-align: left">
                                 <div style="text-align: center">
-                                    <?= $tk->NhomQuyen ?>
+                                    <?= (new LoaiTaiKhoanModel())->getLoaiByID($tk['LoaiTaiKhoan'])['Ten'] ?>
                                 </div>
                             </td>
                             <td>
-                                <a href="CP/AccountsDetail/<?= $tk->MaTK ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                <a href="CP/AccountsEdit/<?= $tk->MaTK ?>" class="btn" style="background-color: #36ff00; color: #fff; font-size: 1rem; "><i class="bi bi-pencil"></i></a>
-                                <a onclick="" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
+                                <a href="/CP/Account/<?= $tk['Ma'] ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
+                                <a onclick="delAcc(<?= $tk['Ma'] ?>)" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -94,36 +114,43 @@
 </div>
 
 <script>
-    var confirmApproval = (functionName, objectName, url, stt, maNSD, maPhong, thoiGianMuon, thoiGianTra) => {
+    var delAcc = (id) => {
         Swal.fire({
             icon: 'warning',
             title: 'Cảnh Báo!',
-            html: '<div>Bạn có chắc muốn thực hiện hành động này?</div>' +
-                '<div>Chi tiết: <span style="font-weight: bold">' + functionName.toLowerCase() + ' ' + objectName.toLowerCase() + ' có số thứ tự là <span style="color: red">' + stt + '</span></span></div>',
+            html: '<div>Bạn có chắc muốn xóa tại khoản có mã '+ id +' ?</div>',
             showCancelButton: true,
-            confirmButtonText: functionName,
             cancelButtonText: 'Hủy'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
                     type: "POST",
-                    url: url,
-                    data: {
-                        maNSD,
-                        maPhong,
-                        thoiGianMuon,
-                        thoiGianTra
-                    },
-                    success: function(r) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Thành Công',
-                            text: 'Đã ' + functionName.toLowerCase() + ' ' + objectName.toLowerCase() + ' có stt là ' + stt + ' !',
-                            showConfirmButton: true,
-                            timer: 2000
-                        }).then((result) => {
-                            location.reload();
-                        });
+                    url: '/Ajax/DeleteAccount/' + id,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data.msg);
+                        if (data.msg == 'ok') {
+                            console.log(data.d);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Thành Công',
+                                text: 'Xóa tài khoản ' + data.target + ' thành công!',
+                                showConfirmButton: true,
+                                timer: 2500
+                            }).then(() =>{
+                                location.reload();
+                            })
+                        }
+                        else {
+                            console.log(data.d);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Thất Bại',
+                                html: '<span style="font-weight: bold">Có lỗi đã xảy ra, vui lòng thử lại! <br/>Chi tiết: </span><span style="color: red;">' + data.msg + '</span>',
+                                showConfirmButton: true,
+                                timer: 3500
+                            })
+                        }
                     }
                 });
             }

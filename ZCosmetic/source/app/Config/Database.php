@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'      => '',
-        'hostname' => 'x14.x10hosting.com',
-        'username' => 'bbqtgxkn_CosmeticsStore',
-        'password' => 'Tcjnwjq*qHis6.T',
-        'database' => '',
+        'hostname' => 'localhost',
+        'username' => 'root',
+        'password' => '',
+        'database' => 'bbqtgxkn_CosmeticsStore',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,

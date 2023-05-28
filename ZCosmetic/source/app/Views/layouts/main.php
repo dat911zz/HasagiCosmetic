@@ -35,10 +35,12 @@
     <link rel="stylesheet" href="../../assets/css/style.min.css">
     
     <link rel="stylesheet" href="../../assets/css/stylechat.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
     <style>
         .swal2-popup {
@@ -67,9 +69,9 @@
     </style>
 </head>
 <?php
-$db = new DatabaseHelper();
-$id_user = 1;
-$cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
+    $db = new DatabaseHelper();
+    $id_user = 1;
+    $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 ?>
 
 <body>
@@ -89,7 +91,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
             <?= $this->include('partials/footer') ?>
         </footer>
         <!--== End Footer Area Wrapper ==-->
- 
+
         <!--== Scroll Top Button ==-->
         <div id="scroll-to-top" class="scroll-to-top"><span class="fa fa-angle-up"></span></div>
 

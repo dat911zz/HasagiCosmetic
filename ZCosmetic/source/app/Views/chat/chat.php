@@ -1,36 +1,35 @@
-<?php 
+<?php
 session_start();
-    if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
+if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
     $myJS = <<<EOT
       <script type='text/javascript'>
           window.location.replace("/Pages/AccountLogin");
       </script>
       EOT;
     echo($myJS);
+} else {
+    include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    $db = new DatabaseHelper();
+
+    //$user_id = $_GET['user_id'];
+    $user_id = array($ID_User)[0];
+    if($_SESSION['role'] == 3) {
+        $sql ="SELECT * FROM tbl_nhanvien WHERE Ma = {$user_id}";
+
     } else {
-        include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
-        $db = new DatabaseHelper();
-
-        //$user_id = $_GET['user_id'];
-        $user_id = array($ID_User)[0];
-        if($_SESSION['role'] == 3){
-          $sql ="SELECT * FROM tbl_nhanvien WHERE Ma = {$user_id}";
-
-        }
-        else{
-          $sql ="SELECT * FROM tbl_nguoidung WHERE Ma = {$user_id}";
-        }
-        if($db->executeCount($sql) > 0){
-          $row = $db->executeReader($sql)[0];
-        }else{
-          $myJS = <<<EOT
+        $sql ="SELECT * FROM tbl_nguoidung WHERE Ma = {$user_id}";
+    }
+    if($db->executeCount($sql) > 0) {
+        $row = $db->executeReader($sql)[0];
+    } else {
+        $myJS = <<<EOT
           <script type='text/javascript'>
               window.location.replace("/Chat/Users");
           </script>
           EOT;
         echo($myJS);
-        }
     }
+}
 ?>
 <?= $this->extend('layouts/main') ?>
 
@@ -41,11 +40,11 @@ session_start();
   <div class="wrapper">
     <section class="chat-area">
       <header>
-        <?php 
-         
-        ?>
+        <?php
+
+?>
         <a href="/Chat/Users" class="back-icon"><i class="fas fa-arrow-left"></i></a>
-        <!-- <img src="php/images/<?php // echo $row['img']; ?>" alt=""> -->
+        <!-- <img src="php/images/<?php // echo $row['img'];?>" alt=""> -->
         <img src="../assets/images/admin-logo/Logo.png" alt="">
         <div class="details">
           <span><?php echo $row->HoVaTen?></span>
