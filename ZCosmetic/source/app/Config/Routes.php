@@ -78,11 +78,15 @@ $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
 $routes->post('/Ajax/SaveAccount', 'Ajax::saveAccount');
 $routes->post('/Ajax/DeleteAccount/(:num)', 'Ajax::deleteAccount/$1');
+
+
 $routes->get('/Pages/AccountRegister', 'Ajax::account_register');
 $routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
 
 $routes->get('/Pages/MyAccount', 'Ajax::my_account');
 $routes->post('/Ajax/updateAccount', 'Ajax::updateAccount');
+
+$routes->post('/Ajax/updatePassword', 'Ajax::updatePassword');
 
 /*
  * --------------------------------------------------------------------

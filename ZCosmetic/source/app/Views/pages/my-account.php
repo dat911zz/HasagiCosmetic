@@ -1,4 +1,3 @@
-
 <?= $this->extend('layouts/main') ?>
 
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
@@ -25,20 +24,6 @@ $ward = $arrAdress[$len - 3];
 $detailsAddress = '';
 if (isset($arrAdress[$len - 4])) {
     $detailsAddress = $arrAdress[$len - 4];
-}
-
-
-
-if (isset($_POST["btnSubmit"])) {
-    $detailsAddress = '';
-    $birtday = '2002-10-10';
-    $sex = null;
-    $name = $_POST('f_name');
-    $adress = $_COOKIE['address'];
-    $phone = $_POST('phone');
-    $CMND = $_POST('CMND');
-    $param = array($name, $birtday, $sex, $adress, $phone, $CMND, $mail);
-    $kq = $db->executeNonQuery('UPDATE tbl_nguoidung SET `HoVaTen` = ?, `NgaySinh` = ? `GioiTinh` = ?,`DiaChi` = ?,`SDT` =? ,`CMND = ?`) WHERE Ma = ?', $param);
 }
 ?>
 
@@ -91,7 +76,7 @@ if (isset($_POST["btnSubmit"])) {
                                     aria-controls="payment-method" aria-selected="false">Phương thức thanh toán</button>
                                 <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab"
                                     data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit"
-                                    aria-selected="false">Địa chỉ</button>
+                                    aria-selected="false">Cập nhật mật khẩu</button>
                                 <button class="nav-link" id="account-info-tab" data-bs-toggle="tab"
                                     data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info"
                                     aria-selected="true">Chi tiết tài khoản</button>
@@ -107,7 +92,7 @@ if (isset($_POST["btnSubmit"])) {
                                         <h3>Tài Khoản Của Tôi</h3>
                                         <div class="welcome">
                                             <p>Xin chào, <strong>
-                                                    <?php echo $mail ?>
+                                            <?php echo $user->HoVaTen ?>
                                                 </strong> (Bạn có thể đăng xuất <strong></strong><a href="/Pages/Logout"
                                                     class="logout"> Tại đây</a>)</p>
                                         </div>
@@ -205,115 +190,145 @@ if (isset($_POST["btnSubmit"])) {
                                 <div class="tab-pane fade" id="address-edit" role="tabpanel"
                                     aria-labelledby="address-edit-tab">
                                     <div class="myaccount-content">
-                                        <h3>Billing Address</h3>
-                                        <address>
-                                            <p><strong>Alex Tuntuni</strong></p>
-                                            <p>1355 Market St, Suite 900 <br>
-                                                San Francisco, CA 94103</p>
-                                            <p>Mobile: (123) 456-7890</p>
-                                        </address>
-                                        <a href="#/" class="check-btn sqr-btn"><i class="fa fa-edit"></i> Edit
-                                            Address</a>
+                                        <h3>Cập nhật mật khẩu</h3>
+                                        <form method="post">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="f_name">Họ tên <abbr class="required"
+                                                                title="required">*</abbr></label>
+                                                        <input id="f_name" value="<?php echo $user->HoVaTen ?>"
+                                                            name="f_name" type="text" class="form-control" disabled>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="f_passwordold">Mật khẩu hiện tại<abbr class="required"
+                                                                title="required">*</abbr></label>
+                                                        <input id="f_passwordold" name="f_passwordold" type="password"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="f_password">Mật khẩu mới<abbr class="required"
+                                                                title="required">*</abbr></label>
+                                                        <input id="f_password" name="f_password" type="password"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="f_confpassword">Nhập lại mật khẩu <abbr
+                                                                class="required" title="required">*</abbr></label>
+                                                        <input id="f_confpassword" name="f_confpassword" type="password"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group text-align-center">
+                                                    <button type="submit" class="btn btnSubmit save"
+                                                        name="btnSubmitPassword" id="btnSubmitPassword">Lưu thay
+                                                        đổi</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-info" role="tabpanel"
                                     aria-labelledby="account-info-tab">
                                     <div class="myaccount-content">
-                                        <h3>Account Details</h3>
+                                        <h3>Chi tiết Tài Khoản</h3>
                                         <div class="account-details-form">
-                                        <form method="post">
-                                        <div class="row">
-                                            <div class="form-group mb-6">
-                                                <label for="register_username">Username or Email Address
-                                                    <sup>*</sup></label>
-                                                <input type="text" value="<?php $mail ?>" name="txtUser" id="register_username">
-                                            </div>
-                                            <div class="form-group mb-6">
-                                                <label for="register_pwsd">Password <sup>*</sup></label>
-                                                <input type="password" name="txtPassword" id="register_pwsd">
-                                            </div>
-                                            <div class="form-group mb-6">
-                                                <label for="register_confpwsd">Confirm Password <sup>*</sup></label>
-                                                <input type="password" name="txtConfirmPassword" id="register_confpwsd">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="f_name">Họ tên <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="f_name" name="f_name" type="text" class="form-control">
+                                            <form method="post">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="f_name">Họ tên <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <input id="f_name" value="<?php echo $user->HoVaTen ?>"
+                                                                name="f_name" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="dob">Ngày sinh <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <input id="dob" value="<?php echo $user->NgaySinh ?>"
+                                                                name="dob" type="date" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div>
+
+                                                            <fieldset data-role="controlgroup">
+                                                                <label>Giới tính<abbr class="required"
+                                                                        title="required">*</abbr></label>
+                                                                <label for="male">Male</label>
+                                                                <input type="radio" class="sex" name="sex" id="sexMale"
+                                                                    value="male" checked>
+                                                                <label for="female">Female</label>
+                                                                <input type="radio" class="sex" name="sex"
+                                                                    id="sexFemale" value="female">
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="city">Tỉnh / Thành Phố <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <select id="city" class="form-control wide">
+                                                                <option value="null" selected>Chọn</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-4">
+                                                        <div class="form-group">
+                                                            <label for="district">Quận / Huyện <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <select id="district" class="form-control wide">
+                                                                <option value="null" selected>Chọn</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12 mb-4">
+                                                        <div class="form-group">
+                                                            <label for="ward">Phường / Xã <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <select id="ward" class="form-control wide">
+                                                                <option value="null" selected>Chọn</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="street-address">Địa chỉ</label>
+                                                            <input id="street-address" type="text"
+                                                                value="<?php echo $user->DiaChi ?>"
+                                                                class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label for="phone">SĐT <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <input id="phone" value="<?php echo $user->SDT ?>"
+                                                                name="phone" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Chứng Minh Nhân Dân <abbr class="required"
+                                                                    title="required">*</abbr></label>
+                                                            <input id="identity" value="<?php echo $user->CMND ?>"
+                                                                name="identity" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group text-align-center">
+                                                        <a type="submit" class="btn btnSubmit save" name="btnSubmit"
+                                                            id="btnSubmit">Lưu thay đổi</a>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="dob">Ngày sinh <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="dob" name="dob" type="date" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div>
-                                                    <label for="sex">Giới tính <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="sexMale" name="sex" type="checkbox" value="Male">Male
-                                                    <input id="sexFemale" name="sex" type="checkbox"
-                                                        value="Female">Female
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="city">Tỉnh / Thành Phố <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <select id="city" class="form-control wide">
-                                                        <option value="null" selected>Chọn</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 mb-4">
-                                                <div class="form-group">
-                                                    <label for="district">Quận / Huyện <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <select id="district" class="form-control wide">
-                                                        <option value="null" selected>Chọn</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 mb-4">
-                                                <div class="form-group">
-                                                    <label for="ward">Phường / Xã <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <select id="ward" class="form-control wide">
-                                                        <option value="null" selected>Chọn</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="street-address">Địa chỉ</label>
-                                                    <input id="street-address" type="text" class="form-control"
-                                                        placeholder="Số nhà, ...">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label for="phone">SĐT <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="phone" name="phone" type="text" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Chứng Minh Nhân Dân <abbr class="required"
-                                                            title="required">*</abbr></label>
-                                                    <input id="identity" name="identity" type="text"
-                                                        class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <a type="submit" class="btnSubmit" name="btnSubmit"
-                                                    id="btnSubmit">Lưu thay đổi</a>
-                                            </div>
-                                        </div>
-                                    </form>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -717,6 +732,16 @@ if (isset($_POST["btnSubmit"])) {
             });
             //$('swal-select').remove();
         }
+
+        function AlertErrorPassword($text) {
+            Swal.fire({
+                icon: 'error',
+                title: $text,
+                showConfirmButton: false,
+                timer: 20000
+            });
+            //$('swal-select').remove();
+        }
     </script>
     <script>
         $('#btnSubmit').on('click', function () {
@@ -726,9 +751,6 @@ if (isset($_POST["btnSubmit"])) {
                     $sex = checkboxes[i].value;
                 }
             }
-            $ten_dang_nhap = $('#register_username').val();
-            $mat_khau = $('#register_pwsd').val();
-            $conf_password = $('#register_confpwsd').val();
             $name = $('#f_name').val();
             $dob = $('#dob').val();
             $phone = $('#phone').val();
@@ -745,18 +767,43 @@ if (isset($_POST["btnSubmit"])) {
                 AlertError('Vui lòng chọn Quận / Huyện');
             } else if ($('#ward').val() == null) {
                 AlertError('Vui lòng chọn Phường / Xã');
-            }  else if ($('#register_pwsd').val() !== $('#register_confpwsd').val()) {
+            } else if ($('#register_pwsd').val() !== $('#register_confpwsd').val()) {
                 AlertError('Vui lòng nhập đúng mật khẩu');
-            }  else {
+            } else {
                 if ($detailsAddress_new.length > 0) {
                     $address = $detailsAddress_new + ', ';
                 } else {
                     $address = '';
                 }
                 $address += $ward_new + ', ' + $district_new + ', ' + $city_new;
-                updateAccount($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd);
+                updateAccount(<?= $MaTaiKhoan ?>, $name, $dob, $sex, $address, $phone, $cmnd);
+            }
+        });
+
+        $('#btnSubmitPassword').on('click', function () {
+            $passwordold = $('#f_passwordold').val();
+            $password = $('#f_password').val();
+            $confpassword = $('#f_confpassword').val();
+            if ($password.length <= 0) {
+                AlertErrorPassword('Mật khẩu không được để trống');
+            } else if ($confpassword.length <= 0) {
+                AlertErrorPassword('Mật khẩu không được để trống');
+            } else if ($confpassword !== $password) {
+                AlertErrorPassword('Mật khẩu không trùng');
+            } else if (<?php echo $pass ?> != $passwordold) {
+                AlertErrorPassword('Mật khẩu hiện tại không được để trống');
+            } else {
+                updatePassword(<?= $MaTaiKhoan ?>, $password);
             }
         });
     </script>
+    <style>
+        .save {
+            margin-top: 20px;
+        }
 
+        .text-align-center {
+            text-align: center;
+        }
+    </style>
     <?= $this->endSection() ?>
