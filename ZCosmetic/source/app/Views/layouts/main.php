@@ -637,6 +637,85 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                 }
             });
         }
+
+
+        function updateAccount($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
+        console.log(11111111);
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url('/Ajax/updateAccount') ?>",
+            dataType: 'json',
+            data: {
+                ten_dang_nhap: $ten_dang_nhap,
+                mat_khau: $mat_khau,
+                name: $name,
+                dob: $dob,
+                sex: $sex,
+                address: $address,
+                phone: $phone,
+                cmnd: $cmnd
+            },
+            success: function (data) {
+                if (data.msg == 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cập nhật thành công !!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cập nhật thất bại',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                setTimeout(function () {
+                    window.location.replace("<?= base_url('/Pages/MyAccount') ?>");
+                }, 2500);
+            }
+        });   
+    }
+
+        function account_register($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
+        console.log(11111111);
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url('/Ajax/addAccountRegister') ?>",
+            dataType: 'json',
+            data: {
+                ten_dang_nhap: $ten_dang_nhap,
+                mat_khau: $mat_khau,
+                name: $name,
+                dob: $dob,
+                sex: $sex,
+                address: $address,
+                phone: $phone,
+                cmnd: $cmnd
+            },
+            success: function (data) {
+                if (data.msg == 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Tạo tài khoản thành công !!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Tạo tài khoản thất bại',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                setTimeout(function () {
+                    window.location.replace("<?= base_url('/Pages/AccountLogin') ?>");
+                }, 2500);
+            }
+        });   
+    }
     </script>
 
 

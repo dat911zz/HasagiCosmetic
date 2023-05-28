@@ -43,13 +43,11 @@ $routes->get('Home/Products', 'Home::products');
 
 // Pages
 $routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
-$routes->match(['get', 'post'], '/Pages/AccountRegister', 'Pages::account_register');
 
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Category', 'Pages::category');
 $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/Logout', 'Pages::logout');
-$routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
 
 
@@ -79,6 +77,12 @@ $routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
 $routes->post('/Ajax/BuyNow', 'Ajax::buyNow');
 $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
+$routes->get('/Pages/AccountRegister', 'Ajax::account_register');
+$routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
+
+$routes->get('/Pages/MyAccount', 'Ajax::my_account');
+$routes->post('/Ajax/updateAccount', 'Ajax::updateAccount');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
