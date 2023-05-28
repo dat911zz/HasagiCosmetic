@@ -68,8 +68,9 @@
     </style>
 </head>
 <?php
+    session_start();
     $db = new DatabaseHelper();
-    $id_user = 1;
+    $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 ?>
 
@@ -368,7 +369,15 @@
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
     <script>
+        function checkLogin() {
+            if('<?= $id_user ?>' == '0') {
+                window.location = "<?= base_url('/Pages/Logout') ?>";
+                die;
+            }
+        }        
+
         function addCart($id_product, $quantity, $id_user) {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('Ajax/AddCart') ?>",
@@ -526,6 +535,7 @@
                     $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
                     $('.product-details-title').html(data.value[0].TenSanPham);
                     $('.product-details-title ~ p').html(data.value[0].MoTa);
+                    $('.pro-qty > input').val(1);
                     var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
                     $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
                     if (giamGia > 0) {
@@ -555,12 +565,13 @@
             
         })
         $('#checkout').on('click', function() {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('/Ajax/CheckoutCarts') ?>",
                 dataType: 'json',
                 data: {
-                    id_user: 1
+                    id_user: '<?= $id_user ?>'
                 },
                 success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
@@ -582,7 +593,7 @@
             }
         })
         $('.buy-now').on('click', function() {
-
+            payNow($('.product-details-cart-wishlist .add-cart').data('id-product'), $('.pro-qty > input').val());
         })
 
         function payNow($id_product, $quantity) {

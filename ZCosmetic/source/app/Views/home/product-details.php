@@ -3,7 +3,7 @@
 include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 $db = new DatabaseHelper();
 $sp = $db->executeReader('CALL sp_ChiTietSanPham(?)', array($IDProduct))[0];
-$id_user = 1;
+$id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
 
 ?>
 

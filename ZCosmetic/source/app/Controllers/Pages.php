@@ -22,6 +22,11 @@ class Pages extends BaseController
         $data['title'] = 'Giỏ Hàng';
         return view('pages/cart', $data);
     }
+
+    public function orders() {
+        $data['title'] = 'Đơn Mua';
+        return view('pages/orders', $data);
+    }
     
     public function category()
     {

@@ -51,6 +51,7 @@ $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/Logout', 'Pages::logout');
 $routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
+$routes->get('/Pages/Orders', 'Pages::orders');
 
 
 //Admin
