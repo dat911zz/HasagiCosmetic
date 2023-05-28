@@ -89,6 +89,8 @@ $routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
 $routes->get('/Pages/MyAccount', 'Ajax::my_account');
 $routes->post('/Ajax/updateAccount', 'Ajax::updateAccount');
 
+$routes->post('/Ajax/updatePassword', 'Ajax::updatePassword');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

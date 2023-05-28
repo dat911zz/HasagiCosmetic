@@ -8715,3 +8715,20 @@ only screen and (max-width: 767px) {
     font-size: 14px;
     padding: 18px 24px 18px;
 }
+.shorten-text, .shorten-text--two-row, .shorten-text--three-row {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: break-all;
+}
+.shorten-text--two-row {
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+}
+.shorten-text--three-row {
+    -webkit-line-clamp: 3;
+    word-break: break-word;
+}

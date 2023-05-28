@@ -14,6 +14,8 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../../assets/images/admin-logo/Logo.png">
     <link rel="icon" type="image/png" href="../../assets/images/admin-logo/Logo.png">
     <title><?= $title ?></title>
+    
+    <link rel="stylesheet" href="../../assets/css/style.min.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <!-- Preload js-->
@@ -73,7 +75,16 @@
                 damping: '0.5'
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-        }</script>
+        }
+    </script>
+    <script>
+        function convertLongToMoney($value, $dv = null) {
+                if ($dv != null) {
+                    return new Intl.NumberFormat('en-DE').format($value) + ' ' + $dv;
+                }
+                return new Intl.NumberFormat('en-DE').format($value);
+            }
+    </script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
@@ -81,5 +92,7 @@
     <script src="../../assets/js/Preload.js"></script>
     <script src="../../assets/js/ModalConf.js"></script>
     <script src="../../assets/js/admin.js"></script>
+    
+        
 </body>
 </html>
