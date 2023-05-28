@@ -22,9 +22,6 @@
 
 use App\Models\NhomQuyenModel;
 
-if (!isset($tk)) {
-    throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-}
 ?>
 <div>
     <div class="test">
@@ -39,86 +36,73 @@ if (!isset($tk)) {
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Tên tài khoản <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="TenDangNhap" maxlength="50" required name="TenDangNhap" type="text" value="<?= $tk['TenDangNhap'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="TenDangNhap" maxlength="50" required name="TenDangNhap" type="text" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Họ tên đầy đủ <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="HoVaTen" maxlength="50" required name="HoVaTen" type="text" value="<?= $tk['LoaiTaiKhoan'] == 1 ? $nv['HoVaTen'] : $nd['HoVaTen'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="HoVaTen" maxlength="50" required name="HoVaTen" type="text" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Ngày sinh <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="NgaySinh" maxlength="50" required name="NgaySinh" type="date" value="<?= $tk['LoaiTaiKhoan'] == 1 ? $nv['NgaySinh'] : $nd['NgaySinh'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="NgaySinh" maxlength="50" required name="NgaySinh" type="date" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Địa chỉ <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="DiaChi" maxlength="500" required name="DiaChi" type="text" value="<?= $tk['LoaiTaiKhoan'] == 1 ? $nv['DiaChi'] : $nd['DiaChi'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="DiaChi" maxlength="500" required name="DiaChi" type="text" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">SĐT <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="SDT" maxlength="50" required name="SDT" type="text" value="<?= $tk['LoaiTaiKhoan'] == 1 ? $nv['SDT'] : $nd['SDT'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="SDT" maxlength="50" required name="SDT" type="text" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Số chứng minh/ căn cước công dân<span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="CMND" maxlength="50" required name="CMND" type="text" value="<?= $tk['LoaiTaiKhoan'] == 1 ? $nv['CMND'] : $nd['CMND'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="CMND" maxlength="50" required name="CMND" type="text" value="" aria-invalid="false">
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Giới tính <span style="color: red">(*)</span></label>
-                <?php
-                $gt = $tk['LoaiTaiKhoan'] == 1 ? $nv['GioiTinh'] : $nd['GioiTinh'];
-                ?>
                 <label class="col-md-1">
-                    <input style="margin-left: 10px" type="radio" required name="GioiTinh" value="Nam" <?php if ($gt === 'Nam') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>
+                    <input style="margin-left: 10px" type="radio" required name="GioiTinh" value="Nam">
                     <span>Nam</span>
                 </label>
                 <label class="col-md-1">
-                    <input style="margin-left: 10px" type="radio" required name="GioiTinh" value="Nữ" <?php if ($gt === 'Nữ') {
-                                                                                                            echo 'checked';
-                                                                                                        } ?>>
+                    <input style="margin-left: 10px" type="radio" required name="GioiTinh" value="Nữ">
                     <span>Nữ</span>
                 </label>
             </div>
             <div class="form-group">
                 <label class="col-md-3 col-xs-12 control-label">Mật khẩu <span style="color: red">(*)</span></label>
                 <div class="col-md-6 col-xs-12">
-                    <input class="form-control valid" id="MatKhau" maxlength="50" required name="MatKhau" type="password" value="<?= $tk['MatKhau'] ?>" aria-invalid="false">
+                    <input class="form-control valid" id="MatKhau" maxlength="50" required name="MatKhau" type="password" value="" aria-invalid="false">
                 </div>
             </div>
-            <?php
-            if ($tk['LoaiTaiKhoan'] == 1) { ?>
-                <div class="form-group">
-                    <label class="col-md-3 col-xs-12 control-label">Nhóm quyền truy cập</label>
-                    <div class="col-md-8 tt">
-                        <?php
-                        foreach ((new NhomQuyenModel())->findAll() as $nq) { ?>
-                            <label class="col-md-2">
-                                <input style="margin-left: 10px" type="radio" name="NhomQuyen" value="<?= $nq['Ma'] ?>" <?= $nq['Ma'] === $tk['MaNhomQuyen'] ? "checked" : "" ?>>
-                                <span><?= $nq['Ten'] ?></span>
-                            </label>
-                        <?php
-                        }
-                        ?>
-
-                    </div>
+            <div class="form-group">
+                <label class="col-md-3 col-xs-12 control-label">Nhóm quyền truy cập</label>
+                <div class="col-md-8 tt">
+                    <?php
+                    foreach ((new NhomQuyenModel())->findAll() as $nq) { ?>
+                        <label class="col-md-2">
+                            <input style="margin-left: 10px" type="radio" name="NhomQuyen" value="<?= $nq['Ma'] ?>">
+                            <span><?= $nq['Ten'] ?></span>
+                        </label>
+                    <?php
+                    }
+                    ?>
                 </div>
-            <?php
-            }
-            ?>
-            <input type="hidden" name="isCreate" value="0">
-            <input type="hidden" name="Ma" value="<?= $tk['Ma'] ?>">
-            <input type="hidden" name="LoaiTaiKhoan" value="<?= $tk['LoaiTaiKhoan'] ?>">
+            </div>
+            <input type="hidden" name="isCreate" value="1">
+            <input type="hidden" name="Ma" value="">
+            <input type="hidden" name="LoaiTaiKhoan" value="1">
             <div class="form-group">
                 <a class="btn btn-primary" style="font-family: Tahoma; justify-content: space-around;" onclick="saveAccount()">Lưu</a>
             </div>
