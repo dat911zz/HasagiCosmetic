@@ -334,7 +334,7 @@ class Ajax extends BaseController
         $db = new DatabaseHelper();
         $mataikhoan = $this->request->getPost('mataikhoan');
         $password = $this->request->getPost('password');
-        $result = $db->executeNonQuery('CALL sp_change_password(?,?)', array($mataikhoan, $password));
+        $result = $db->executeNonQuery("CALL sp_change_password(?,?)", array($mataikhoan, $password));
         if($result) {
             echo json_encode(['msg' => "success"]);
         }

@@ -10,8 +10,7 @@
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords"
-        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
+    <meta name="keywords" content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
     <meta name="author" content="codecarnival" />
 
     <!-- Favicon -->
@@ -36,14 +35,13 @@
 
     <!-- Style CSS -->
     <link rel="stylesheet" href="../../assets/css/style.min.css">
-
+    
     <link rel="stylesheet" href="../../assets/css/stylechat.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
     <style>
@@ -113,8 +111,7 @@
                             </div>
                             <div class="modal-action-product">
                                 <div class="thumb">
-                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466"
-                                        height="320">
+                                    <img src="../../assets/images/shop/modal1.webp" alt="Organic Food Juice" width="466" height="320">
                                 </div>
                                 <h4 class="product-name"><a href="product-details.php">Readable content DX22</a></h4>
                             </div>
@@ -151,12 +148,10 @@
         <!--== End Product Quick Add Cart Modal ==-->
 
         <!--== Start Aside Search Form ==-->
-        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
-            aria-labelledby="offcanvasTopLabel">
+        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header">
                 <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                        class="fa fa-close"></i></button>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa fa-close"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div class="container pt--0 pb--0">
@@ -167,7 +162,7 @@
                         <form action="/Pages/Search" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
+                                <input id="SearchInput" name="search-product" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -191,16 +186,14 @@
                                     <div class="col-lg-6">
                                         <!--== Start Product Thumbnail Area ==-->
                                         <div class="product-single-thumb">
-                                            <img src="../../assets/images/shop/quick-view1.webp" width="544"
-                                                height="560" alt="Image-HasTech">
+                                            <img src="../../assets/images/shop/quick-view1.webp" width="544" height="560" alt="Image-HasTech">
                                         </div>
                                         <!--== End Product Thumbnail Area ==-->
                                     </div>
                                     <div class="col-lg-6">
                                         <!--== Start Product Info Area ==-->
                                         <div class="product-details-content">
-                                            <h3 class="product-details-title shorten-text--two-row">Offbline Instant Age
-                                                Rewind Eraser.</h3>
+                                            <h3 class="product-details-title shorten-text--two-row">Offbline Instant Age Rewind Eraser.</h3>
                                             <div class="product-details-review mb-5">
                                                 <div class="product-review-icon">
                                                     <i class="fa fa-star-o"></i>
@@ -211,10 +204,7 @@
                                                 </div>
                                                 <button type="button" class="product-review-show">150 reviews</button>
                                             </div>
-                                            <p class="mb-6 shorten-text--three-row" style="text-align: justify;">Lorem
-                                                ipsum dolor, sit amet consectetur adipisicing elit. Delectus,
-                                                repellendus. Nam voluptate illo ut quia non sapiente provident alias
-                                                quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
+                                            <p class="mb-6 shorten-text--three-row" style="text-align: justify;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus, repellendus. Nam voluptate illo ut quia non sapiente provident alias quos laborum incidunt, earum accusamus, natus. Vero pariatur ut veniam
                                                 sequi amet consectetur.</p>
                                             <div class="product-details-pro-qty">
                                                 <div class="pro-qty">
@@ -227,17 +217,11 @@
                                                     <span class="price-old" style="color:red;">200.000 VNĐ</span>
                                                 </div>
                                             </div>
-                                            <div class="product-details-cart-wishlist"
-                                                style="    margin-top: 10px; margin-left: 0;">
-                                                <button type="button" class="btn add-cart"
-                                                    style="background-color: blue; border-color: blue; min-width:160px; width: 50%;"
-                                                    data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
+                                            <div class="product-details-cart-wishlist" style="    margin-top: 10px; margin-left: 0;">
+                                                <button type="button" class="btn add-cart" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
                                                     <span>Thêm vào giỏ</span>
                                                 </button>
-                                                <button type="button" class="btn buy-now"
-                                                    style="min-width:160px; width: 50%; margin-left: 6px;"
-                                                    data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua
-                                                    Ngay</button>
+                                                <button type="button" class="btn buy-now" style="min-width:160px; width: 50%; margin-left: 6px;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">Mua Ngay</button>
                                             </div>
                                         </div>
                                         <!--== End Product Info Area ==-->
@@ -252,21 +236,19 @@
         <!--== End Product Quick View Modal ==-->
 
         <!--== Start Aside Cart ==-->
-        <aside style="width:35%;" class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1"
-            id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
+        <aside style="width:35%;" class="aside-cart-wrapper offcanvas offcanvas-end" tabindex="-1" id="AsideOffcanvasCart" aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasRightLabel">Giỏ Hàng</h1>
-                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Giỏ Hàng <i
-                        class="fa fa-chevron-right"></i></button>
+                <button class="btn-aside-cart-close" data-bs-dismiss="offcanvas" aria-label="Close">Giỏ Hàng <i class="fa fa-chevron-right"></i></button>
             </div>
             <div class="offcanvas-body" id="cart-list">
                 <?php
-                if (count($cart) <= 0) {
-                ?>
+                    if (count($cart) <= 0) {
+                        ?>
                     <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>
                 <?php
-                } else {
-                ?>
+                    } else {
+                        ?>
                     <ul class="aside-cart-product-list">
                         <?php
                                 $total = 0;
@@ -277,24 +259,21 @@
                             <li class="aside-product-list-item">
                                 <a href="#/" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)" class="remove">×</a>
                                 <a href="/Home/Product?id=<?= $sp->Ma ?>">
-                                    <img src="../../assets/Product_Images/<?= $sp->MaHinh . '.jpg' ?>" width="68" height="84"
-                                        alt="Image">
-                                    <span class="product-title shorten-text two-row">
-                                        <?= $sp->TenSanPham ?>
-                                    </span>
+                                    <img src="../../assets/Product_Images/<?= $sp->MaHinh . '.jpg' ?>" width="68" height="84" alt="Image">
+                                    <span class="product-title shorten-text two-row"><?= $sp->TenSanPham ?></span>
                                 </a>
                                 <span class="product-price"><?= $sp->SoLuong . ' x ' . number_format($price, 0, ',', '.') . ' VNĐ' ?><span style="margin-left: 10px; color: red; text-decoration: line-through;"><?php if ($sp->GiamGia > 0) {
-                                                                                                                                                                                                                        echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
-                                                                                                                                                                                                                    } ?></span></span>
+                                    echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
+                                } ?></span></span>
                             </li>
-                            <?php
+                        <?php
                         }
                         ?>
                     </ul>
                     <p class="cart-total"><span>Subtotal:</span><span class="amount"><?= number_format($total, 0, ',', '.') . ' VNĐ' ?></span></p>
                 <?php
-                }
-                ?>
+                    }
+    ?>
 
                 <a class="btn-total" href="/Pages/Cart">Xem Giỏ Hàng</a>
                 <a class="btn-total" id="checkout">Thanh Toán</a>
@@ -303,12 +282,10 @@
         <!--== End Aside Cart ==-->
 
         <!--== Start Aside Menu ==-->
-        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu"
-            aria-labelledby="offcanvasExampleLabel">
+        <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
             <div class="offcanvas-header">
                 <h1 class="d-none" id="offcanvasExampleLabel">Aside Menu</h1>
-                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i
-                        class="fa fa-chevron-left"></i></button>
+                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">menu <i class="fa fa-chevron-left"></i></button>
             </div>
             <div class="offcanvas-body">
                 <div id="offcanvasNav" class="offcanvas-menu-nav">
@@ -319,8 +296,7 @@
                                 <li><a href="index-two.php">Home Two</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a>
-                        </li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="about-us.php">about</a></li>
                         <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="#">shop</a>
                             <ul>
                                 <li><a href="#" class="offcanvas-nav-item">Shop Layout</a>
@@ -368,8 +344,7 @@
                                 <li><a href="page-not-found.php">Page Not Found</a></li>
                             </ul>
                         </li>
-                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a>
-                        </li>
+                        <li class="offcanvas-nav-parent"><a class="offcanvas-nav-item" href="contact.php">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -401,7 +376,7 @@
                 window.location = "<?= base_url('/Pages/Logout') ?>";
                 die;
             }
-        }        
+        }
 
         function addCart($id_product, $quantity, $id_user) {
             checkLogin();
@@ -414,7 +389,7 @@
                     quantity: $quantity,
                     id_user: $id_user
                 },
-                success: function (data) {
+                success: function(data) {
                     console.log($id_product + "|" + $quantity + "|" + $id_user);
                     console.log(data);
                     if (data.msg == "success") {
@@ -459,7 +434,7 @@
                             id_product: $id_product,
                             id_user: $id_user
                         },
-                        success: function (data) {
+                        success: function(data) {
                             console.log(data);
                             if (data.msg == "success") {
                                 Swal.fire({
@@ -505,7 +480,7 @@
                     id_user: $id_user,
                     price: $price
                 },
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.msg == "success") {
                         $('#pr_' + $id_product).html((convertLongToMoney(data.total_price)));
@@ -520,7 +495,7 @@
             $('#cart-count').html($arr.quantity);
             $('#cart-list').html($arr.html);
         }
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#cart-count').html(<?= count($cart) ?>);
         });
 
@@ -532,7 +507,7 @@
                 data: {
                     id_user: $id_user
                 },
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     if (data.msg == "success") {
                         $('.amount').html((new Intl.NumberFormat('en-DE').format(data.total_cart)) + ' VNĐ');
@@ -548,7 +523,7 @@
             return new Intl.NumberFormat('en-DE').format($value);
         }
 
-        $('.action-btn-quick-view').on('click', function () {
+        $('.action-btn-quick-view').on('click', function() {
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('Ajax/GetProduct') ?>",
@@ -556,13 +531,12 @@
                 data: {
                     id_product: $(this).data('id-product')
                 },
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                     $('.product-details-cart-wishlist .add-cart').data('id-product', data.value[0].Ma);
                     $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
                     $('.product-details-title').html(data.value[0].TenSanPham);
                     $('.product-details-title ~ p').html(data.value[0].MoTa);
-                    $('.pro-qty > input').val(1);
                     var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
                     $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
                     if (giamGia > 0) {
@@ -576,22 +550,22 @@
     </script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             <?php
-                if(!isset($cart)) {
-                    ?>
+    if(!isset($cart)) {
+        ?>
                     $('.count').html('0');
                     <?php
-                }
-                else {
-                    ?>
+    } else {
+        ?>
                     $('.count').html('<?= count($cart) ?>');
                     <?php
-                }
-            ?>
+    }
+    ?>
             
         })
         $('#checkout').on('click', function() {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('/Ajax/CheckoutCarts') ?>",
@@ -599,27 +573,27 @@
                 data: {
                     id_user: '<?= $id_user ?>'
                 },
-                success: function (data) {
+                success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
                     window.location.replace("<?= base_url('Pages/Checkout') ?>");
                 }
             });
         });
-        $('.product-details-cart-wishlist .add-cart').on('click', function () {
+        $('.product-details-cart-wishlist .add-cart').on('click', function() {
             addCart($(this).data('id-product'), $('.pro-qty > input').val(), <?= $id_user ?>);
         });
-        $('.pro-qty > input').on('keydown', function (e) {
+        $('.pro-qty > input').on('keydown', function(e) {
             if ((/[a-zA-Z]/gm.test(String.fromCharCode(e.keyCode)))) {
                 e.preventDefault();
             }
         });
-        $('.pro-qty > input').on('focusout', function () {
+        $('.pro-qty > input').on('focusout', function() {
             if ($(this).val().length == 0 || $(this).val() == 0) {
                 $(this).val(1);
             }
         })
         $('.buy-now').on('click', function() {
-
+            payNow($('.product-details-cart-wishlist .add-cart').data('id-product'), $('.pro-qty > input').val());
         })
 
         function payNow($id_product, $quantity) {
@@ -631,7 +605,7 @@
                     id_product: $id_product,
                     quantity: $quantity
                 },
-                success: function (data) {
+                success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
                     window.location.replace("<?= base_url('Pages/Checkout') ?>");
                 }
@@ -653,7 +627,7 @@
                     phone: $phone,
                     note: $note
                 },
-                success: function (data) {
+                success: function(data) {
                     if (data.msg == 'success') {
                         Swal.fire({
                             icon: 'success',
@@ -669,7 +643,7 @@
                             timer: 1500
                         });
                     }
-                    setTimeout(function () {
+                    setTimeout(function() {
                         window.location.replace("<?= base_url('/') ?>");
                     }, 2500);
                 }
