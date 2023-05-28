@@ -37,6 +37,14 @@ class TaiKhoanModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function checkUnique($name){
+        foreach($this->findAll() as $tk){
+            if($tk['TenDangNhap'] == $name){
+                return false;
+            }
+        }
+        return true;
+    }
     //CRUD methods
     public function getTKByID($id)
     {

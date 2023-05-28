@@ -1,11 +1,12 @@
 <?php
-$id_user = 1;
+session_start();
+$id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
 if (isset($id_user) && $id_user > 0) {
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     $db = new DatabaseHelper();
     $gio_hang = $db->executeReader('CALL sp_getCart(?)', array($id_user));
 } else {
-    header('location:/');
+    header('location:/Pages/Login');
     die;
 }
 ?>
