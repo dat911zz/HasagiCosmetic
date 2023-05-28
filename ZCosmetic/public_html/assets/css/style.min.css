@@ -288,7 +288,7 @@ only screen and (min-width:1200px) and (max-width:1549px) {
 only screen and (min-width:992px) and (max-width:1199px),
 only screen and (min-width:1200px) and (max-width:1549px) {
     .main-nav>li>a {
-        font-size: 15px;
+        font-size: 14px;
         height: 80px;
         line-height: 80px
     }
