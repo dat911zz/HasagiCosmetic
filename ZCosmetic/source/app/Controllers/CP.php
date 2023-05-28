@@ -46,4 +46,8 @@ class CP extends BaseController
         $data['prods'] =  $db->executeReader("SELECT * FROM tbl_sanpham LIMIT 10");
         return view('cp/products', $data);
     }
+    public function check_order() {
+        $data['title'] = 'Kiểm Duyệt Đơn';
+        return view('cp/check_order', $data);
+    }
 }

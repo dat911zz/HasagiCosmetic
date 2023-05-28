@@ -171,14 +171,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     .cart .material-icons {
         position: relative;
         z-index: 1;
-        font-size: 24px;
         color: white;
     }
 
     .cart .count {
         position: absolute;
-        top: -5%;
-        right: -30%;
+        top: -19%;
+        right: -35%;
         z-index: 2;
         font-size: 10px;
         border-radius: 50%;

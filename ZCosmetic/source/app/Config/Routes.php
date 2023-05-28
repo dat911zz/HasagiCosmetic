@@ -49,6 +49,8 @@ $routes->get('/Pages/Category', 'Pages::category');
 $routes->get('/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/Logout', 'Pages::logout');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
+$routes->get('/Pages/Orders', 'Pages::orders');
+$routes->post('/Pages/Search', 'Pages::search');
 
 
 //Admin
@@ -56,6 +58,7 @@ $routes->get('CP/', 'CP::index');
 $routes->match(['get', 'post'], 'CP/Account/(:num)', 'CP::account/$1');
 $routes->get('CP/CreateAccount', 'CP::createAccount');
 $routes->get('CP/Products', 'CP::products');
+$routes->get('CP/CheckOrder', 'CP::check_order');
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
@@ -79,6 +82,7 @@ $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
 $routes->post('/Ajax/SaveAccount', 'Ajax::saveAccount');
 $routes->post('/Ajax/DeleteAccount/(:num)', 'Ajax::deleteAccount/$1');
+$routes->post('/Ajax/AcceptOrder', 'Ajax::acceptOrder');
 $routes->get('/Pages/AccountRegister', 'Ajax::account_register');
 $routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
 
