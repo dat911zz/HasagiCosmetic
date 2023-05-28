@@ -2,7 +2,7 @@
 <?php
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     include(FCPATH . '../source/app/Helpers/Pager.php');
-
+    session_start();
     $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $db = new DatabaseHelper();
     $count = $db->executeReader('SELECT COUNT(*) AS "count" FROM tbl_sanpham')[0]->count;

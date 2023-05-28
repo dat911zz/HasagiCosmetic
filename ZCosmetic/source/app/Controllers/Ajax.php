@@ -267,4 +267,14 @@ class Ajax extends BaseController
         }
         
     }
+    public function acceptOrder() {
+        $db = new DatabaseHelper();
+        $id_order = $this->request->getPost('idorder');
+        $id_user = $this->request->getPost('iduser');
+        $kq = $db->executeNonQuery('UPDATE `tbl_hoadon` SET `tbl_hoadon`.`MaNhanVien` = ? WHERE `tbl_hoadon`.`Ma` = ?', array($id_user, $id_order));
+        if ($kq) {
+            return json_encode(['msg' => 'success']);
+        }
+        return json_encode(['msg' => 'fails']);
+    }
 }

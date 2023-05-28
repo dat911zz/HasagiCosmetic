@@ -5,6 +5,7 @@
 
 <?php
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+    session_start();
     $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $db = new DatabaseHelper();
     $san_pham = $db->executeReader('CALL sp_SanPhamNoiBat()');

@@ -58,6 +58,7 @@ $routes->get('/Pages/Orders', 'Pages::orders');
 $routes->get('CP/', 'CP::index');
 $routes->match(['get', 'post'], 'CP/Account/(:num)', 'CP::account/$1');
 $routes->get('CP/CreateAccount', 'CP::createAccount');
+$routes->get('CP/CheckOrder', 'CP::check_order');
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
@@ -81,6 +82,7 @@ $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
 $routes->post('/Ajax/SaveAccount', 'Ajax::saveAccount');
 $routes->post('/Ajax/DeleteAccount/(:num)', 'Ajax::deleteAccount/$1');
+$routes->post('/Ajax/AcceptOrder', 'Ajax::acceptOrder');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

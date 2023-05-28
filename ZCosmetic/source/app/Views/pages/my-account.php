@@ -12,7 +12,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $mail = $_SESSION['username'];
     $pass = $_SESSION['password'];
     $role = $_SESSION['role'];
-
+    $db = new DatabaseHelper();
+    $orders = $db->executeReader('CALL sp_getOrders(?)', array($id_user));
 } else {
     header('location:/Pages/AccountLogin');
     die;
@@ -81,37 +82,43 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                                         <tr>
                                                             <th>Sản Phẩm</th>
                                                             <th>Tên Sản Phẩm</th>
-                                                            <th>Số Lượng</th>
-                                                            <th>Giá</th>
-                                                            <th>Tổng Tiền</th>
+                                                            <th colspan="3">Thông Tin</th>
                                                             <th>Trạng Thái</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="alert" role="alert">
-                                                            <td>
-                                                                <img class="img" src="../assets/images/shop/1.webp"></img>
-                                                            </td>
-                                                            <td>
-                                                                <div class="email">
-                                                                    <span>Sneakers Shoes 2020 For Men </span>
-                                                                    <span>Fugiat voluptates quasi nemo, ipsa perferendis</span>
-                                                                </div>
-                                                            </td>
-                                                            <td>$44.99</td>
-                                                            <td class="quantity">
-                                                                <div class="input-group">
-                                                                    <input type="text" name="quantity" class="quantity form-control input-number" value="2" min="1" max="100" readonly>
-                                                                </div>
-                                                            </td>
-                                                            <td>$89.98</td>
-                                                            <td>
-                                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                                    <span aria-hidden="true"><i class="fa fa-close"></i></span>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-
+                                                        <?php
+                                                        foreach($orders as $order) {
+                                                            ?>
+                                                            <tr class="alert" role="alert">
+                                                                <td>
+                                                                    <a href="../Home/Product?id=<?= $order->Ma ?>" class="shorten-text">
+                                                                    <img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/<?= $order->MaHinh . '.jpg' ?>"></img>
+                                                                    </a>
+                                                                </td>
+                                                                <td style="text-align: left;">
+                                                                    <a href="../Home/Product?id=<?= $order->Ma ?>" class="shorten-text">
+                                                                        <?= $order->TenSanPham ?>
+                                                                    </a>
+                                                                </td>
+                                                                <td colspan="3">
+                                                                    <div style="display: flex; align-items: center;">
+                                                                    <?php 
+                                                                        if($order->GiamGia != 0) {
+                                                                            echo '<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>';
+                                                                        }
+                                                                        echo '<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>'.'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span>'
+                                                                    ?>
+                                                                    </div>
+                                                                    
+                                                                </td>
+                                                                <td>
+                                                                    <?= $order->MaNhanVien == "" ? '<span style="color:red">Chờ kiểm duyệt</span>' : '<span style="color:green">Đã duyệt</span>' ?>
+                                                                </td>
+                                                            </tr>
+                                                            <?php
+                                                        }
+                                                        ?>
                                                     </tbody>
                                                 </table>
                                             </div>
