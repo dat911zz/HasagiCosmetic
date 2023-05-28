@@ -8,14 +8,20 @@ include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 <?= $this->section('content') ?>
 
 <?php
-$id_user = 1;
+session_start();
+$id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
+if (!(isset($id_user) && $id_user > 0)) {
+    header('location:/Pages/Login');
+    die;
+}
+
 $db = new DatabaseHelper();
 $user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
 $arrAdress = explode(', ', $user->DiaChi);
 $len = count($arrAdress);
-$city = $arrAdress[$len - 1];
-$district = $arrAdress[$len - 2];
-$ward = $arrAdress[$len - 3];
+$city = $len > 1 ? $arrAdress[$len - 1] : "";
+$district = $len > 2 ? $arrAdress[$len - 2] : "";
+$ward = $len > 3 ? $arrAdress[$len - 3] : "";
 $detailsAddress = '';
 if (isset($arrAdress[$len - 4])) {
     $detailsAddress = $arrAdress[$len - 4];
@@ -381,11 +387,11 @@ if (isset($arrAdress[$len - 4])) {
             $detailsAddress_new = $('#street-address').val();
             if ($name.length <= 0) {
                 AlertError('Tên người nhận đang trống');
-            } else if ($('#city').val() == null) {
+            } else if ($('#city').val() == null || $city_new == "Chọn") {
                 AlertError('Vui lòng chọn tỉnh / Thành phố');
-            } else if ($('#district').val() == null) {
+            } else if ($('#district').val() == null || $district_new == "Chọn") {
                 AlertError('Vui lòng chọn Quận / Huyện');
-            } else if ($('#ward').val() == null) {
+            } else if ($('#ward').val() == null || $ward_new == "Chọn") {
                 AlertError('Vui lòng chọn Phường / Xã');
             } else if ($phone.length < 10) {
                 AlertError('Vui lòng nhập SĐT chính xác');

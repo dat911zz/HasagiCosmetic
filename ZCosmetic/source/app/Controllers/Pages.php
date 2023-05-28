@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controllers;
 //Home controller
 class Pages extends BaseController
@@ -10,17 +9,15 @@ class Pages extends BaseController
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);
     }
-
-    public function account_register()
-    {
-        $data['title'] = 'Đăng Nhập';
-        return view('pages/account-register', $data);
-    }
-
     public function cart()
     {
         $data['title'] = 'Giỏ Hàng';
         return view('pages/cart', $data);
+    }
+
+    public function orders() {
+        $data['title'] = 'Đơn Mua';
+        return view('pages/orders', $data);
     }
     
     public function category()
@@ -42,12 +39,6 @@ class Pages extends BaseController
     {
         $data['title'] = 'Đăng Xuất';
         return view('pages/logout', $data);
-    }
-    
-    public function my_account()
-    {
-        $data['title'] = 'Tài Khoản';
-        return view('pages/my-account', $data);
     }
     
     public function checkout()
@@ -72,6 +63,11 @@ class Pages extends BaseController
     {
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);
+    }
+    public function search() {
+        $data['title'] = 'Tìm Kiếm';
+        $data['search'] = $this->request->getPost('search-product');
+        return view('pages/search', $data);
     }
 }
 

@@ -42,21 +42,23 @@ $routes->get('/Home/Product', 'Home::product_details');
 $routes->get('Home/Products', 'Home::products');
 
 // Pages
-$routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc 
-$routes->match(['get', 'post'], '/Pages/AccountRegister', 'Pages::account_register');
+$routes->match(['get', 'post'],'/Pages/AccountLogin', 'Pages::account_login'); // Lỗi nè khóc
 
 $routes->get('/Pages/Faq', 'Pages::faq');
 $routes->get('/Pages/Category', 'Pages::category');
 $routes->match(['get', 'post'],'/Pages/Contact', 'Pages::contact');
 $routes->get('/Pages/Logout', 'Pages::logout');
-$routes->get('/Pages/MyAccount', 'Pages::my_account');
 $routes->get('/Pages/ProductDetails', 'Pages::product_details');
+$routes->get('/Pages/Orders', 'Pages::orders');
+$routes->post('/Pages/Search', 'Pages::search');
 
 
 //Admin
 $routes->get('CP/', 'CP::index');
 $routes->match(['get', 'post'], 'CP/Account/(:num)', 'CP::account/$1');
-
+$routes->get('CP/CreateAccount', 'CP::createAccount');
+$routes->get('CP/Products', 'CP::products');
+$routes->get('CP/CheckOrder', 'CP::check_order');
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
@@ -78,6 +80,14 @@ $routes->post('/Ajax/CheckoutCarts', 'Ajax::checkoutCarts');
 $routes->post('/Ajax/BuyNow', 'Ajax::buyNow');
 $routes->post('/Ajax/GetProduct', 'Ajax::getProduct');
 $routes->post('/Ajax/Pay', 'Ajax::pay');
+$routes->post('/Ajax/SaveAccount', 'Ajax::saveAccount');
+$routes->post('/Ajax/DeleteAccount/(:num)', 'Ajax::deleteAccount/$1');
+$routes->post('/Ajax/AcceptOrder', 'Ajax::acceptOrder');
+$routes->get('/Pages/AccountRegister', 'Ajax::account_register');
+$routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
+
+$routes->get('/Pages/MyAccount', 'Ajax::my_account');
+$routes->post('/Ajax/updateAccount', 'Ajax::updateAccount');
 
 /*
  * --------------------------------------------------------------------

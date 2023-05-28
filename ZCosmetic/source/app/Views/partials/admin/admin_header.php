@@ -29,7 +29,7 @@
                     </div>
                     <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdown">
                         <li><a class="dropdown-item" href="#">Thông tin người dùng</a></li>
-                        <li><a class="dropdown-item" href="/Auth/SignOut">Đăng xuất</a></li>
+                        <li><a class="dropdown-item" href="<?= base_url('/Pages/Logout') ?>">Đăng xuất</a></li>
                     </ul>
                 </li>
             </ul>

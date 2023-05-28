@@ -40,6 +40,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
     <style>
         .swal2-popup {
@@ -68,9 +69,9 @@
     </style>
 </head>
 <?php
-
+    session_start();
     $db = new DatabaseHelper();
-    $id_user = 1;
+    $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
     ?>
 
@@ -157,10 +158,10 @@
                         <div class="search-note">
                             <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
-                        <form action="#" method="post">
+                        <form action="/Pages/Search" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
+                                <input id="SearchInput" name="search-product" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -369,7 +370,15 @@
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
     <script>
+        function checkLogin() {
+            if('<?= $id_user ?>' == '0') {
+                window.location = "<?= base_url('/Pages/Logout') ?>";
+                die;
+            }
+        }        
+
         function addCart($id_product, $quantity, $id_user) {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('Ajax/AddCart') ?>",
@@ -527,6 +536,7 @@
                     $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
                     $('.product-details-title').html(data.value[0].TenSanPham);
                     $('.product-details-title ~ p').html(data.value[0].MoTa);
+                    $('.pro-qty > input').val(1);
                     var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
                     $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
                     if (giamGia > 0) {
@@ -555,12 +565,13 @@
             
         })
         $('#checkout').on('click', function() {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('/Ajax/CheckoutCarts') ?>",
                 dataType: 'json',
                 data: {
-                    id_user: 1
+                    id_user: '<?= $id_user ?>'
                 },
                 success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
@@ -582,7 +593,7 @@
             }
         })
         $('.buy-now').on('click', function() {
-
+            payNow($('.product-details-cart-wishlist .add-cart').data('id-product'), $('.pro-qty > input').val());
         })
 
         function payNow($id_product, $quantity) {
@@ -638,6 +649,85 @@
                 }
             });
         }
+
+
+        function updateAccount($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
+        console.log(11111111);
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url('/Ajax/updateAccount') ?>",
+            dataType: 'json',
+            data: {
+                ten_dang_nhap: $ten_dang_nhap,
+                mat_khau: $mat_khau,
+                name: $name,
+                dob: $dob,
+                sex: $sex,
+                address: $address,
+                phone: $phone,
+                cmnd: $cmnd
+            },
+            success: function (data) {
+                if (data.msg == 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cập nhật thành công !!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Cập nhật thất bại',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                setTimeout(function () {
+                    window.location.replace("<?= base_url('/Pages/MyAccount') ?>");
+                }, 2500);
+            }
+        });   
+    }
+
+        function account_register($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd) {
+        console.log(11111111);
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url('/Ajax/addAccountRegister') ?>",
+            dataType: 'json',
+            data: {
+                ten_dang_nhap: $ten_dang_nhap,
+                mat_khau: $mat_khau,
+                name: $name,
+                dob: $dob,
+                sex: $sex,
+                address: $address,
+                phone: $phone,
+                cmnd: $cmnd
+            },
+            success: function (data) {
+                if (data.msg == 'success') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Tạo tài khoản thành công !!!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Tạo tài khoản thất bại',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                setTimeout(function () {
+                    window.location.replace("<?= base_url('/Pages/AccountLogin') ?>");
+                }, 2500);
+            }
+        });   
+    }
     </script>
 
 

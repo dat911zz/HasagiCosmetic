@@ -10,7 +10,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 <header class="header-area sticky-header">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-5 col-sm-6 col-lg-3">
+            <div class="col-5 col-sm-6 col-lg-1">
                 <div class="header-logo">
                     <a href="/">
                         <img class="logo-main" src="../../assets/images/logo.webp" width="95" height="68"
@@ -18,9 +18,9 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                     </a>
                 </div>
             </div>
-            <div class="col-lg-6 d-none d-lg-block">
+            <div class="col-lg-8 d-none d-lg-block">
                 <div class="header-navigation">
-                    <ul class="main-nav justify-content-start">
+                    <ul class="main-nav justify-content-center">
                         <li><a href="/">trang chủ</a>
 
                         </li>
@@ -171,14 +171,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     .cart .material-icons {
         position: relative;
         z-index: 1;
-        font-size: 24px;
         color: white;
     }
 
     .cart .count {
         position: absolute;
-        top: -5%;
-        right: -30%;
+        top: -19%;
+        right: -35%;
         z-index: 2;
         font-size: 10px;
         border-radius: 50%;
