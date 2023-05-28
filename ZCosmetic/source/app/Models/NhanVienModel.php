@@ -9,19 +9,19 @@ class NhanVienModel extends Model
     protected $table      = 'tbl_nhanvien';
     protected $primaryKey = 'Ma';
 
-    protected $useAutoIncrement = true;
+    protected $useAutoIncrement = false;
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
 
-    protected $allowedFields = ['HoVaTen', 'GioiTinh', 'DiaChi', 'SDT', 'CMND', 'MaLoai'];
+    protected $allowedFields = ['Ma', 'HoVaTen', 'NgaySinh', 'GioiTinh', 'DiaChi', 'SDT', 'CMND'];
 
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules = [];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -37,6 +37,14 @@ class NhanVienModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
+    public function checkUnique($sdt, $cmnd){
+        foreach($this->findAll() as $tk){
+            if($tk['SDT'] == $sdt || $tk['CMND'] == $cmnd){
+                return false;
+            }
+        }
+        return true;
+    }
     //CRUD methods
     public function getNVByID($id)
     {

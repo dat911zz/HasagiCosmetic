@@ -19,21 +19,10 @@ class CP extends BaseController
         return view('cp/index', $data);
     }
     //Get edit form with id
-    public function accEdit($id)
-    {
-        $data['title'] = 'Chỉnh sửa thông tin tài khoản';
-        $data['model'] = '';
-        return view('cp/edit', $data);
-    }
-    public function accManager($id)
-    {
-        $data['title'] = 'Quản lý tài khoản';
-        $data['model'] = '';
-        return view('cp/manager', $data);
-    }
     public function account($id)
     {
         $data['title'] = 'Thông tin tài khoản';
+
         try {
             $tk = (new TaiKhoanModel())->getTKByID($id);
             $nv = (new NhanVienModel())->getNVByID($id);
@@ -41,13 +30,13 @@ class CP extends BaseController
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
         }
-        // print_r($tk);
-        // print_r($nv);
-        // print_r($nd);
-
         $data['tk'] = $tk;
         $data['nv'] = $nv;
         $data['nd'] = $nd;
         return view('cp/details', $data);
+    }
+    public function createAccount(){
+        $data['title'] = 'Tạo tài khoản';
+        return view('cp/create', $data);
     }
 }
