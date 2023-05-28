@@ -267,4 +267,56 @@ class Ajax extends BaseController
         }
         
     }
+    public function account_register()
+    {
+        $data['title'] = 'Đăng Ký';
+        return view('pages/account-register', $data);
+    }
+
+    public function addAccountRegister()
+    {
+        $db = new DatabaseHelper();
+        $ten_dang_nhap = $this->request->getPost('ten_dang_nhap');
+        $mat_khau = $this->request->getPost('mat_khau');
+        $name = $this->request->getPost('name');
+        $dob = $this->request->getPost('dob');
+        $sex = $this->request->getPost('sex');
+        $address = $this->request->getPost('address');
+        $phone = $this->request->getPost('phone');
+        $cmnd = $this->request->getPost('cmnd');
+        $addUser = $db->executeNonQuery("CALL sp_add_account_and_user(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(null, $ten_dang_nhap, $mat_khau, 3, 2, $name, $dob, $sex, $address, $phone, $cmnd));
+        if(isset($addUser) && $addUser > 0) {
+            echo json_encode(['msg' => "success"]);
+        }
+        else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
+
+
+    public function my_account()
+    {
+        $data['title'] = 'Tài khoản của tôi';
+        return view('pages/my-account', $data);
+    }
+
+    public function updateAccount()
+    {
+        $db = new DatabaseHelper();
+        $ten_dang_nhap = $this->request->getPost('ten_dang_nhap');
+        $mat_khau = $this->request->getPost('mat_khau');
+        $name = $this->request->getPost('name');
+        $dob = $this->request->getPost('dob');
+        $sex = $this->request->getPost('sex');
+        $address = $this->request->getPost('address');
+        $phone = $this->request->getPost('phone');
+        $cmnd = $this->request->getPost('cmnd');
+        $addUser = $db->executeNonQuery("CALL sp_add_account_and_user(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", array(null, $ten_dang_nhap, $mat_khau, 3, 2, $name, $dob, $sex, $address, $phone, $cmnd));
+        if(isset($addUser) && $addUser > 0) {
+            echo json_encode(['msg' => "success"]);
+        }
+        else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
 }

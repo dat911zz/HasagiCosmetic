@@ -1,74 +1,44 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>
-        <?= $title ?>
-    </title>
-    <meta name="robots" content="noindex, follow" />
-    <meta name="description" content="Brancy - Cosmetic & Beauty Salon Website Template">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="keywords"
-        content="bootstrap, ecommerce, ecommerce html, beauty, cosmetic shop, beauty products, cosmetic, beauty shop, cosmetic store, shop, beauty store, spa, cosmetic, cosmetics, beauty salon" />
-    <meta name="author" content="codecarnival" />
+<?= $this->extend('layouts/main') ?>
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="../../assets/images/favicon.webp">
+<!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
+<?= $this->section('content') ?>
 
-    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
-
-    <!-- Font CSS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Vendor CSS (Bootstrap & Icon Font) -->
-    <link rel="stylesheet" href="../../assets/css/vendor/bootstrap.min.css">
-
-    <!-- Plugins CSS (All Plugins Files) -->
-    <link rel="stylesheet" href="../../assets/css/plugins/swiper-bundle.min.css">
-    <link rel="stylesheet" href="../../assets/css/plugins/font-awesome.min.css">
-    <link rel="stylesheet" href="../../assets/css/plugins/fancybox.min.css">
-    <link rel="stylesheet" href="../../assets/css/plugins/nice-select.css">
-
-    <!-- Style CSS -->
-    <link rel="stylesheet" href="../../assets/css/style.min.css">
-
-    <script src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script>
-        $(function () {
-            $("#header").load("header.php");
-            $("#footer").load("footer.php");
-        })
-    </script>
-
-</head>
 <?php
 ob_start();
 session_start();
-if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
-    $mail = $_SESSION['username'];
-    $pass = $_SESSION['password'];
-    $role = $_SESSION['role'];
-    switch ($role) {
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            $myJS = <<<EOT
-                <script type='text/javascript'>
-                    window.location.replace("/");
-                </script>
-                EOT;
-            echo ($myJS);
-            break;
-        default:
-            break;
-    }
+
+$db = (new DatabaseHelper());
+$mail = $_SESSION['username'];
+$pass = $_SESSION['password'];
+$role = $_SESSION['role'];
+$MaTaiKhoan = $_SESSION['MaTaiKhoan'];
+
+$uname = "";
+$id_user = 2;
+$user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
+$arrAdress = explode(', ', $user->DiaChi);
+$len = count($arrAdress);
+$city = $arrAdress[$len - 1];
+$district = $arrAdress[$len - 2];
+$ward = $arrAdress[$len - 3];
+$detailsAddress = '';
+if (isset($arrAdress[$len - 4])) {
+    $detailsAddress = $arrAdress[$len - 4];
+}
+
+
+
+if (isset($_POST["btnSubmit"])) {
+    $detailsAddress = '';
+    $birtday = '2002-10-10';
+    $sex = null;
+    $name = $_POST('f_name');
+    $adress = $_COOKIE['address'];
+    $phone = $_POST('phone');
+    $CMND = $_POST('CMND');
+    $param = array($name, $birtday, $sex, $adress, $phone, $CMND, $mail);
+    $kq = $db->executeNonQuery('UPDATE tbl_nguoidung SET `HoVaTen` = ?, `NgaySinh` = ? `GioiTinh` = ?,`DiaChi` = ?,`SDT` =? ,`CMND = ?`) WHERE Ma = ?', $param);
 }
 ?>
 
@@ -90,7 +60,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                         <div class="col-md-5">
                             <div class="page-header-st3-content text-center text-md-start">
                                 <ol class="breadcrumb justify-content-center justify-content-md-start">
-                                    <li class="breadcrumb-item"><a class="text-dark" href="index.php">Home</a></li>
+                                    <li class="breadcrumb-item"><a class="text-dark" href="/">Home</a></li>
                                     <li class="breadcrumb-item active text-dark" aria-current="page">My Account</li>
                                 </ol>
                                 <h2 class="page-header-title">My Account</h2>
@@ -109,24 +79,24 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             <div class="my-account-tab-menu nav nav-tabs" id="nav-tab" role="tablist">
                                 <button class="nav-link active" id="dashboad-tab" data-bs-toggle="tab"
                                     data-bs-target="#dashboad" type="button" role="tab" aria-controls="dashboad"
-                                    aria-selected="false">Dashboard</button>
+                                    aria-selected="false">Tài Khoản Của Tôi</button>
                                 <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders"
                                     type="button" role="tab" aria-controls="orders" aria-selected="false">
-                                    Orders</button>
+                                    Danh sách đơn hàng</button>
                                 <button class="nav-link" id="download-tab" data-bs-toggle="tab"
                                     data-bs-target="#download" type="button" role="tab" aria-controls="download"
                                     aria-selected="false">Download</button>
                                 <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab"
                                     data-bs-target="#payment-method" type="button" role="tab"
-                                    aria-controls="payment-method" aria-selected="false">Payment Method</button>
+                                    aria-controls="payment-method" aria-selected="false">Phương thức thanh toán</button>
                                 <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab"
                                     data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit"
-                                    aria-selected="false">address</button>
+                                    aria-selected="false">Địa chỉ</button>
                                 <button class="nav-link" id="account-info-tab" data-bs-toggle="tab"
                                     data-bs-target="#account-info" type="button" role="tab" aria-controls="account-info"
-                                    aria-selected="true">Account Details</button>
-                                <button class="nav-link" onclick="window.location.href='logout.php'"
-                                    type="button">Logout</button>
+                                    aria-selected="true">Chi tiết tài khoản</button>
+                                <button class="nav-link" onclick="window.location.href='/Pages/Logout'"
+                                    type="button">Đăng xuất</button>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-8">
@@ -134,16 +104,16 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                 <div class="tab-pane fade show active" id="dashboad" role="tabpanel"
                                     aria-labelledby="dashboad-tab">
                                     <div class="myaccount-content">
-                                        <h3>Dashboard</h3>
+                                        <h3>Tài Khoản Của Tôi</h3>
                                         <div class="welcome">
-                                            <p>Hello, <strong>
+                                            <p>Xin chào, <strong>
                                                     <?php echo $mail ?>
-                                                </strong> (If Not <strong></strong><a href="/Pages/Logout"
-                                                    class="logout"> Logout</a>)</p>
+                                                </strong> (Bạn có thể đăng xuất <strong></strong><a href="/Pages/Logout"
+                                                    class="logout"> Tại đây</a>)</p>
                                         </div>
-                                        <p>From your account dashboard. you can easily check & view your recent orders,
-                                            manage your shipping and billing addresses and edit your password and
-                                            account details.</p>
+                                        <p>Tại trang quản lý tài khoản bạn có thể dễ dàng kiểm tra và xem các đơn đặt
+                                            hàng gần đây của mình, quản lý địa chỉ giao hàng và thanh toán cũng như
+                                            chỉnh sửa mật khẩu và chi tiết tài khoản của bạn..</p>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
@@ -251,57 +221,99 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                     <div class="myaccount-content">
                                         <h3>Account Details</h3>
                                         <div class="account-details-form">
-                                            <form action="#">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="single-input-item">
-                                                            <label for="first-name" class="required">First Name</label>
-                                                            <input type="text" id="first-name" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="single-input-item">
-                                                            <label for="last-name" class="required">Last Name</label>
-                                                            <input type="text" id="last-name" />
-                                                        </div>
-                                                    </div>
+                                        <form method="post">
+                                        <div class="row">
+                                            <div class="form-group mb-6">
+                                                <label for="register_username">Username or Email Address
+                                                    <sup>*</sup></label>
+                                                <input type="text" value="<?php $mail ?>" name="txtUser" id="register_username">
+                                            </div>
+                                            <div class="form-group mb-6">
+                                                <label for="register_pwsd">Password <sup>*</sup></label>
+                                                <input type="password" name="txtPassword" id="register_pwsd">
+                                            </div>
+                                            <div class="form-group mb-6">
+                                                <label for="register_confpwsd">Confirm Password <sup>*</sup></label>
+                                                <input type="password" name="txtConfirmPassword" id="register_confpwsd">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="f_name">Họ tên <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <input id="f_name" name="f_name" type="text" class="form-control">
                                                 </div>
-                                                <div class="single-input-item">
-                                                    <label for="display-name" class="required">Display Name</label>
-                                                    <input type="text" id="display-name" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="dob">Ngày sinh <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <input id="dob" name="dob" type="date" class="form-control">
                                                 </div>
-                                                <div class="single-input-item">
-                                                    <label for="email" class="required">Email Addres</label>
-                                                    <input type="email" id="email" />
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div>
+                                                    <label for="sex">Giới tính <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <input id="sexMale" name="sex" type="checkbox" value="Male">Male
+                                                    <input id="sexFemale" name="sex" type="checkbox"
+                                                        value="Female">Female
                                                 </div>
-                                                <fieldset>
-                                                    <legend>Password change</legend>
-                                                    <div class="single-input-item">
-                                                        <label for="current-pwd" class="required">Current
-                                                            Password</label>
-                                                        <input type="password" id="current-pwd" />
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-6">
-                                                            <div class="single-input-item">
-                                                                <label for="new-pwd" class="required">New
-                                                                    Password</label>
-                                                                <input type="password" id="new-pwd" />
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-6">
-                                                            <div class="single-input-item">
-                                                                <label for="confirm-pwd" class="required">Confirm
-                                                                    Password</label>
-                                                                <input type="password" id="confirm-pwd" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </fieldset>
-                                                <div class="single-input-item">
-                                                    <button class="check-btn sqr-btn">Save Changes</button>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="city">Tỉnh / Thành Phố <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <select id="city" class="form-control wide">
+                                                        <option value="null" selected>Chọn</option>
+                                                    </select>
                                                 </div>
-                                            </form>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <div class="form-group">
+                                                    <label for="district">Quận / Huyện <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <select id="district" class="form-control wide">
+                                                        <option value="null" selected>Chọn</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-4">
+                                                <div class="form-group">
+                                                    <label for="ward">Phường / Xã <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <select id="ward" class="form-control wide">
+                                                        <option value="null" selected>Chọn</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="street-address">Địa chỉ</label>
+                                                    <input id="street-address" type="text" class="form-control"
+                                                        placeholder="Số nhà, ...">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="phone">SĐT <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <input id="phone" name="phone" type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Chứng Minh Nhân Dân <abbr class="required"
+                                                            title="required">*</abbr></label>
+                                                    <input id="identity" name="identity" type="text"
+                                                        class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <a type="submit" class="btnSubmit" name="btnSubmit"
+                                                    id="btnSubmit">Lưu thay đổi</a>
+                                            </div>
+                                        </div>
+                                    </form>
                                         </div>
                                     </div>
                                 </div>
@@ -594,6 +606,157 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
 
-</body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.nice-select').remove();
+            $('select').show();
+            $.ajax({
+                type: 'GET',
+                url: 'https://provinces.open-api.vn/api/',
+                dataType: 'json',
+                success: function (data) {
+                    $default = '<option value="null" selected>Chọn</option>';
+                    $resultCity = $default;
+                    $(data).each(function (index) {
+                        $resultCity += '<option value="' + data[index].code + '">' + data[index].name + '</option>';
+                    });
+                    $('#city').html($resultCity);
 
-</html>
+                    $('#city option').each(function () {
+                        if ($(this).text().toLowerCase() == '<?= $city ?>'.toLowerCase()) {
+                            updateCity($(this).val());
+                        }
+                    });
+
+
+                    $('#street-address').val('<?= $detailsAddress ?>');
+                }
+            });
+
+            $('#city').on('change', function () {
+                updateCity($('#city').val());
+            });
+            $('#district').on('change', function () {
+                updateDistrict($(this).val());
+            });
+            $('#ward').on('change', function () {
+                updateWard($(this).val());
+                console.log($('#ward > option[Selected]').text() + ', ' + $('#district > option[Selected]').text() + ', ' + $('#city > option[Selected]').text());
+            });
+        });
+
+        function updateCity($value) {
+            $('#city > option[Selected]').attr('Selected', false);
+            $('#city > option[value=' + $value + ']').attr('Selected', true);
+            changeDistrict($value);
+        }
+
+        function updateDistrict($value) {
+            $('#district > option[Selected]').attr('Selected', false);
+            $('#district > option[value=' + $value + ']').attr('Selected', true);
+            changeWard($value);
+        }
+
+        function updateWard($value) {
+            $('#ward > option[Selected]').attr('Selected', false);
+            $('#ward > option[value=' + $value + ']').attr('Selected', true);
+        }
+
+        function changeDistrict($idCity) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://provinces.open-api.vn/api/d/',
+                dataType: 'json',
+                success: function (data) {
+                    $default = '<option value="null" selected>Chọn</option>';
+                    $resultDistrict = $default;
+                    $(data).each(function (index) {
+                        if (data[index].province_code == $idCity) {
+                            $resultDistrict += '<option value="' + data[index].code + '">' + data[index].name + '</option>';
+                        }
+                    });
+                    $('#district').html($resultDistrict);
+                    $('#district option').each(function () {
+                        if ($(this).text().toLowerCase() == '<?= $district ?>'.toLowerCase()) {
+                            updateDistrict($(this).val());
+                        }
+                    });
+                }
+            });
+        }
+
+        function changeWard($idDistrict) {
+            $.ajax({
+                type: 'GET',
+                url: 'https://provinces.open-api.vn/api/w/',
+                dataType: 'json',
+                success: function (data) {
+                    $default = '<option value="null" selected>Chọn</option>';
+                    $resultWard = $default;
+                    $(data).each(function (index) {
+                        if (data[index].district_code == $idDistrict) {
+                            $resultWard += '<option value="' + data[index].code + '">' + data[index].name + '</option>';
+                        }
+                    });
+                    $('#ward').html($resultWard);
+                    $('#ward option').each(function () {
+                        if ($(this).text().toLowerCase() == '<?= $ward ?>'.toLowerCase()) {
+                            updateWard($(this).val());
+                        }
+                    });
+                }
+            });
+        }
+
+        function AlertError($text) {
+            Swal.fire({
+                icon: 'error',
+                title: $text,
+                showConfirmButton: false,
+                timer: 1000
+            });
+            //$('swal-select').remove();
+        }
+    </script>
+    <script>
+        $('#btnSubmit').on('click', function () {
+            const checkboxes = document.getElementsByName("sex");
+            for (let i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    $sex = checkboxes[i].value;
+                }
+            }
+            $ten_dang_nhap = $('#register_username').val();
+            $mat_khau = $('#register_pwsd').val();
+            $conf_password = $('#register_confpwsd').val();
+            $name = $('#f_name').val();
+            $dob = $('#dob').val();
+            $phone = $('#phone').val();
+            $cmnd = $('#identity').val();
+            $city_new = $('#city option[Selected]').text();
+            $district_new = $('#district  option[Selected]').text();
+            $ward_new = $('#ward  option[Selected]').text();
+            $detailsAddress_new = $('#street-address').val();
+            if ($name.length <= 0) {
+                AlertError('Tên người nhận đang trống');
+            } else if ($('#city').val() == null) {
+                AlertError('Vui lòng chọn tỉnh / Thành phố');
+            } else if ($('#district').val() == null) {
+                AlertError('Vui lòng chọn Quận / Huyện');
+            } else if ($('#ward').val() == null) {
+                AlertError('Vui lòng chọn Phường / Xã');
+            }  else if ($('#register_pwsd').val() !== $('#register_confpwsd').val()) {
+                AlertError('Vui lòng nhập đúng mật khẩu');
+            }  else {
+                if ($detailsAddress_new.length > 0) {
+                    $address = $detailsAddress_new + ', ';
+                } else {
+                    $address = '';
+                }
+                $address += $ward_new + ', ' + $district_new + ', ' + $city_new;
+                updateAccount($ten_dang_nhap, $mat_khau, $name, $dob, $sex, $address, $phone, $cmnd);
+            }
+        });
+    </script>
+
+    <?= $this->endSection() ?>
