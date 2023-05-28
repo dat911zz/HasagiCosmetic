@@ -78,5 +78,10 @@ class Pages extends BaseController
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);
     }
+    public function search() {
+        $data['title'] = 'Tìm Kiếm';
+        $data['search'] = $this->request->getPost('search-product');
+        return view('pages/search', $data);
+    }
 }
 

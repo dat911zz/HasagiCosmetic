@@ -158,10 +158,10 @@
                         <div class="search-note">
                             <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
-                        <form action="#" method="post">
+                        <form action="/Pages/Search" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
+                                <input id="SearchInput" name="search-product" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
