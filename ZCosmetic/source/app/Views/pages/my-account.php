@@ -4,7 +4,7 @@
 <?= $this->section('content') ?>
 
 <?php
-include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
+// include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 ob_start();
 session_start();
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
