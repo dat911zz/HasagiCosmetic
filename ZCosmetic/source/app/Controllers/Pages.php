@@ -14,6 +14,11 @@ class Pages extends BaseController
         $data['title'] = 'Giỏ Hàng';
         return view('pages/cart', $data);
     }
+
+    public function orders() {
+        $data['title'] = 'Đơn Mua';
+        return view('pages/orders', $data);
+    }
     
     public function category()
     {
@@ -58,6 +63,11 @@ class Pages extends BaseController
     {
         $data['title'] = 'Đăng Nhập';
         return view('pages/account-login', $data);
+    }
+    public function search() {
+        $data['title'] = 'Tìm Kiếm';
+        $data['search'] = $this->request->getPost('search-product');
+        return view('pages/search', $data);
     }
 }
 

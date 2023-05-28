@@ -1,16 +1,17 @@
-<?php
-class Email
-{
-    public $email;
-    public $hoTen;
-    public $message;
-    public $subject;
-    public function __construct()
-    {
-    }
-}
-?>
 
+<?php 
+
+    if (isset($_POST['btnSU'])){
+        $name = $_POST['inputName'];
+        $subj = $_POST['inputSubject'];
+        $body = $_POST['inputTextarea'];
+        $email = $_POST['inputEmail'];
+        include(FCPATH . '../source/app/Helpers/mail.php');
+        sendMail( $name, $email, $subj, $body);
+        
+    }
+
+?>
 
 <?= $this->extend('layouts/main') ?>
 
@@ -31,31 +32,35 @@ class Email
                 </div>
                 <!--== Start Contact Form ==-->
                 <div class="contact-form">
-                    <form id="contact-form" action="https://whizthemes.com/mail-php/raju/arden/mail.php" method="POST">
+                    <form id="contact-form" action="/Pages/Contact" method="POST">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="con_name" placeholder="Họ">
+                                <label for="inputName">Họ và Tên</label>
+                                <input type="txt" class="form-control"  id="inputName"  name="inputName" placeholder="Nhập họ và tên">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Tên">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control"  id="inputEmail" name="inputEmail" placeholder="Nhập Email của bạn">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="email" name="con_email" placeholder="Địa chỉ email">
+                                <label for="inputSubject">Tiêu đề mail</label>
+                                <input type="text" class="form-control" id="inputSubject" name="inputSubject" placeholder="Nhập Tiêu Đề Mail của bạn">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control" name="con_message" placeholder="Tin nhắn"></textarea>
+                                    <label for="inputTextarea">Nội Dung bức thư</label>
+                                    <textarea class="form-control" id="inputTextarea"  name="inputTextarea" rows="4"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group mb-0">
-                                    <button class="btn btn-sm" type="submit">GỬI LIÊN HỆ</button>
+                                <button onclick="kiemTra();" type="submit" name="btnSU" class="btn btn-sm" >Gửi</button>
                                 </div>
                             </div>
                         </div>
@@ -98,5 +103,44 @@ class Email
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d802879.9165497769!2d144.83475730949783!3d-38.180874157285366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad646b5d2ba4df7%3A0x4045675218ccd90!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sbd!4v1636803638401!5m2!1sen!2sbd"></iframe>
 </div>
 
+<script>
+    function kiemTra(event) {
+    var tenKh = document.getElementById("inputName");
+    var email_kh = document.getElementById("inputEmail");
+    var subject = document.getElementById("inputSubject");
+    var tera = document.getElementById("inputTextarea");
+
+    if (tenKh.value === "") {
+        alert("Nhập tên khách hàng");
+        tenKh.focus();
+        event.preventDefault(); // Ngăn chặn việc gửi biểu mẫu
+        return false;
+    }
+
+    if (email_kh.value === "") {
+        alert("Nhập email khách hàng");
+        email_kh.focus();
+        event.preventDefault(); // Ngăn chặn việc gửi biểu mẫu
+        return false;
+    }
+
+    if (subject.value === "") {
+        alert("Nhập Tiêu Đề Mail Cần Gửi");
+        subject.focus();
+        event.preventDefault(); // Ngăn chặn việc gửi biểu mẫu
+        return false;
+    }
+
+    if (tera.value === "") {
+        alert("Nhập Tiêu Nội Dung Mail Cần Gửi");
+        tera.focus();
+        event.preventDefault(); // Ngăn chặn việc gửi biểu mẫu
+        return false;
+    }
+
+    return true;
+}
+
+</script>
 
 <?= $this->endSection() ?>

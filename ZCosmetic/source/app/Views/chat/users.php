@@ -17,8 +17,10 @@ if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
     }
 
     if($_SESSION['role'] != 3) {
+      ?> <?= $this->extend('layouts/admin_layout') ?><?php
         $name = "Nhân Viên";
     } else {
+      ?> <?= $this->extend('layouts/main') ?><?php
         $name = "Khách Hàng ";
     }
     $row = $db->executeReader($sql);
@@ -26,11 +28,7 @@ if(!isset($_SESSION['MaTaiKhoan']) || !isset($_SESSION['role'])) {
         $taikhoan = $row[0];
     }
 }
-
 ?>
-
-
-<?= $this->extend('layouts/main') ?>
 
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->
 <?= $this->section('content') ?>

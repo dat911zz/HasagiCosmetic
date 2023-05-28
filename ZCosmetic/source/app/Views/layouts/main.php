@@ -73,9 +73,9 @@
     </style>
 </head>
 <?php
-$db = new DatabaseHelper();
-$id_user = 1;
-$cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
+    $db = new DatabaseHelper();
+    $id_user = 1;
+    $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 ?>
 
 <body>
@@ -164,11 +164,10 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                         <div class="search-note">
                             <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
                         </div>
-                        <form action="#" method="post">
+                        <form action="/Pages/Search" method="post">
                             <div class="aside-search-form position-relative">
                                 <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control"
-                                    placeholder="Tìm kiếm toàn bộ cửa hàng…">
+                                <input id="SearchInput" type="search" class="form-control" placeholder="Tìm kiếm toàn bộ cửa hàng…">
                                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -263,15 +262,14 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
             <div class="offcanvas-body" id="cart-list">
                 <?php
                 if (count($cart) <= 0) {
-                    ?>
-                    <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng
-                        đang rỗng</div>
-                    <?php
+                ?>
+                    <div style="    padding-top: 20px; padding-bottom: 60px; text-align: center; color: orange;">Giỏ hàng đang rỗng</div>
+                <?php
                 } else {
-                    ?>
+                ?>
                     <ul class="aside-cart-product-list">
                         <?php
-                        $total = 0;
+                                $total = 0;
                         foreach ($cart as $sp) {
                             $price = $sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia;
                             $total += $price * $sp->SoLuong;
@@ -285,23 +283,16 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                                         <?= $sp->TenSanPham ?>
                                     </span>
                                 </a>
-                                <span class="product-price">
-                                    <?= $sp->SoLuong . ' x ' . number_format($price, 0, ',', '.') . ' VNĐ' ?><span
-                                        style="margin-left: 10px; color: red; text-decoration: line-through;">
-                                        <?php if ($sp->GiamGia > 0) {
-                                            echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
-                                        } ?>
-                                    </span>
-                                </span>
+                                <span class="product-price"><?= $sp->SoLuong . ' x ' . number_format($price, 0, ',', '.') . ' VNĐ' ?><span style="margin-left: 10px; color: red; text-decoration: line-through;"><?php if ($sp->GiamGia > 0) {
+                                                                                                                                                                                                                        echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ';
+                                                                                                                                                                                                                    } ?></span></span>
                             </li>
                             <?php
                         }
                         ?>
                     </ul>
-                    <p class="cart-total"><span>Subtotal:</span><span class="amount">
-                            <?= number_format($total, 0, ',', '.') . ' VNĐ' ?>
-                        </span></p>
-                    <?php
+                    <p class="cart-total"><span>Subtotal:</span><span class="amount"><?= number_format($total, 0, ',', '.') . ' VNĐ' ?></span></p>
+                <?php
                 }
                 ?>
 
@@ -405,7 +396,15 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
     <script>
+        function checkLogin() {
+            if('<?= $id_user ?>' == '0') {
+                window.location = "<?= base_url('/Pages/Logout') ?>";
+                die;
+            }
+        }        
+
         function addCart($id_product, $quantity, $id_user) {
+            checkLogin();
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('Ajax/AddCart') ?>",
@@ -563,6 +562,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                     $('.product-single-thumb > img').attr('src', '../../assets/Product_Images/' + data.value[0].MaHinh + '.jpg');
                     $('.product-details-title').html(data.value[0].TenSanPham);
                     $('.product-details-title ~ p').html(data.value[0].MoTa);
+                    $('.pro-qty > input').val(1);
                     var giamGia = (data.value[0].GiamGia / 100.0) * data.value[0].Gia;
                     $('.product-details-action .price').html(convertLongToMoney(data.value[0].Gia - giamGia, 'VNĐ'));
                     if (giamGia > 0) {
@@ -578,25 +578,26 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
     <script>
         $(document).ready(function () {
             <?php
-            if (!isset($cart)) {
-                ?>
-                $('.count').html('0');
-                <?php
-            } else {
-                ?>
-                $('.count').html('<?= count($cart) ?>');
-                <?php
-            }
+                if(!isset($cart)) {
+                    ?>
+                    $('.count').html('0');
+                    <?php
+                }
+                else {
+                    ?>
+                    $('.count').html('<?= count($cart) ?>');
+                    <?php
+                }
             ?>
-
+            
         })
-        $('#checkout').on('click', function () {
+        $('#checkout').on('click', function() {
             $.ajax({
                 type: 'POST',
                 url: "<?= base_url('/Ajax/CheckoutCarts') ?>",
                 dataType: 'json',
                 data: {
-                    id_user: 1
+                    id_user: '<?= $id_user ?>'
                 },
                 success: function (data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
@@ -617,7 +618,7 @@ $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
                 $(this).val(1);
             }
         })
-        $('.buy-now').on('click', function () {
+        $('.buy-now').on('click', function() {
 
         })
 

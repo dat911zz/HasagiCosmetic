@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+    session_start();
+    if(!isset($_SESSION["MaTaiKhoan"]) || $_SESSION["role"] < 1 || $_SESSION["role"] > 2) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+    }
+?>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -26,6 +33,8 @@
     <link href="../../assets/css/admin/PreLoad.css" rel="stylesheet" />
     <!-- Custom CSS-->
     <link href="../../assets/css/admin/CustomLayout.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../assets/css/stylechat.css">
     <!--Bootstrap icon-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!--Datatable-->

@@ -14,15 +14,15 @@ header("Access-Control-Allow-Origin: *");
         if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
             http_response_code(400);
-            echo "Please complete the form and try again.";
+            echo "Vui lòng hoàn thành biểu mẫu và thử lại.";
             exit;
         }
 
         // Set the recipient email address.
-        $recipient = "your@email.here";
+        $recipient = "dat911zz@dat911zz.x10.mx";
 
         // Set the email subject.
-        $subject = "Brancy - Test Mail From $name";
+        $subject = "Thư khách Hàng Được gửi từ Ông\Bà:  $name";
 
         // Build the email content.
         $email_content = 
@@ -296,24 +296,24 @@ header("Access-Control-Allow-Origin: *");
         // Build the email headers.
         $email_headers = "MIME-Version: 1.0" . "\r\n";
         $email_headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $email_headers .= 'From:' . $name . ' ' . 'noreply@yourdomain.com' . "\r\n";
-        $email_headers .= 'Reply-To:' . $email . "\r\n";
+        $email_headers .= 'Từ:' . $name . ' ' . 'noreply@yourdomain.com' . "\r\n";
+        $email_headers .= 'Trả lời:' . $email . "\r\n";
 
-        // Send the email.
+        // Gửi email.
         if (mail($recipient, $subject, $email_content, $email_headers)) {
             // Set a 200 (okay) response code.
             http_response_code(200);
-            echo "Thank You! ".$name." , Your message has been sent.";
+            echo "Cảm ơn! ".$name." , Tin nhắn của bạn đã được gửi.";
         } else {
             // Set a 500 (internal server error) response code.
             http_response_code(500);
-            echo "Oops! Something went wrong and we couldn't send your message.";
+            echo "Ối! Đã xảy ra sự cố và chúng tôi không thể gửi tin nhắn của bạn.";
         }
 
     } else {
         // Not a POST request, set a 403 (forbidden) response code.
         http_response_code(403);
-        echo "There was a problem with your submission, please try again.";
+        echo "Đã xảy ra sự cố với nội dung gửi của bạn, vui lòng thử lại.";
     }
 
 ?>

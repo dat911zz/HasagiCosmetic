@@ -2,8 +2,8 @@
 <?php
     include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
     include(FCPATH . '../source/app/Helpers/Pager.php');
-
-    $id_user = 1;
+    session_start();
+    $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $db = new DatabaseHelper();
     $count = $db->executeReader('SELECT COUNT(*) AS "count" FROM tbl_sanpham')[0]->count;
 
@@ -18,6 +18,7 @@
     $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
                                     FROM tbl_sanpham, tbl_giasanpham, tbl_gia
                                     WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null limit $posStart, $lim");
+                                    
 ?>
 
 <?= $this->extend('layouts/main') ?>
