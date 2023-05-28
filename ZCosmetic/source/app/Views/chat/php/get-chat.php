@@ -23,8 +23,6 @@
     
         }
 
- 
-
         $data = $db->executeReader($sql);
         if($db->executeCount($sql) > 0){
             foreach($data as $pr){
