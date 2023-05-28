@@ -25,7 +25,7 @@ function sendMail($name,$email, $subject, $body){
         //Recipients
         $mail->setFrom('mypham.thongbao@gmail.com', "Xac nhan Mail cua ban!");
         $mail->addAddress($email,$name);     //Add a recipient
-        //$mail->addAddress('mypham.thongbao@gmail.com');               //Name is optional
+        $mail->addAddress('mypham.thongbao@gmail.com');               //Name is optional
         // $mail->addReplyTo('info@example.com', 'Information');
         // $mail->addCC('cc@example.com');
         // $mail->addBCC('bcc@example.com');
@@ -36,7 +36,7 @@ function sendMail($name,$email, $subject, $body){
     
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = $subject;
+        $mail->Subject = "Tra loi tu dong!, Hasagi!";
         $mail->Body    = $body;
         $mail->AltBody = $body;
     
