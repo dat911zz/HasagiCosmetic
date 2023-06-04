@@ -61,15 +61,18 @@ $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
                             <button type="button" class="product-review-show">150 reviews</button>
                         </div>
                         <p class="mb-7"><?= substr($sp->MoTa, 0, 150) ?> ...</p>
-                        <div class="prices">
-                            <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.') . ' VNĐ' ?></span>
-                            <?php
-                            if ($sp->GiamGia != 0) {
-                            ?>
-                                <span class="price-old" style="color:red;"><?php echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ' ?></span>
-                            <?php
-                            }
-                            ?>
+                        <div style="display: flex; justify-content: space-between;">
+                            <div class="prices">
+                                <span class="price"><?php echo number_format($sp->Gia - ($sp->GiamGia / 100.0) * $sp->Gia, 0, ',', '.') . ' VNĐ' ?></span>
+                                <?php
+                                if ($sp->GiamGia != 0) {
+                                ?>
+                                    <span class="price-old" style="color:red;"><?php echo number_format($sp->Gia, 0, ',', '.') . ' VNĐ' ?></span>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <span style="color:red; user-select: none;">SL Tồn: <?= $sp->SoLuongTon ?></span>
                         </div>
                         <div class="product-details-action">
                             <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="btn" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">

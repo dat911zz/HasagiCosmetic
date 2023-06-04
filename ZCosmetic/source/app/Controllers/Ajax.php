@@ -17,9 +17,9 @@ class Ajax extends BaseController
     public function getDataProduct($id_product)
     {
         $db = new DatabaseHelper();
-        return $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
-                                    FROM tbl_sanpham, tbl_giasanpham, tbl_gia
-                                    WHERE tbl_sanpham.Ma = ? and tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null", array($id_product));
+        return $db->executeReader("SELECT tbl_sanpham.*, tbl_giacapnhat.*
+                                    FROM tbl_sanpham, tbl_giasanpham, tbl_giacapnhat
+                                    WHERE tbl_sanpham.Ma = ? and tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_giacapnhat.Ma and tbl_giacapnhat.NgayHetHieuLuc is null", array($id_product));
     }
     public function getProduct()
     {
