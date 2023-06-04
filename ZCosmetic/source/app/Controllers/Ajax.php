@@ -17,7 +17,7 @@ class Ajax extends BaseController
     public function getDataProduct($id_product)
     {
         $db = new DatabaseHelper();
-        return $db->executeReader("SELECT tbl_sanpham.*, tbl_giacapnhat.*
+        return $db->executeReader("SELECT tbl_sanpham.*, `tbl_giacapnhat`.`Gia`, `tbl_giacapnhat`.`NgayCapNhat`, `tbl_giacapnhat`.`NgayHetHieuLuc`
                                     FROM tbl_sanpham, tbl_giasanpham, tbl_giacapnhat
                                     WHERE tbl_sanpham.Ma = ? and tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_giacapnhat.Ma and tbl_giacapnhat.NgayHetHieuLuc is null", array($id_product));
     }
@@ -271,7 +271,17 @@ class Ajax extends BaseController
         $db = new DatabaseHelper();
         $id_order = $this->request->getPost('idorder');
         $id_user = $this->request->getPost('iduser');
-        $kq = $db->executeNonQuery('UPDATE `tbl_hoadon` SET `tbl_hoadon`.`MaNhanVien` = ? WHERE `tbl_hoadon`.`Ma` = ?', array($id_user, $id_order));
+        $kq = $db->executeNonQuery('CALL sp_acceptOrder(?, ?)', array($id_order, $id_user));
+        if ($kq) {
+            return json_encode(['msg' => 'success']);
+        }
+        return json_encode(['msg' => 'fails']);
+    }
+    public function cancelOrder() {
+        $db = new DatabaseHelper();
+        $id_order = $this->request->getPost('idorder');
+        $id_user = $this->request->getPost('iduser');
+        $kq = $db->executeNonQuery('CALL sp_cancelOrder(?, ?)', array($id_order, $id_user));
         if ($kq) {
             return json_encode(['msg' => 'success']);
         }

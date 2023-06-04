@@ -19,10 +19,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     die;
 }
 
-// $db = (new DatabaseHelper());
-// $mail = $_SESSION['username'];
-// $pass = $_SESSION['password'];
-// $role = $_SESSION['role'];
  $MaTaiKhoan = $_SESSION['MaTaiKhoan'];
 
 $uname = "";
@@ -154,7 +150,9 @@ if (isset($arrAdress[$len - 4])) {
 
                                                             </td>
                                                             <td>
-                                                                <?= $order->MaNhanVien == "" ? '<span style="color:red">Chờ kiểm duyệt</span>' : '<span style="color:green">Đã duyệt</span>' ?>
+                                                                <span style="color:<?= $order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange') ?>">
+                                                                    <?= $order->KiemDuyet ?>
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         <?php

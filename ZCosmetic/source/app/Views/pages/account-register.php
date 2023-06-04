@@ -128,10 +128,10 @@ function validate($data)
                                                         <label>Giới tính<abbr class="required"
                                                                 title="required">*</abbr></label>
                                                         <label for="male">Male</label>
-                                                        <input type="radio" class="sex" name="sex" id="sexMale" value="male"
+                                                        <input type="radio" class="sex" name="sex" id="sexMale" value="Nam"
                                                             checked>
                                                         <label for="female">Female</label>
-                                                        <input type="radio" class="sex" name="sex" id="sexFemale" value="female">
+                                                        <input type="radio" class="sex" name="sex" id="sexFemale" value="Nữ">
                                                     </fieldset>
                                                 </div>
                                             </div>

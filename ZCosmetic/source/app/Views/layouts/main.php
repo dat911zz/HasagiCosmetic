@@ -547,6 +547,7 @@
                         $('.product-details-action .price-old').html('');
                     }
                     $('#quantity-in-stock').html(data.value[0].SoLuongTon);
+                    $('.product-details-pro-qty > .pro-qty > input').val(1);
                 }
             });
         });
