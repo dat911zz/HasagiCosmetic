@@ -7,6 +7,10 @@
 <?php
 ob_start();
 session_start();
+$orders_all = "";
+$orders_DaDuyet = "";
+$orders_ChoKiemDuyet = "";
+$orders_HuyDon = "";
 if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $id_user = $_SESSION["MaTaiKhoan"];
     $mail = $_SESSION['username'];
@@ -14,9 +18,36 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     $role = $_SESSION['role'];
     $db = new DatabaseHelper();
     $orders = $db->executeReader('CALL sp_getOrders(?)', array($id_user));
+    
+    foreach($orders as $order) {
+        $orders_all .= '<tr class="alert" role="alert"><td><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text"><img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/'. $order->MaHinh . '.jpg"></img></a></td><td style="text-align: left;"><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text">'.$order->TenSanPham.'</a></td><td colspan="3"><div style="display: flex; align-items: center;">'.(($order->GiamGia != 0) ?'<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>': "").'<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>'.'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span></div></td><td><span style="color:'.($order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange')).'">'.$order->KiemDuyet.'</span></td></tr>';
+        if($order->KiemDuyet == "Đã duyệt") {
+            $orders_DaDuyet .= '<tr class="alert" role="alert"><td><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text"><img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/'. $order->MaHinh . '.jpg"></img></a></td><td style="text-align: left;"><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text">'.$order->TenSanPham.'</a></td><td colspan="3"><div style="display: flex; align-items: center;">'.(($order->GiamGia != 0) ?'<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>': "").'<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>'.'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span></div></td><td><span style="color:'.($order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange')).'">'.$order->KiemDuyet.'</span></td></tr>';
+        }
+        else if($order->KiemDuyet == "Chờ kiểm duyệt") {
+            $orders_ChoKiemDuyet .= '<tr class="alert" role="alert"><td><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text"><img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/'. $order->MaHinh . '.jpg"></img></a></td><td style="text-align: left;"><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text">'.$order->TenSanPham.'</a></td><td colspan="3"><div style="display: flex; align-items: center;">'.(($order->GiamGia != 0) ?'<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>': "").'<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>'.'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span></div></td><td><span style="color:'.($order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange')).'">'.$order->KiemDuyet.'</span></td></tr>';'<tr class="alert" role="alert"><td><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text"><img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/'. $order->MaHinh . '.jpg"></img></a></td><td style="text-align: left;"><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text">'.$order->TenSanPham.'</a></td><td colspan="3"><div style="display: flex; align-items: center;">'.(($order->GiamGia != 0) ?'<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>':'<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>').'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span></div></td><td><span style="color:'.($order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange')).'">'.$order->KiemDuyet.'</span></td></tr>';
+        }
+        else {
+            $orders_HuyDon .= '<tr class="alert" role="alert"><td><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text"><img style="width: 50px; object-fit:contain;" class="img" src="../../assets/Product_Images/'. $order->MaHinh . '.jpg"></img></a></td><td style="text-align: left;"><a href="../Home/Product?id='.$order->Ma.'" class="shorten-text">'.$order->TenSanPham.'</a></td><td colspan="3"><div style="display: flex; align-items: center;">'.(($order->GiamGia != 0) ?'<span style="text-decoration: line-through; font-size: 10px; margin-right:4px;">'.number_format($order->GiaGoc, 0, ',', '.').'</span>': "").'<span style="color:red">'.number_format($order->GiaDaGiam, 0, ',', '.').'</span>'.'<span style="margin-left:4px; margin-right:4px;">x</span>'.'<span>'.$order->SoLuong.'</span></div></td><td><span style="color:'.($order->KiemDuyet == "Chờ kiểm duyệt" ? 'red' : ($order->KiemDuyet == "Đã duyệt" ? 'green' : 'orange')).'">'.$order->KiemDuyet.'</span></td></tr>';
+        }
+    }
 } else {
     header('location:/Pages/AccountLogin');
     die;
+}
+
+$tr_null = '<tr><td colspan="6" style="text-align: center;">Không có đơn nào ở trạng thái này</td></tr>';
+if($orders_all == "") {
+    $orders_all = $tr_null;
+}
+if($orders_DaDuyet == "") {
+    $orders_DaDuyet = $tr_null;
+}
+if($orders_ChoKiemDuyet == "") {
+    $orders_ChoKiemDuyet = $tr_null;
+}
+if($orders_HuyDon == "") {
+    $orders_HuyDon = $tr_null;
 }
 
  $MaTaiKhoan = $_SESSION['MaTaiKhoan'];
@@ -35,8 +66,9 @@ if (isset($arrAdress[$len - 4])) {
 }
 ?>
 
-<body>
 
+
+<body>
     <!--== Wrapper Start ==-->
     <div class="wrapper">
         <header id="header">
@@ -108,7 +140,15 @@ if (isset($arrAdress[$len - 4])) {
                                 </div>
                                 <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="orders-tab">
                                     <div class="myaccount-content">
-                                        <h3>Đơn Mua</h3>
+                                        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-bottom: 25px;">
+                                            <span style="font-weight: 500; font-size: 20px;">Đơn Mua</span>
+                                            <select id="status-order-select" style="border-radius: 10px; padding: 4px 20px;">
+                                                <option value="null">Tất cả</option>
+                                                <option value="1">Đã duyệt</option>
+                                                <option value="0">Chờ kiểm duyệt</option>
+                                                <option value="-1">Hủy đơn</option>
+                                            </select>
+                                        </div>
                                         <?php if(1 == 0) { ?>
 
                                         <?php } else { ?>
@@ -123,7 +163,7 @@ if (isset($arrAdress[$len - 4])) {
                                                         <th>Trạng Thái</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="order-body">
                                                     <?php
                                                     foreach($orders as $order) {
                                                         ?>
@@ -422,34 +462,6 @@ if (isset($arrAdress[$len - 4])) {
             </div>
         </aside>
         <!--== End Product Quick Add Cart Modal ==-->
-
-        <!--== Start Aside Search Form ==-->
-        <aside class="aside-search-box-wrapper offcanvas offcanvas-top" tabindex="-1" id="AsideOffcanvasSearch"
-            aria-labelledby="offcanvasTopLabel">
-            <div class="offcanvas-header">
-                <h5 class="d-none" id="offcanvasTopLabel">Aside Search</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                        class="fa fa-close"></i></button>
-            </div>
-            <div class="offcanvas-body">
-                <div class="container pt--0 pb--0">
-                    <div class="search-box-form-wrap">
-                        <div class="search-note">
-                            <p>Bắt đầu nhập và nhấn Enter để tìm kiếm</p>
-                        </div>
-                        <form action="#" method="post">
-                            <div class="aside-search-form position-relative">
-                                <label for="SearchInput" class="visually-hidden">Search</label>
-                                <input id="SearchInput" type="search" class="form-control"
-                                    placeholder="Tìm kiếm toàn bộ cửa hàng…">
-                                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!--== End Aside Search Form ==-->
 
         <!--== Start Product Quick View Modal ==-->
         <aside class="product-cart-view-modal modal fade" id="action-QuickViewModal" tabindex="-1" aria-hidden="true">
@@ -814,6 +826,28 @@ if (isset($arrAdress[$len - 4])) {
                 updatePassword('<?= $MaTaiKhoan ?>', $password);
             }
         });
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#status-order-select').on('change', function() {
+                $val_select = $('#status-order-select').val();
+                console.log($val_select);
+                $size = <?= count($orders) ?>;
+                if($val_select == "null") {
+                    $('#order-body').html('<?= str_replace("'", "", $orders_all) ?>');
+                }
+                else if($val_select == "1") {
+                    $('#order-body').html('<?= str_replace("'", "", $orders_DaDuyet) ?>');
+                }
+                else if($val_select == "0") {
+                    $('#order-body').html('<?= str_replace("'", "", $orders_ChoKiemDuyet) ?>');
+                }
+                else if($val_select == "-1") {
+                    $('#order-body').html('<?= str_replace("'", "", $orders_HuyDon) ?>');
+                }
+            });
+        });
     </script>
     <style>
         .save {
@@ -824,4 +858,5 @@ if (isset($arrAdress[$len - 4])) {
             text-align: center;
         }
     </style>
+
 <?= $this->endSection() ?>

@@ -372,6 +372,7 @@
 
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
+    
     <script>
         function checkLogin() {
             if('<?= $id_user ?>' == '0') {
