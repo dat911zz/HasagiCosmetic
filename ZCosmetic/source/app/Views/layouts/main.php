@@ -72,7 +72,8 @@
 </head>
 <?php
     $db = new DatabaseHelper();
-    $id_user = 1;
+    session_start();
+    $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
     $cart = $db->executeReader('CALL sp_getCart(?);', array($id_user));
 ?>
 
@@ -743,14 +744,14 @@
                             icon: 'success',
                             title: 'Cập nhật mật khẩu thành công !!!',
                             showConfirmButton: false,
-                            timer: 5000
+                            timer: 2000
                         });
                     } else {
                         Swal.fire({
                             icon: 'error',
                             title: 'Cập nhật mật khẩu thất bại',
                             showConfirmButton: false,
-                            timer: 5000
+                            timer: 2000
                         });
                     }
                 }

@@ -19,14 +19,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     die;
 }
 
-$db = (new DatabaseHelper());
-$mail = $_SESSION['username'];
-$pass = $_SESSION['password'];
-$role = $_SESSION['role'];
-$MaTaiKhoan = $_SESSION['MaTaiKhoan'];
+// $db = (new DatabaseHelper());
+// $mail = $_SESSION['username'];
+// $pass = $_SESSION['password'];
+// $role = $_SESSION['role'];
+ $MaTaiKhoan = $_SESSION['MaTaiKhoan'];
 
 $uname = "";
-$id_user = 2;
+// $id_user = 2;
 $user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
 $arrAdress = explode(', ', $user->DiaChi);
 $len = count($arrAdress);
@@ -80,9 +80,9 @@ if (isset($arrAdress[$len - 4])) {
                                 <button class="nav-link" id="orders-tab" data-bs-toggle="tab" data-bs-target="#orders"
                                     type="button" role="tab" aria-controls="orders" aria-selected="false">
                                     Đơn Mua</button>
-                                <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab"
+                                <!-- <button class="nav-link" id="payment-method-tab" data-bs-toggle="tab"
                                     data-bs-target="#payment-method" type="button" role="tab"
-                                    aria-controls="payment-method" aria-selected="false">Phương thức thanh toán</button>
+                                    aria-controls="payment-method" aria-selected="false">Phương thức thanh toán</button> -->
                                 <button class="nav-link" id="address-edit-tab" data-bs-toggle="tab"
                                     data-bs-target="#address-edit" type="button" role="tab" aria-controls="address-edit"
                                     aria-selected="false">Thay đổi mật khẩu</button>
@@ -213,7 +213,7 @@ if (isset($arrAdress[$len - 4])) {
                                     aria-labelledby="address-edit-tab">
                                     <div class="myaccount-content">
                                         <h3>Cập nhật mật khẩu</h3>
-                                        <form method="post">
+                                        <div>
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
@@ -253,7 +253,7 @@ if (isset($arrAdress[$len - 4])) {
                                                         đổi</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="account-info" role="tabpanel"
@@ -760,7 +760,7 @@ if (isset($arrAdress[$len - 4])) {
                 icon: 'error',
                 title: $text,
                 showConfirmButton: false,
-                timer: 20000
+                timer: 2000
             });
             //$('swal-select').remove();
         }
@@ -813,7 +813,7 @@ if (isset($arrAdress[$len - 4])) {
             } else if (<?php echo $pass ?> != $passwordold) {
                 AlertErrorPassword('Mật khẩu hiện tại không được để trống');
             } else {
-                updatePassword(<?= $MaTaiKhoan ?>, $password);
+                updatePassword('<?= $MaTaiKhoan ?>', $password);
             }
         });
     </script>
