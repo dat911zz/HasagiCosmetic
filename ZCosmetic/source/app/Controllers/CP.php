@@ -50,4 +50,8 @@ class CP extends BaseController
         $data['title'] = 'Kiểm Duyệt Đơn';
         return view('cp/check_order', $data);
     }
+    public function report(){
+        $data['title'] = 'Tạo tài khoản';
+        return view('cp/report', $data);
+    }
 }
