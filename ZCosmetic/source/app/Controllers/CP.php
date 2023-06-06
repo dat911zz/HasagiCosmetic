@@ -5,9 +5,11 @@ namespace App\Controllers;
 use App\Models\LoaiTaiKhoanModel;
 use App\Models\NguoiDungModel;
 use App\Models\NhanVienModel;
+use App\Models\SanPhamModel;
 use App\Models\TaiKhoanModel;
 use DatabaseHelper;
 use Exception;
+use Hermawan\DataTables\DataTable;
 
 include(FCPATH . '../source/app/Helpers/DatabaseHelper.php');
 class CP extends BaseController
@@ -35,19 +37,42 @@ class CP extends BaseController
         $data['nd'] = $nd;
         return view('cp/details', $data);
     }
-    public function createAccount(){
+    public function createAccount()
+    {
         $data['title'] = 'Tạo tài khoản';
         return view('cp/create', $data);
     }
 
-    public function products(){
+    public function products()
+    {
         $data['title'] = 'Danh sách sản phẩm';
         $db = new DatabaseHelper();
         $data['prods'] =  $db->executeReader("SELECT * FROM tbl_sanpham LIMIT 10");
         return view('cp/products', $data);
     }
-    public function check_order() {
+    public function check_order()
+    {
         $data['title'] = 'Kiểm Duyệt Đơn';
         return view('cp/check_order', $data);
+    }
+    public function getSP_Pagination()
+    {
+        $db = db_connect();
+        $builder = $db
+        ->table('tbl_sanpham')
+        ->select(
+            'MaHinh,
+             Ma, 
+             TenSanPham, 
+             SoLuongTon, 
+             XuatXu, 
+             ThuongHieu, 
+             MaLoai, 
+             MaDVT, 
+             GiamGia, 
+             MoTa'
+            );
+        return DataTable::of($builder)
+               ->toJson();
     }
 }

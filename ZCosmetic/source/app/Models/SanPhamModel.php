@@ -13,7 +13,8 @@ class SanPhamModel extends Model
 
     protected $returnType     = 'array';
     protected $useSoftDeletes = false;
-
+    protected $usePagination = true;
+    protected $perPage = 5;
     protected $allowedFields = ['Ma', 'TenSanPham', 'MaHinh', 'SoLuongTon', 'MaDVT', 'MaLoai', 'ThuongHieu', 'XuatXu', 'MoTa', 'GiamGia'];
 
     // Dates

@@ -59,6 +59,7 @@ $routes->match(['get', 'post'], 'CP/Account/(:num)', 'CP::account/$1');
 $routes->get('CP/CreateAccount', 'CP::createAccount');
 $routes->get('CP/Products', 'CP::products');
 $routes->get('CP/CheckOrder', 'CP::check_order');
+$routes->get('CP/GetProducts', 'CP::getSP_Pagination');
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');
