@@ -87,7 +87,6 @@
         filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, StartColorStr="rgba(153, 153, 153, 0.1)", EndColorStr="rgba(0, 0, 0, 0.1)") !important;
     }
 </style>
-
 <body>
     <div class="test">
         <div class="header ml-0">
@@ -215,10 +214,9 @@
         console.log(e.keyCode);
         // updateCart($(this).data('id-product'), $(this).val(), $(this).data('id-user'), $(this).data('price'));
     });
-    var jtable = null;
     $(document).ready(function() {
         // $('#table_id').DataTable().destroy();
-        jtable = $('#table_id').DataTable({
+        $('#table_id').DataTable({
             pageResize: false,
             scrollY: 500,
             scrollX: true,
@@ -373,6 +371,37 @@
             }
         });
     });
+
+    function addSP(id) {
+        console.log(id);
+        addNewRow();
+        $.ajax({
+            type: 'POST',
+            url: "<?= base_url('CP/GetProductByIdJSON') ?>\\" + id,
+            dataType: 'json',
+            success: function(data) {
+                console.log($id_product + "|" + $quantity + "|" + $id_user);
+                console.log(data);
+                if (data.msg == "success") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thêm vào giỏ hàng thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        // position: '',
+                        icon: 'error',
+                        title: 'Thêm vào giỏ hàng thất bại',
+                        showConfirmButton: false,
+                        //timer: 1500
+                    });
+                    $('swal-select').remove();
+                }
+            }
+        });
+    }
 </script>
 
 <!-- Khúc này phải cách ra 1 dòng để không bị lỗi -->

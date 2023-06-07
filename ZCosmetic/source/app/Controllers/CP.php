@@ -77,8 +77,23 @@ class CP extends BaseController
         return DataTable::of($builder)
                ->toJson();
     }
+    public function getSPByID_JSON($id){
+        $sp = (new SanPhamModel())->find($id);
+        if ($sp) {
+            echo json_encode([
+                'msg' => "success",
+                'data' => $sp
+            ]);
+        } else {
+            echo json_encode(['msg' => "error"]);
+        }
+    }
     public function createImportTicket(){
         $data['title'] = 'Tạo phiếu nhập';
         return view('cp/createImportTicket', $data);
+    }
+    public function checkPN(){
+        $data['title'] = 'Duyệt phiếu nhập';
+        return view('cp/checkPN', $data);
     }
 }
