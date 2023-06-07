@@ -580,7 +580,7 @@
                 },
                 success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
-                    window.location.replace("<?= base_url('Pages/Checkout') ?>");
+                    window.location = "<?= base_url('Pages/Checkout') ?>";
                 }
             });
         });
