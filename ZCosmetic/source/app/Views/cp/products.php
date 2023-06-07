@@ -96,16 +96,6 @@
             </hr>
         </div>
     </div>
-    <!-- <div style="float: right; margin-bottom: 10px;">
-        <a href="#" class="btn btn-success m-1">
-            <span>
-                <span><img src="https://img.icons8.com/office/22/null/add--v1.png" /></span> Thêm SP
-            </span>
-        </a>
-        <a href="#" class="btn btn-success m-1"><span><img src="https://img.icons8.com/doodle/22/null/microsoft-excel-2019.png" /></span> Thêm Từ File</a>
-        <a href="#" class="btn btn-success m-1"><span><img src="https://img.icons8.com/arcade/22/null/print.png" /></span> Xuất File</a>
-
-    </div> -->
     <div class="container">
         <div class="table">
             <table class="table" id="table_id" width="100%" cellspacing="0">
@@ -134,67 +124,6 @@
                         <!-- <th class="text-center">Công Cụ</th> -->
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-
-                    use App\Models\DVTModel;
-                    use App\Models\LoaiSPModel;
-                    use App\Models\SanPhamModel;
-
-                    $db = new DatabaseHelper();
-
-                    // $sps = (new SanPhamModel())->findAll();
-                    if (count($prods) == 0) {
-                        echo '<h5 style="color: orangered; text-align: center">Không có thông tin</h5>';
-                    } else {
-                        foreach ($prods as $sp) { ?>
-                            <tr>
-                                <td class="text-center MaHinh"><img src="../../assets/Product_Images/<?= $sp->MaHinh ?>.jpg" style="width: 50px; object-fit:contain" /></td>
-                                <td class="text-center"><?= $sp->Ma ?></td>
-                                <td style="text-align: justify;">
-                                    <span class="short-tent">
-                                        <?= $sp->TenSanPham ?>
-                                    </span>
-                                </td>
-                                <td class="text-center">
-                                    <?= $sp->SoLuongTon ?>
-                                </td>
-                                <td class="text-center">
-                                    <?= $sp->XuatXu ?>
-                                </td>
-                                <td class="text-center">
-                                    <?= $sp->ThuongHieu ?>
-                                </td>
-                                <td class="text-center">
-                                    <?php
-
-                                    // (new LoaiSPModel())->find($sp->MaLoai)['Ten']
-                                    ?></td>
-                                <td class="text-center">
-                                    <?php
-                                    //  (new DVTModel())->find($sp->MaDVT)['Ten'] 
-                                    ?>
-                                </td>
-                                <td class="text-center">
-                                    <?= $sp->GiamGia ?>
-                                </td>
-                                <td>
-                                    <div style="text-align: justify;" class="short-tent">
-                                        <?= $sp->MoTa ?>
-                                    </div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-primary action-btn-add-product" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal"><i class="bi bi-cart-plus"></i></button>
-                                    <!-- <a href="/CP/Account/<?= 1 ?>" class="btn" style="background-color: #84bcff; color: #fff; font-size: 1rem; "><i class="bi bi-card-list"></i></a>
-                                    <a onclick="delAcc(<?= 1 ?>)" class="btn" style="background-color: #ff4646; color: #fff; font-size: 1rem; "><i class="bi bi-trash"></i></a> -->
-                                </td>
-                            </tr>
-                        <?php }
-                        ?>
-
-                    <?php }
-                    ?>
-                </tbody>
             </table>
 
             <aside class="product-cart-view-modal modal fade" id="action-QuickViewModal" tabindex="-1" aria-hidden="true">
@@ -238,6 +167,7 @@
                                                         <div class="col-7">
                                                             <select style="    width: 100%; height: 100%; border-radius: 10px; padding: 10px;">
                                                                 <?php
+                                                                $db = new DatabaseHelper();
                                                                 $ctys = $db->executeReader('SELECT * FROM tbl_nhacungcap');
                                                                 foreach ($ctys as $cty) {
                                                                 ?>
@@ -388,13 +318,13 @@
                 {
                     "data": 6,
                     render: function(data) {
-                        return '<div class="text-center"><?= $db->executeReader("SELECT * FROM tbl_loaisanpham WHERE Ma = ?", array($sp->MaLoai))[0]->Ten; ?></div>';
+                        return '<div class="text-center">' + data + '</div>';
                     }
                 },
                 {
                     "data": 7,
                     render: function(data) {
-                        return '<div class="text-center"><?= $db->executeReader("SELECT * FROM tbl_dvt WHERE Ma = ?", array($sp->MaDVT))[0]->Ten; ?></div>';
+                        return '<div class="text-center">' + data + '</div>';
                     }
                 },
                 {
@@ -415,7 +345,7 @@
                 {
                     "data": "Thao tác",
                     render: function(data, type, row) {
-                        console.log(data, type, row);
+                        // console.log(data, type, row);
                         return '<button class="btn btn-primary action-btn-add-product" data-id-product="' + row[1] + '" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal"><i class="bi bi-cart-plus"></i></button>';
                     }
                 },

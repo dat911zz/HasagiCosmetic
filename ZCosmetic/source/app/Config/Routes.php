@@ -60,6 +60,8 @@ $routes->get('CP/CreateAccount', 'CP::createAccount');
 $routes->get('CP/Products', 'CP::products');
 $routes->get('CP/CheckOrder', 'CP::check_order');
 $routes->get('CP/GetProducts', 'CP::getSP_Pagination');
+$routes->get('CP/CreateImportTicket', 'CP::createImportTicket');
+
 // Chat
 $routes->get('/Chat/Users', 'Chat::chat_users');
 $routes->get('/Chat/PhpUsers', 'Chat::chat_php_users');

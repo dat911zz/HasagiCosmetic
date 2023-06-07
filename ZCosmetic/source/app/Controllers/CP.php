@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\LoaiSPModel;
 use App\Models\LoaiTaiKhoanModel;
 use App\Models\NguoiDungModel;
 use App\Models\NhanVienModel;
@@ -59,20 +60,25 @@ class CP extends BaseController
     {
         $db = db_connect();
         $builder = $db
-        ->table('tbl_sanpham')
+        ->table('tbl_sanpham as sp, tbl_loaisanpham as l, tbl_dvt as dvt')
         ->select(
             'MaHinh,
-             Ma, 
+             sp.Ma, 
              TenSanPham, 
              SoLuongTon, 
              XuatXu, 
              ThuongHieu, 
-             MaLoai, 
-             MaDVT, 
+             l.Ten as Loai, 
+             dvt.Ten as DVT, 
              GiamGia, 
              MoTa'
-            );
+            )
+        ->where("sp.MaLoai = l.Ma AND sp.MaDVT = dvt.Ma");
         return DataTable::of($builder)
                ->toJson();
+    }
+    public function createImportTicket(){
+        $data['title'] = 'Tạo phiếu nhập';
+        return view('cp/createImportTicket', $data);
     }
 }
