@@ -91,10 +91,6 @@ ul.pagination li {
             color: white;
         }
 
-        ul.pagination li a:hover:not(.active) {
-            background-color: #ddd;
-        }
-
 text-dark {
     color: #000 !important;
 }

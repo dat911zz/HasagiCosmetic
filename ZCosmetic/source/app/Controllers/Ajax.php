@@ -342,4 +342,17 @@ class Ajax extends BaseController
             echo json_encode(['msg' => "error"]);
         }
     }
+
+    public function fetch()
+    {
+        $db = new DatabaseHelper();
+        $start_date = $this->request->getPost('start_date');
+        $end_date = $this->request->getPost('end_date');
+        if (isset($start_date) && isset($end_date)) {
+            $rows = $db->executeReader("CALL sp_getProductReportDateRange(?,?)", array($start_date, $end_date));
+        } else {
+            $rows = $db->executeReader("CALL sp_getProductReport()");
+        }
+        echo json_encode($rows);
+    }
 }

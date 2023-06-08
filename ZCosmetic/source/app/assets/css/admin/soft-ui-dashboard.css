@@ -23168,11 +23168,11 @@ hr.horizontal.gray-light {
   }
 
   .sidenav.fixed-start~.main-content {
-    margin-left: 17.125rem;
+    margin-left: 15.125rem;
   }
 
   .sidenav.fixed-end~.main-content {
-    margin-right: 17.125rem;
+    margin-right: 15.125rem;
   }
 }
 
