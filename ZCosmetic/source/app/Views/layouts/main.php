@@ -212,11 +212,12 @@
                                                     <input type="text" title="Quantity" value="1">
                                                 </div>
                                             </div>
-                                            <div class="product-details-action">
+                                            <div class="product-details-action" style="display: flex; justify-content: space-between;">
                                                 <div class="prices">
                                                     <span class="price" style="font-size: 20px;">100.000 VNĐ</span>
                                                     <span class="price-old" style="color:red;">200.000 VNĐ</span>
                                                 </div>
+                                                <div style="color:red; user-select: none;">SL Tồn: <span id="quantity-in-stock">100</span></div>
                                             </div>
                                             <div class="product-details-cart-wishlist" style="    margin-top: 10px; margin-left: 0;">
                                                 <button type="button" class="btn add-cart" style="background-color: blue; border-color: blue; min-width:160px; width: 50%;" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">
@@ -371,6 +372,7 @@
 
     <!-- Custom Main JS -->
     <script src="../../assets/js/main.js"></script>
+    
     <script>
         function checkLogin() {
             if('<?= $id_user ?>' == '0') {
@@ -545,6 +547,8 @@
                     } else {
                         $('.product-details-action .price-old').html('');
                     }
+                    $('#quantity-in-stock').html(data.value[0].SoLuongTon);
+                    $('.product-details-pro-qty > .pro-qty > input').val(1);
                 }
             });
         });
@@ -576,7 +580,7 @@
                 },
                 success: function(data) {
                     sessionStorage.setItem('checkout', JSON.stringify(data));
-                    window.location.replace("<?= base_url('Pages/Checkout') ?>");
+                    window.location = "<?= base_url('Pages/Checkout') ?>";
                 }
             });
         });

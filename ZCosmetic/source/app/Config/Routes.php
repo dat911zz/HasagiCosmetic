@@ -86,6 +86,7 @@ $routes->post('/Ajax/Pay', 'Ajax::pay');
 $routes->post('/Ajax/SaveAccount', 'Ajax::saveAccount');
 $routes->post('/Ajax/DeleteAccount/(:num)', 'Ajax::deleteAccount/$1');
 $routes->post('/Ajax/AcceptOrder', 'Ajax::acceptOrder');
+$routes->post('/Ajax/CancelOrder', 'Ajax::cancelOrder');
 $routes->get('/Pages/AccountRegister', 'Ajax::account_register');
 $routes->post('/Ajax/addAccountRegister', 'Ajax::addAccountRegister');
 

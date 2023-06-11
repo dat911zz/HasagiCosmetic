@@ -47,6 +47,7 @@ if (isset($id_user) && $id_user > 0) {
                             <thead>
                                 <tr>
                                     <th class="product-remove">&nbsp;</th>
+                                    <th class="product-thumbnail" style="display: flex; align-items: center;"><input id="check-all" type="checkbox" /> <span style="margin-left: 4px;">ALL</span></th>
                                     <th class="product-thumbnail">&nbsp;</th>
                                     <th class="product-name">Sản phẩm</th>
                                     <th class="product-price">Giá</th>
@@ -65,6 +66,9 @@ if (isset($id_user) && $id_user > 0) {
                                     <tr class="tbody-item">
                                         <td class="product-remove">
                                             <a id="<?= 'rm_' . $sp->Ma ?>" class="remove" onclick="removeCart(<?= $sp->Ma ?>, <?= $id_user ?>)">×</a>
+                                        </td>
+                                        <td class="product-check">
+                                            <input data-id-product="<?= $sp->Ma ?>" type="checkbox" />
                                         </td>
                                         <td class="product-thumbnail">
                                             <div class="thumb">
@@ -163,19 +167,67 @@ if (isset($id_user) && $id_user > 0) {
     <!--== End Product Area Wrapper ==-->
     <script>
         $('.quantity').on('keydown', function(e) {
-            if((/[a-zA-Z]/gm.test(String.fromCharCode(e.keyCode)))) {
+            if ((/[a-zA-Z]/gm.test(String.fromCharCode(e.keyCode)))) {
                 e.preventDefault();
-            }
-            else {
+            } else {
                 updateCart($(this).data('id-product'), $(this).val(), $(this).data('id-user'), $(this).data('price'));
             }
         });
         $('.quantity').on('focusout', function() {
-            if($(this).val().length == 0 || $(this).val() == 0) {
+            if ($(this).val().length == 0 || $(this).val() == 0) {
                 $(this).val(1);
             }
             updateCart($(this).data('id-product'), $(this).val(), $(this).data('id-user'), $(this).data('price'));
         })
+        $('#check-all').on('click', function() {
+            console.log($(this).is(':checked'));
+            if ($(this).is(':checked')) {
+                console.log('v true');
+                $('.product-check > input').prop('checked', true);
+                checkProduct();
+            } else {
+                console.log('v false');
+                $('.product-check > input').prop('checked', false);
+                checkProduct();
+            }
+            console.log($arrCart);
+        });
+
+        $(document).ready(function() {
+            $arrCart = [];
+            $('.product-check > input').each(function(index, e) {
+                $(e).change(function() {
+                    if ($(this).is(':checked')) {
+                        $arrCart.push($(e).data('id-product'));
+                        console.log();
+                    } else {
+                        $indexOf = $arrCart.indexOf($(e).data('id-product'));
+                        if ($indexOf > -1) {
+                            $arrCart.splice($indexOf, 1);
+                        }
+                    }
+                    console.log($arrCart);
+                });
+            });
+
+            var js_obj_data = JSON.parse('<?= str_replace("'", "", json_encode($gio_hang)) ?>'.replace(/\n/g, "\\n"));
+            console.log(js_obj_data[0].Gia + 1);
+        });
+
+        function checkProduct() {
+            $arrCart = [];
+            $('.product-check > input').each(function(index, e) {
+                if ($(this).is(':checked')) {
+                    $arrCart.push($(e).data('id-product'));
+                } else {
+                    $indexOf = $arrCart.indexOf($(e).data('id-product'));
+                    if ($indexOf > -1) {
+                        $arrCart.splice($indexOf, 1);
+                    }
+                }
+            });
+            console.log($arrCart);
+        }
     </script>
 </main>
 <?= $this->endSection() ?>

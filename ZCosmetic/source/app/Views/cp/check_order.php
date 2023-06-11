@@ -35,7 +35,7 @@
     <?php
     session_start();
     $id_user = isset($_SESSION["MaTaiKhoan"]) ? $_SESSION["MaTaiKhoan"] : 0;
-    if($id_user == 0) {
+    if ($id_user == 0) {
         throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
     }
     $db = new DatabaseHelper();
@@ -78,7 +78,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($orders as $order) { ?>
-                        <tr id="<?= 'HD'.$order->Ma ?>" style="text-align: center;">
+                        <tr id="<?= 'HD' . $order->Ma ?>" style="text-align: center;">
                             <td>
                                 <?= $order->Ma ?>
                             </td>
@@ -100,7 +100,7 @@
                             <td>
                                 <div>
                                     <button onclick="acceptOrder(<?= $order->Ma ?>)" class="btn btn-success"><i class="bi bi-check2"></i></button>
-                                    <button class="btn btn-danger"><i class="bi bi-x"></i></button>
+                                    <button onclick="cancelOrder(<?= $order->Ma ?>, <?= $order->MaNguoiDung ?>)" class="btn btn-danger"><i class="bi bi-x"></i></button>
                                 </div>
                             </td>
                         </tr>
@@ -117,7 +117,7 @@
         Swal.fire({
             icon: 'warning',
             title: 'Cảnh Báo!',
-            html: '<div>Bạn có chắc muốn xóa tại khoản có mã '+ id +' ?</div>',
+            html: '<div>Bạn có chắc muốn xóa tại khoản có mã ' + id + ' ?</div>',
             showCancelButton: true,
             cancelButtonText: 'Hủy'
         }).then((result) => {
@@ -136,11 +136,10 @@
                                 text: 'Xóa tài khoản ' + data.target + ' thành công!',
                                 showConfirmButton: true,
                                 timer: 2500
-                            }).then(() =>{
+                            }).then(() => {
                                 location.reload();
                             })
-                        }
-                        else {
+                        } else {
                             console.log(data.d);
                             Swal.fire({
                                 icon: 'error',
@@ -155,7 +154,7 @@
             }
         })
     };
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#table_id').DataTable().destroy();
         $('#table_id').DataTable({
             pageResize: false,
@@ -183,40 +182,89 @@
             },
             displayLength: 5,
             dom: "<'toolbar'><'row'<'col-sm-5'l><'col-sm-7 t_filter'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-4'i><'col-sm-6'p>>",
-            fnInitComplete: function () {
+            fnInitComplete: function() {
                 /*$('div.toolbar').html('Custom tool bar!')   */
             }
-        });        
+        });
     });
+
     function acceptOrder($mahd) {
         $.ajax({
-                type: 'POST',
-                url: "<?= base_url('/Ajax/AcceptOrder') ?>",
-                dataType: 'json',
-                data: {
-                    idorder: $mahd,
-                    iduser: '<?= $id_user ?>'
-                },
-                success: function(data) {
-                    console.log(data);
-                    if (data.msg == 'success') {
-                        $('#HD' + $mahd).remove();
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Kiểm duyệt thành công',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Kiểm duyệt thất bại',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
+            type: 'POST',
+            url: "<?= base_url('/Ajax/AcceptOrder') ?>",
+            dataType: 'json',
+            data: {
+                idorder: $mahd,
+                iduser: '<?= $id_user ?>'
+            },
+            success: function(data) {
+                console.log(data);
+                if (data.msg == 'success') {
+                    $('#HD' + $mahd).remove();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Kiểm duyệt thành công',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Kiểm duyệt thất bại',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 }
-            });
+            }
+        });
+    }
+
+    function cancelOrder($mahd, $id_customer) {
+        Swal.fire({
+            title: 'Bạn có chắc chắn?',
+            text: "Bạn đang thực hiện hủy hóa đơn",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hủy',
+            cancelButtonText: 'Quay lại'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: "<?= base_url('/Ajax/CancelOrder') ?>",
+                    dataType: 'json',
+                    data: {
+                        idorder: $mahd,
+                        iduser: '<?= $id_user ?>'
+                    },
+                    success: function(data) {
+                        console.log(data);
+                        if (data.msg == 'success') {
+                            $('#HD' + $mahd).remove();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Hủy thành công',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            setTimeout(function() {
+                                window.location = "/Chat/ChatUser?id=" + $id_customer;
+                            }, 1500);
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Hủy thất bại',
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    }
+                });
+            }
+        })
+
     }
 </script>
 

@@ -15,9 +15,9 @@
     $curPage = $_GET["page"];
     $btnPage = $pager->getButtonPage($curPage, $maximumPage);
 
-    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, tbl_gia.Gia, tbl_giasanpham.*
-                                    FROM tbl_sanpham, tbl_giasanpham, tbl_gia
-                                    WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_gia.Ma and tbl_giasanpham.NgayHetHieuLuc is null limit $posStart, $lim");
+    $san_pham = $db->executeReader("SELECT tbl_sanpham.*, `tbl_giacapnhat`.`Gia`, `tbl_giacapnhat`.`NgayCapNhat`, `tbl_giacapnhat`.`NgayHetHieuLuc`
+                                    FROM tbl_sanpham, tbl_giasanpham, tbl_giacapnhat
+                                    WHERE tbl_sanpham.Ma = tbl_giasanpham.MaSanPham and tbl_giasanpham.MaGia = tbl_giacapnhat.Ma and tbl_giacapnhat.NgayHetHieuLuc is null limit $posStart, $lim");
                                     
 ?>
 
@@ -66,7 +66,8 @@
                                         </a>
                                         <!-- <span class="flag-new">mới</span> -->
                                         <div class="product-action">
-                                            <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
+                                            <button type="button" class="product-action-btn action-btn-quick-view" data-id-product="<?= $sp->Ma
+                                             ?>" data-bs-toggle="modal" data-bs-target="#action-QuickViewModal">
                                                 <i class="fa fa-expand"></i>
                                             </button>
                                             <button type="button" onclick="addCart(<?= $sp->Ma ?>, 1, <?= $id_user ?>)" class="product-action-btn action-btn-cart" data-bs-toggle="modal" data-bs-target="#action-CartAddModal">

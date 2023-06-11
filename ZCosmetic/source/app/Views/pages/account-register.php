@@ -3,10 +3,6 @@
 <?= $this->section('content') ?>
 
 <script>
-    $(function () {
-        $("#header").load("header.php");
-        $("#footer").load("footer.php");
-    })
     function validateRegisterForm() {
         let x = document.forms["RegisterForm"]["txtUser"].value;
         let y = document.forms["RegisterForm"]["txtPassword"].value;
@@ -32,17 +28,19 @@ $error = "";
 $uname = "";
 $pass = "";
 $tb = "";
-$id_user = 2;
-$user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
-$arrAdress = explode(', ', $user->DiaChi);
-$len = count($arrAdress);
-$city = $arrAdress[$len - 1];
-$district = $arrAdress[$len - 2];
-$ward = $arrAdress[$len - 3];
-$detailsAddress = '';
-if (isset($arrAdress[$len - 4])) {
-    $detailsAddress = $arrAdress[$len - 4];
-}
+
+$city = $district = $ward = $detailsAddress = '';
+// $id_user = 2;
+// $user = $db->executeReader('SELECT * FROM tbl_NguoiDung WHERE Ma = ?', array($id_user))[0];
+// $arrAdress = explode(', ', $user->DiaChi);
+// $len = count($arrAdress);
+// $city = $arrAdress[$len - 1];
+// $district = $arrAdress[$len - 2];
+// $ward = $arrAdress[$len - 3];
+// $detailsAddress = '';
+// if (isset($arrAdress[$len - 4])) {
+//     $detailsAddress = $arrAdress[$len - 4];
+// }
 
 
 function validate($data)
@@ -130,10 +128,10 @@ function validate($data)
                                                         <label>Giới tính<abbr class="required"
                                                                 title="required">*</abbr></label>
                                                         <label for="male">Male</label>
-                                                        <input type="radio" class="sex" name="sex" id="sexMale" value="male"
+                                                        <input type="radio" class="sex" name="sex" id="sexMale" value="Nam"
                                                             checked>
                                                         <label for="female">Female</label>
-                                                        <input type="radio" class="sex" name="sex" id="sexFemale" value="female">
+                                                        <input type="radio" class="sex" name="sex" id="sexFemale" value="Nữ">
                                                     </fieldset>
                                                 </div>
                                             </div>
@@ -275,6 +273,7 @@ function validate($data)
     function updateWard($value) {
         $('#ward > option[Selected]').attr('Selected', false);
         $('#ward > option[value=' + $value + ']').attr('Selected', true);
+        changeWard($value);
     }
 
     function changeDistrict($idCity) {
